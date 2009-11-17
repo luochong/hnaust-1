@@ -1,6 +1,3 @@
-<?php 
-//include_once ("../include/session.class.php");
-?>
 <script type="text/javascript">
 function $(_sId){
 	return document.getElementById(_sId); //getElementById() 返回对拥有指定 id 的第一个对象的引用。   龙 2009/07/09
@@ -39,7 +36,7 @@ function hide(_sId){  //隐藏菜单
 
 	  <div class="hand" onclick="hide('hideMenuFunc0')">系统管理</div>
 	  <div id="hideMenuFunc0">
-	      <div><a href="" target="main">添加账号</a> | <a href="" target="main">管理</a></div>
+	      <div><a href="syst/syst_adduser.php" target="main">添加账号</a> | <a href="" target="main">管理</a></div>
 		  <div><a href="p" target="main">添加部门</a> | <a href="" target="main">管理</a></div>
 		  <div><a href="" target="main">人员密码查询</a></div>	
 	  </div><br />

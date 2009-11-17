@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
-@include_once ("include/session.php");
+//@include_once ("../include/session.class.php");
 ?>
 <title><?php echo $title;?></title>
 </head>
