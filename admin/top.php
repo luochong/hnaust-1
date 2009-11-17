@@ -1,7 +1,7 @@
-<?php
+﻿<?php
 /*@include_once ("include/session.php");
-@include_once ("include/config.php");*/
-require_once("function.php");
+@include_once ("include/config.php");
+require_once("function.php");*/
 /*$hwnd=mysql_connect("$hostname","$dbusername","$dbpassword");
 mysql_select_db("$dbname");
 mysql_query("SET NAMES 'utf8'",$hwnd);
