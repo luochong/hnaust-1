@@ -1,5 +1,4 @@
-﻿<?php
-//include_once ("../include/session.class.php");
+<?php
 /*@include_once ("include/config.php");
 require_once("function.php");*/
 /*$hwnd=mysql_connect("$hostname","$dbusername","$dbpassword");
