@@ -33,8 +33,7 @@ class LoginAction extends MysqlDao {
 		
 	}
 	public function logout(){
-		
-		
+		$_SESSION = array();
 	}
 	
 	
