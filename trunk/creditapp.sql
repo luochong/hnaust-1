@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: creditapp
 Target Host: localhost
 Target Database: creditapp
-Date: 2009-11-16 21:45:25
+Date: 2009-11-17 20:19:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -107,7 +107,7 @@ CREATE TABLE `stud_baseinfo` (
   `stud_sex` varchar(2) character set utf8 default NULL,
   `stud_college` varchar(20) character set utf8 default NULL COMMENT '学院',
   `stud_grade` int(5) default NULL COMMENT '年级',
-  `stud_class` varchar(15) default NULL,
+  `stud_class` varchar(15) character set utf8 default NULL,
   `stud_deadline` varchar(15) character set utf8 default NULL COMMENT '申报截止日期',
   `stud_password` varchar(25) character set utf8 default NULL COMMENT '密码',
   `stud_orgcode` int(8) default NULL COMMENT '组织机构码',
@@ -129,4 +129,4 @@ CREATE TABLE `user_admin` (
 -- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `stud_baseinfo` VALUES ('1', '2007', '张三', '男', '信息科学技术学院', '2007', '07?????', '2011年3月', '123456', '207');
+INSERT INTO `stud_baseinfo` VALUES ('1', '2007', '张三', '男', '信息科学技术学院', '2007', '07计算机一班', '2011年3月', '123456', '207');
