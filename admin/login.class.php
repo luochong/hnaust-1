@@ -29,6 +29,7 @@ class LoginAction extends MysqlDao {
 			$this->error_message ='帐号或密码错误！';
 			return;
 		}else{
+				$_SESSION['admin_id']   = $rows[0]['user_id'];
 				$_SESSION["admin_user"] = $rows[0]['user_name'];
 				$_SESSION["admin_pwd"] = $rows[0]['user_password'];
 				$_SESSION["user_org_code"] = $rows[0]['user_org_code'];
@@ -38,6 +39,29 @@ class LoginAction extends MysqlDao {
 	}
 	public function logout(){
 		$_SESSION = array();
+	}
+	
+	public function modipwd(){
+		
+		if(empty($_POST['oldpwd'])||empty($_POST['newpwd'])||empty($_POST['rnewpwd'])){
+			$this->error_message='请填写完整！';
+			return ;
+		}
+		if($_POST['newpwd'] != $_POST['rnewpwd']){
+			$this->error_message='两次输入新密码不一致！';
+			return ;
+		}
+		
+		if($_POST['oldpwd'] == $_SESSION['admin_pwd']){
+			$this->setTableName('user_admin');
+			$this->update(array('user_password'=>$_POST['newpwd']),array('user_id'=>$_SESSION['admin_id']));
+			$_SESSION['admin_pwd'] == $_POST['newpwd'];
+			$this->error_message.="修改成功！";			
+		}else{
+			$this->error_message='旧密码不正确！';
+			
+		}
+	
 	}
 	
 	

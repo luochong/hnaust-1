@@ -62,7 +62,7 @@ $admin_name = "邓卓";     //测试
          <a href="<?php //echo $rebody;?>" target="main">返回首页</a>
          <a href="modiedit.php" target="main">修改个人资料</a>
          <a href="modipwd.php" target="main">修改密码</a>
-         <a href="logout.php" target="_parent">退出系统</a>
+         <a href="login.php?ac=logout" target="_parent">退出系统</a>
      </ul>
   </div>
 <b class="rbottom">

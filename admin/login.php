@@ -69,7 +69,7 @@ function checkData() {
 	  管理员账号：<input class="long" type="text" name="user_name" value="<?php echo $_POST['user_name']?>" /><br /><br />
 	  管理员密码：<input class="long"  type="password" name="user_password" value="<?php echo $_POST['user_password']?>" />
 	  <br /><br />
-	  登录验证码：<img src='../yzm/yzm.php' alt='验证码' /><br /><br />
+	  登录验证码：<img src='../yzm/yzm.php' alt='看不清，点击换一张' onclick="this.src='../yzm/yzm.php?'+new Date()"/><em>看不清，请点图片换一张</em><br /><br />
 	  输入验证码：<input class="short"  type="text" name="yzm" />&nbsp;
 	  <br /><br />
 	 <div class="input">
