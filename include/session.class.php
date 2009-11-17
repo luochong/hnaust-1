@@ -39,7 +39,7 @@
 				$user_name = $_SESSION["admin_user"];
 				$user_pwd  = $_SESSION["admin_pwd"];
 				
-				$sql .= "select count(*) from user_admin where user_name ='$user_name' and user_password ='$user_pwd' ";				
+				$sql = "select count(*) from user_admin where user_name ='$user_name' and user_password ='$user_pwd' ";				
 			
 				$rows = $this->executeQuery($sql);
 				$nums = $rows[0][0];

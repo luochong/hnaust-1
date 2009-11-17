@@ -573,6 +573,8 @@ class MysqlDao extends DaoBase
 	
 	protected function connect($mode = TRUE)
 	{
+		
+		echo DaoBase::$dbhost;
 		$conn = mysqli_connect(DaoBase::$dbhost, DaoBase::$dbuser, DaoBase::$dbpwd, DaoBase::$dbinst);
 		if (mysqli_connect_errno())
 		{

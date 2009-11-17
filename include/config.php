@@ -8,5 +8,5 @@ $cssfile="css/stat.css";
 $groupid="1";
 //$groupname="湖南农业大学";
 $dbname_g=$dbname;
-$dbname_p="sns_grouphunaun";
+$dbname_p="creditapp";
 ?>

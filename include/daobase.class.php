@@ -17,7 +17,7 @@
 ///        2007/08/024    1.0.0    	王志强      	最初版本
 ///	       2009/07/10     1.0.1   	龙首成      	学生管理   修改数据库密码
 
-
+require_once('config.php');
 abstract class DaoBase
 {
 	static protected $dbhost;   //主机名
@@ -30,11 +30,11 @@ abstract class DaoBase
     
     function DaoBase($conn = NULL)  
     {					
-			$this->dbhost = "localhost";
-			$this->dbuser = "root";
-			$this->dbpwd  = ""; //sns20070804
-			$this->dbinst = "sns_grouphunaun";
-				
+			
+    	DaoBase::$dbhost = "localhost";
+		DaoBase::$dbuser = "root";
+		DaoBase::$dbpwd  = ""; //sns20070804
+		DaoBase::$dbinst = "creditapp";
 		$this->table_name = "";		
 		
 		if (isset($conn))
