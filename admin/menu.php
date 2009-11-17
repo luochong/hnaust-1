@@ -1,5 +1,6 @@
-
-
+<?php 
+//include_once ("../include/session.class.php");
+?>
 <script type="text/javascript">
 function $(_sId){
 	return document.getElementById(_sId); //getElementById() 返回对拥有指定 id 的第一个对象的引用。   龙 2009/07/09

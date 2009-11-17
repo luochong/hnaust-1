@@ -1,6 +1,6 @@
 ﻿<?php
-/*@include_once ("include/session.php");
-@include_once ("include/config.php");
+//include_once ("../include/session.class.php");
+/*@include_once ("include/config.php");
 require_once("function.php");*/
 /*$hwnd=mysql_connect("$hostname","$dbusername","$dbpassword");
 mysql_select_db("$dbname");
