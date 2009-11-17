@@ -1,32 +1,10 @@
 <?php
-///	[Product]
-///		新课程信息管理系统
-///
-///	[Copyright]
-///		Copyright 2007-2008 prolove. All rights reserved.
-///
-///	[Filename]
-///		daobase.class.php
-///
-///	[Description]
-///		Mysql数据库类
-///
-///	[History]
-///		Date        	Version  	Author    	Content
-///		---------- 	 -------  	--------  	------------------------------------
-///	       2007/07/05    1.0.0    	王志强      	最初版本
 
-///	       2007/07/22    1.0.1    	王志强      	增加了分页处理
-
-///        2007/07/28    1.0.2      KuangFeng     修改了分页处理，当前页面值大于总页面值时，自动跳转到最后一页
-
-///        2007/08/05    1.0.3      KuangFeng     修改了分页函数，加入了查询字符串的处理
 
 @session_start();
 require_once("daobase.class.php");
 require_once("tabledefine.class.php");
-
-
+require_once("daoexception.php");
 
 class MysqlDao extends DaoBase
 {
