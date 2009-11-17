@@ -58,7 +58,7 @@ function showre( id ) {
 
 <div id="scrlContainer">系统公告：
    <div id="scrlContent">
-	  <a href="http://10.8.9.9/doc/admin.rar">[管理员使用手册]湖南农业大学学生素质拓展学分认证平台 <b>提供下载</b></a> ，教师使用手册已在前端通知发布！&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <a href="http://10.8.9.9/doc/admin.rar">[管理员使用手册]湖南农业大学学生素质拓展学分认证平台 <b>提供下载</b></a>
    </div>
 </div>
 
