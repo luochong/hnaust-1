@@ -50,17 +50,10 @@ function checkData() {
 			alert("请填写验证码");
 			document.form1.yzm.focus();
 			return false;
+		}else{
+			return true;
 		}
-		else {
-		    if(f1.yzm.value!=f1.yzm_1.value){
-				alert("验证码填写不正确!");
-				document.form1.yzm.focus();
-				return false;
-			}
-			else{
-				return true;
-			}
-		}
+		
 		
 	}
 }
@@ -71,12 +64,12 @@ function checkData() {
 <div class="bg">
     <div class="clear">&nbsp;</div>
 	<div class="denglu">
-	<form id="form1" name="form1" method="post" action="login.php" onSubmit="return checkData();">  
-	  管理员账号：<input class="long" type="text" name="user_name" /><br /><br />
-	  <input name="yzm_1" type="hidden" id="yzm_1" value="22039" />
-	  管理员密码：<input class="long"  type="password" name="user_password" />
+	<p style="color:#FF0000"><?php echo $action->error_message ?></p>
+	<form id="form1" name="form1" method="post" action="login.php?ac=login" onSubmit="return checkData();">  
+	  管理员账号：<input class="long" type="text" name="user_name" value="<?php echo $_POST['user_name']?>" /><br /><br />
+	  管理员密码：<input class="long"  type="password" name="user_password" value="<?php echo $_POST['user_password']?>" />
 	  <br /><br />
-	  登录验证码：<img src='' alt='验证码' /><br /><br />
+	  登录验证码：<img src='../yzm/yzm.php' alt='验证码' /><br /><br />
 	  输入验证码：<input class="short"  type="text" name="yzm" />&nbsp;
 	  <br /><br />
 	 <div class="input">

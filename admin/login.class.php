@@ -19,6 +19,10 @@ class LoginAction extends MysqlDao {
 			$this->error_message='请填写完整！';
 			return ;
 		}
+		if(strtolower($_POST['yzm']) != strtolower($_SESSION['yzm'])){
+			$this->error_message='验证码错误！';
+			return ;
+		}
 		$this->setTableName('user_admin');
 		$rows = $this->selectA(array('user_name'=>$_POST['user_name']));
 		if(count($rows)== 0||$rows[0]['user_password'] != $_POST['user_password']){
