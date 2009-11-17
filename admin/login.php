@@ -1,10 +1,8 @@
 <?php 
-
-
-
+require_once('login.class.php');
+$action = new LoginAction();
+$action->run();
 ?>
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +10,7 @@
 </head>
 <body>
 
-
+<?php echo $action->error_message;?>
 
 
 <form action="login.php?ac=login" method="POST" >
