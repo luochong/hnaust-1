@@ -2,15 +2,6 @@
 require_once('../include/mysqldao.class.php');
 class Tongji extends MysqlDao {
 	
-	public function student(){
-		
-		
-		
-	}
-	
-	
-	
-	
 	
 	public function countItemByStudId($id){
 		$this->setTableName('item_apply');
@@ -49,15 +40,35 @@ class Tongji extends MysqlDao {
     	return current(current($this->executeQuery($sql,$validcode)));
     	
     }
-    
     /*
-		    
+	   通过审核的   有效申报学分  
     */
-    
-    
-    
-    
-    
+    public function countVerifyValidCreditByStudId($id){
+    	$validcode = $this->makeValidItemCode(getVerifyValidAllCode($id));
+    	$sql = ' select sum(item_score) from item_set where  0   ';
+    	foreach ($validcode as $v){
+    		$sql .=' or item_code = ? ';
+    	}
+    	return current(current($this->executeQuery($sql,$validcode)));
+    }
+    /**
+     * 项目学分转化成课程学分
+     * 
+     * return array('真'=>学分,'实'=>学分);
+     */
+    public function countLessonCredit($id){
+    	$this->validcode = $this->makeValidItemCode(getVerifyValidAllCode($id));
+    	$sql = ' select sum(item_score),item_type from item_set where  0   ';
+    	foreach ($validcode as $v){
+    		$sql .=' or item_code = ? ';
+    	}
+    	$sql.='group by item_type ';
+    	$rows = $this->executeQuery($sql,$validcode);
+    	foreach ($rows as $row){
+    		$lessoncredit[$row[1]] = $row[0];
+    	}
+    	return $lessoncredit;
+    }
     /**
      * 生产有效项目序列
      */
@@ -80,6 +91,17 @@ class Tongji extends MysqlDao {
     		$validcode[] = $key.'Q'.$value;
     	}
     	return $validcode;
+    	
+    }
+    /**
+     * 获得所有的通过的项目编号 
+     *
+     * @param 学号 $id
+     * @return unknown
+     */
+    
+    public function getVerifyValidAllCode($id){
+    	return current($this->simpleFetchList(' item_apply ',array(' app_item_code '),array('app_stud_no'=>$id,'app_state'=>2)));
     	
     }
 
