@@ -380,8 +380,8 @@ class MysqlDao extends DaoBase
 		$conn = ($connected ? $this->conn : $this->connect(FALSE));
 
 		
-		mysqli_query($conn, "set names 'gbk'");
-		mysqli_query($conn, "set character set 'gbk'");
+		mysqli_query($conn, "set names 'utf8'");
+		
 		
 		
 		$allrow = array();
@@ -503,8 +503,7 @@ class MysqlDao extends DaoBase
 		$conn = ($connected ? $this->conn : $this->connect(FALSE));
 
 		
-		mysqli_query($conn, "set names 'gbk'");
-		mysqli_query($conn, "set character set 'gbk'");
+		mysqli_query($conn, "set names 'utf8'");
 	
 		
 		$stmt = mysqli_prepare($conn, $sql);
@@ -861,8 +860,8 @@ class MysqlDao extends DaoBase
 		$conn = ($connected ? $this->conn : $this->connect(FALSE));
 
 		
-		mysqli_query($conn, "set names 'gbk'");
-		mysqli_query($conn, "set character set 'gbk'");
+		mysqli_query($conn, "set names 'utf8'");
+		
 
 		$allrow = array();
 		$stmt = mysqli_prepare($conn, $sql);
