@@ -62,149 +62,17 @@ function showre( id ) {
 <div id="content">
      <div class="statblock">
         <div class="statbg"> 
-         <h3>统计数据汇总:</h3>
-	       <ul id="stattab">
-	        <li id="menu01" class=""><a href="javascript:changeTab('menu01');"><span>已上报</span></a></li>
-	        <li class="selected" id="menu02"><a href="javascript:changeTab('menu02');"><span>数字汇总</span></a></li>
-	        <li class="" id="menu03"><a href="javascript:changeTab('menu03');"><span>月份柱形图</span></a></li>
-            <li class="" id="menu04"><a href="javascript:changeTab('menu04');"><span>数字比例 扇形图</span></a></li>
-            <li class="" id="menu05"><a href="javascript:changeTab('menu05');"><span>其它（二）</span></a></li>
-     	  </ul>
-
-		   <div style="display: none;" class="linkblock" id="menu01_block">
-			<a href=""><span>二级菜单1</span></a>
-			<a href=""><span>菜单</span></a>
-			<a href=""><span>菜单</span></a>
-			<a href=""><span>菜单</span></a>
-			<a href=""><span>菜单</span></a>
-			<a href=""><span>菜单</span></a>
-			<a href=""><span>菜单</span></a>
-		   </div>
-
-		   <div class="linkblock" id="menu02_block" style="display: block;">
-			<a href="">二级菜单2</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-		        <div class="data">
-		        <h2>湖南农业大学统计数字汇总:</h2>
-		           <div>
-		              <div class="line">
-		              <h3>湖南农业大学共有教职员工3200人。目前列入系统进行数据采样共2000人。</h3>
-		              </div>
-
-		              <div class="line">
-		              <h3>湖南农业大学共有专职教师1200人。目前列入系统进行数据采样共1000人。</h3>
-		              </div>
-
-		              <div class="line">
-		              <h3>湖南农业大学共有行政后勤人员2000人。目前列入系统进行数据采样共1300人。</h3>
-		              </div>
-
-		              <div class="line">
-		              <h3>湖南农业大学共有18个学院。目前列入系统进行数据采样共15个学院。</h3>
-		              </div>
-		            </div>
-                  </div>
-
-		   </div>
-
-		   <div class="linkblock" id="menu03_block" style="display: none;">
-			<a href="">二级菜单3</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-
-			<table class="bargraph">
-			    <tr>
-			        <td>10000<img src="images/column.gif" width="36" height="10" alt="10000" /></td>
-			        <td>15000<img src="images/column1.gif" width="36" height="30" alt="15000" /></td>
-			        <td>20000<img src="images/column.gif" width="36" height="40" alt="20000" /></td>
-			        <td>30000<img src="images/column1.gif" width="36" height="60" alt="30000" /></td>
-			        <td>35000<img src="images/column.gif" width="36" height="70" alt="35000" /></td>
-			        <td>40000<img src="images/column1.gif" width="36" height="80" alt="40000" /></td>
-			        <td>50000<img src="images/column.gif" width="36" height="100" alt="50000" /></td>
-			        <td>60000<img src="images/column1.gif" width="36" height="120" alt="60000" /></td>
-			        <td>70000<img src="images/column.gif" width="36" height="140" alt="70000" /></td>
-			        <td>80000<img src="images/column1.gif" width="36" height="160" alt="80000" /></td>
-			        <td>90000<img src="images/column.gif" width="36" height="180" alt="90000" /></td>
-			        <td>100000<img src="images/column1.gif" width="36" height="200" alt="100000" /></td>
-			    </tr>
-			    <tr>
-			       <td>Jan</td>
-			       <td>Feb</td>
-			       <td>Mar</td>
-			       <td>Apr</td>
-			       <td>May</td>
-			       <td>Jun</td>
- 			       <td>Jul</td>
- 			       <td>Aug</td>
- 			       <td>Sep</td>
- 			       <td>Oct</td>
- 			       <td>Nov</td>
- 			       <td>Dec</td>
-			    </tr>
-			</table>
-		    </div>
-
-		   <div class="linkblock" id="menu04_block" style="display: none;">
-			<a href="">二级菜单4</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-
-			<table>
-			    <tr>
-			        <td class="width">女性比例</td>
-			        <td class="pie size45"></td>
-			        <td class="percent">45%</td>
-			    </tr>
-			    <tr>
-			        <td class="width">共产党员</td>
-			        <td class="pie size20"></td>
-			        <td class="percent">20%</td>
-			    </tr>
-			    <tr>
-			        <td class="width">教授</td>
-			        <td class="pie size15"></td>
-			        <td class="percent">15%</td>
-			    </tr>
-			    <tr>
-			        <td class="width">博士生导师</td>
-			        <td class="pie size5"></td>
-			        <td class="percent">5%</td>
-			    </tr>
-			    <tr>
-			        <td class="width">获得硕士以上学位的教师占</td>
-			        <td class="pie size75"></td>
-			        <td class="percent">75%</td>
-			    </tr>
-			</table>
-		    </div>
-				
-		    <div class="linkblock" id="menu05_block" style="display: none;">
-			<a href="">二级菜单5</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-			<a href="">菜单</a>
-		    </div>
-	     </div>
+         <h3>项目数据统计:</h3>
+		
+         
+         
+         
+         
         </div>
+	 </div>
 			
     <div class="footer">
-	  <h2>统计数据汇总时间:2009年11月18日</h2>
+	  <h2>统计数据汇总时间:<?php echo date('Y-m-d') ?></h2>
    </div>
 
 </div>
