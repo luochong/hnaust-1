@@ -32,7 +32,8 @@ class LoginAction extends MysqlDao {
 				$_SESSION['admin_id']   = $rows[0]['user_id'];
 				$_SESSION["admin_user"] = $rows[0]['user_name'];
 				$_SESSION["admin_pwd"] = $rows[0]['user_password'];
-				$_SESSION["user_org_code"] = $rows[0]['user_org_code'];
+				$_SESSION["admin_org_code"] = $rows[0]['user_org_code'];
+				$_SESSION["admin_limt"] = $rows[0]['user_mode'];
 				header('Location: index.php');
 		}
 		
@@ -51,12 +52,11 @@ class LoginAction extends MysqlDao {
 			$this->error_message='两次输入新密码不一致！';
 			return ;
 		}
-		
 		if($_POST['oldpwd'] == $_SESSION['admin_pwd']){
 			$this->setTableName('user_admin');
 			$this->update(array('user_password'=>$_POST['newpwd']),array('user_id'=>$_SESSION['admin_id']));
-			$_SESSION['admin_pwd'] == $_POST['newpwd'];
-			$this->error_message.="<script> \n alert('123');\n location.assign('../body.php')\n </script>";			
+			$_SESSION['admin_pwd'] = $_POST['newpwd'];
+			$this->error_message.="<script> \n alert('修改成功！');\n location.assign('./body.php')\n </script>";			
 		}else{
 			$this->error_message='旧密码不正确！';
 			

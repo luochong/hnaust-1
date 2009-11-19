@@ -18,19 +18,18 @@
 
 /// [Summary]
 ///检查用户是否登录
-	require_once ("mysqldao.php");	
+	require_once ("mysqldao.class.php");	
 	
-	class session extends MysqlDao_b
+	class session extends MysqlDao
 	{
 		
 		public function session_check()
 		{
 			session_start();
-			
 			if ( !isset($_SESSION["admin_user"]) or $_SESSION["admin_pwd"] == "" )
 			{
 				echo "<script language=javascript>\n";
-				echo "location.assign('../login.php')\n";
+				echo "location.assign('login.php')\n";
 				echo "</script>\n";
 				exit;	
 			}
@@ -47,7 +46,7 @@
 				if( !$nums )
 				{
 					echo "<script language=javascript>\n";
-					echo "location.assign('../login.php')\n";
+					echo "location.assign('login.php')\n";
 					echo "</script>\n";
 					exit;
 				}
@@ -62,7 +61,7 @@
 			
 			$user_name = $_SESSION["admin_user"];
 			$user_pwd  = $_SESSION["admin_pwd"];
-			$sql  = "select user_mode from sns_group_admin where admin_user='$user_name' and admin_pwd='$user_pwd' ";				
+			$sql  = "select user_mode from user_admin where user_name='$user_name' and user_password='$user_pwd' ";				
 			$rows = $this->executeQuery($sql);
 			$user_modu_data = $rows[0][0];
 			//echo $user_modu_data;

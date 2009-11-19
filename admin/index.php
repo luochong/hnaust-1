@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
-//@include_once ("../include/session.class.php");
+include_once ("../include/session.class.php");
 ?>
 <title><?php echo $title;?></title>
 </head>
@@ -17,12 +17,7 @@
 <noframes>
   <body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0">
   <p>你的浏览器版本过低！！！本系统要求IE5及以上版本才能使用本系统。</p>
-  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
-  </script>
-  <script type="text/javascript">
-   _uacct = "UA-1460118-2";
-   urchinTracker();
-  </script> 
+
   </body>
 </noframes>
 </html>
