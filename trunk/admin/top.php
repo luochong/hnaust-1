@@ -1,16 +1,5 @@
 <?php
-/*@include_once ("include/config.php");
-require_once("function.php");*/
-/*$hwnd=mysql_connect("$hostname","$dbusername","$dbpassword");
-mysql_select_db("$dbname");
-mysql_query("SET NAMES 'utf8'",$hwnd);
-$deptname=deptname($hwnd,$admin_dept_id,$admin_user);
-if($_SESSION['login_flag'] == "7"){
-	$rebody = "bodysg.php";
-}else{
-	$rebody = "body.php";
-}*/
-$admin_name = "邓卓";     //测试
+require_once('../include/session.class.php');
 ?>
 <link href="css/stat.css" type=text/css rel=stylesheet />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,7 +7,7 @@ $admin_name = "邓卓";     //测试
 <div class="RoundedCorner">
   <div class="topname">湖南农业大学学生素拓学分认证管理后台</div>
   <div id="yourname">                             <?php 
-					 	echo $admin_name."：你好！今日是  ";
+					 	echo $_SESSION['admin_user']."：你好！今日是  ";
 						$nian=date("Y");
 						$yue=date("n");
 						$ri=date("j");
@@ -51,16 +40,7 @@ $admin_name = "邓卓";     //测试
 					?>
    </div>
    <div id="toptab">
-   <?php
-	//if($_SESSION['login_flag'] != "7"){
-   ?>
-         <a href="call.php" target="main">发布公告</a>
-         <a href="call_lword.php" target="main">我要留言</a>
-   <?php
- //  }
-   ?>
-         <a href="<?php //echo $rebody;?>" target="main">返回首页</a>
-         <a href="modiedit.php" target="main">修改个人资料</a>
+         <a href="body.php" target="main">返回首页</a>
          <a href="modipwd.php" target="main">修改密码</a>
          <a href="login.php?ac=logout" target="_parent">退出系统</a>
      </ul>
