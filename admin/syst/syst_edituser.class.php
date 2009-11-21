@@ -53,3 +53,5 @@ class edituser extends MysqlDao
 			}
 	}
 }
+
+?>

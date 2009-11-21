@@ -29,3 +29,5 @@ class mangeruser extends MysqlDao
 		return $row;
 	}
 }
+
+?>
