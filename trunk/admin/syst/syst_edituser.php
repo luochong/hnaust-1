@@ -1,9 +1,3 @@
-<?php
-require_once("syst_adduser.class.php");
-
-$operuser = new operadd();
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,9 +5,18 @@ $operuser = new operadd();
 <link rel="stylesheet" href="../css/stat.css" media="screen" />
 <title><?php echo $title;?></title>
 <?php
+	require_once("syst_adduser.class.php");
+	require_once("syst_edituser.class.php");
+	$operuser = new operadd();
+	$edituser = new edituser();
+	
+	$user_name = $_GET['username'];
+	$psw = $_GET['psw'];
+	$dept = $_GET['dept'];
+	
 	
 if(isset($_POST['submit'])){		
-	$operuser->addoper();
+	$edituser->editAccount();
 }
 ?>
 
@@ -69,30 +72,27 @@ function checkdata() {
 	  </h3>
 	  <div class="clear">&nbsp;</div>
 	  <form id="form1" name="form1" method="post" onsubmit="return checkdata();">
-      <div class="alltitle">添加操作员:</div>
+      <div class="alltitle">修改账号权限:</div>
 		  
 	  <div id="allcontent">
         <div class="left">
 		  <label>用户名</label> <small>*必须</small><br />
-		  <input name="username" type="text" id="username" size="30" /><br />
+		  <input name="username" type="text" id="username" size="30" readonly value="<?php echo $user_name?>"/><br />
 		  <label>登录密码</label> <small>*必须</small><br />
-		  <input name="userpwd" type="password" id="userpwd" size="30" /><br />
+		  <input name="userpwd" value="<?php echo $psw;?>" id="userpwd" size="30" /><br />
 		  
 		  <br /><label>模块权限</label>	<br />
-		  <input type='checkbox' name='modu_item' value='check' checked='checked' />项目管理;
-		  <input type='checkbox' name='modu_news' value='check' checked='checked' />新闻管理;
-		  <input type='checkbox' name='modu_syst' value='check' checked='checked' />系统管理;
-  		  
+		  <input type='checkbox' name='modu_item' value='check' checked='checked' />数据统计;
+		  <input type='checkbox' name='modu_news' value='check' checked='checked' />部门管理;
+		  <input type='checkbox' name='modu_syst' value='check' checked='checked' />操作员管理;
+		  
+  		  		  		  
 		  <br />
 		  </div>
 
 		  <div class="right">
 		         <label>管理部门</label> <small>*必须</small><br />
-				 <select name="dept_mname" id="dept_mname" class="dept">    		
-		  <?php
-		  	$operuser->showDeptList();			
-		  ?>   				  
-	  	         </select>
+					<input name="dept" value="<?php echo $dept;?>" readonly>
 		         <br />
 			 </div>
 			 
@@ -101,7 +101,7 @@ function checkdata() {
 		  <div class="clear">&nbsp;</div>
 		  
 		  <div> 
-               <input type="submit" name="submit" value="  添加操作员	 " />
+               <input type="submit" name="submit" value="  确认修改账号	 " />
 		  </div>
 	  </div><br />
 	  </form>

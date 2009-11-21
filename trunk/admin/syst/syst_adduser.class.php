@@ -75,8 +75,8 @@ class operadd extends MysqlDao
 			if( $_POST['modu_item'] == "check")$modu_item = "1";else $modu_item = "0";
 			if( $_POST['modu_news'] == "check")$modu_news = "1";else $modu_news = "0";
 			if( $_POST['modu_syst'] == "check")$modu_syst = "1";else $modu_syst = "0";
-
 			
+
 			$array['admin_modu_limit']= $modu_item.$modu_news.$modu_syst;				
 			$this->setTableName('user_admin');
 		
@@ -84,7 +84,7 @@ class operadd extends MysqlDao
 							"user_password" => $array['userpwd'],
 							"user_org_code" => $array['dept_mname'],
 							"user_mode" => $array['admin_modu_limit']);	
-							print_r($cond);
+
 			$resu = $this->insert($cond);
 			
 			if($resu)

@@ -23,16 +23,9 @@ class mangeruser extends MysqlDao
 {
 	public function showUserList()
 	{
-		$this->setTableName("user_admin");
-		$cond = array();
-		$row = $this->selectA($cond);
-		$dept = $row[0]["user_org_code"];
-		
-		print_r($dept_list);
-		
-		$sql = "select dept_tree_name from group_dept where id = $dept";
-		$dept_list = $this->executeQueryA($sql);
-		print_r($dept_list);
+		$sql = "select user_name,user_password,user_org_code,dept_tree_name,dept_name,user_id from user_admin,group_dept
+				where group_dept.id = user_admin.user_org_code";
+		$row = $this->executeQuery($sql);
 		return $row;
 	}
 }
