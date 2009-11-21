@@ -41,3 +41,4 @@ class deleteuser extends MysqlDao
 		}
 	}
 }
+?>
