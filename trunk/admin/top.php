@@ -7,7 +7,9 @@ require_once('../include/session.class.php');
 <div class="RoundedCorner">
   <div class="topname">湖南农业大学学生素拓学分认证管理后台</div>
   <div id="yourname">                             <?php 
-					 	echo $_SESSION['admin_user']."：你好！今日是  ";
+  global $p_session;
+  $dept_name =current( current($p_session->simpleFetchListA('group_dept',array('dept_name'),array('id'=>$_SESSION['admin_org_code']))));
+  echo $dept_name,' 管理员',$_SESSION['admin_user']."：你好！今日是  ";
 						$nian=date("Y");
 						$yue=date("n");
 						$ri=date("j");

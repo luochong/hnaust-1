@@ -35,10 +35,11 @@ function hide(_sId){
 	?>	
 	<div class="hand" onclick="hide('hideMenuFunc6')">项目管理</div>
 	  <div id="hideMenuFunc6">
-	      <div><a href="stud/stud_dangmgf.php" target="main">添加项目</a></div>
+	       <div><a href="item/itemlist.php" target="main">项目列表</a></div>
+	  	  <div><a href="stud/stud_dangmgf.php" target="main">添加项目</a></div>
 		  <div><a href="stud/stud_reward.php" target="main">审核项目</a></div>
 		  <div><a href="stud/stud_punish.php" target="main">查询项目</a></div>
-		  <div><a href="stud/stud_showorg.php" target="main">项目管理</a></div>
+		 
 	      <div><a href="stud/stud_addorg.php" target="main">项目管理</a></div>    
 	      <div><a href="stud/stud_job_add.php" target="main">添加学生任职</a></div>
 	      <div><a href='stud/stud_dangjout.php' target="main">学生党建数据导出</a></div>
