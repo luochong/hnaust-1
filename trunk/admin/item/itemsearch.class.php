@@ -5,7 +5,7 @@ include_once("../../include/mysqldao.class.php");
  * luochong 2009 11
  *
  */
-class ItemListAction extends MysqlDao {
+class ItemsearchAction extends MysqlDao {
 	
 	public $error_message= '';
 	public $pn;
@@ -14,7 +14,7 @@ class ItemListAction extends MysqlDao {
 			$this->$_GET['ac']();
 		}
 		$this->pn = isset($_GET['pn'])?(intval($_GET['pn'])):1;
-		$_GET['s'] = isset($_GET['s'])?(intval($_GET['s'])):10;
+		$_GET['s'] = isset($_GET['s'])?(intval($_GET['s'])):0;
 	}
 	public function onclick(){
 		$this->setTableName('item_apply');
@@ -51,12 +51,6 @@ class ItemListAction extends MysqlDao {
 					}
 				break;
 			}
-			case 'quxiao':{
-				 foreach ($_POST['app_id'] as $id){
-					 	$this->update(array('app_state'=>0),array('app_id'=>$id));
-					 }
-				
-			}
 		}
 		
 		
@@ -66,10 +60,8 @@ class ItemListAction extends MysqlDao {
 	public function getItemData(){
 		$sql = 'select app_id,app_stud_no,stud_name,app_item_code,app_time,app_state,app_item_type,item_name,item_rank,item_score  ';
 		$sql .='from item_apply,item_set,stud_baseinfo where stud_baseinfo.stud_no = item_apply.app_stud_no and item_apply.app_item_code = item_set.item_code ';
-		$sql .='and item_apply.stud_orgcode = ? ';
-		if($_GET['s'] != 10) $sql.=" and item_apply.app_state = {$_GET['s']} "; 
-		$sql .=' order by app_time DESC';
-		return $this->executeQueryA($sql,array($_SESSION['admin_org_code']),20,$this->pn-1);
+		$sql .='and item_apply.stud_orgcode = ? and item_apply.app_state = ? order by app_time DESC';
+		return $this->executeQueryA($sql,array($_SESSION['admin_org_code'],$_GET['s']),20,$this->pn-1);
 	}
 	
 	public function makepage(){
