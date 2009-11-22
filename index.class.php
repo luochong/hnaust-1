@@ -42,13 +42,19 @@ class LoginAction extends MysqlDao {
 		}
 		$this->setTableName('stud_baseinfo');
 		$rows = $this->selectA(array('stud_no'=>$_POST['user_name']));
+		
 		if(count($rows)== 0||$rows[0]['stud_password'] != $_POST['user_password']){
 			$this->error_message ='帐号或密码错误！';
 			return;
-		}else{
+		}
+		/*elseif(count($rows)== 0)
+		{
+		    $this->error_message ='还未登录！';
+		}*/
+		else{
 				$_SESSION["studno"] = $rows[0]['stud_no'];
 				$_SESSION["studpwd"] = $rows[0]['stud_password'];
-				$_SESSION["studcode"] = $rows[0]['stud_org_code'];
+				$_SESSION["studcode"] = $rows[0]['stud_orgcode'];
 				echo "登陆成功";
 				echo "<script>document.location='stud_home.php'</script>";
 			//  header('Location: index.php');
