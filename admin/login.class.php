@@ -9,7 +9,7 @@ class LoginAction extends MysqlDao {
 	
 	public $error_message= '';
 	public function run(){
-		if(!empty($_GET['ac'])&&method_exists($this,'login')){
+		if(!empty($_GET['ac'])&&method_exists($this,$_GET['ac'])){
 			$this->$_GET['ac']();
 		}
 	}
@@ -34,6 +34,7 @@ class LoginAction extends MysqlDao {
 				$_SESSION["admin_pwd"] = $rows[0]['user_password'];
 				$_SESSION["admin_org_code"] = $rows[0]['user_org_code'];
 				$_SESSION["admin_limt"] = $rows[0]['user_mode'];
+				$_SESSION["admin_super"] = 0;//他是不是校级管理员
 				header('Location: index.php');
 		}
 		

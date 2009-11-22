@@ -1,7 +1,7 @@
 <?php 
 require_once('../../include/function.include.php');
-require_once('itemlist.class.php');
-$itemlist = new ItemListAction();
+require_once('itemsearch.class.php');
+$itemlist = new ItemsearchAction();
 $itemlist->run();
 
 ?>
@@ -28,21 +28,73 @@ function $(id){
 	 <b class="r4"></b>
     </b>
      <div id="allbox">
-      <h3><div class="left">申报项目列表</div>
+      <h3><div class="left">项目查询</div>
 	  	  <div class="right"><a href='../body.php'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
 	  <form action="itemlist.php" name='sform' method="GET" style="margin:0;padding:0">
-  	 <div class="alltitle">项目状态查询：<select name="s" onchange="sform.submit();" >
-  	 <option value="10" <?php echo $_GET['s']==10?'selected':''?> >所有记录</option>
-  	 <option value="0"  <?php echo $_GET['s']==0?'selected':''?> >未审核</option>
-  	 <option value="1" <?php echo $_GET['s']==1?'selected':''?> >院通过</option>
-  	 <option value="2" <?php echo $_GET['s']==2?'selected':''?> >校通过</option>
-  	  <option value="3" <?php echo $_GET['s']==3?'selected':''?> >院未通过</option>
-  	   <option value="4" <?php echo $_GET['s']==4?'selected':''?> >校未通过</option>
-  	 </select></div>
-  	 </form>
+	 <div class="alltitle">学号：<input type="text" /></div>
+	  <div class="alltitle">姓名：<input type="text" /></div>
+	  <div class="alltitle">项目编号：<input type="text" /></div>
 	  <div class="alltitle">
+  	 
+  	 项目状态：
+  	 <select name="s" onchange="sform.submit();" >
+		  	  <option value="10" <?php echo $_GET['s']==10?'selected':''?> >所有记录</option>
+		  	 <option value="0"  <?php echo $_GET['s']==0?'selected':''?> >未审核</option>
+		  	 <option value="1" <?php echo $_GET['s']==1?'selected':''?> >院通过</option>
+		  	 <option value="2" <?php echo $_GET['s']==2?'selected':''?> >校通过</option>
+		  	  <option value="3" <?php echo $_GET['s']==3?'selected':''?> >院未通过</option>
+		  	   <option value="4" <?php echo $_GET['s']==4?'selected':''?> >校未通过</option>
+  	 </select></div>
+  	 
+  	   	 <div class="alltitle">项目类别：
+  	 <select name="s" onchange="sform.submit();" >
+		  	  <option value="10" <?php echo $_GET['s']==10?'selected':''?> >所有记录</option>
+		  	 <option value="0"  <?php echo $_GET['s']==0?'selected':''?> >未审核</option>
+		  	 <option value="1" <?php echo $_GET['s']==1?'selected':''?> >院通过</option>
+		  	 <option value="2" <?php echo $_GET['s']==2?'selected':''?> >校通过</option>
+		  	  <option value="3" <?php echo $_GET['s']==3?'selected':''?> >院未通过</option>
+		  	   <option value="4" <?php echo $_GET['s']==4?'selected':''?> >校未通过</option>
+  	 </select></div>
+  	 
+  	 	   	 <div class="alltitle">项目学分：
+  	 <select name="s" onchange="sform.submit();" >
+		  	  <option value="10" <?php echo $_GET['s']==10?'selected':''?> >所有记录</option>
+		  	 <option value="0"  <?php echo $_GET['s']==0?'selected':''?> >未审核</option>
+		  	 <option value="1" <?php echo $_GET['s']==1?'selected':''?> >院通过</option>
+		  	 <option value="2" <?php echo $_GET['s']==2?'selected':''?> >校通过</option>
+		  	  <option value="3" <?php echo $_GET['s']==3?'selected':''?> >院未通过</option>
+		  	   <option value="4" <?php echo $_GET['s']==4?'selected':''?> >校未通过</option>
+  	 </select></div>
+  	 	   	 
+  	 <div class="alltitle">学院：
+  	 <select name="s" onchange="sform.submit();" >
+		  	  <option value="10" <?php echo $_GET['s']==10?'selected':''?> >所有记录</option>
+		  	 <option value="0"  <?php echo $_GET['s']==0?'selected':''?> >未审核</option>
+		  	 <option value="1" <?php echo $_GET['s']==1?'selected':''?> >院通过</option>
+		  	 <option value="2" <?php echo $_GET['s']==2?'selected':''?> >校通过</option>
+		  	  <option value="3" <?php echo $_GET['s']==3?'selected':''?> >院未通过</option>
+		  	   <option value="4" <?php echo $_GET['s']==4?'selected':''?> >校未通过</option>
+  	 </select></div>
+  	 
+  	 
+  	 
+  	 </form>
+	  
+  	 
+  	 
+  	 
+  	 
+  	 
+  	 
+  	 
+  	 
+  	 
+  	 
+  	 
+  	 
+  	 <div class="alltitle">
 	        <div  style="float:left; width:30px" ><input type="checkbox" /></div>
 	        <div style="float:left; width:100px">学号</div>
 		    <div style="float:left; width:50px">姓名</div>
@@ -80,17 +132,14 @@ foreach ($data as $t){
 		<?php $itemlist->makepage();?>
 		<?php if($_GET['s'] ==0 || $_SESSION['admin_super'] == 1 ){?>
 		<input type="button"  value="审核通过" onclick="$('action').value = 'yes'; itemform.submit();"/> 
-		
-		
 		<?php }?>
 		<?php if($_GET['s'] <=1 || $_SESSION['admin_super'] == 1){?>
 		 <input type='button'  value="审核不通过" onclick="$('action').value = 'no'; itemform.submit();" />
+	
+		
 		 <input type='button'  value="删除" onclick="$('action').value = 'del'; itemform.submit();"/>
 			<?php }?>
-		<?php if($_GET['s'] ==1 || $_SESSION['admin_super'] == 1 || $_GET['s'] == 3){?>
-		 <input type='button'  value="取消审核" onclick="$('action').value = 'quxiao'; itemform.submit();" />
-		<?php }?>
-		 </form>
+		</form>
 		
 		
 		</div>
