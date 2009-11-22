@@ -43,46 +43,94 @@ $_SESSION['stud_no']=$showinfo[0][7];
 
 
 ?>
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>home</title>
+<title>素质拓展学分认证系统>>首页</title>
+<link href="login.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<a href="stud_addapp.php">添加项目</a>
-<?php
+<div id="background">
+		<div id="headimg">
+		<div id="header"></div>
+		<div id="title">
+			<ul>
+				<li><a class="tit" href="stud_home.php" style="text-decoration:none">首&nbsp;页</a></li>
+				<li><a class="tit" href="stud_addapp.php" style="text-decoration:none">项目申报</a></li>
+				<li><a class="tit" href="#" style="text-decoration:none">资料下载</a></li>
+				<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
+				<li><a class="tit" href="index.php" style="text-decoration:none">退出系统</a></li>
+			</ul>
+		</div>
+		</div>
+		<div class="clear"></div>
+		<div id="left">
+			<div id="left1">
+				<div id="denglu">学生信息</div>
+				<div id="user_login"><?php
              if(count($showinfo)!==0)
              {
               
-                     echo $showinfo[0][1];
-                     echo $showinfo[0][2];
-                     echo $showinfo[0][3];
-                     echo $showinfo[0][4];
-                     echo $showinfo[0][5];
-                     echo $showinfo[0][6];
-                     echo $showinfo[0][7];
+                ?>学号：<?php  echo $showinfo[0][1];?>
+                  姓名：<?php  echo $showinfo[0][2];?>
+                  性别：<?php  echo $showinfo[0][3];?>
+                  学院：<?php  echo $showinfo[0][4];?>
+                  入学年份：<?php  echo $showinfo[0][5];?>
+                  班级：<?php  echo $showinfo[0][6];?>
+                  申报截止日期：<?php  echo $showinfo[0][7];?>
                      
-              
+          <?php    
              } 
            
 ?>
-
-<br />
-<?php
+				</div>
+			</div>
+			<div id="left2">
+				<div id="left_info_title">通知</div>
+				<div id="left_inform"><MARQUEE onmouseover=this.stop(); onmouseout=this.start(); direction=up height=140 width=150 		scrollAmount=1 scrollDelay=1><a class='info' href='#' title='关于...的通知1'>关于...................的通知1</a><br><br><a class='info' href='#' title='关于...的通知2'>关于..................的通知2</a><br><br><a class='info' href='#' title='关于...的通知3'>关于..................的通知3</a><br><br><a class="info" style="text-decoration:none" href='#' title='关于...的通知4'>关于................的通知4</a><br><br><a class='info' href='#' title='关于...的通知5'>关于..................的通知5</a><br><br><a class='info' href='#' title='关于...的通知6'>关于........................的通知6</a></MARQUEE></div>
+				<div id="more"><a class="info" style="text-decoration:none" href="#">more>></a></div>
+			</div>
+		</div>
+		<div id="right">
+		  <div id="item">
+		  <table>
+                     <tr>
+                     <td>类别</td>
+                     <td>编号</td>
+                     <td>名称</td>
+                     <td>学分</td>
+                     <td>审核状态</td>
+                     <td>操作</td>
+                  
+                     </tr>
+                     </table> 
+		  <?php
            if(count($showitem)!==0)
                  {
                       // print_r($itemdetail);
-                   for($n=0;$n<3;$n++)
+                   for($n=0;$n<count($showitem);$n++)
                     {
-                        for($i=0;$i<7;$i++)
-                        {
-                          
-                          
-                                echo   $itemdetail[0][$n][$i];
+           ?>   
+             
+                  <table>
+                     <tr>
+                         <td><?php echo   $itemdetail[0][$n][2];?></td>
+                         <td><?php echo   $itemdetail[0][$n][3];?></td>
+                         <td><?php echo   $itemdetail[0][$n][4];?></td>
+                         <td><?php echo   $itemdetail[0][$n][5];?></td>
+                         <td><?php echo   $itemdetail[0][$n][6];?></td>
+                  
+                     </tr>
+                   </table>       
                               
-                            
-                        }
+                      
+                    <?php           
+                              
+                    
                        // print_r($showitem);
                         echo $showitem[$n][4];
                       echo "<br>";
@@ -94,14 +142,11 @@ $_SESSION['stud_no']=$showinfo[0][7];
                  {echo "你还未申请";} 
 
 ?>
-<?php    
-           
-           
-
-?>
-
-
-  
-
+		  
+		  </div>
+		</div>
+	</div>
+	<div></div>
 </body>
+
 </html>

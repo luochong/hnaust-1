@@ -55,7 +55,7 @@ class LoginAction extends MysqlDao {
 				$_SESSION["studno"] = $rows[0]['stud_no'];
 				$_SESSION["studpwd"] = $rows[0]['stud_password'];
 				$_SESSION["studcode"] = $rows[0]['stud_orgcode'];
-				echo "登陆成功";
+			
 				echo "<script>document.location='stud_home.php'</script>";
 			//  header('Location: index.php');
 		}
