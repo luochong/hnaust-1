@@ -18,20 +18,15 @@
 
 
       require_once("include/mysqldao.php");	
+      require_once("include/function.include.php");	
       
       class selitem extends MysqlDao_b
       {
          
           public function seltype($itype)
           {
-           
-          switch ($itype)
-               {
-                 	case '1':$ttype="真";break;
-                  	case '2':$ttype="善";break;
-             	    case '3':$ttype="美";break;
-       	            case '6':$ttype="强";break;
-               }
+              $ttype=getItemType($itype);
+             
                // echo $ttype;
              $sql="select item_name,item_code from item_set where item_type='$ttype' " ;			//查询类型
 
@@ -42,13 +37,7 @@
           
           public function insertapp($atype,$acode,$studno,$studcode)
           {
-               switch ($atype)
-               {
-                 	case '1':$ttype="真";break;
-                  	case '2':$ttype="善";break;
-             	    case '3':$ttype="美";break;
-       	            case '6':$ttype="强";break;
-               }
+               $ttype=getItemType($atype);
               
                  $this->setTableName("item_apply");
               
