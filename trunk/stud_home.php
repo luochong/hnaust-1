@@ -15,7 +15,7 @@
 ///		Date        	Version  	Author    	Content
 ///		---------- 	 -------  	--------  	 ------------------------------------
 ///	    2009/11/16      1.1    	龙首成      	  学生管理
-
+require("include/sessionstud.php");
 require("stud_home.class.php");
 //echo $_SESSION["studno"];
 $studno=$_SESSION["studno"];
@@ -33,6 +33,15 @@ for($i=0;$i<count($showitem);$i++)
 //print_r($itemcode);
 $itemdetail=$show->finditem($itemcode);
 
+$_SESSION['stud_no']=$showinfo[0][1];
+$_SESSION['stud_name']=$showinfo[0][2];
+$_SESSION['stud_sex']=$showinfo[0][3];
+$_SESSION['stud_']=$showinfo[0][4];
+$_SESSION['stud_no']=$showinfo[0][5];
+$_SESSION['stud_no']=$showinfo[0][6];
+$_SESSION['stud_no']=$showinfo[0][7];
+
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -41,17 +50,24 @@ $itemdetail=$show->finditem($itemcode);
 <title>home</title>
 </head>
 <body>
+<a href="stud_addapp.php">添加项目</a>
 <?php
              if(count($showinfo)!==0)
              {
-                 for($i=0;$i<10;$i++)
-                 {
-                     echo $showinfo[0][$i];
+              
+                     echo $showinfo[0][1];
+                     echo $showinfo[0][2];
+                     echo $showinfo[0][3];
+                     echo $showinfo[0][4];
+                     echo $showinfo[0][5];
+                     echo $showinfo[0][6];
+                     echo $showinfo[0][7];
                      
-                 }
+              
              } 
            
 ?>
+
 <br />
 <?php
            if(count($showitem)!==0)
