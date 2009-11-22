@@ -19,3 +19,14 @@ function getNowDate(){
 	return date("Y-m-d H:i:s");
 }
 
+function getItemType($itype)
+{
+           switch ($itype)
+               {
+                 	case '1':return "求真";break;
+                  	case '2':return "求善";break;
+             	    case '3':return "求美";break;
+       	            case '6':return "求强";break;
+               }
+}
+

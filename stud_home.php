@@ -41,7 +41,9 @@ $_SESSION['stud_no']=$showinfo[0][5];
 $_SESSION['stud_no']=$showinfo[0][6];
 $_SESSION['stud_no']=$showinfo[0][7];
 
-
+include_once('include/mysqldao.class.php');
+require_once('control/tongji.include.php');
+$tongji = new Tongji();
 ?>
 
 
@@ -97,6 +99,12 @@ $_SESSION['stud_no']=$showinfo[0][7];
 		</div>
 		<div id="right">
 		  <div id="item">
+		  <?php
+		        echo '总学分：',$tongji->countAllCreditByStudId($studno);
+                echo '总项目数：',$tongji->countItemByStudId($studno);
+                echo '有效学分：',$tongji->countValidCreditByStudId($studno);
+                echo '已获得有效学分：',$tongji->countVerifyValidCreditByStudId($studno);
+		  ?>
 		  <table>
                      <tr>
                      <td>类别</td>

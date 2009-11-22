@@ -101,12 +101,12 @@ $showitem=$citem->seltype($itype);
 		    <form method="POST" name="form">
                     <select name="itype" id="itype" onchange="location.href='stud_addapp.php?'+'itype='+this.options[this.selectedIndex].value;">
                     <option value="0">请选择</option>
-                         <option value="1" <?php if($_GET['itype']=="1"){?> selected="selected"<?php }?>>真 </option>
-                        <option value="2"  <?php if($_GET['itype']=="2"){?> selected="selected"<?php }?>>善 </option>
-                        <option value="3"  <?php if($_GET['itype']=="3"){?> selected="selected"<?php }?>>美 </option>
-                        <option value="4"  <?php if($_GET['itype']=="4"){?> selected="selected"<?php }?>>实 </option>
-                        <option value="5"  <?php if($_GET['itype']=="5"){?> selected="selected"<?php }?>>特 </option>
-                        <option value="6"  <?php if($_GET['itype']=="6"){?> selected="selected"<?php }?>>强 </option>
+                         <option value="1" <?php if($_GET['itype']=="1"){?> selected="selected"<?php }?>>求真 </option>
+                        <option value="2"  <?php if($_GET['itype']=="2"){?> selected="selected"<?php }?>>求善 </option>
+                        <option value="3"  <?php if($_GET['itype']=="3"){?> selected="selected"<?php }?>>求美 </option>
+                        <option value="4"  <?php if($_GET['itype']=="4"){?> selected="selected"<?php }?>>求实 </option>
+                        <option value="5"  <?php if($_GET['itype']=="5"){?> selected="selected"<?php }?>>求特 </option>
+                        <option value="6"  <?php if($_GET['itype']=="6"){?> selected="selected"<?php }?>>求强 </option>
                     </select>
                     <select name="iname" id="iname"  onchange="location.href='<?php echo $_SERVER["REQUEST_URI"];?>&'+'icode='+this.options[this.selectedIndex].value;"  >
                     <option value="0">请选择</option>
