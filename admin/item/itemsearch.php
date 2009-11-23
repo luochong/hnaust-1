@@ -1,9 +1,9 @@
 <?php 
 require_once('../../include/function.include.php');
 require_once('itemsearch.class.php');
-$itemlist = new ItemsearchAction();
-$itemlist->run();
-
+$itemsearch = new ItemsearchAction();
+$itemsearch->run();
+$get = "s_no={$_GET['s_no']}&s_no={$_GET['s_name']}&i_code={$_GET['i_code']}&i_type={$_GET['i_type']}&i_state={$_GET['i_state']}&i_score={$_GET['i_score']}&i_org={$_GET['i_org']}&submit={$_GET['submit']}";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,73 +32,80 @@ function $(id){
 	  	  <div class="right"><a href='../body.php'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
-	  <form action="itemlist.php" name='sform' method="GET" style="margin:0;padding:0">
-	 <div class="alltitle">学号：<input type="text" /></div>
-	  <div class="alltitle">姓名：<input type="text" /></div>
-	  <div class="alltitle">项目编号：<input type="text" /></div>
-	  <div class="alltitle">
-  	 
-  	 项目状态：
-  	 <select name="s" onchange="sform.submit();" >
-		  	  <option value="10" <?php echo $_GET['s']==10?'selected':''?> >所有记录</option>
-		  	 <option value="0"  <?php echo $_GET['s']==0?'selected':''?> >未审核</option>
-		  	 <option value="1" <?php echo $_GET['s']==1?'selected':''?> >院通过</option>
-		  	 <option value="2" <?php echo $_GET['s']==2?'selected':''?> >校通过</option>
-		  	  <option value="3" <?php echo $_GET['s']==3?'selected':''?> >院未通过</option>
-		  	   <option value="4" <?php echo $_GET['s']==4?'selected':''?> >校未通过</option>
-  	 </select></div>
-  	 
-  	   	 <div class="alltitle">项目类别：
-  	 <select name="s" onchange="sform.submit();" >
-		  	  <option value="10" <?php echo $_GET['s']==10?'selected':''?> >所有记录</option>
-		  	 <option value="0"  <?php echo $_GET['s']==0?'selected':''?> >未审核</option>
-		  	 <option value="1" <?php echo $_GET['s']==1?'selected':''?> >院通过</option>
-		  	 <option value="2" <?php echo $_GET['s']==2?'selected':''?> >校通过</option>
-		  	  <option value="3" <?php echo $_GET['s']==3?'selected':''?> >院未通过</option>
-		  	   <option value="4" <?php echo $_GET['s']==4?'selected':''?> >校未通过</option>
-  	 </select></div>
-  	 
-  	 	   	 <div class="alltitle">项目学分：
-  	 <select name="s" onchange="sform.submit();" >
-		  	  <option value="10" <?php echo $_GET['s']==10?'selected':''?> >所有记录</option>
-		  	 <option value="0"  <?php echo $_GET['s']==0?'selected':''?> >未审核</option>
-		  	 <option value="1" <?php echo $_GET['s']==1?'selected':''?> >院通过</option>
-		  	 <option value="2" <?php echo $_GET['s']==2?'selected':''?> >校通过</option>
-		  	  <option value="3" <?php echo $_GET['s']==3?'selected':''?> >院未通过</option>
-		  	   <option value="4" <?php echo $_GET['s']==4?'selected':''?> >校未通过</option>
-  	 </select></div>
-  	 	   	 
-  	 <div class="alltitle">学院：
-  	 <select name="s" onchange="sform.submit();" >
-		  	  <option value="10" <?php echo $_GET['s']==10?'selected':''?> >所有记录</option>
-		  	 <option value="0"  <?php echo $_GET['s']==0?'selected':''?> >未审核</option>
-		  	 <option value="1" <?php echo $_GET['s']==1?'selected':''?> >院通过</option>
-		  	 <option value="2" <?php echo $_GET['s']==2?'selected':''?> >校通过</option>
-		  	  <option value="3" <?php echo $_GET['s']==3?'selected':''?> >院未通过</option>
-		  	   <option value="4" <?php echo $_GET['s']==4?'selected':''?> >校未通过</option>
-  	 </select></div>
-  	 
-  	 
-  	 
+	  <form action="itemsearch.php" name='sform' method="GET" style="margin:0;padding:0">
+	 <div class="alltitle">
+	 <table align="center">
+	 <tr>
+			 <td width="80px">学号：</td><td><input name="s_no" type="text" /></td>
+			 <td width="80px">姓名：</td><td><input name="s_name" type="text" /></td>
+			
+	 </tr>
+	 <tr>
+			 <td width="80px">项目编号：</td><td width="200px"><input name="i_code" type="text" /></td>
+			 <td width="80px">项目类别：</td>
+			 <td>
+			 <select name="i_type">
+			 	   <option value="" >...</option>
+				  <option value="求真" <?php echo $_GET['i_type']=='求真'?'selected':''?>>求真</option>
+		          <option value="求善" <?php echo $_GET['i_type']=='求善'?'selected':''?>>求善</option>
+		          <option value="求美" <?php echo $_GET['i_type']=="求美"?'selected':''?>>求美</option>
+		          <option value="求实" <?php echo $_GET['i_type']=="求实"?'selected':''?>>求实</option>
+		          <option value="求特" <?php echo $_GET['i_type']=="求特"?'selected':''?>>求特</option>
+		          <option value="求强" <?php echo $_GET['i_type']=="求强"?'selected':''?>>求强</option>
+			 </select>
+			 
+			 </td>
+	 </tr>
+	 <tr>
+			 <td width="80px">项目状态：</td>
+			 <td width="200px"> 
+				 <select name="i_state"  >
+				   <option value=""  >...</option>
+			  	  <option value="10" <?php echo $_GET['i_state']==10?'selected':''?> >所有记录</option>
+			  	  <option value="0"  <?php echo $_GET['i_state']==='0'?'selected':''?> >未审核</option>
+			  	  <option value="1" <?php echo $_GET['i_state']==1?'selected':''?> >院通过</option>
+			  	  <option value="2" <?php echo $_GET['i_state']==2?'selected':''?> >校通过</option>
+			  	  <option value="3" <?php echo $_GET['i_state']==3?'selected':''?> >院未通过</option>
+			  	  <option value="4" <?php echo $_GET['i_state']==4?'selected':''?> >校未通过</option>
+	  	         </select>
+  	 		</td>
+			 <td width="80px">项目学分：</td>
+			   <?php 
+			  	  $sql = 'select distinct item_score from item_set';
+			  	  $score = $itemsearch->executeQuery($sql);
+			  	  $sql = 'select id,dept_name from group_dept where dept_father_id = 0';
+			  	  $org = $itemsearch->executeQuery($sql);
+			  	?>
+			 <td>
+				 <select name="i_score"  >
+				 	 <option value="" >...</option>
+			  		<?php foreach ($score as $v):?>
+			  		<option value="<?php echo $v[0]?>" <?php echo $_GET['i_score']==$v[0]?'selected':''?> ><?php echo $v[0]?></option>
+			  		<?php endforeach;?>
+	  	         </select>
+  	 		</td>
+	 </tr>
+	 <tr>
+			 <?php if($_SESSION['admin_super']==1){?><td width="80px"> 学院：</td>
+			 <td width="200px">
+			 <select name="i_org">
+			        <option value="" >...</option>
+			    <?php foreach ($org as $v):?>
+			  		<option value="<?php echo $v[0]?>" <?php echo $_GET['i_org']==$v[0]?'selected':''?> ><?php echo $v[1]?></option>
+			  	<?php endforeach;?>
+			 </select>
+			 </td>
+			 <?php }else{?>     <td width="80px">&nbsp;</td><td width="200px">&nbsp;</td>   <?php }?>
+			 <td width="80px"><input name="submit"  type="submit" value="查询" style="width:100px"  /></td><td></td>
+	 </tr>
+	 </table>
+	 </div>
   	 </form>
-	  
-  	 
-  	 
-  	 
-  	 
-  	 
-  	 
-  	 
-  	 
-  	 
-  	 
-  	 
-  	 
   	 <div class="alltitle">
 	        <div  style="float:left; width:30px" ><input type="checkbox" /></div>
 	        <div style="float:left; width:100px">学号</div>
 		    <div style="float:left; width:50px">姓名</div>
-		    <div style="float:left; width:80px">项目编号</div>
+		    <div style="float:left; width:80px">班级</div>
 			<div style="float:left; width:200px">项目名称</div>
 			<div style="float:left; width:40px">类型</div>
 			<div style="float:left; width:40px">学分</div>
@@ -107,18 +114,18 @@ function $(id){
 	  </div>
 		  
 	  <div id="allcontent">	
-	  <form action='itemlist.php?ac=onclick' name='itemform' method="POST" >
+	  <form action='itemsearch.php?ac=onclick&<?php echo $get ?>' name='itemform' method="POST" >
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <?php   
     
-$data = $itemlist->getItemData();
+$data = $itemsearch->getItemData();
 foreach ($data as $t){
 ?>
         	  <tr>
             <td width='10px'><input type="checkbox" name='app_id[]' value="<?php echo $t['app_id']?>" /></td>
         	<td width='80px'><?php echo $t['app_stud_no']?></td>
             <td width='40px'><?php echo $t['stud_name']?></td>
-            <td width='60px'><?php echo $t['app_item_code']?></td>
+            <td width='70px'><?php echo $t['stud_class']?></td>
             <td width='150px'><?php echo $t['item_name'],$t['item_rank']?></td>
             <td width='40px'><?php echo $t['app_item_type']?></td>
 			<td width='40px'><?php echo $t['item_score']?></td>
@@ -127,23 +134,25 @@ foreach ($data as $t){
           </tr>
 <?php }?>		  		
 		          </table>
+
 		    <input type="hidden" name="action" id="action" value=""   />
 		<div>
-		<?php $itemlist->makepage();?>
-		<?php if($_GET['s'] ==0 || $_SESSION['admin_super'] == 1 ){?>
+<?php if(isset($_GET['submit'])){?>
+		<?php $itemsearch->makepage();?>
+		<?php if($_GET['i_state'] ==0 || $_SESSION['admin_super'] == 1 ){?>
 		<input type="button"  value="审核通过" onclick="$('action').value = 'yes'; itemform.submit();"/> 
 		<?php }?>
-		<?php if($_GET['s'] <=1 || $_SESSION['admin_super'] == 1){?>
+		<?php if($_GET['i_state'] <=1 || $_SESSION['admin_super'] == 1){?>
 		 <input type='button'  value="审核不通过" onclick="$('action').value = 'no'; itemform.submit();" />
-	
-		
 		 <input type='button'  value="删除" onclick="$('action').value = 'del'; itemform.submit();"/>
 			<?php }?>
+		<?php if($_GET['i_state'] ==1 || $_SESSION['admin_super'] == 1 || $_GET['i_state'] == 3){?>
+		 <input type='button'  value="取消审核" onclick="$('action').value = 'quxiao'; itemform.submit();" />
+		<?php }?>
+<?php }?>		 
+		
 		</form>
-		
-		
 		</div>
-     
 		</div>
 	 
 	 </div>
