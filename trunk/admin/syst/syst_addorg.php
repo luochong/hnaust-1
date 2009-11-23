@@ -69,7 +69,7 @@ function checkdata() {
 		  </div>
 		  <div class="right">
 		         <label>部门/机构名称[一]：</label><br />
-				 <input name="dept_name1" type="text" id="dept_name1" size="40"/><br />
+				 <input name="dept_name1" type="text" id="dept_name1" size="50"/><br />
 				 <label>部门/机构名称[二]：</label><br />
 				 <input name="dept_name2" type="text" id="dept_name2" size="50"/><br />
 				 <label>部门/机构名称[三]：</label><br />

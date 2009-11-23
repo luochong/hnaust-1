@@ -59,7 +59,7 @@ function hide(_sId){
 	  <div id="hideMenuFunc0">
 	      <div><a href="syst/syst_adduser.php" target="main">添加管理员</a> | <a href="syst/syst_mangeruser.php" target="main">管理</a></div>
 		  <div><a href="syst/syst_addorg.php" target="main">添加机构</a> &nbsp; | <a href="syst/syst_mangerorg.php" target="main">管理</a></div>
-		  <div><a href="opermenpwd.php" target="main">添加项目</a> &nbsp; | <a>管理</a></div>
+		  <div><a href="syst/syst_additem.php" target="main">添加项目</a> &nbsp; | <a href="syst/syst_mangeritem.php">管理</a></div>
 		  <div><a href="opermultiuser.php" target="main">重复帐号管理</a></div>
 	  </div><br />
 	<?php

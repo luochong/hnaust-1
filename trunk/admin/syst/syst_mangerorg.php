@@ -64,10 +64,10 @@ function delok(){
 			echo "
 			<tr>
 	        <td width='50px'>{$org_list[$i]['id']}</td>
-		    <td width='120px'>{$org_list[$i]['dept_name']}[<a href='syst_editorg.php?deptid={$org_list[$i][id]}&gid=$gid&ye=$ye'>修改</a>]</td>
-		    <td width='120px'>$tree</td>
-			<td width='264'>{$org_list[$i]['dept_tree_name']}</td>
-			<td width='10%'><a class='del' href='syst_delorg.php?id={$org_list[0][id]}' onClick='return delok();'>删除</a></td>
+		    <td width='170px'>{$org_list[$i]['dept_name']}[<a href='syst_editorg.php?deptid={$org_list[$i][id]}&gid=$gid&ye=$ye'>修改</a>]</td>
+		    <td width='150px'>$tree</td>
+			<td width='320'>{$org_list[$i]['dept_tree_name']}</td>
+			<td width='100'><a class='del' href='syst_delorg.php?id={$org_list[0][id]}' onClick='return delok();'>删除</a></td>
 			</tr>
 			";
 		}
