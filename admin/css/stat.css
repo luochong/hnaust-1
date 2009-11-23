@@ -45,9 +45,9 @@ div.rightRoundedCorner{background: #000;width:208px; float:left;margin:25px 0 0 
 
 
 /*allbox   currency box model*/
-div.allRoundedCorner{background: #000;width:708px; float:left;margin:5px 0 0 10px;}
+div.allRoundedCorner{background: #000;width:750px; float:left;margin:5px 0 0 0px;}
 .allRoundedCorner h3{background: #000; color:#fff;font-size:14px; font-weight:bold; padding:0 0 40px 8px!important;padding:15px 0 40px 8px}
-#allbox{background:#fff; margin:4px;width:700px;}
+#allbox{background:#fff; margin:4px;width:740px;}
 #allcontent{padding:4px; line-height:16px;}
 #allcontent div{border-bottom:1px dashed #7aa054;padding:4px;margin:0 2px; font-size:12px;}
 .alltitle {margin:0 6px;padding:4px;background:#cde9a7;font-size:14px; font-weight:bold; border-bottom:1px solid #7aa054;border-top:1px solid #7aa054;height:16px;}
