@@ -57,9 +57,9 @@ function hide(_sId){
 	?> 
 	  <div class="hand" onclick="hide('hideMenuFunc0')">系统管理</div>
 	  <div id="hideMenuFunc0">
-	      <div><a href="opergl.php" target="main">管理员权限</a> | <a href="operadd.php" target="main">添加管理员</a></div>
-		  <div><a href="opertx.php" target="main">管理员通讯录</a></div>
-		  <div><a href="opermenpwd.php" target="main">人员密码查询</a></div>
+	      <div><a href="syst/syst_adduser.php" target="main">添加管理员</a> | <a href="syst/syst_mangeruser.php" target="main">管理</a></div>
+		  <div><a href="syst/syst_addorg.php" target="main">添加机构</a> &nbsp; | <a href="syst/syst_mangerorg.php" target="main">管理</a></div>
+		  <div><a href="opermenpwd.php" target="main">添加项目</a> &nbsp; | <a>管理</a></div>
 		  <div><a href="opermultiuser.php" target="main">重复帐号管理</a></div>
 	  </div><br />
 	<?php
