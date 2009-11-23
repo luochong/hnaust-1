@@ -1,5 +1,7 @@
 <?php
 require_once("syst_additem.class.php");
+$additem = new additem();
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,13 +9,16 @@ require_once("syst_additem.class.php");
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $title;?></title>
 <?php
-	
+	if(isset($_POST['submit']))
+	{
+		$additem->item_add();
+	}
 	
 ?>
 
 <script type="text/javascript">
 function loadb(){	 
-	    document.forms[0].elements['username'].focus();
+	    document.forms[0].elements['itemname'].focus();
         return true;
 }
 function checkspace(checkstr)
@@ -28,24 +33,19 @@ function checkspace(checkstr)
 function checkdata() {
 	var f1 = document.form1;	
 
-	if(f1.username.value=="" || checkspace(f1.username.value)){
-		alert("请填写登录用户名");
-  		f1.username.select();  
+	if(f1.itemname.value==""){
+		alert("请填写项目名称");
+  		f1.itemname.select();  
   		return false;
 	}
-	if(f1.userpwd.value=="" || checkspace(f1.userpwd.value)){
-		alert("请填写登录密码");
-  		f1.userpwd.select();  
+	if(f1.itemcode.value==""){
+		alert("请填写项目编号");
+  		f1.itemcode.select();  
   		return false;
 	}
-	if(f1.name.value=="" || checkspace(f1.name.value)){
-		alert("请填写真实姓名");
-  		f1.name.select();  
-  		return false;
-	}
-	if(f1.dept_mname.value=="0"){
-		alert("请选择管理部门");
-  		f1.dept_mname.focus();  
+	if(f1.itemscore.value==""){
+		alert("请填写项目学分");
+  		f1.itemscore.select();  
   		return false;
 	}
 }	
@@ -73,37 +73,34 @@ function checkdata() {
 		
         <div class="left">
           <label>项目类别：</label>
-          <select>
-          <option name="求真">求真</option>
-          <option name="求善">求善</option>
-          <option name="求美">求美</option>
-          <option name="求实">求实</option>
-          <option name="求特">求特</option>
-          <option name="求强">求强</option>
+          <select name="type">
+          <option value="求真">求真</option>
+          <option value="求善">求善</option>
+          <option value="求美">求美</option>
+          <option value="求实">求实</option>
+          <option value="求特">求特</option>
+          <option value="求强">求强</option>
           </select><small>*必须</small><br />
 		  <label>项目名称：</label> <small>*必须</small><br />
-		  <input name="username" type="text" id="username" size="40" /><br />
+		  <input name="itemname" type="text" id="itemname" size="40" /><br />
 		  <label>项目编号：</label> <small>*必须</small><br />
-		  <input name="userpwd" type="password" id="userpwd" size="20" /><br />
+		  <input name="itemcode" type="text" id="itemname" size="40" /><br />
 		  <label>项目级别：</label> <small>*必须</small><br />
-		  <input name="name" type="text" id="name" size="20" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))" />
-		  
-		  <?php
-		  	if( $admin_dept_id == 0 || $admin_type == '2' ){
-				if( $admin_type=='2' )$check_s = "checked";else $check_s = "";
-		  ?>
+		  <select name="grade">
+		  <option value="国家级">国家级</option>
+		  <option value="省级">省级</option>
+		  <option value="市级">市级</option>
+		  <option value="校级">校级</option>
+		  <option value="院级">院级</option>
+		  </select> <br />
+		  <label>项目学分：</label> <small>*必须</small><br />
+		  <input name="itemscore" type="text" id="itemscore" size="40" /><br />
 		  <div class="block">
-		  <input type="checkbox" name="type" value="2" <?php echo $check_s;?> />&nbsp;职能部门管理员
 		  </div>
-		  <?php
-		  	}
-		  ?>
-		  </div>
-		  
+	</div>
 		  <div class="clear">&nbsp;</div>
-		  
 		  <div> 
-               <input type="submit" name="submit" value="  添加部门管理员 " />
+               <input type="submit" name="submit" value="添加部门管理员" />
 		  </div>
 	  </div><br />
 	  </form>
