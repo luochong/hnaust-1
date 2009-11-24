@@ -1,4 +1,5 @@
-<?php 
+<?php
+include_once ("../../include/session.class.php");
 require_once('../../include/function.include.php');
 require_once('itemlist.class.php');
 $itemlist = new ItemListAction();
@@ -46,12 +47,12 @@ function $(id){
 	        <div  style="float:left; width:30px" ><input type="checkbox" /></div>
 	        <div style="float:left; width:100px">学号</div>
 		    <div style="float:left; width:50px">姓名</div>
-		    <div style="float:left; width:80px">项目编号</div>
-			<div style="float:left; width:200px">项目名称</div>
+		    <div style="float:left; width:150px">班级</div>
+			<div style="float:left; width:135px">项目名称</div>
 			<div style="float:left; width:40px">类型</div>
 			<div style="float:left; width:40px">学分</div>
-			<div style="float:left; width:70px">审核状态</div>
-			<div style="float:left; width:60px">申报时间</div>
+			<div style="float:left; width:80px">审核状态</div>
+			<div style="float:left;">申报时间</div>
 	  </div>
 		  
 	  <div id="allcontent">	
@@ -62,16 +63,16 @@ function $(id){
 $data = $itemlist->getItemData();
 foreach ($data as $t){
 ?>
-        	  <tr>
-            <td width='10px'><input type="checkbox" name='app_id[]' value="<?php echo $t['app_id']?>" /></td>
-        	<td width='80px'><?php echo $t['app_stud_no']?></td>
-            <td width='40px'><?php echo $t['stud_name']?></td>
-            <td width='60px'><?php echo $t['app_item_code']?></td>
-            <td width='150px'><?php echo $t['item_name'],$t['item_rank']?></td>
-            <td width='40px'><?php echo $t['app_item_type']?></td>
-			<td width='40px'><?php echo $t['item_score']?></td>
-			<td width='40px'><?php echo getItemState($t['app_state'])?></td>
-			<td width='60px'><?php echo date('y-m-d',strtotime($t['app_time']))?></td>
+        	  <tr align="center">
+            <td width='25px'><input type="checkbox" name='app_id[]' value="<?php echo $t['app_id']?>" /></td>
+        	<td width='90px'><?php echo $t['app_stud_no']?></td>
+            <td width='60px'><?php echo $t['stud_name']?></td>
+            <td width="75px"><?php echo $t['stud_class']?></td>
+            <td width="215px"><?php echo $t['item_name'],$t['item_rank']?></td>
+            <td width="40px"><?php echo $t['app_item_type']?></td>
+			<td width="40px"><?php echo $t['item_score']?></td>
+			<td width="80px"><?php echo getItemState($t['app_state'])?></td>
+			<td ><?php echo date('y-m-d',strtotime($t['app_time']))?></td>
           </tr>
 <?php }?>		  		
 		          </table>

@@ -9,4 +9,5 @@ $groupid="1";
 //$groupname="湖南农业大学";
 $dbname_g=$dbname;
 $dbname_p="creditapp";
+define('APP_ROOT','/hnst');
 ?>

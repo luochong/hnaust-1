@@ -21,21 +21,29 @@ class ItemsearchAction extends MysqlDao {
 		switch ($_POST['action']){
 			case 'yes':{
 				if($_SESSION['admin_super'] == 1) 
-					$state = 2;//校审核
+				{	$state = 2;//校审核
+					$time= 'app_unitime';
+				}	
 				else
-					$state = 1;//院审核
+				{	$state = 1;//院审核
+					$time= 'app_coltime ';
+				}
 				 foreach ($_POST['app_id'] as $id){
-					 	$this->update(array('app_state'=>$state),array('app_id'=>$id));
+					 	$this->update(array('app_state'=>$state,$time=>getNowDate()),array('app_id'=>$id));
 					 }
 				break;
 			}
 			case 'no':{
 				if($_SESSION['admin_super'] == 1) 
-					$state = 4;//校审核
+				{$state = 4;//校审核
+					$time= 'app_unitime';
+				}	
 				else
-					$state = 3;//院审核
+				{$state = 3;//院审核
+				$time= 'app_coltime';
+				}
 				 foreach ($_POST['app_id'] as $id){
-					 	$this->update(array('app_state'=>$state),array('app_id'=>$id));
+					 	$this->update(array('app_state'=>$state,$time=>getNowDate()),array('app_id'=>$id));
 					 }
 				break;
 			}
@@ -58,6 +66,8 @@ class ItemsearchAction extends MysqlDao {
 				
 			}
 		}
+		
+		
 	}
 	
 	
@@ -76,12 +86,13 @@ class ItemsearchAction extends MysqlDao {
 			if(!empty($_GET['i_type'])){
 				$sql.=' and item_set.item_type="'.$_GET['i_type'].'"';
 			}			
-			if(!empty($_GET['i_state'])&&$_GET['i_state']!=10){
-				
+			if($_GET['i_state']!==''&&$_GET['i_state']!=10){
 				$sql.=' and item_apply.app_state='.$_GET['i_state'];
 			}
-			if(!empty($_GET['i_org'])){
+			if(!empty($_GET['i_org'])&&$_SESSION['admin_super']==1){
 				$sql.=' and item_apply.stud_orgcode='.$_GET['i_org'];
+			}else{
+				$sql.=' and item_apply.stud_orgcode='.$_SESSION['admin_org_code'];
 			}
 			if(!empty($_GET['i_score'])){
 				$sql.=' and item_score ='.$_GET['i_score'];

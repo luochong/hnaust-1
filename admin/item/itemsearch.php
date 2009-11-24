@@ -1,4 +1,5 @@
 <?php 
+include_once ("../../include/session.class.php");
 require_once('../../include/function.include.php');
 require_once('itemsearch.class.php');
 $itemsearch = new ItemsearchAction();
@@ -33,7 +34,7 @@ function $(id){
 	  </h3>
 	  <div class="clear">&nbsp;</div>
 	  <form action="itemsearch.php" name='sform' method="GET" style="margin:0;padding:0">
-	 <div class="alltitle">
+	 <div>
 	 <table align="center">
 	 <tr>
 			 <td width="80px">学号：</td><td><input name="s_no" type="text" /></td>
@@ -99,47 +100,51 @@ function $(id){
 			 <td width="80px"><input name="submit"  type="submit" value="查询" style="width:100px"  /></td><td></td>
 	 </tr>
 	 </table>
+	
 	 </div>
   	 </form>
+  	 <?php if(isset($_GET['submit'])){?>
   	 <div class="alltitle">
 	        <div  style="float:left; width:30px" ><input type="checkbox" /></div>
 	        <div style="float:left; width:100px">学号</div>
 		    <div style="float:left; width:50px">姓名</div>
-		    <div style="float:left; width:80px">班级</div>
-			<div style="float:left; width:200px">项目名称</div>
+		    <div style="float:left; width:150px">班级</div>
+			<div style="float:left; width:135px">项目名称</div>
 			<div style="float:left; width:40px">类型</div>
 			<div style="float:left; width:40px">学分</div>
-			<div style="float:left; width:70px">审核状态</div>
-			<div style="float:left; width:60px">申报时间</div>
+			<div style="float:left; width:80px">审核状态</div>
+			<div style="float:left;">申报时间</div>
 	  </div>
 		  
 	  <div id="allcontent">	
-	  <form action='itemsearch.php?ac=onclick&<?php echo $get ?>' name='itemform' method="POST" >
+	  <form action='itemlist.php?ac=onclick' name='itemform' method="POST" >
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <?php   
     
 $data = $itemsearch->getItemData();
 foreach ($data as $t){
 ?>
-        	  <tr>
-            <td width='10px'><input type="checkbox" name='app_id[]' value="<?php echo $t['app_id']?>" /></td>
-        	<td width='80px'><?php echo $t['app_stud_no']?></td>
-            <td width='40px'><?php echo $t['stud_name']?></td>
-            <td width='70px'><?php echo $t['stud_class']?></td>
-            <td width='150px'><?php echo $t['item_name'],$t['item_rank']?></td>
-            <td width='40px'><?php echo $t['app_item_type']?></td>
-			<td width='40px'><?php echo $t['item_score']?></td>
-			<td width='40px'><?php echo getItemState($t['app_state'])?></td>
-			<td width='60px'><?php echo date('y-m-d',strtotime($t['app_time']))?></td>
+        	  <tr align="center">
+            <td width='25px'><input type="checkbox" name='app_id[]' value="<?php echo $t['app_id']?>" /></td>
+        	<td width='90px'><?php echo $t['app_stud_no']?></td>
+            <td width='60px'><?php echo $t['stud_name']?></td>
+            <td width="75px"><?php echo $t['stud_class']?></td>
+            <td width="215px"><?php echo $t['item_name'],$t['item_rank']?></td>
+            <td width="40px"><?php echo $t['app_item_type']?></td>
+			<td width="40px"><?php echo $t['item_score']?></td>
+			<td width="80px"><?php echo getItemState($t['app_state'])?></td>
+			<td ><?php echo date('y-m-d',strtotime($t['app_time']))?></td>
           </tr>
 <?php }?>		  		
 		          </table>
 
 		    <input type="hidden" name="action" id="action" value=""   />
 		<div>
-<?php if(isset($_GET['submit'])){?>
+
 		<?php $itemsearch->makepage();?>
-		<?php if($_GET['i_state'] ==0 || $_SESSION['admin_super'] == 1 ){?>
+		<?php
+		if($_GET['i_state'] != ''){
+		if($_GET['i_state'] == 0 || $_SESSION['admin_super'] == 1 ){?>
 		<input type="button"  value="审核通过" onclick="$('action').value = 'yes'; itemform.submit();"/> 
 		<?php }?>
 		<?php if($_GET['i_state'] <=1 || $_SESSION['admin_super'] == 1){?>
@@ -148,7 +153,8 @@ foreach ($data as $t){
 			<?php }?>
 		<?php if($_GET['i_state'] ==1 || $_SESSION['admin_super'] == 1 || $_GET['i_state'] == 3){?>
 		 <input type='button'  value="取消审核" onclick="$('action').value = 'quxiao'; itemform.submit();" />
-		<?php }?>
+		<?php }
+		}?>
 <?php }?>		 
 		
 		</form>

@@ -29,7 +29,7 @@
 			if ( !isset($_SESSION["admin_user"]) or $_SESSION["admin_pwd"] == "" )
 			{
 				echo "<script language=javascript>\n";
-				echo "location.assign('login.php')\n";
+				echo "location.assign('".APP_ROOT."/admin/login.php')\n";
 				echo "</script>\n";
 				exit;	
 			}
@@ -46,7 +46,7 @@
 				if( !$nums )
 				{
 					echo "<script language=javascript>\n";
-					echo "location.assign('login.php')\n";
+					echo "location.assign('".APP_ROOT."/admin/login.php')\n";
 					echo "</script>\n";
 					exit;
 				}
