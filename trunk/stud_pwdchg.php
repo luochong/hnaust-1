@@ -19,12 +19,14 @@
 require_once("stud_pwdchg.class.php");
 require("include/sessionstud.php");
 require("include/function.include.php");
+require("stud_home.class.php");
 
 
 $studno=$_SESSION["studno"];
 $pwdchag=new pwdchg();
+$show=new stud();
 $showstudb=$pwdchag->showitem($studno);
-
+$showinfo=$show->showstud($studno);
 
 
 ?>
