@@ -74,9 +74,6 @@ function checkdata() {
           <input name="oldpwd" type="password" id="oldpwd" size="40" /><br />
 		  <label>请输入新密码</label> <small>*必须</small><br />
 		  <input name="newpwd" type="password" id="newpwd" size="50" onKeyUp="ps.update(this.value);" /><br />
-		  <label>密码安全性:	
-
-	      </label>
 		  <label>请确认新密码</label> <small>* 密码修改后,请您务必记住</small><br />
           <input name="rnewpwd" type="password" id="rnewpwd" size="50" /><br /><br />
 		  </div>
