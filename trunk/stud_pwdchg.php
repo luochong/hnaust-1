@@ -18,6 +18,7 @@
 
 require_once("stud_pwdchg.class.php");
 require("include/sessionstud.php");
+require("include/function.include.php");
 
 
 $studno=$_SESSION["studno"];
@@ -84,7 +85,7 @@ $showstudb=$pwdchag->showitem($studno);
 		  <div id="item">
 		  		<div id="location">
 					<div id="location_tit">所在的位置：修改密码</div>
-					<div id="showtime">2009年11月20日 星期五</div>
+					<div id="showtime"><?php echo getNowTate()?></div>
 				</div>
 				<div id="choose">
 					<div id="home_display_tit" class="display_c">请输入您的认证信息：</div>

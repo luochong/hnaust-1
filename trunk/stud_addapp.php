@@ -96,7 +96,7 @@ $showitem=$citem->seltype($itype);
 		  <div id="item">
 		  		<div id="location">
 					<div id="location_tit">所在的位置：项目申报</div>
-					<div id="showtime">2009年11月20日 星期五</div>
+					<div id="showtime"><?php echo getNowTate()?></div>
 				</div>
  <form method="POST" name="form">
 			  <div id="choose">
