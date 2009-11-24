@@ -18,6 +18,10 @@ function getNowDate(){
 	date_default_timezone_set('Asia/Shanghai');
 	return date("Y-m-d H:i:s");
 }
+function getNowTate(){
+	date_default_timezone_set('Asia/Shanghai');
+	return date("Y-m-d 星期w");
+}
 
 function getItemType($itype)
 {

@@ -16,6 +16,7 @@
 ///		---------- 	 -------  	--------  	 ------------------------------------
 ///	    2009/11/16      1.1    	龙首成      	  学生管理
 require("include/sessionstud.php");
+require("include/function.include.php");
 require("stud_home.class.php");
 //echo $_SESSION["studno"];
 $studno=$_SESSION["studno"];
@@ -103,7 +104,7 @@ $tongji = new Tongji();
 		  <div id="item">
 		  	<div id="location">
 					<div id="location_tit">所在的位置：首页</div>
-					<div id="showtime">2009年11月20日 星期五</div>
+					<div id="showtime"><?php echo getNowTate()?></div>
 				</div>
 			<div id="choose">
 					<div id="home_display_tit">已申报项目如下:</div>

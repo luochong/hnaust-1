@@ -32,7 +32,7 @@ abstract class DaoBase_b
 			$this->dbhost = "localhost";
 			$this->dbuser = "root";     
 			$this->dbpwd  = ""; // sns20070804
-			$this->dbinst = "sns_grouphunaun";
+			$this->dbinst = "creditapp";
 				
 		$this->table_name = "";		
 		
