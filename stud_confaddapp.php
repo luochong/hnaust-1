@@ -35,12 +35,7 @@ if($_POST['submit']){
   //echo $itenc;
  // print_r($itemcode);
 $insertok=$citem->insertapp($itype,$itenc,$studno,$studcode,$showtime);  //写入表
-if($insertok){
-echo "<script language=javascript >\n";	
-			echo "alert('提交成功')\n";
-			echo "history.go(-2)\n;";   //跳出框架 重定向到登录页面
-			echo "</script>\n";
-}
+
 
 }
 
@@ -49,24 +44,38 @@ echo "<script language=javascript >\n";
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="stud_confaddapp.css" title="text/css"/>
 <title>home</title>
 </head>
 <body>
- <form method="POST">
-<?php    switch ($itype)
-               {
-                 	case '1':$ttype="真";break;
-                  	case '2':$ttype="善";break;
-             	    case '3':$ttype="美";break;
-       	            case '6':$ttype="强";break;
-               }
-               echo $ttype;
-             
-             echo $iname ;
-               echo $trank;
-?>
-<input type="submit" name="submit">
-</form>
+ <div id="tijiao"  class="zhiti">
+	 <form method="POST">
+	 <div id="tj_leibie">项目类别：
+	<?php    switch ($itype)
+	               {
+	                 	case '1':$ttype="真";break;
+	                  	case '2':$ttype="善";break;
+	             	    case '3':$ttype="美";break;
+	       	            case '6':$ttype="强";break;
+	               }
+	               echo $ttype;
+	?>
+	</div>
+	<div id="tj_mingchen">项目名称：
+	<?php 
+		 echo $iname ;
+	?>
+	</div>
+	<div id="tj_jibie">项目级别：<?php echo $trank; ?>
+		
+	</div>
+	<div id="tj_queding">
+		<input type="submit" name="submit">
+	</div>
+	</form>
+</div>
+
+
 
 
 </body>

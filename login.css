@@ -13,6 +13,9 @@ a.info:hover{color:#6600FF}
 	font-size:16px;
 	font-family:"微软雅黑";
 }
+.zhiti {
+	font-family:"微软雅黑";
+}
 .leibie{
 	font-size:15px;
 }
@@ -119,7 +122,7 @@ a.info:hover{color:#6600FF}
 	padding-top:5px;
 	text-align:center;
 	font-family:"微软雅黑";
-	font-size:16px;
+	font-size:18px;
 	width:168px;
 	height:30px;
 	display:block;
@@ -137,6 +140,7 @@ a.info:hover{color:#6600FF}
 	width:30px;
 	height:20px;
 	margin-left:100px;
+	margin-top:20px;
 	display:block;
 }
 #right {
@@ -265,7 +269,7 @@ a.info:hover{color:#6600FF}
 #passwordform{
 	margin-left:auto;
 	margin-right:auto;
-	width:40%;
+	width:42%;
 	height:80%;
 	display:block;
 }
