@@ -6,7 +6,7 @@
 ///		Copyright 2009 prolove. All rights reserved.
 ///
 ///	[Filename]
-///		syst_mangeruser.class.php
+///		syst_adduser.class.php
 ///
 ///	[Description]
 ///		
@@ -19,15 +19,14 @@
 require_once("../../include/mysqldao.class.php");	
 error_reporting(E_ALL ^ E_NOTICE);
 
-class mangeritem extends MysqlDao 
+class mangerfiles extends MysqlDao 
 {
-	public function item_manger()
+	public function file_list()
 	{
-		$this->setTableName("item_set");
-		$cond = array("item_status" => '1');
+		$this->setTableName("upload_file");
+		$cond = array();
 		$row = $this->selectA($cond);
 		return $row;
 	}
 }
-
 ?>

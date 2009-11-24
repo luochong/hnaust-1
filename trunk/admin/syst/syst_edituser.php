@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="../css/stat.css" media="screen" />
 <title><?php echo $title;?></title>
 <?php
+	require_once("../../include/session.class.php");
 	require_once("syst_adduser.class.php");
 	require_once("syst_edituser.class.php");
 	$operuser = new operadd();

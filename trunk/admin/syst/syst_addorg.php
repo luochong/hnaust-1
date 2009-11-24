@@ -1,4 +1,5 @@
 <?php
+require_once("../../include/session.class.php");
 require_once("syst_adduser.class.php");
 require_once("syst_addorg.class.php");
 $operuser = new operadd();

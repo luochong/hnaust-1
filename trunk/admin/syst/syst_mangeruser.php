@@ -1,11 +1,5 @@
 <?php
-/*require_once("include/session.php");
-require_once("include/config.php");
-require_once("include/function.php");*/
-/*$hwnd=mysql_connect("$hostname","$dbusername","$dbpassword");
-mysql_select_db("$dbname");
-mysql_query("SET NAMES 'utf8'",$hwnd);
-$deptname=deptname($hwnd,$admin_dept_id,$admin_user);*/
+require_once("../../include/session.class.php");
 
 require_once("syst_mangeruser.class.php");
 

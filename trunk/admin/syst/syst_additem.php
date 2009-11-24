@@ -1,4 +1,5 @@
 <?php
+require_once("../../include/session.class.php");
 require_once("syst_additem.class.php");
 $additem = new additem();
 
