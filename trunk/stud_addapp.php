@@ -25,18 +25,20 @@ $show=new stud();
 $showinfo=$show->showstud($studno);
 
 $itype=$_GET['itype'];
-$icode=$_GET['icode'];
+$iname=$_GET['icode'];
 $irank=$_GET['irank'];
 $_SESSION['itype']=$itype;
 $_SESSION['irank']=$irank;
-$_SESSION['icode']=$icode;
+$_SESSION['icode']=$iname;
 $stuno=$_SESSION["studno"];
 
 $studcode=$_SESSION["studcode"];
 
 $citem=new selitem();
 $showitem=$citem->seltype($itype);
-
+$itemcode=$citem->setitem($itype,$iname,$irank);
+  $itenc=$itemcode[0][0];
+$finditem=$citem->finditem($itenc);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

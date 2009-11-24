@@ -1,0 +1,34 @@
+/* CSS Document */
+#tijiao {
+	margin-left:auto;
+	margin-right:auto;
+	width:300px;
+	height:200px;
+}
+#tj_leibie {
+	width:100%;
+	height:20px;
+	margin-top:70px;
+	padding-left:50px;
+}
+#tj_mingchen {
+	width:100%;
+	height:20px;
+	margin-top:20px;
+	padding-left:50px;
+}
+#tj_jibie {
+	width:100%;
+	height:20px;
+	margin-top:20px;
+	padding-left:50px;
+}
+#tj_queding {
+	width:100%;
+	height:20px;
+	text-align:center;
+	margin-top:35px;
+}
+.zhiti {
+	font-family:"微软雅黑";
+}
