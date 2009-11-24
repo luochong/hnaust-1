@@ -29,4 +29,13 @@ function getItemType($itype)
        	            case '6':return "求强";break;
                }
 }
-
+function getRank($irank)
+{
+        switch ($irank)
+               {
+                 	case '1':return "国家奖";break;
+                  	case '2':return "省级奖";break;
+             	    case '3':return "市级奖";break;
+       	           
+               }
+}

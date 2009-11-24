@@ -26,7 +26,9 @@ $showinfo=$show->showstud($studno);
 
 $itype=$_GET['itype'];
 $icode=$_GET['icode'];
+$irank=$_GET['irank'];
 $_SESSION['itype']=$itype;
+$_SESSION['irank']=$irank;
 $_SESSION['icode']=$icode;
 $stuno=$_SESSION["studno"];
 
@@ -63,7 +65,7 @@ $showitem=$citem->seltype($itype);
 				<li><a class="tit" href="stud_addapp.php" style="text-decoration:none">项目申报</a></li>
 				<li><a class="tit" href="#" style="text-decoration:none">资料下载</a></li>
 				<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
-			<li><a class="tit" href="index.php" style="text-decoration:none">退出系统</a></li>
+			<li><a class="tit" href="index.php?ac=logout" style="text-decoration:none">退出系统</a></li>
 			</ul>
 		</div>
 		</div>
@@ -118,13 +120,22 @@ $showitem=$citem->seltype($itype);
                    ?> <option value="<?php echo $showitem[$i][1];?>" <?php if($_GET['icode']== $showitem[$i][1]){?> selected="selected"<?php }?> ><?php
                       echo $showitem[$i][0];  
                       ?>    </option>
+                    
                     <?php 
                     } 
                     ?>
                 
                     </select>
                     
-                     
+                      <select name="rank" onchange="location.href='<?php echo $_SERVER["REQUEST_URI"];?>&'+'irank='+this.options[this.selectedIndex].value;">
+                      <option >请选择</option>
+                      
+                      <?php if($_GET['icode']){?>
+                     <option value="1" <?php if($_GET['irank']=="1"){?> selected="selected"<?php }?>>国家奖</option>
+                     <option value="2" <?php if($_GET['irank']=="2"){?> selected="selected"<?php }?>>省级奖</option>
+                     <option value="3" <?php if($_GET['irank']=="3"){?> selected="selected"<?php }?>>市级奖</option>
+                     <?php } ?>
+                     </select>
                     <a href="stud_confaddapp.php?keepThis=true&TB_iframe=true&height=300&width=500" title="确认提交申请" class="thickbox" ;><input type="submit" value="提交"></a>
                     </form>
                     
