@@ -17,15 +17,10 @@
 ///	    2009/11/16      1.1    	龙首成      	  学生管理
 require("include/sessionstud.php");
 require("stud_home.class.php");
- require_once("include/function.include.php");	
-include_once('include/mysqldao.class.php');
-require_once('control/tongji.include.php');
-
 //echo $_SESSION["studno"];
 $studno=$_SESSION["studno"];
-$pageno=$_GET['page_no'];
 $show=new stud();
-
+$pageno=$_GET['page_no'];
 //$studid=2007;
 $showinfo=$show->showstud($studno);
 $showitem=$show->showitem($studno,$pageno);
@@ -45,9 +40,10 @@ $_SESSION['stud_']=$showinfo[0][4];
 $_SESSION['stud_no']=$showinfo[0][5];
 $_SESSION['stud_no']=$showinfo[0][6];
 $_SESSION['stud_no']=$showinfo[0][7];
+
+include_once('include/mysqldao.class.php');
+require_once('control/tongji.include.php');
 $tongji = new Tongji();
-
-
 ?>
 
 
@@ -58,6 +54,7 @@ $tongji = new Tongji();
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>素质拓展学分认证系统>>首页</title>
 <link href="login.css" rel="stylesheet" type="text/css">
+<link href="include/thickbox.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="background">
@@ -69,7 +66,7 @@ $tongji = new Tongji();
 				<li><a class="tit" href="stud_addapp.php" style="text-decoration:none">项目申报</a></li>
 				<li><a class="tit" href="#" style="text-decoration:none">资料下载</a></li>
 				<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
-			<li><a class="tit" href="index.php?ac=logout" style="text-decoration:none">退出系统</a></li>
+				<li><a class="tit" href="index.php" style="text-decoration:none">退出系统</a></li>
 			</ul>
 		</div>
 		</div>
@@ -82,17 +79,18 @@ $tongji = new Tongji();
              {
               
                 ?>学号：<?php  echo $showinfo[0][1];?>
-                  姓名：<?php  echo $showinfo[0][2];?>
-                  性别：<?php  echo $showinfo[0][3];?>
-                  学院：<?php  echo $showinfo[0][4];?>
-                  入学年份：<?php  echo $showinfo[0][5];?>
-                  班级：<?php  echo $showinfo[0][6];?>
-                  申报截止日期：<?php  echo $showinfo[0][7];?>
+                  <br>姓名：<?php  echo $showinfo[0][2];?>
+                  <br>性别：<?php  echo $showinfo[0][3];?>
+                  <br>学院：<?php  echo $showinfo[0][4];?>
+                  <br>入学年份：<?php  echo $showinfo[0][5];?>
+                  <br>班级：<?php  echo $showinfo[0][6];?>
+                  <br>申报截止日期：<?php  echo $showinfo[0][7];?>
                      
           <?php    
              } 
-          ?>
-          <?php ?>
+            
+           
+?>
 				</div>
 			</div>
 			<div id="left2">
@@ -103,63 +101,62 @@ $tongji = new Tongji();
 		</div>
 		<div id="right">
 		  <div id="item">
-		  <?php
-		        echo '总学分：',$tongji->countAllCreditByStudId($studno);
-                echo '总项目数：',$tongji->countItemByStudId($studno);
-                echo '有效学分：',$tongji->countValidCreditByStudId($studno);
-                echo '已获得有效学分：',$tongji->countVerifyValidCreditByStudId($studno);
-		  ?>
-		  <table>
+		  	<div id="location">
+					<div id="location_tit">所在的位置：首页</div>
+					<div id="showtime">2009年11月20日 星期五</div>
+				</div>
+			<div id="choose">
+					<div id="home_display_tit">已申报项目如下:</div>
+					<div id="home_display_com">
+				<table class="showtb1">
                      <tr>
-                     <td>类别</td>
-                     <td>编号</td>
-                     <td>名称</td>
-                     <td>级别</td>
-                     <td>学分</td>
-                     <td>审核状态</td>
-                     <td>操作</td>
-                  
+                     <td class="showtd" width="8%">类别</td>
+                     <td class="showtd" width="15%">编号</td>
+                     <td class="showtd" width="30%">名称</td>
+                     <td class="showtd" width="13%">级别</td>
+                     <td class="showtd" width="8%">学分</td>
+                     <td class="showtd" width="17%">审核状态</td>
+                     <td class="showtd">操作</td>
                      </tr>
-                     </table> 
+                </table>
 		  <?php
            if(count($showitem)!==0)
                  {
-                      // print_r($itemdetail);
                    for($n=0;$n<count($showitem);$n++)
                     {
-           ?>   
-             
-                  <table>
+           ?> 
+               <table class="showtb2">
                      <tr>
-                      <td> <?php  echo getItemType($showitem[$n][7]);?></td>
-                  
-                         <td><?php echo   $itemdetail[0][$n][2];?></td>
-                         <td><?php echo   $itemdetail[0][$n][3];?></td>
-                         <td><?php echo   $itemdetail[0][$n][4];?></td>
-                         <td><?php echo   $itemdetail[0][$n][5];?></td>
-                         <td><?php echo   $itemdetail[0][$n][6];?></td>
-                          <td> <?php echo getItemState($showitem[$n][4]);?></td>
-                  
-                        
+                     	<td class="showtd" width="8%">求真</td>
+                         <td class="showtd" width="15%"><?php echo   $itemdetail[0][$n][2];?></td>
+                         <td class="showtd" width="30%"><?php echo   $itemdetail[0][$n][3];?></td>
+                         <td class="showtd" width="13%"><?php echo   $itemdetail[0][$n][4];?></td>
+                         <td class="showtd" width="8%"><?php echo   $itemdetail[0][$n][5];?></td>
+                         <td class="showtd" width="17%"><?php echo   $showitem[$n][4];?></td>
+                         <td class="showtd_x">×</td>
                      </tr>
                    </table>       
-                              
-                      
-                   <?php
-    
+                    <?php           
+         
                    }
-            
-                
+                    $show->page_list($studno);
                  }
                  else 
                  {echo "你还未申请";} 
-                $show->page_list($studno);
 ?>
-		  
+					</div>
+			 	</div>
+		  <div id="declare_info">
+				<ul>
+					<li><?php echo '总学分：',$tongji->countAllCreditByStudId($studno);?></li>
+					<li><?php echo '总项目数：',$tongji->countItemByStudId($studno);?></li>
+					<li><?php echo '有效学分：',$tongji->countValidCreditByStudId($studno);?></li>
+					<li><?php echo '已获得有效学分：',$tongji->countVerifyValidCreditByStudId($studno);?></li>
+				</ul>
+		</div>
 		  </div>
 		</div>
 	</div>
-	<div></div>
 </body>
 
 </html>

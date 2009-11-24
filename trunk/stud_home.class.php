@@ -50,7 +50,7 @@
                
                    $data[]=array("item_code"=>$itemcode[$i]);
               
-             //  print_r($data);
+          
                  $row[]=$this->select($data,PageNum,$page_no,null);
                   }
               //  print_r($row); 

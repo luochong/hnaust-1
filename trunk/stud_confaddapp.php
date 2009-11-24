@@ -22,15 +22,15 @@ require_once("stud_addapp.class.php");
 
 $citem=new selitem();
 $itype=$_SESSION['itype'];
-$icode=$_SESSION['icode'];
+$iname=$_SESSION['icode'];
 $stuno=$_SESSION["studno"];
 $studcode=$_SESSION["studcode"];
 $irank=$_SESSION['irank'];
 $trank=getRank($irank);
-$showitem=$citem->finditem($icode);
+//$showitem=$citem->finditem($icode);
 if($_POST['submit']){
 // echo $showtime=date("Y-d-m H:i:s");
-  $itemcode=$citem->setitem($itype,$showitem[0][3],$irank);
+  $itemcode=$citem->setitem($itype,$iname,$irank);
   $itenc=$itemcode[0][0];
   //echo $itenc;
  // print_r($itemcode);
@@ -41,14 +41,9 @@ echo "<script language=javascript >\n";
 			echo "history.go(-2)\n;";   //跳出框架 重定向到登录页面
 			echo "</script>\n";
 }
-else
-{
-    echo "<script language=javascript >\n";	
-			echo "alert('该项目已提交，请重新选择')\n";
-			echo "history.go(-2)\n;";   //跳出框架 重定向到登录页面
-			echo "</script>\n";
+
 }
-}
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -67,9 +62,8 @@ else
                }
                echo $ttype;
              
-             echo $showitem[0][3] ;
+             echo $iname ;
                echo $trank;
-              
 ?>
 <input type="submit" name="submit">
 </form>
