@@ -26,14 +26,17 @@ include_once("include/mysqldao.class.php");
  * longshoucheng 2009 11
  *
  */
+
 class LoginAction extends MysqlDao {
 	
 	public $error_message= '';
+
 	public function run(){
 		if(!empty($_GET['ac'])&&method_exists($this,'login')){
 			$this->$_GET['ac']();
 		}
 	}
+	
 	
 	public function login(){
 		if(empty($_POST['user_name'])||empty($_POST['user_password'])){
@@ -57,15 +60,15 @@ class LoginAction extends MysqlDao {
 				$_SESSION["studcode"] = $rows[0]['stud_orgcode'];
 			
 				echo "<script>document.location='stud_home.php'</script>";
-			//  header('Location: index.php');
+			  //  header('Location: index.php');
 		}
 		
 	}
+	
 	public function logout(){
-		
-		
+		$_SESSION = array();
 	}
 	
-	
 }
+
 

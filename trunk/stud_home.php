@@ -17,13 +17,18 @@
 ///	    2009/11/16      1.1    	龙首成      	  学生管理
 require("include/sessionstud.php");
 require("stud_home.class.php");
+ require_once("include/function.include.php");	
+include_once('include/mysqldao.class.php');
+require_once('control/tongji.include.php');
+
 //echo $_SESSION["studno"];
 $studno=$_SESSION["studno"];
+$pageno=$_GET['page_no'];
 $show=new stud();
 
 //$studid=2007;
 $showinfo=$show->showstud($studno);
-$showitem=$show->showitem($studno);
+$showitem=$show->showitem($studno,$pageno);
 for($i=0;$i<count($showitem);$i++)
 {
    
@@ -31,7 +36,7 @@ for($i=0;$i<count($showitem);$i++)
     
 }
 //print_r($itemcode);
-$itemdetail=$show->finditem($itemcode);
+$itemdetail=$show->finditem($itemcode,$pageno);
 
 $_SESSION['stud_no']=$showinfo[0][1];
 $_SESSION['stud_name']=$showinfo[0][2];
@@ -40,10 +45,9 @@ $_SESSION['stud_']=$showinfo[0][4];
 $_SESSION['stud_no']=$showinfo[0][5];
 $_SESSION['stud_no']=$showinfo[0][6];
 $_SESSION['stud_no']=$showinfo[0][7];
-
-include_once('include/mysqldao.class.php');
-require_once('control/tongji.include.php');
 $tongji = new Tongji();
+
+
 ?>
 
 
@@ -65,7 +69,7 @@ $tongji = new Tongji();
 				<li><a class="tit" href="stud_addapp.php" style="text-decoration:none">项目申报</a></li>
 				<li><a class="tit" href="#" style="text-decoration:none">资料下载</a></li>
 				<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
-				<li><a class="tit" href="index.php" style="text-decoration:none">退出系统</a></li>
+			<li><a class="tit" href="index.php?ac=logout" style="text-decoration:none">退出系统</a></li>
 			</ul>
 		</div>
 		</div>
@@ -87,8 +91,8 @@ $tongji = new Tongji();
                      
           <?php    
              } 
-           
-?>
+          ?>
+          <?php ?>
 				</div>
 			</div>
 			<div id="left2">
@@ -110,6 +114,7 @@ $tongji = new Tongji();
                      <td>类别</td>
                      <td>编号</td>
                      <td>名称</td>
+                     <td>级别</td>
                      <td>学分</td>
                      <td>审核状态</td>
                      <td>操作</td>
@@ -126,29 +131,29 @@ $tongji = new Tongji();
              
                   <table>
                      <tr>
+                      <td> <?php  echo getItemType($showitem[$n][7]);?></td>
+                  
                          <td><?php echo   $itemdetail[0][$n][2];?></td>
                          <td><?php echo   $itemdetail[0][$n][3];?></td>
                          <td><?php echo   $itemdetail[0][$n][4];?></td>
                          <td><?php echo   $itemdetail[0][$n][5];?></td>
                          <td><?php echo   $itemdetail[0][$n][6];?></td>
+                          <td> <?php echo getItemState($showitem[$n][4]);?></td>
                   
+                        
                      </tr>
                    </table>       
                               
                       
-                    <?php           
-                              
-                    
-                       // print_r($showitem);
-                        echo $showitem[$n][4];
-                      echo "<br>";
+                   <?php
+    
                    }
             
                 
                  }
                  else 
                  {echo "你还未申请";} 
-
+                $show->page_list($studno);
 ?>
 		  
 		  </div>
