@@ -1,11 +1,5 @@
 <?php
-/*require_once("include/session.php");
-require_once("include/config.php");
-require_once("include/function.php");*/
-/*$hwnd=mysql_connect("$hostname","$dbusername","$dbpassword");
-mysql_select_db("$dbname");
-mysql_query("SET NAMES 'utf8'",$hwnd);
-$deptname=deptname($hwnd,$admin_dept_id,$admin_user);*/
+require_once("../../include/session.class.php");
 require_once("syst_mangeritem.class.php");
 $mangeritem= new mangeritem();
 $mangeritem->item_manger();
@@ -70,8 +64,8 @@ function delok(){
 		    <td width='120px'>{$item_list[$i]['item_code']}</td>
 		    <td width='260px'>{$item_list[$i]['item_name']}</td>
 		    <td width='80px'>$tree</td>
-			<td width='50px'>{$item_list[$i]['item_score']}[<a href=\"syst_edititem.php?item_id='{$item_list[$i]}'\">编辑</a>]</td>
-			<td width='50px'><a class='del' href='syst_delorg.php?id={$item_list[0][id]}' onClick='return delok();'>删除</a></td>
+			<td width='50px'>{$item_list[$i]['item_score']}[<a href=\"syst_edititem.php?id={$item_list[$i]['item_id']}&type={$item_list[$i]['item_type']}&code={$item_list[$i]['item_code']}&name={$item_list[$i]['item_name']}&score={$item_list[$i]['item_score']}&rank={$tree}\">编辑</a>]</td>
+			<td width='50px'><a class='del' href='syst_delitem.php?id={$item_list[0]['item_id']}' onClick='return delok();'>删除</a></td>
 			</tr>
 			";
 		}

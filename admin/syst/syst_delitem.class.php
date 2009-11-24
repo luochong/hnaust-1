@@ -19,24 +19,18 @@
 require_once("../../include/mysqldao.class.php");	
 error_reporting(E_ALL ^ E_NOTICE);
 
-class edititem extends MysqlDao 
+class delitem extends MysqlDao 
 {
-	public function item_edit()
+	public function item_del($item_id)
 	{
-		print_r($_POST);
-		$array['item_id']    =  $_GET['id'];
-		$array['item_type']  =  $_POST['type'];
-		$array['item_code']  =  $_POST['itemcode'];
-		$array['item_rank']  =  $_POST['rank'];
-		$array['item_score'] =  $_POST['itemscore'];
-		$array['item_name']  =  $_POST['itemname'];
-		echo $array['item_id'];
-		$cond = array("item_id" => $array['item_id']);
 		$this->setTableName("item_set");
-		$resu = $this->update($array,$cond);
+		$date = array("item_status" => '0');
+		$cond = array("item_id" => $item_id);
+		$resu = $this->update($date,$cond);
+		
 		if($resu){  
 			echo "<script language=javascript>\n";	
-			echo "alert('修改项目成功！')\n";
+			echo "alert('删除项目成功！')\n";
 			echo "window.location.href='grouAdd02.php'";		
 			echo "</script>\n";
 		}else{
@@ -44,5 +38,4 @@ class edititem extends MysqlDao
 		}
 	}
 }
-
 ?>
