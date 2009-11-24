@@ -33,8 +33,9 @@ $showstudb=$pwdchag->showitem($studno);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>素质拓展学分认证系统>>首页</title>
+<title>素质拓展学分认证系统>>修改密码</title>
 <link href="login.css" rel="stylesheet" type="text/css">
+<link href="include/thickbox.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
@@ -47,26 +48,25 @@ $showstudb=$pwdchag->showitem($studno);
 				<li><a class="tit" href="stud_addapp.php" style="text-decoration:none">项目申报</a></li>
 				<li><a class="tit" href="#" style="text-decoration:none">资料下载</a></li>
 				<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
-				<li><a class="tit" href="index.php?ac=logout" style="text-decoration:none">退出系统</a></li>
+				<li><a class="tit" href="index.php" style="text-decoration:none">退出系统</a></li>
 			</ul>
 		</div>
 		</div>
 		<div class="clear"></div>
 		<div id="left">
 			<div id="left1">
-				<div id="denglu">学生登录</div>
+				<div id="denglu">学生信息</div>
 				<div id="user_login"><?php
              if(count($showstudb)!==0)
              {
               
-                ?>
-                  学号：<?php  echo $showstudb[0][1];?>
-                  姓名：<?php  echo $showstudb[0][2];?>
-                  性别：<?php  echo $showstudb[0][3];?>
-                  学院：<?php  echo $showstudb[0][4];?>
-                  入学年份：<?php  echo $sshowstudb[0][5];?>
-                  班级：<?php  echo $showstudb[0][6];?>
-                  申报截止日期：<?php  echo $showstudb[0][7];?>
+                ?>学号：<?php  echo $showinfo[0][1];?>
+                  <br>姓名：<?php  echo $showinfo[0][2];?>
+                  <br>性别：<?php  echo $showinfo[0][3];?>
+                  <br>学院：<?php  echo $showinfo[0][4];?>
+                  <br>入学年份：<?php  echo $showinfo[0][5];?>
+                  <br>班级：<?php  echo $showinfo[0][6];?>
+                  <br>申报截止日期：<?php  echo $showinfo[0][7];?>
                      
           <?php    
              } 
@@ -82,12 +82,19 @@ $showstudb=$pwdchag->showitem($studno);
 		</div>
 		<div id="right">
 		  <div id="item">
-		  
-		
-		    <form method="POST" name="form">
-                旧密码：<input type="password" name="oldpwd"><br />
-                新密码：<input type="password" name="newpwd"><br />
-                确认新密码：<input type="password" name="confpwd"><br />
+		  		<div id="location">
+					<div id="location_tit">所在的位置：修改密码</div>
+					<div id="showtime">2009年11月20日 星期五</div>
+				</div>
+				<div id="choose">
+					<div id="home_display_tit" class="display_c">请输入您的认证信息：</div>
+				  <div id="home_display_com">
+						<div id="passwordform">
+							
+			<form method="POST" name="form" style="padding-top:60px" >
+                旧密码&nbsp;&nbsp;<input type="password" name="oldpwd"><br />
+                <br>新密码&nbsp;&nbsp;<input type="password" name="newpwd"><br />
+                <br>确认新密码&nbsp;&nbsp;<input type="password" name="confpwd"><br />
               <?php 
           
                 if($_POST['oldpwd']!==null)
@@ -106,15 +113,20 @@ $showstudb=$pwdchag->showitem($studno);
                 }  
                  }
                 ?>
-                <input type="submit"  value="确认">
+                <br><br><input style="margin-left:37%" type="submit"  value=" 确 认 ">
                 
                     </form>
+						</div>
+					</div>
+			 	</div>
+		   </div>
+		
+		   
                     
 
-		  </div>
+		 
 		</div>
 	</div>
-	<div></div>
 </body>
 
 </html>

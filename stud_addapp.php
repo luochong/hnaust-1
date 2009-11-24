@@ -37,53 +37,48 @@ $studcode=$_SESSION["studcode"];
 $citem=new selitem();
 $showitem=$citem->seltype($itype);
 
-
 ?>
 
-
-
-          
-                    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>素质拓展学分认证系统>>首页</title>
-<link href="login.css" rel="stylesheet" type="text/css">
+<title>素质拓展学分认证系统>>项目申报</title>
+<link href="include/thickbox.css" rel="stylesheet" type="text/css"/>
+<link href="login.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <script type="text/javascript" src="include/jquery.js"></script>
- <script type="text/javascript" src="include/thickbox.js"></script>
- 
-
- <link rel="stylesheet" href="include/thickbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="include/thickbox.js"></script>
 <body>
 <div id="background">
 		<div id="headimg">
 		<div id="header"></div>
 		<div id="title">
 			<ul>
-					<li><a class="tit" href="stud_home.php" style="text-decoration:none">首&nbsp;页</a></li>
+				<li><a class="tit" href="stud_home.php" style="text-decoration:none">首&nbsp;页</a></li>
 				<li><a class="tit" href="stud_addapp.php" style="text-decoration:none">项目申报</a></li>
 				<li><a class="tit" href="#" style="text-decoration:none">资料下载</a></li>
 				<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
-			<li><a class="tit" href="index.php?ac=logout" style="text-decoration:none">退出系统</a></li>
+			<li><a class="tit" href="index.php" style="text-decoration:none">退出系统</a></li>
 			</ul>
 		</div>
 		</div>
 		<div class="clear"></div>
 		<div id="left">
 			<div id="left1">
-				<div id="denglu">学生登录</div>
+				<div id="denglu">学生信息</div>
 				<div id="user_login"><?php
              if(count($showinfo)!==0)
              {
               
                 ?>学号：<?php  echo $showinfo[0][1];?>
-                  姓名：<?php  echo $showinfo[0][2];?>
-                  性别：<?php  echo $showinfo[0][3];?>
-                  学院：<?php  echo $showinfo[0][4];?>
-                  入学年份：<?php  echo $showinfo[0][5];?>
-                  班级：<?php  echo $showinfo[0][6];?>
-                  申报截止日期：<?php  echo $showinfo[0][7];?>
+                  <br>姓名：<?php  echo $showinfo[0][2];?>
+                  <br>性别：<?php  echo $showinfo[0][3];?>
+                  <br>学院：<?php  echo $showinfo[0][4];?>
+                  <br>入学年份：<?php  echo $showinfo[0][5];?>
+                  <br>班级：<?php  echo $showinfo[0][6];?>
+                  <br>申报截止日期：<?php  echo $showinfo[0][7];?>
                      
           <?php    
              } 
@@ -99,8 +94,14 @@ $showitem=$citem->seltype($itype);
 		</div>
 		<div id="right">
 		  <div id="item">
-		  
-		    <form method="POST" name="form">
+		  		<div id="location">
+					<div id="location_tit">所在的位置：项目申报</div>
+					<div id="showtime">2009年11月20日 星期五</div>
+				</div>
+ <form method="POST" name="form">
+			  <div id="choose">
+					<div id="itemleibie"><span class="leibie">请选择你要申报项目的类别：</span>
+
                     <select name="itype" id="itype" onchange="location.href='stud_addapp.php?'+'itype='+this.options[this.selectedIndex].value;">
                     <option value="0">请选择</option>
                          <option value="1" <?php if($_GET['itype']=="1"){?> selected="selected"<?php }?>>求真 </option>
@@ -109,25 +110,30 @@ $showitem=$citem->seltype($itype);
                         <option value="4"  <?php if($_GET['itype']=="4"){?> selected="selected"<?php }?>>求实 </option>
                         <option value="5"  <?php if($_GET['itype']=="5"){?> selected="selected"<?php }?>>求特 </option>
                         <option value="6"  <?php if($_GET['itype']=="6"){?> selected="selected"<?php }?>>求强 </option>
-                    </select>
-                    <select name="iname" id="iname"  onchange="location.href='<?php echo $_SERVER["REQUEST_URI"];?>&'+'icode='+this.options[this.selectedIndex].value;"  >
+                    </select>					
+					</div>
+					
+					<div id="itemxianmu"><span class="leibie">请选择你要申报项目的名称：</span>
+					  <select name="iname" id="iname"  onchange="location.href='<?php echo $_SERVER["REQUEST_URI"];?>&'+'icode='+this.options[this.selectedIndex].value;"  >
                     <option value="0">请选择</option>
                    <?php  
               
                     for($i=0;$i<count($showitem);$i++)
                     {
                    //  print_r($showitem);
-                   ?> <option value="<?php echo $showitem[$i][1];?>" <?php if($_GET['icode']== $showitem[$i][1]){?> selected="selected"<?php }?> ><?php
+                   ?> <option value="<?php echo $showitem[$i][0];?>" <?php if($_GET['icode']== $showitem[$i][0]){?> selected="selected"<?php }?> >
+                   <?php
                       echo $showitem[$i][0];  
                       ?>    </option>
-                    
                     <?php 
                     } 
                     ?>
                 
                     </select>
-                    
-                      <select name="rank" onchange="location.href='<?php echo $_SERVER["REQUEST_URI"];?>&'+'irank='+this.options[this.selectedIndex].value;">
+					</div>
+					
+					<div id="itemdengji"><span class="leibie">请选择你要申报项目的级别：</span>
+					  <select name="rank" onchange="location.href='<?php echo $_SERVER["REQUEST_URI"];?>&'+'irank='+this.options[this.selectedIndex].value;">
                       <option >请选择</option>
                       
                       <?php if($_GET['icode']){?>
@@ -136,14 +142,19 @@ $showitem=$citem->seltype($itype);
                      <option value="3" <?php if($_GET['irank']=="3"){?> selected="selected"<?php }?>>市级奖</option>
                      <?php } ?>
                      </select>
-                    <a href="stud_confaddapp.php?keepThis=true&TB_iframe=true&height=300&width=500" title="确认提交申请" class="thickbox" ;><input type="submit" value="提交"></a>
-                    </form>
-                    
-
+					
+					</div>
+					
+					<div id="sub">
+						<a href="stud_confaddapp.php?keepThis=true&TB_iframe=true&height=300&width=500" title="确认提交申请" class="thickbox" ;><input type="submit" value=" 提 交 "></a>            
+					</div>
+			  </div>
+			 </form>
+		   
+		     
 		  </div>
 		</div>
 	</div>
-	<div></div>
 </body>
 
 </html>

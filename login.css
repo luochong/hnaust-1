@@ -19,6 +19,30 @@ a.info:hover{color:#6600FF}
 .display_c{
 	text-align:center;
 }
+.showtb1 {
+	border-collapse:collapse;
+	border:1px solid #C4E2FF;
+	background:#3399FF;
+	width:100%;
+}
+.showtb2 {
+	border-collapse:collapse;
+	border:1px solid #FFFFFF;
+	width:100%;
+}
+.showtd {
+	padding:2px 2px;
+	line-height:20px;
+	text-align:center;
+	border:1px solid #C4E2FF;
+}
+.showtd_x {
+	padding:2px 0px;
+	line-height:20px;
+	text-align:center;
+	border:1px solid #C4E2FF;
+	color:#FF0000;
+}
 #background {
 	margin:auto;
 	width:800px;
@@ -33,7 +57,7 @@ a.info:hover{color:#6600FF}
 }
 #header {
 	width:800px;
-	height:124px;
+	height:134px;
 	display:block;
 }
 #title {
@@ -72,11 +96,11 @@ a.info:hover{color:#6600FF}
 	display:block;
 }
 #denglu {
-	padding-top:15px;
+	padding-top:10px;
 	font-family:"微软雅黑";
 	text-align:center;
 	height:20px;
-	font-size:16px;
+	font-size:18px;
 }
 #user_login {
 	margin-top:20px;
@@ -176,32 +200,30 @@ a.info:hover{color:#6600FF}
 	display:block;
 }
 #itemleibie{
-	margin-top:40px;
+	margin-top:50px;
+	padding-left:130px;
 	height:30px;
-	text-align:center;
 	font-family:"微软雅黑";
 	display:block;
 }
 #itemxianmu{
-	margin-top:30px;
-	padding-left:20px;
+	margin-top:40px;
+	padding-left:130px;
 	height:30px;
 	font-family:"微软雅黑";
-	text-align:center;
 	display:block;
 }
 #itemdengji{
-	margin-top:30px;
-	padding-left:20px;
+	margin-top:40px;
+	padding-left:130px;
 	font-family:"微软雅黑";
 	height:30px;
-	text-align:center;
 	display:block;
 }
 #sub {
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:40px;
+	margin-top:50px;
 	width:40px;
 	height:40px;
 	display:block;
@@ -225,8 +247,11 @@ a.info:hover{color:#6600FF}
 	border:1px solid #0ff;	
 }
 #declare_info li{
+	margin-top:8px;
+	margin-left:70px;
 	height:50%;
-	width:50%;
+	width:35%;
+	list-style-type:square;
 	font-family:"微软雅黑";
 	float:left;
 }

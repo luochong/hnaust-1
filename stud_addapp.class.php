@@ -28,50 +28,59 @@
               $ttype=getItemType($itype);
              
                // echo $ttype;
-             $sql="select item_name,item_code from item_set where item_type='$ttype' " ;			//查询类型
-
+             $sql="select distinct item_name  from item_set  where item_type='$ttype'  " ;			//查询类型
+             
              $row=$this->executeQuery($sql);
-         //  print_r($row);
+        // print_r($row);
 	       	return $row;
           }
+   
           
-          public function insertapp($atype,$acode,$studno,$studcode,$showtime)
+          public function insertapp($atype,$acode,$studno,$studcode)
           {
                $ttype=getItemType($atype);
-               $trank=getRank($irank);
               
                  $this->setTableName("item_apply");
-              
-                 //echo $ttype;
-                 $data=array("app_item_type"=>$ttype,"app_item_code"=>$acode,"app_stud_no"=>$studno,"stud_orgcode"=>$studcode,"app_time"=>$showtime); 			//查询学号
-    			 $row=$this->insert($data);
-    		
-                 return $row;
-    		
+                  $data1=array("app_item_type"=>$ttype,"app_item_code"=>$acode,"app_stud_no"=>$studno,"stud_orgcode"=>$studcode); 			//
+    			 $row1=$this->select($data1);
+    			 //print_r($row1);
+               if(!$row1){
+    			  $istat="未审核";
+                 $data=array("app_item_type"=>$ttype,"app_item_code"=>$acode,"app_stud_no"=>$studno,"stud_orgcode"=>$studcode,"app_state"=>$istat); 			//查询学号
+    	  
+                 $row=$this->insert($data);
+    		echo "<script language=javascript >\n";	
+			echo "alert('提交成功')\n";
+			echo "history.go(-2)\n;";   //跳出框架 重定向到登录页面
+			echo "</script>\n";
+             
+               }
+                 else{echo "<script language=javascript >\n";	
+			echo "alert('提交项目已存在，请重新提交')\n";
+			echo "history.go(-2)\n;";   //跳出框架 重定向到登录页面
+			echo "</script>\n";
+                     
+                 }
           }
           public function finditem($itemcode)
           {
                  $this->setTableName("item_set");
                 // echo $itemcode;
-                 $data=array("item_code"=>$itemcode); 			//查询学号
+                 $data=array("item_code"=>$itemcode); 			//
     			 $row=$this->select($data);
                  return $row;
           }
-          public function setitem($atype,$iname,$irank)
+                public function setitem($atype,$iname,$irank)
           {
          
               $ttype=getItemType($atype);
               $trank=getRank($irank);
             
-              $sql="select item_code from item_set where item_type='$ttype' and item_rank='$trank' and item_name='$iname' " ;			//查询类型
+              $sql="select  item_code from item_set where item_type='$ttype' and item_rank='$trank' and item_name='$iname' " ;			//查询类型
               $row=$this->executeQuery($sql);
               //  print_r($row);
 	       	  return $row;
-             
-         //  print_r($row);
-	       
-    			 
-                
+        
           }
       } 
       
