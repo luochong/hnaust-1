@@ -5,6 +5,8 @@ require_once('itemsearch.class.php');
 $itemsearch = new ItemsearchAction();
 $itemsearch->run();
 $get = "s_no={$_GET['s_no']}&s_no={$_GET['s_name']}&i_code={$_GET['i_code']}&i_type={$_GET['i_type']}&i_state={$_GET['i_state']}&i_score={$_GET['i_score']}&i_org={$_GET['i_org']}&submit={$_GET['submit']}";
+
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -84,7 +86,7 @@ function $(id){
 			  		<option value="<?php echo $v[0]?>" <?php echo $_GET['i_score']==$v[0]?'selected':''?> ><?php echo $v[0]?></option>
 			  		<?php endforeach;?>
 	  	         </select>
-  	 		</td>
+  	 		 </td>
 	 </tr>
 	 <tr>
 			 <?php if($_SESSION['admin_super']==1){?><td width="80px"> 学院：</td>
@@ -97,13 +99,28 @@ function $(id){
 			 </select>
 			 </td>
 			 <?php }else{?>     <td width="80px">&nbsp;</td><td width="200px">&nbsp;</td>   <?php }?>
-			 <td width="80px"><input name="submit"  type="submit" value="查询" style="width:100px"  /></td><td></td>
+			 <td width="80px"><input name="submit"  type="submit" value="查询" style="width:100px"  /></td><td><input name="dataout"  type="submit" value="数据导出" style="width:100px"  /></td>
 	 </tr>
 	 </table>
 	
 	 </div>
   	 </form>
-  	 <?php if(isset($_GET['submit'])){?>
+  	 <?php if(isset($_GET['submit'])){
+  	 			if(isset($_GET['dataout'])){
+  	 					Header("Content-type:charset=utf-8");        
+						Header("Content-type:application/octet-stream");   
+						Header("Accept-Ranges:bytes");     
+						Header("Content-type:application/vnd.ms-excel");	
+						Header("Content-Disposition:filename=$admin_name-$stu_type-信息表.xls");
+  	 				?>
+					<html xmlns:o="urn:schemas-microsoft-com:office:office"
+			        xmlns:x="urn:schemas-microsoft-com:office:excel"
+			        xmlns="http://www.w3.org/TR/REC-html40">
+			  <head>
+			        <meta http-equiv=Content-Type content="text/html; charset=utf-8">    
+				<link type="text/css" rel="stylesheet" href="../css/table.css" media="screen" />
+			  </head>
+  	 			<?php }?>
   	 <div class="alltitle">
 	        <div  style="float:left; width:30px" ><input type="checkbox" /></div>
 	        <div style="float:left; width:100px">学号</div>
@@ -124,7 +141,7 @@ function $(id){
 $data = $itemsearch->getItemData();
 foreach ($data as $t){
 ?>
-        	  <tr align="center">
+          <tr align="center">
             <td width='25px'><input type="checkbox" name='app_id[]' value="<?php echo $t['app_id']?>" /></td>
         	<td width='90px'><?php echo $t['app_stud_no']?></td>
             <td width='60px'><?php echo $t['stud_name']?></td>
