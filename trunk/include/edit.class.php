@@ -13,7 +13,7 @@
  * */
 class editControl extends ControlBase {
 	private $_demo_dao;
-	/**/
+
 	public $content;
 	public $from_name;
 	
