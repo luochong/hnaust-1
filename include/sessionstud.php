@@ -18,7 +18,7 @@
 	
 		$nums  = mysql_num_rows($query);
 		$host = $_SERVER['HTTP_HOST'];
-		sleep(1);   
+		//sleep(1);   
 		
 		if($nums==0)
 		{

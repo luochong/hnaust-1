@@ -148,7 +148,12 @@ $finditem=$citem->finditem($itenc);
 					</div>
 					
 					<div id="sub">
+					   <?php if($_GET['irank']==null||$_GET['icode']==null||$_GET['itype']==null){ ?>
+					      <input type="submit" onclick="return alert('未选择')" value=" 提 交 ">
+					      <?php } 
+					      else{ ?>
 						<a href="stud_confaddapp.php?keepThis=true&TB_iframe=true&height=300&width=500" title="确认提交申请" class="thickbox" ;><input type="submit" value=" 提 交 "></a>            
+					     <?php }　?>   
 					</div>
 			  </div>
 			 </form>
