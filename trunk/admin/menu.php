@@ -47,7 +47,7 @@ function hide(_sId){
 	?>  
 	  <div class="hand" onclick="hide('hideMenuFunc1')">新闻管理</div>
 	  <div id="hideMenuFunc1">
-	      <div><a href="deptgl.php" target="main">部门管理</a> | <a href="deptadd.php" target="main">添加部门</a></div>
+	      <div><a href="news/news_write.php" target="main">发布新闻</a> | <a href="news/news_manger.php" target="main">管理</a></div>
 		  </div><br />
 	<?php
 	}
@@ -57,10 +57,10 @@ function hide(_sId){
 	?> 
 	  <div class="hand" onclick="hide('hideMenuFunc0')">系统管理</div>
 	  <div id="hideMenuFunc0">
-	      <div><a href="syst/syst_adduser.php" target="main">添加管理员</a> | <a href="syst/syst_mangeruser.php" target="main">管理</a></div>
-		  <div><a href="syst/syst_addorg.php" target="main">添加机构</a> &nbsp; | <a href="syst/syst_mangerorg.php" target="main">管理</a></div>
-		  <div><a href="syst/syst_additem.php" target="main">添加项目</a> &nbsp; | <a href="syst/syst_mangeritem.php" target="main">管理</a></div>
-		  <div><a href="syst/syst_upload.php" target="main">上传文件</a> &nbsp; | <a href="syst/syst_mangerfile.php" target="main">管理</a> </div>
+	      <div><a href="syst/syst_adduser.php" target="main">添加管理员</a> |&nbsp; <a href="syst/syst_mangeruser.php" target="main">管理</a></div>
+		  <div><a href="syst/syst_addorg.php" target="main">添加机构</a> &nbsp; | &nbsp;<a href="syst/syst_mangerorg.php" target="main">管理</a></div>
+		  <div><a href="syst/syst_additem.php" target="main">添加项目</a> &nbsp; | &nbsp;<a href="syst/syst_mangeritem.php" target="main">管理</a></div>
+		  <div><a href="syst/syst_upload.php" target="main">上传文件</a> &nbsp; | &nbsp;<a href="syst/syst_mangerfile.php" target="main">管理</a> </div>
 	  </div><br />
 	<?php
 	}
