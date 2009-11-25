@@ -143,7 +143,7 @@ $tongji = new Tongji();
                     $show->page_list($studno);
                  }
                  else 
-                 {echo "你还未申请";} 
+                 {echo "你还未申请!";} 
 ?>
 					</div>
 			 	</div>

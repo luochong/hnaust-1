@@ -94,9 +94,9 @@ $showinfo=$show->showstud($studno);
 				  <div id="home_display_com">
 						<div id="passwordform">
 							
-			<form method="POST" name="form" style="padding-top:60px" >
-                旧密码&nbsp;&nbsp;<input type="password" name="oldpwd"><br />
-                <br>新密码&nbsp;&nbsp;<input type="password" name="newpwd"><br />
+			<form method="POST" name="form" style="padding-top:60px" class="zhiti">
+                旧&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;<input type="password" name="oldpwd"><br />
+                <br>新&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;<input type="password" name="newpwd"><br />
                 <br>确认新密码&nbsp;&nbsp;<input type="password" name="confpwd"><br />
               <?php 
           
