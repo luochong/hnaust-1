@@ -128,13 +128,13 @@ $tongji = new Tongji();
            ?> 
                <table class="showtb2">
                      <tr>
-                     	<td class="showtd" width="8%">求真</td>
+                     	<td class="showtd" width="8%"><?php echo   $itemdetail[0][$n][1];?></td>
                          <td class="showtd" width="15%"><?php echo   $itemdetail[0][$n][2];?></td>
                          <td class="showtd" width="30%"><?php echo   $itemdetail[0][$n][3];?></td>
                          <td class="showtd" width="13%"><?php echo   $itemdetail[0][$n][4];?></td>
                          <td class="showtd" width="8%"><?php echo   $itemdetail[0][$n][5];?></td>
-                         <td class="showtd" width="17%"><?php echo   $showitem[$n][4];?></td>
-                         <td class="showtd_x">×</td>
+                         <td class="showtd" width="17%"><?php echo   getItemState($showitem[$n][4]);?></td>
+                         <td class="showtd_x"><a onclick="return confirm('确认是否删除？')" href="stud_homedel.class.php?code=<?php echo   $itemdetail[0][$n][2];?>">×</a></td>
                      </tr>
                    </table>       
                     <?php           

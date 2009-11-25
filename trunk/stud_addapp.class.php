@@ -45,7 +45,7 @@
     			 $row1=$this->select($data1);
     			 //print_r($row1);
                if(!$row1){
-    			  $istat="未审核";
+    			  $istat="0";
                  $data=array("app_item_type"=>$ttype,"app_item_code"=>$acode,"app_stud_no"=>$studno,"stud_orgcode"=>$studcode,"app_state"=>$istat); 			//查询学号
     	  
                  $row=$this->insert($data);

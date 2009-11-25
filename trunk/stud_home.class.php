@@ -18,7 +18,7 @@
 
 
        require_once("include/mysqldao.php");	
-      define(PageNum,10);
+      define(PageNum,9);
          class stud extends MysqlDao_b
          {
              public $itemcode;
