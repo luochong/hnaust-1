@@ -98,7 +98,7 @@ $showinfo=$show->showstud($studno);
                 旧&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;<input type="password" name="oldpwd"><br />
                 <br>新&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;<input type="password" name="newpwd"><br />
                 <br>确认新密码&nbsp;&nbsp;<input type="password" name="confpwd"><br /><br>
-                <p class="zhiti1">
+                <p class="zhiti2">
               <?php 
           
                 if($_POST['oldpwd']!==null)
