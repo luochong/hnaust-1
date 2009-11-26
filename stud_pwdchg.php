@@ -97,7 +97,8 @@ $showinfo=$show->showstud($studno);
 			<form method="POST" name="form" style="padding-top:60px" class="zhiti">
                 旧&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;<input type="password" name="oldpwd"><br />
                 <br>新&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;<input type="password" name="newpwd"><br />
-                <br>确认新密码&nbsp;&nbsp;<input type="password" name="confpwd"><br />
+                <br>确认新密码&nbsp;&nbsp;<input type="password" name="confpwd"><br /><br>
+                <p class="zhiti1">
               <?php 
           
                 if($_POST['oldpwd']!==null)
@@ -116,7 +117,8 @@ $showinfo=$show->showstud($studno);
                 }  
                  }
                 ?>
-                <br><br><input style="margin-left:37%" type="submit"  value=" 确 认 ">
+                </p>
+                <br><input style="margin-left:37%" type="submit"  value=" 确 认 ">
                 
                     </form>
 						</div>
