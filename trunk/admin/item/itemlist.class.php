@@ -2,7 +2,7 @@
 include_once("../../include/mysqldao.class.php");
 require_once("../../include/function.include.php");
 /**
- * 后台用户登录
+ * 后台项目列表
  * luochong 2009 11
  *
  */
