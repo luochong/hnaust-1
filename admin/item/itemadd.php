@@ -17,7 +17,7 @@ $action->run();
 
 <link href="../css/stat.css" type=text/css rel=stylesheet />
 </head>
-<body onLoad="return loadb();">
+<body>
  <div class="allRoundedCorner">
      <b class="rtop">
      <b class="r1"></b>
@@ -30,7 +30,7 @@ $action->run();
 	  	  <div class="right"><a href='body.php'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
-  	 <form id="form1" name="form1" method="post" action="itemadd.php?ac=add" onsubmit="return checkdata();">
+  	 <form id="form1" name="form1" method="post" action="itemadd.php?ac=add">
       <div class="alltitle">项目申报</div>
 		  
 	  <div id="allcontent">

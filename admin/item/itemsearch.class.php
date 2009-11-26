@@ -1,7 +1,7 @@
 <?php 
 include_once("../../include/mysqldao.class.php");
 /**
- * 后台用户登录
+ * 后台用户项目查询
  * luochong 2009 11
  *
  */

@@ -47,7 +47,7 @@ function hide(_sId){
 	?>  
 	  <div class="hand" onclick="hide('hideMenuFunc1')">新闻管理</div>
 	  <div id="hideMenuFunc1">
-	      <div><a href="news/news_write.php" target="main">发布新闻</a> | <a href="news/news_manger.php" target="main">管理</a></div>
+	      <div><a href="news/newsadd.php" target="main">发布新闻</a> | <a href="news/news_manger.php" target="main">管理</a></div>
 		  </div><br />
 	<?php
 	}
