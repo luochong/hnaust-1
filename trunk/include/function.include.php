@@ -43,3 +43,10 @@ function getRank($irank)
        	           
                }
 }
+
+
+function fiterString($str){
+	
+	return htmlspecialchars_decode($str);
+	
+}
