@@ -137,7 +137,7 @@ $tongji = new Tongji();
                          <td class="showtd_x"><a onclick="return confirm('确认是否删除？')" href="stud_homedel.class.php?code=<?php echo   $itemdetail[0][$n][2];?>">×</a></td>
                      </tr>
                    </table>
-                   <div class="zhiti1">       
+                   <p class="zhiti1">       
                     <?php           
          
                    }
@@ -146,7 +146,7 @@ $tongji = new Tongji();
                  else 
                  {echo "你还未申请!";} 
 					?>
-					</div>
+					</p>
 					</div>
 			 	</div>
 		  <div id="declare_info">
