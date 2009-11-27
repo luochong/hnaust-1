@@ -50,3 +50,10 @@ function fiterString($str){
 	return htmlspecialchars_decode($str);
 	
 }
+function getNewsState($id){
+	  switch ($id)
+               {
+                 	case '1':return "已发布";break;
+                  	case '0':return "未发布";break;
+               }
+}
