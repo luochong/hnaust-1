@@ -6,7 +6,7 @@ require_once("../../include/function.include.php");
  * luochong 2009 11
  *
  */
-class NewsAddAction extends MysqlDao {
+class NoticAddAction extends MysqlDao {
 	
 	public $error_message= '';
 	public function run(){
@@ -18,11 +18,11 @@ class NewsAddAction extends MysqlDao {
 		
 		$id = intval($_GET['id']);
 		if($id) {
-			$this->setTableName('news');
+			$this->setTableName('notic');
 			if($_SESSION['admin_super'] == 1){
-				$data = $this->selectA(array('news_id'=>$id));
+				$data = $this->selectA(array('notic_id'=>$id));
 			}else{
-				$data = $this->selectA(array('news_id'=>$id,'news_user'=>$_SESSION['admin_id']));
+				$data = $this->selectA(array('notic_id'=>$id,'notic_user'=>$_SESSION['admin_id']));
 			}
 			return $data[0];
 		}else 
@@ -30,21 +30,19 @@ class NewsAddAction extends MysqlDao {
 	}
 	public function add(){
 		$id = intval($_GET['id']);
-		$data['news_title'] = $_POST['n_title'];
-		$data['news_state'] = 0;
-		$data['news_user']  = $_SESSION['admin_id'];
-		$data['news_time']  = getNowDate(); 
-		$data['news_body']  = $_POST['news_content'];
-		$data['news_author'] = $_POST['n_autor'];
+		$data['notic_title'] = $_POST['n_title'];
+		$data['notic_user']  = $_SESSION['admin_id'];
+		$data['notic_time']  = getNowDate(); 
+		$data['notic_body']  = $_POST['notic_content'];
 		if($id){
-			$this->setTableName('news');
-			$this->update($data,array('news_id'=>$id));
+			$this->setTableName('notic');
+			$this->update($data,array('notic_id'=>$id));
 		}else {
-			$this->setTableName('news');
+			$this->setTableName('notic');
 			$this->insert($data);
 			$id = $this->getInsertId();
 		}
-		header('Location: newslist.php');
+		header('Location: noticlist.php');
 	}
 	
 
