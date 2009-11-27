@@ -28,7 +28,7 @@ function $(id){
     </b>
      <div id="allbox">
       <h3><div class="left">新闻列表</div>
-	  	  <div class="right"><a href='../body.php'>返 回</a></div>
+	  	 <div class="right"><a href='javascript:history.back();'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
 	

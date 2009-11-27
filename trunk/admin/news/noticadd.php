@@ -1,11 +1,17 @@
 <?php 
 include_once ("../../include/session.class.php");
 include_once("../../include/edit.class.php");
-require_once('newsadd.class.php');
-$newsadd = new NewsAddAction();
-$newsadd->run();
+require_once('noticadd.class.php');
+if($_SESSION['admin_super'] != 1){
+						echo "<script language=javascript>\n";
+					echo "location.assign('".APP_ROOT."/admin/login.php')\n";
+					echo "</script>\n";
+					exit;
+}
+$noticadd = new NoticAddAction();
+$noticadd->run();
 $edit = new editControl();
-$edit->from_name='news_content';
+$edit->from_name='notic_content';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47,24 +53,23 @@ function checkdata(){
     </b>
      <div id="allbox">
       <h3><div class="left">湖南农业大学 </div>
-	  	  <div class="right"><a href='body.php'>返 回</a></div>
+	  	  <div class="right"><a href='javascript:history.back();'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
-  	 <form id="form1" name="form1" method="post" action="newsadd.php?ac=add<?php if(isset($_GET['id'])) echo '&id=',$_GET['id'];?>" onsubmit="return checkdata();">
-      <div class="alltitle">新闻发布</div>
-      <?php $news = $newsadd->getData();?>
+  	 <form id="form1" name="form1" method="post" action="noticadd.php?ac=add<?php if(isset($_GET['id'])) echo '&id=',$_GET['id'];?>" onsubmit="return checkdata();">
+      <div class="alltitle">通知发布</div>
+      <?php $notic = $noticadd->getData();?>
       	<p style="color:#FF0000"><?php echo $action->error_message?></p>
 		<div style="margin:10px 30px">
-		新闻标题：<input name="n_title" id='n_title' value="<?php echo $news['news_title']?>" size="80" /><br />
+		通知标题：<input name="n_title" id='n_title' value="<?php echo $notic['notic_title']?>" size="80" /><br />
 		<br />
-		新闻作者：<input name="n_autor" id="n_autor" value="<?php echo $news['news_author']?>" size="80" /><br />
-		<br />
+		
 		</div>
 	
 		
       <div style="margin:5px 30px">
-      <?php $edit->content = $news['news_body'] ;?>
-      新闻内容：
+      <?php $edit->content = $notic['notic_body'] ;?>
+      通知内容：
 		<?php $edit->display(); ?>
 	  </div><br />
 	  <div style="margin:10px 30px;" align="right"><input type="submit" name="submit"  value="   提交   " /></div>
