@@ -36,7 +36,7 @@ function hide(_sId){
 	<div class="hand" onclick="hide('hideMenuFunc6')">项目管理</div>
 	  <div id="hideMenuFunc6">
 	       <div><a href="item/itemlist.php" target="main">项目列表[审核]</a></div>
-	  	  <div><a href="stud/stud_dangmgf.php" target="main">添加项目</a></div>
+	  	  <div><a href="item/itemadd.php" target="main">添加项目</a></div>
 		  <div><a href="item/itemsearch.php" target="main">项目查询</a></div>
 	  </div><br />
 	<?php
@@ -47,7 +47,8 @@ function hide(_sId){
 	?>  
 	  <div class="hand" onclick="hide('hideMenuFunc1')">新闻管理</div>
 	  <div id="hideMenuFunc1">
-	      <div><a href="news/newsadd.php" target="main">发布新闻</a> | <a href="news/news_manger.php" target="main">管理</a></div>
+	      <div><a href="news/newsadd.php" target="main">发布新闻</a> | <a href="news/newslist.php" target="main">管理</a></div>
+	       <?php if($_SESSION['admin_super'] == 1) {?><div><a href="news/noticadd.php" target="main">发布通知</a> | <a href="news/noticlist.php" target="main">管理</a></div><?php }?>
 		  </div><br />
 	<?php
 	}

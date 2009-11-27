@@ -32,7 +32,7 @@ function $(id){
     </b>
      <div id="allbox">
       <h3><div class="left">项目查询</div>
-	  	  <div class="right"><a href='../body.php'>返 回</a></div>
+	  	  <div class="right"><a href='javascript:history.back();'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
 	  <form action="itemsearch.php" name='sform' method="GET" style="margin:0;padding:0">
