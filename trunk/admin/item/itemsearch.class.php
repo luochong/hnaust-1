@@ -114,7 +114,7 @@ class ItemsearchAction extends MysqlDao {
 			$sql = 'select count(*) from '.end(explode('from',$this->sql));
 			$num = current(current($this->executeQuery($sql)));
 			$page = ceil($num/20);
-			$nextpage = $this->pn+1<$page?$this->pn+1:$this->pn;
+			$nextpage = $this->pn+1<=$page?$this->pn+1:$this->pn;
 			$str = "共$num记录&nbsp;第$this->pn页/共$page页&nbsp;<a href='itemsearch.php?pn=$nextpage&$get'>下一页</a>&nbsp;<a href='itemsearch.php?pn=$page&$get'>末页</a>";
 			$str .="&nbsp;&nbsp;&nbsp;&nbsp;<select name='select' onchange=\"location.href='itemsearch.php?pn='+this.options[this.selectedIndex].value+'&$get' \">";
 			for($i=1;$i<$page+1;$i++){

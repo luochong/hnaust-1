@@ -50,18 +50,20 @@ function checkdata(){
 	  	  <div class="right"><a href='body.php'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
-  	 <form id="form1" name="form1" method="post" action="newsadd.php?ac=add" onsubmit="return checkdata();">
+  	 <form id="form1" name="form1" method="post" action="newsadd.php?ac=add<?php if(isset($_GET['id'])) echo '&id=',$_GET['id'];?>" onsubmit="return checkdata();">
       <div class="alltitle">新闻发布</div>
+      <?php $news = $newsadd->getData();?>
       	<p style="color:#FF0000"><?php echo $action->error_message?></p>
 		<div style="margin:10px 30px">
-		新闻标题：<input name="n_title" id='n_title' value="" size="80" /><br />
+		新闻标题：<input name="n_title" id='n_title' value="<?php echo $news['news_title']?>" size="80" /><br />
 		<br />
-		新闻作者：<input name="n_autor" id="n_autor" size="80" /><br />
+		新闻作者：<input name="n_autor" id="n_autor" value="<?php echo $news['news_author']?>" size="80" /><br />
 		<br />
 		</div>
 	
 		
       <div style="margin:5px 30px">
+      <?php $edit->content = $news['news_body'] ;?>
       新闻内容：
 		<?php $edit->display(); ?>
 	  </div><br />
