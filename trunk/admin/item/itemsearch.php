@@ -5,9 +5,69 @@ require_once('itemsearch.class.php');
 $itemsearch = new ItemsearchAction();
 $itemsearch->run();
 $get = "s_no={$_GET['s_no']}&s_no={$_GET['s_name']}&i_code={$_GET['i_code']}&i_type={$_GET['i_type']}&i_state={$_GET['i_state']}&i_score={$_GET['i_score']}&i_org={$_GET['i_org']}&submit={$_GET['submit']}";
+if(isset($_GET['dataout'])){
+	 	$data = $itemsearch->getItemData();
+		Header("Content-type:charset=utf-8");        
+		Header("Content-type:application/octet-stream");   
+		Header("Accept-Ranges:bytes");     
+		Header("Content-type:application/vnd.ms-excel");	
+		Header("Content-Disposition:filename=项目审批-信息表.xls");
+	 ?>
+	 <html xmlns:o="urn:schemas-microsoft-com:office:office"
+        xmlns:x="urn:schemas-microsoft-com:office:excel"
+        xmlns="http://www.w3.org/TR/REC-html40">
+	  <head>
+	        <meta http-equiv=Content-Type content="text/html; charset=utf-8">    
+			<!--<link type="text/css" rel="stylesheet" href="../css/table.css" media="screen" />-->
+	  </head>
+	  <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
+    <tr>
+      <td colspan="11" rowspan="2"  ><h1 style="text-align:center">项目结果查询信息表</h1></td>
+    </tr>
+    <tr></tr>
+    <tr align="center" color="blue" border>
+     
+      <td>项目id</td>	
+      <td>学号</td>	  
+	  <td>姓名</td>	  
+	  <td>班级</td>
+      <td>项目编码</td>
+      <td>申请时间</td>
+      <td>申请状态</td>
+ 	  <td>项目类型</td>  
+	  <td>项目名称</td>
+	  <td>项目类型</td>
+	  <td>项目学分</td>
+	</tr>
+      
+	<?php 
+	for($i=0;$i<count($data);$i++)
+	{
+	?>	
+     <tr>
+      <td>&nbsp;<?php echo $data[$i]['app_id'];?></td>
+      <td>&nbsp;<?php echo $data[$i]['app_stud_no'];?></td>
+      <td>&nbsp;<?php echo $data[$i]['stud_name'];?></td>
+      <td>&nbsp;<?php echo $data[$i]['stud_class'];?></td>
+      <td>&nbsp;<?php echo $data[$i]['app_item_code'];?></td> 
+      <td>&nbsp;<?php echo $data[$i]['app_time'];?></td>
+      <td>&nbsp;<?php echo $data[$i]['app_state'];?></td>
+      <td>&nbsp;<?php echo $data[$i]['app_item_type'];?></td>
+      <td>&nbsp;<?php echo $data[$i]['item_name'];?></td>
+      <td>&nbsp;<?php echo $data[$i]['item_rank'];?></td>
+      <td>&nbsp;<?php echo $data[$i]['item_score'];?></td>
+    </tr>	
+	<?php
+	exit();
+	}
+	?>
+  </table>
+  </html>
+<?php }?>   
 
 
-?>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -105,22 +165,8 @@ function $(id){
 	
 	 </div>
   	 </form>
-  	 <?php if(isset($_GET['submit'])){
-  	 			if(isset($_GET['dataout'])){
-  	 					Header("Content-type:charset=utf-8");        
-						Header("Content-type:application/octet-stream");   
-						Header("Accept-Ranges:bytes");     
-						Header("Content-type:application/vnd.ms-excel");	
-						Header("Content-Disposition:filename=$admin_name-$stu_type-信息表.xls");
-  	 				?>
-					<html xmlns:o="urn:schemas-microsoft-com:office:office"
-			        xmlns:x="urn:schemas-microsoft-com:office:excel"
-			        xmlns="http://www.w3.org/TR/REC-html40">
-			  <head>
-			        <meta http-equiv=Content-Type content="text/html; charset=utf-8">    
-				<link type="text/css" rel="stylesheet" href="../css/table.css" media="screen" />
-			  </head>
-  	 			<?php }?>
+  	 <?php if(isset($_GET['submit'])){?>
+  	 			
   	 <div class="alltitle">
 	        <div  style="float:left; width:30px" ><input type="checkbox" /></div>
 	        <div style="float:left; width:100px">学号</div>
@@ -177,7 +223,6 @@ foreach ($data as $t){
 		</form>
 		</div>
 		</div>
-	 
 	 </div>
    	  <b class="rbottom">
          <b class="r4"></b>
@@ -185,13 +230,12 @@ foreach ($data as $t){
          <b class="r2"></b>
          <b class="r1"></b>
       </b>
+     
+      
   </div>
-
-
-
 </body>
 </html>
-
+	 
 
 
 
