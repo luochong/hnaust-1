@@ -109,10 +109,16 @@ $finditem=$citem->finditem($itenc);
                          <option value="1" <?php if($_GET['itype']=="1"){?> selected="selected"<?php }?>>求真 </option>
                         <option value="2"  <?php if($_GET['itype']=="2"){?> selected="selected"<?php }?>>求善 </option>
                         <option value="3"  <?php if($_GET['itype']=="3"){?> selected="selected"<?php }?>>求美 </option>
-                        <option value="4"  <?php if($_GET['itype']=="4"){?> selected="selected"<?php }?>>求实 </option>
-                        <option value="5"  <?php if($_GET['itype']=="5"){?> selected="selected"<?php }?>>求特 </option>
+                        <option value="4"  >求实 </option>
+                        <option value="5"  >求特 </option>
                         <option value="6"  <?php if($_GET['itype']=="6"){?> selected="selected"<?php }?>>求强 </option>
-                    </select>					
+                    </select>
+                    <br />	
+                    <?php if($_GET['itype']=="4"||$_GET['itype']=="5")
+                            {
+                                echo "求实和求特类别由学院直接提交，不允许学生申请";
+                            }
+                      ?>				
 					</div>
 					
 					<div id="itemxianmu"><span class="leibie">请选择你要申报项目的名称：</span>
