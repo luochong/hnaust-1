@@ -108,9 +108,9 @@ $showinfo=$show->showstud($studno);
                    elseif($_POST['newpwd']==null)
                     echo "新密码不能为空";
                     
-                   elseif(isset($_POST['submit'])||$_POST['newpwd']!==$_POST['confpwd'])
+                   elseif($_POST['newpwd']!==null&&$_POST['confpwd']!==null&&$_POST['newpwd']!==$_POST['confpwd'])
                       echo "密码与确认密码不一致";
-                elseif($_POST['oldpwd']!==null||$_POST['newpwd']==$_POST['confpwd']||$_POST['oldpwd']!==$showstudb[0][8])
+                elseif($_POST['oldpwd']!==null&&$_POST['newpwd']==$_POST['confpwd']&&$_POST['oldpwd']==$showstudb[0][8])
                 {
                     $pwdchag->pwdupdate($studno,$_POST['newpwd']);
                     echo "密码修改成功";
