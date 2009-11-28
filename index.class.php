@@ -55,9 +55,9 @@ class LoginAction extends MysqlDao {
 		    $this->error_message ='还未登录！';
 		}*/
 		else{
-				$_SESSION["studno"] = $rows[0]['stud_no'];
-				$_SESSION["studpwd"] = $rows[0]['stud_password'];
-				$_SESSION["studcode"] = $rows[0]['stud_orgcode'];
+				$_SESSION["studno"] = $rows[0]['stud_no'];                   //学号存入SESSION
+				$_SESSION["studpwd"] = $rows[0]['stud_password'];            //密码存入SESSION
+				$_SESSION["studcode"] = $rows[0]['stud_orgcode'];            //组织机构存入SESSION
 			
 				echo "<script>document.location='stud_home.php'</script>";
 			  //  header('Location: index.php');

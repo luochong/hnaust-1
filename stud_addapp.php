@@ -37,8 +37,8 @@ $studcode=$_SESSION["studcode"];
 $citem=new selitem();
 $showitem=$citem->seltype($itype);
 $itemcode=$citem->setitem($itype,$iname,$irank);
-  $itenc=$itemcode[0][0];
-$finditem=$citem->finditem($itenc);
+
+$finditem=$citem->finditem($itype,$iname);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -144,17 +144,22 @@ $finditem=$citem->finditem($itenc);
 					  <select name="rank" onchange="location.href='<?php echo $_SERVER["REQUEST_URI"];?>&'+'irank='+this.options[this.selectedIndex].value;">
                       <option >请选择</option>
                       
-                      <?php if($_GET['icode']){?>
+                      <?php 
+                     // print_r($finditem);
+                      if($_GET['icode']&&$finditem[0][0]!=="无"){?>
                      <option value="1" <?php if($_GET['irank']=="1"){?> selected="selected"<?php }?>>国家奖</option>
                      <option value="2" <?php if($_GET['irank']=="2"){?> selected="selected"<?php }?>>省级奖</option>
                      <option value="3" <?php if($_GET['irank']=="3"){?> selected="selected"<?php }?>>市级奖</option>
+                     <?php }
+                     else{ ?>
+                     <option value="4" selected>无级别</option>
                      <?php } ?>
                      </select>
 					
 					</div>
 					
 					<div id="sub">
-					   <?php if($_GET['irank']==null||$_GET['icode']==null||$_GET['itype']==null){ ?>
+					   <?php if($_GET['icode']==null||$_GET['itype']==null){ ?>
 					      <input type="submit" onclick="return alert('未选择')" value=" 提 交 ">
 					      <?php } 
 					      else{ ?>

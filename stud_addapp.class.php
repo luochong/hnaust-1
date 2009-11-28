@@ -62,13 +62,14 @@
                      
                  }
           }
-          public function finditem($itemcode)
+          public function finditem($atype,$iname)
           {
-                 $this->setTableName("item_set");
-                // echo $itemcode;
-                 $data=array("item_code"=>$itemcode); 			//
-    			 $row=$this->select($data);
-                 return $row;
+               $ttype=getItemType($atype);
+         
+                 $sql="select  item_rank from item_set where item_type='$ttype'  and item_name='$iname' " ;			//查询类型
+              $row=$this->executeQuery($sql);
+              // print_r($row);
+	       	  return $row;
           }
                 public function setitem($atype,$iname,$irank)
           {
