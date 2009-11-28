@@ -49,7 +49,10 @@ $insertok=$citem->insertapp($itype,$itenc,$studno,$studcode,$showtime);  //写�
 </head>
 <body>
  <div id="tijiao"  class="zhiti">
-	 <form method="POST">
+             是否确认提交您所选择的项目
+	  <br />	 
+ <form method="POST">
+	 
 	 <div id="tj_leibie">项目类别：
 	<?php    switch ($itype)
 	               {
