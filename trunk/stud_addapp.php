@@ -74,13 +74,13 @@ $finditem=$citem->finditem($itype,$iname);
              if(count($showinfo)!==0)
              {
               
-                ?>学号：<?php  echo $showinfo[0][1];?>
-                  <br>姓名：<?php  echo $showinfo[0][2];?>
-                  <br>性别：<?php  echo $showinfo[0][3];?>
-                  <br>学院：<?php  echo $showinfo[0][4];?>
-                  <br>入学年份：<?php  echo $showinfo[0][5];?>
-                  <br>班级：<?php  echo $showinfo[0][6];?>
-                  <br>申报截止日期：<?php  echo $showinfo[0][7];?>
+                ?>学号：<?php  echo $showinfo[0]['stud_no'];?>
+                  <br>姓名：<?php  echo $showinfo[0]['stud_name'];?>
+                  <br>性别：<?php  echo $showinfo[0]['stud_sex'];?>
+                  <br>学院：<?php  echo $showinfo[0]['stud_college'];?>
+                  <br>入学年份：<?php  echo $showinfo[0]['stud_grade'];?>
+                  <br>班级：<?php  echo $showinfo[0]['stud_class'];?>
+                  <br>申报截止日期：<?php  echo $showinfo[0]['stud_deadline'];?>
                      
           <?php    
              } 
@@ -104,7 +104,7 @@ $finditem=$citem->finditem($itype,$iname);
 			  <div id="choose">
 			  <?php 
             
-			  if(getPermittime()>$showinfo[0][5]*100+100&&getPermittime()<$showinfo[0][7]*100+3)
+			  if(getPermittime()>$showinfo[0]['stud_grade']*100+100&&getPermittime()<$showinfo[0]['stud_deadline']*100+3)
 			  {?>
 			  
 			  
@@ -135,9 +135,9 @@ $finditem=$citem->finditem($itype,$iname);
                     for($i=0;$i<count($showitem);$i++)
                     {
                    //  print_r($showitem);
-                   ?> <option value="<?php echo $showitem[$i][0];?>" <?php if($_GET['icode']== $showitem[$i][0]){?> selected="selected"<?php }?> >
+                   ?> <option value="<?php echo $showitem[$i]['stud_no'];?>" <?php if($_GET['icode']== $showitem[$i]['stud_no']){?> selected="selected"<?php }?> >
                    <?php
-                      echo $showitem[$i][0];  
+                      echo $showitem[$i]['stud_no'];  
                       ?>    </option>
                     <?php 
                     } 
@@ -152,7 +152,7 @@ $finditem=$citem->finditem($itype,$iname);
                       
                       <?php 
                      // print_r($finditem);
-                      if($_GET['icode']&&$finditem[0][0]!=="无"){?>
+                      if($_GET['icode']&&$finditem[0]['item_rank']!=="无"){?>
                      <option value="1" <?php if($_GET['irank']=="1"){?> selected="selected"<?php }?>>国家奖</option>
                      <option value="2" <?php if($_GET['irank']=="2"){?> selected="selected"<?php }?>>省级奖</option>
                      <option value="3" <?php if($_GET['irank']=="3"){?> selected="selected"<?php }?>>市级奖</option>

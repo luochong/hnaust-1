@@ -32,15 +32,15 @@ $newsshow=$news->getnewsinfo($pageno);
 for($i=0;$i<count($newsshow);$i++ )
 {
    ?>
-   <a href="newscontent.php?newsid=<?php echo   $newsshow[$i][0]; ?>"><?php echo   $newsshow[$i][1]; ?></a>
+   <a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><?php echo   $newsshow[$i]['news_title']; ?></a>
 
 
 <?php
-       echo   $newsshow[$i][3]; 
+       echo   $newsshow[$i]['news_body']; 
 ?>
 
 <?php
-       echo   $newsshow[$i][4]; 
+       echo   $newsshow[$i]['news_time']; 
        echo "<br />";
 }
 

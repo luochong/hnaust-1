@@ -31,7 +31,7 @@ $trank=getRank($irank);
 if($_POST['submit']){
 // echo $showtime=date("Y-d-m H:i:s");
   $itemcode=$citem->setitem($itype,$iname,$irank);
-  $itenc=$itemcode[0][0];
+  $itenc=$itemcode[0]['item_code'];
   //echo $itenc;
  // print_r($itemcode);
 $insertok=$citem->insertapp($itype,$itenc,$studno,$studcode,$showtime);  //写入表

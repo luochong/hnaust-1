@@ -17,9 +17,9 @@
 ///	    2009/11/16      1.1    	龙首成      	  学生管理
 
 
-       require_once("include/mysqldao.php");	
+       require_once("include/mysqldao.class.php");	
       define(PageNum,9);
-         class stud extends MysqlDao_b
+         class stud extends MysqlDao
          {
              public $itemcode;
              public function showstud($studno)
@@ -28,7 +28,7 @@
      
              $this->setTableName("stud_baseinfo");
              $data=array("stud_no"=>$studno); 			//查询学号
-			 $row=$this->select($data);
+			 $row=$this->selectA($data);
              return $row;
              }
              
@@ -37,7 +37,7 @@
                  $this->setTableName("item_apply");
                  $page_no=$pageno-1;
                  $data=array("app_stud_no"=>$studno);
-                 $row=$this->select($data,PageNum,$page_no);
+                 $row=$this->selectA($data,PageNum,$page_no);
     
                  return $row;
              }
@@ -51,7 +51,7 @@
                    $data[]=array("item_code"=>$itemcode[$i]);
               
           
-                 $row[]=$this->select($data,PageNum,$page_no,null);
+                 $row[]=$this->selectA($data,PageNum,$page_no,null);
                   }
               //  print_r($row); 
                  return $row;
@@ -64,7 +64,7 @@
 		    $http_str = $_SERVER['QUERY_STRING'];  //url中
 			$this->setTableName("item_apply");
 			   $data=array("app_stud_no"=>$studno);
-                 $row=$this->select($data);
+                 $row=$this->selectA($data);
                  $nums=count($row);
                
 			

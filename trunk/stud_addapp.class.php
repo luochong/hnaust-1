@@ -17,10 +17,10 @@
 ///	    2009/11/16      1.1    	龙首成      	  学生管理
 
 
-      require_once("include/mysqldao.php");	
+      require_once("include/mysqldao.class.php");	
       require_once("include/function.include.php");	
       
-      class selitem extends MysqlDao_b
+      class selitem extends MysqlDao
       {
          
           public function seltype($itype)
@@ -42,13 +42,13 @@
               
                  $this->setTableName("item_apply");
                   $data1=array("app_item_type"=>$ttype,"app_item_code"=>$acode,"app_stud_no"=>$studno,"stud_orgcode"=>$studcode); 			//
-    			 $row1=$this->select($data1);
+    			 $row1=$this->selectA($data1);
     			 //print_r($row1);
                if(!$row1){
     			  $istat="0";
                  $data=array("app_item_type"=>$ttype,"app_item_code"=>$acode,"app_stud_no"=>$studno,"stud_orgcode"=>$studcode,"app_state"=>$istat); 			//查询学号
     	  
-                 $row=$this->insert($data);
+                 $row=$this->insertA($data);
     		echo "<script language=javascript >\n";	
 			echo "alert('提交成功')\n";
 			echo "history.go(-2)\n;";   //跳出框架 重定向到登录页面

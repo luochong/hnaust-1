@@ -32,23 +32,24 @@ $nshowdown=$news->getnewscont($newsid-1);
 <title>素质拓展学分认证系统>>新闻</title>
 <body>
 <?php
-        echo   $newsshow[0][1]; 
+     // print_r($newsshow);
+        echo   $newsshow[0]['news_title']; 
 
-       echo   $newsshow[0][2]; 
+       echo   $newsshow[0]['news_body']; 
 ?>
 
 
 <?php
-       echo   $newsshow[0][3]; 
+       echo   $newsshow[0]['news_author']; 
 ?>
 
 <?php
-       echo   $newsshow[0][4]; 
+       echo   $newsshow[0]['news_time']; 
        echo "<br />";
   
 ?>
-上一篇：<a href="newscontent.php?newsid=<?php echo $nshowup[0][0]  ?>"><?php echo $nshowup[0][1]  ?> </a>
-下一篇：<a href="newscontent.php?newsid=<?php echo $nshowdown[0][0]  ?>"><?php echo $nshowdown[0][1]  ?></a>
+上一篇：<a href="newscontent.php?newsid=<?php echo $nshowup[0]['news_id']  ?>"><?php echo $nshowup[0]['news_title']  ?> </a>
+下一篇：<a href="newscontent.php?newsid=<?php echo $nshowdown[0]['news_id']  ?>"><?php echo $nshowdown[0]['news_title']  ?></a>
 
          
 </body>

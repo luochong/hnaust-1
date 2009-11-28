@@ -28,19 +28,17 @@ $showitem=$show->showitem($studno,$pageno);
 for($i=0;$i<count($showitem);$i++)
 {
    
-        $itemcode[]=$showitem[$i][2];
+        $itemcode[]=$showitem[$i]['app_stud_no'];
     
 }
 //print_r($itemcode);
 $itemdetail=$show->finditem($itemcode,$pageno);
 
-$_SESSION['stud_no']=$showinfo[0][1];
-$_SESSION['stud_name']=$showinfo[0][2];
-$_SESSION['stud_sex']=$showinfo[0][3];
-$_SESSION['stud_']=$showinfo[0][4];
-$_SESSION['stud_no']=$showinfo[0][5];
-$_SESSION['stud_no']=$showinfo[0][6];
-$_SESSION['stud_no']=$showinfo[0][7];
+$_SESSION['stud_no']=$showinfo[0]['stud_no'];
+$_SESSION['stud_name']=$showinfo[0]['stud_name'];
+$_SESSION['stud_sex']=$showinfo[0]['stud_sex'];
+$_SESSION['stud_college']=$showinfo[0]['stud_college'];
+
 
 include_once('include/mysqldao.class.php');
 require_once('control/tongji.include.php');
@@ -79,13 +77,13 @@ $tongji = new Tongji();
              if(count($showinfo)!==0)
              {
               
-                ?>学号：<?php  echo $showinfo[0][1];?>
-                  <br>姓名：<?php  echo $showinfo[0][2];?>
-                  <br>性别：<?php  echo $showinfo[0][3];?>
-                  <br>学院：<?php  echo $showinfo[0][4];?>
-                  <br>入学年份：<?php  echo $showinfo[0][5];?>
-                  <br>班级：<?php  echo $showinfo[0][6];?>
-                  <br>申报截止日期：<?php  echo $showinfo[0][7];?>
+                ?>学号：<?php  echo $showinfo[0]['stud_no'];?>
+                  <br>姓名：<?php  echo $showinfo[0]['stud_name'];?>
+                  <br>性别：<?php  echo $showinfo[0]['stud_sex'];?>
+                  <br>学院：<?php  echo $showinfo[0]['stud_college'];?>
+                  <br>入学年份：<?php  echo $showinfo[0]['stud_grade'];?>
+                  <br>班级：<?php  echo $showinfo[0]['stud_class'];?>
+                  <br>申报截止日期：<?php  echo $showinfo[0]['stud_deadline'];?>
                      
           <?php    
              } 
