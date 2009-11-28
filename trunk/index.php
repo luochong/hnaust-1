@@ -20,6 +20,11 @@
 
 <?php 
 require_once("index.class.php");
+require("news.class.php");
+$news=new news();
+
+$newsshow=$news->indextitle();
+
 $action = new LoginAction();
 $action->run();
 ?>
@@ -70,7 +75,18 @@ $action->run();
 			</div>
 		</div>
 		<div id="right">
-		  <div id="item"></div>
+		  <div id="item">
+		  <?php 
+		  for($i=0;$i<10;$i++ )
+            {
+		  echo $newsshow[$i][1];
+		  echo $newsshow[$i][4];
+		  echo "<br />";
+            }?>
+
+		  
+		  <a href="newstitle.php">more</a>
+		  </div>
 		</div>
 	</div>
 	<div></div>
