@@ -10,4 +10,6 @@ $groupid="1";
 $dbname_g=$dbname;
 $dbname_p="creditapp";
 define('APP_ROOT','/hnst');
+
+define('SUPER_CODE',345);
 ?>
