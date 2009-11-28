@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 11 月 28 日 08:10
+-- 生成日期: 2009 年 11 月 28 日 08:19
 -- 服务器版本: 5.0.45
 -- PHP 版本: 5.2.5
 
@@ -30,7 +30,7 @@ CREATE TABLE `group_dept` (
   `dept_sub_tree` text collate utf8_unicode_ci,
   `dept_unit` int(12) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=345 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=346 ;
 
 --
 -- 导出表中的数据 `group_dept`
@@ -49,6 +49,7 @@ INSERT INTO `group_dept` (`id`, `dept_father_id`, `dept_father_name`, `dept_name
 (241, '0', '', '动科院', '', '动科院', '1160446e1416e2eab8', '*:1160446e1416e2eab8', 1),
 (242, '0', '', '食科院', '', '食科院', '537346e1419935680', '*:537346e1419935680', 1),
 (243, '0', '', '经济院', '', '经济院', '1381046e1419935aad', '*:1381046e1419935aad', 1),
+(345, '0', '', '校团委', '', '校团委', '291554b10dbe4460fb', '*:291554b10dbe4460fb', 1),
 (344, '0', ' ', '国际东', ' ', '国际东', '155304b10d3ea19d3c', '*:155304b10d3ea19d3c', 1),
 (245, '0', '', '园艺院', '', '园艺院', '1913646e1419935dfa', '*:1913646e1419935dfa', 1),
 (246, '0', '', '生安院', '', '生安院', '101746e1419935f9f', '*:101746e1419935f9f', 1),
@@ -97,7 +98,7 @@ CREATE TABLE `item_set` (
   `item_name` varchar(50) character set utf8 default NULL COMMENT '项目名称',
   `item_rank` varchar(4) character set utf8 default NULL COMMENT '项目级别',
   `item_score` int(2) default NULL COMMENT '项目学分',
-  `item_status` varchar(2) default NULL,
+  `item_status` varchar(2) character set utf8 default NULL,
   PRIMARY KEY  (`item_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=88 ;
 
@@ -19017,8 +19018,8 @@ INSERT INTO `stud_baseinfo` (`stud_no`, `stud_name`, `stud_college`, `stud_class
 
 CREATE TABLE `upload_file` (
   `file_id` smallint(12) NOT NULL auto_increment,
-  `file_name` varchar(50) collate utf8_bin default NULL COMMENT '文件名',
-  `file_url` varchar(100) collate utf8_bin default NULL COMMENT '文件所在URL',
+  `file_name` varchar(50) character set utf8 default NULL COMMENT '文件名',
+  `file_url` varchar(100) character set utf8 default NULL COMMENT '文件所在URL',
   `file_time` timestamp NULL default CURRENT_TIMESTAMP COMMENT '上传时间',
   PRIMARY KEY  (`file_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=7 ;
@@ -19052,4 +19053,4 @@ CREATE TABLE `user_admin` (
 --
 
 INSERT INTO `user_admin` (`user_id`, `user_name`, `user_password`, `user_org_code`, `user_mode`) VALUES
-(1, 'lc', '1', 291, 111);
+(1, 'lc', '1', 345, 111);
