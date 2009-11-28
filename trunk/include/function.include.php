@@ -37,9 +37,10 @@ function getRank($irank)
 {
         switch ($irank)
                {
-                 	case '1':return "国家奖";break;
-                  	case '2':return "省级奖";break;
-             	    case '3':return "市级奖";break;
+                 	case '1':return "国家级奖";break;
+                  	case '2':return "省级奖励";break;
+             	    case '3':return "校级奖励";break;
+             	    case '4':return "无";break;
        	           
                }
 }
@@ -56,4 +57,15 @@ function getNewsState($id){
                  	case '1':return "已发布";break;
                   	case '0':return "未发布";break;
                }
+}
+
+function getetype($itype){
+ switch($itype){
+		case 'a': return "1";
+		case 'b': return "2";
+		case 'c': return "3";
+		case 'd': return "4";
+		case 'e':return "5";
+		case 'f': return "6";
+	}
 }
