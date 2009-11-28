@@ -126,13 +126,13 @@ $tongji = new Tongji();
            ?> 
                <table class="showtb2">
                      <tr>
-                     	<td class="showtd" width="8%"><?php echo   $itemdetail[0][$n][1];?></td>
-                         <td class="showtd" width="15%"><?php echo   $itemdetail[0][$n][2];?></td>
-                         <td class="showtd" width="30%"><?php echo   $itemdetail[0][$n][3];?></td>
-                         <td class="showtd" width="13%"><?php echo   $itemdetail[0][$n][4];?></td>
-                         <td class="showtd" width="8%"><?php echo   $itemdetail[0][$n][5];?></td>
-                         <td class="showtd" width="17%"><?php echo   getItemState($showitem[$n][4]);?></td>
-                         <td class="showtd_x"><a onclick="return confirm('确认是否删除？')" href="stud_homedel.class.php?code=<?php echo   $itemdetail[0][$n][2];?>">×</a></td>
+                     	<td class="showtd" width="8%"><?php echo   $itemdetail[0][$n]['item_type'];?></td>
+                         <td class="showtd" width="15%"><?php echo   $itemdetail[0][$n]['item_code'];?></td>
+                         <td class="showtd" width="30%"><?php echo   $itemdetail[0][$n]['item_name'];?></td>
+                         <td class="showtd" width="13%"><?php echo   $itemdetail[0][$n]['item_rank'];?></td>
+                         <td class="showtd" width="8%"><?php echo   $itemdetail[0][$n]['item_score'];?></td>
+                         <td class="showtd" width="17%"><?php echo   getItemState($showitem[$n]['app_state']);?></td>
+                         <td class="showtd_x"><a onclick="return confirm('确认是否删除？')" href="stud_homedel.class.php?code=<?php echo   $itemdetail[0][$n]['item_code'];?>">×</a></td>
                      </tr>
                    </table>
                    <p class="zhiti1">       
