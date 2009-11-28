@@ -2,31 +2,22 @@
 
 class Tongji extends MysqlDao {
 	
-	
-	public function countItemByStudId($id){
-		$this->setTableName('item_apply');
-		return $this->count(array('app_stud_no'=>$id));
-	}
-	
+	/* 单个学生的统计     */
 	/**
 	 * 总申报项目数
 	 *
 	 * @param unknown_type $id
 	 * @return unknown
 	 */
-	public function countItemByOrgcode($id){
-		
+	public function countItemByStudId($id){
 		$this->setTableName('item_apply');
-		return $this->count(array('stud_orgcode'=>$id));
+		return $this->count(array('app_stud_no'=>$id,'app_state'=>2));
 	}
-	
 	/*
 	总申报学分  所以的申报的学分求和
 	*/
-	
 	public function countAllCreditByStudId($id){
-	  
-		$sql = 'select sum(item_score) from item_set,item_apply where item_set.item_code = item_apply.app_item_code AND item_apply.app_stud_no = "'.$id.'"';
+		$sql = 'select sum(item_score) from item_set,item_apply where item_set.item_code = item_apply.app_item_code AND app_state = 2 AND item_apply.app_stud_no = "'.$id.'"';
 		return current(current($this->executeQuery($sql)));
 	}
 	
@@ -79,19 +70,23 @@ class Tongji extends MysqlDao {
     	$headecode = array();
     	$validcode = array();
     	for ($i=0;$i<count($allcode);$i++){
-    		list($head,$foot) = explode('Q',$allcode[$i]);
-    		if(isset($headecode[$head])){
-    			if($headecode[$head] < $foot)
-    				$headecode[$head] = $foot;
-    			
+    		if(strpos($allcode[$i],'Q') !== FALSE){
+	    		list($head,$foot) = explode('Q',$allcode[$i]);
+	    		if(isset($headecode[$head])){
+	    			if($headecode[$head] < $foot)
+	    				$headecode[$head] = $foot;
+	    		}else{
+	    			$headecode[$head] = $foot;
+	    		}
     		}else{
-    			$headecode[$head] = $foot;
+    			$validcode1[] = $allcode[$i];
     		}
     	}
     	
     	foreach ($headecode as $key=>$value){
-    		$validcode[] = $key.'Q'.$value;
+    		$validcode2[] = $key.'Q'.$value;
     	}
+    	$validcode = array_merge($validcode1,$validcode2);
     	return $validcode;
     	
     }
@@ -107,10 +102,31 @@ class Tongji extends MysqlDao {
     	
     }
 
+    /**
+	 * 学院总项目数
+	 */
+    public function countItemByOrgcode($id){
+		
+	
     
     
+    }
+    /**
+     * Enter description here...
+     *
+     */
     
     
+    public function getBYSTable(){
+    	
+    	 date_default_timezone_set('Asia/Shanghai');
+		 $now = date("Y");
+		 $sql = 'select * from item_set,item_apply,stud_baseinfo where item_set.item_code = item_apply.app_item_code AND app_state = 2 AND stud_baseinfo.stud_no = app_stud_no and stud_deadline = '.$now;
+    	 $this->executeQueryA($sql);
+    	
+    }
 
+    
+    
 }
 
