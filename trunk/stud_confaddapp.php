@@ -66,7 +66,12 @@ $insertok=$citem->insertapp($itype,$itenc,$studno,$studcode,$showtime);  //写�
 		 echo $iname ;
 	?>
 	</div>
-	<div id="tj_jibie">项目级别：<?php echo $trank; ?>
+	<div id="tj_jibie">项目级别：<?php if($trank!==null)
+	                                   {echo $trank;
+	                                   }
+	                                   else{
+	                                       echo "无级别";
+	                                   } ?>
 		
 	</div>
 	<div id="tj_queding">
