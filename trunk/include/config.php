@@ -11,5 +11,6 @@ $dbname_g=$dbname;
 $dbname_p="creditapp";
 define('APP_ROOT','/hnst');
 
-define('SUPER_CODE',345);
+define('SUPER_CODE',345);//院团委
+define('DFADMIN',247);//东方院管理员
 ?>
