@@ -22,6 +22,11 @@ function getNowTate(){
 	date_default_timezone_set('Asia/Shanghai');
 	return date("Y-m-d 星期w");
 }
+function getPermittime(){
+   date_default_timezone_set('Asia/Shanghai');
+	return date("Ym");
+    
+}
 
 function getItemType($itype)
 {

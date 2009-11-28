@@ -102,6 +102,12 @@ $finditem=$citem->finditem($itype,$iname);
 				</div>
  <form method="POST" name="form">
 			  <div id="choose">
+			  <?php 
+            
+			  if(getPermittime()>$showinfo[0][5]*100+100&&getPermittime()<$showinfo[0][7]*100+3)
+			  {?>
+			  
+			  
 					<div id="itemleibie"><span class="leibie">请选择你要申报项目的类别：</span>
 
                     <select name="itype" id="itype" onchange="location.href='stud_addapp.php?'+'itype='+this.options[this.selectedIndex].value;">
@@ -164,11 +170,16 @@ $finditem=$citem->finditem($itype,$iname);
 					      <?php } 
 					      else{ ?>
 						<a href="stud_confaddapp.php?keepThis=true&TB_iframe=true&height=300&width=500" title="确认提交申请" class="thickbox" ;><input type="submit" value=" 提 交 "></a>            
-					     <?php }　?>   
+					     <?php }?>   
 					</div>
+					
 			  </div>
 			 </form>
-		   
+		   <?php }
+		   else{
+		       echo "还未达到申报时间";echo "<br />";
+		       echo "申报时间从大二至大四上学年";
+		   } ?>
 		     
 		  </div>
 		</div>
