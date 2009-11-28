@@ -15,17 +15,17 @@
 ///		Date        	Version  	Author    	Content
 ///		---------- 	 -------  	--------  	 ------------------------------------
 ///	    2009/11/16      1.1    	龙首成      	  学生管理
-        require_once("include/mysqldao.php");	
+        include_once("include/mysqldao.class.php");	
         require_once("include/function.include.php");	
        define(PageNum,3);
-        class news extends MysqlDao_b 
+        class news extends MysqlDao 
         {
             public function getnewsinfo($pageno)
             {
                  $this->setTableName("news");
                    $page_no=$pageno-1;
                  $data=array();
-                 $row=$this->select($data,PageNum,$page_no);
+                 $row=$this->selectA($data,PageNum,$page_no);
                  return $row;
             }
               public function indextitle()
@@ -33,7 +33,7 @@
                  $this->setTableName("news");
                
                  $data=array("news_state"=>1);
-                 $row=$this->select($data,0,0,'news_time DESC');
+                 $row=$this->selectA($data,0,0,'news_time DESC');
                  return $row;
             }
                 public function getnewscont($newsid)
@@ -41,7 +41,7 @@
                  $this->setTableName("news");
                
                  $data=array("news_id"=>$newsid);
-                 $row=$this->select($data);
+                 $row=$this->selectA($data);
                  return $row;
             }
                public function page_list()
@@ -51,7 +51,7 @@
 		    $http_str = $_SERVER['QUERY_STRING'];  //url中
 			$this->setTableName("news");
 			   $data=array();
-                 $row=$this->select($data);
+                 $row=$this->selectA($data);
                  $nums=count($row);
                
 			
