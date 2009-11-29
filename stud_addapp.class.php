@@ -23,6 +23,42 @@
       class selitem extends MysqlDao
       {
          
+
+          
+      public function run(){
+		if(!empty($_GET['ac'])&&method_exists($this,$_GET['ac'])){
+			$this->$_GET['ac']();
+		}
+	}
+	
+	public function getIname(){
+	
+		header("Content-type: text/html; charset=utf-8");
+					  
+		    $sql ='select distinct item_name from item_set where item_type = ?';
+		$data = $this->executeQueryA($sql,array($_GET['i_type']));
+
+		echo '<option value="" >...</option>';
+		foreach ($data as $v){
+			echo "<option value='{$v['item_name']}'>{$v['item_name']}</option>";
+		}
+		exit();
+	
+	}
+	public function getIrank(){
+		header("Content-type: text/html; charset=utf-8");
+		$sql ='select distinct item_rank from item_set where item_name = ?';
+		$data = $this->executeQueryA($sql,array($_GET['i_name']));
+
+		echo '<option value="" >...</option>';
+		foreach ($data as $v){
+			echo "<option value='{$v['item_rank']}'>{$v['item_rank']}</option>";
+		}
+		exit();
+	}
+          
+ 
+          
           public function seltype($itype)
           {
               $ttype=getItemType($itype);
@@ -30,34 +66,35 @@
                // echo $ttype;
              $sql="select distinct item_name  from item_set  where item_type='$ttype'  " ;			//查询类型
              
-             $row=$this->executeQuery($sql);
+             $row=$this->executeQueryA($sql);
         // print_r($row);
 	       	return $row;
           }
    
+  
           
-          public function insertapp($atype,$acode,$studno,$studcode)
+          public function insertapp($itype,$code,$studno,$studcode)
           {
-               $ttype=getItemType($atype);
+            
               
                  $this->setTableName("item_apply");
-                  $data1=array("app_item_type"=>$ttype,"app_item_code"=>$acode,"app_stud_no"=>$studno,"stud_orgcode"=>$studcode); 			//
+                  $data1=array("app_item_type"=>$itype,"app_item_code"=>$code,"app_stud_no"=>$studno,"stud_orgcode"=>$studcode); 			//
     			 $row1=$this->selectA($data1);
-    			 //print_r($row1);
-               if(!$row1){
+    			//print_r($row1);
+               if($row1==null){
     			  $istat="0";
-                 $data=array("app_item_type"=>$ttype,"app_item_code"=>$acode,"app_stud_no"=>$studno,"stud_orgcode"=>$studcode,"app_state"=>$istat); 			//查询学号
+                 $data=array("app_item_type"=>$itype,"app_item_code"=>$code,"app_stud_no"=>$studno,"stud_orgcode"=>$studcode,"app_state"=>$istat); 			//查询学号
     	  
-                 $row=$this->insertA($data);
+                 $row=$this->insert($data);
     		echo "<script language=javascript >\n";	
 			echo "alert('提交成功')\n";
-			echo "history.go(-2)\n;";   //跳出框架 重定向到登录页面
+			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
 			echo "</script>\n";
              
                }
                  else{echo "<script language=javascript >\n";	
 			echo "alert('提交项目已存在，请重新提交')\n";
-			echo "history.go(-2)\n;";   //跳出框架 重定向到登录页面
+			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
 			echo "</script>\n";
                      
                  }
@@ -67,21 +104,31 @@
                $ttype=getItemType($atype);
          
                  $sql="select  item_rank from item_set where item_type='$ttype'  and item_name='$iname' " ;			//查询类型
-              $row=$this->executeQuery($sql);
+              $row=$this->executeQueryA($sql);
               // print_r($row);
 	       	  return $row;
           }
                 public function setitem($atype,$iname,$irank)
           {
-         
-              $ttype=getItemType($atype);
-              $trank=getRank($irank);
-            
-              $sql="select  item_code from item_set where item_type='$ttype' and item_rank='$trank' and item_name='$iname' " ;			//查询类型
-              $row=$this->executeQuery($sql);
-              //  print_r($row);
+              //echo $atype;
+             
+             if($atype=="求实"||$atype=="求特"){
+                  echo "<script language=javascript >\n";	
+			echo "alert('求实和求特由校团委申报，不允许提交')\n";
+			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
+			echo "</script>\n";}
+			 elseif($atype==0||$iname==0||$irank==0)
+              {	echo "<script language=javascript >\n";	
+			echo "alert('项目为空，不能提交')\n";
+			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
+			echo "</script>\n";}
+          
+              else{
+              $sql="select item_code from item_set where item_type='$atype' and item_rank='$irank' and item_name='$iname' " ;			//查询类型
+              $row=$this->executeQueryA($sql);
+            //print_r($row);
 	       	  return $row;
-        
+              }
           }
       } 
       

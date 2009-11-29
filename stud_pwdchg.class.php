@@ -16,15 +16,15 @@
 ///		---------- 	 -------  	--------  	 ------------------------------------
 ///	    2009/11/16      1.1    	龙首成      	  学生管理
 
-   require_once("include/mysqldao.php");
-        class pwdchg extends MysqlDao_b
+   require_once("include/mysqldao.class.php");
+        class pwdchg extends MysqlDao
         {
              public function showitem($studno)
              {
        
                  $this->setTableName("stud_baseinfo");
                  $data=array("stud_no"=>$studno); 			//查询学号
-    			 $row=$this->select($data);
+    			 $row=$this->selectA($data);
     		//	 print_r($row);
                  return $row;
              }

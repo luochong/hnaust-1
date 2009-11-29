@@ -17,28 +17,33 @@
 ///	    2009/11/16      1.1    	龙首成      	  学生管理
 // header('Content-Type:   text/html;   charset=utf-8');
 require("include/sessionstud.php");
-require_once("stud_addapp.class.php");
+
 require("stud_home.class.php");
-//echo $_SESSION["studno"];
+require("stud_addapp.class.php");
+
 $studno=$_SESSION["studno"];
+$citem=new selitem();
+$citem->run();
 $show=new stud();
 $showinfo=$show->showstud($studno);
 
-$itype=$_GET['itype'];
-$iname=$_GET['icode'];
-$irank=$_GET['irank'];
-$_SESSION['itype']=$itype;
-$_SESSION['irank']=$irank;
-$_SESSION['icode']=$iname;
-$stuno=$_SESSION["studno"];
-
-$studcode=$_SESSION["studcode"];
-
-$citem=new selitem();
-$showitem=$citem->seltype($itype);
-$itemcode=$citem->setitem($itype,$iname,$irank);
 
 $finditem=$citem->finditem($itype,$iname);
+ $itype=$_POST['i_type'];
+ $irank=$_POST['i_rank'];
+ $iname=$_POST['i_name'];
+ $studno=$showinfo[0]['stud_no'];
+$studcode=$showinfo[0]['stud_orgcode'];
+
+if( isset($_POST['submit']) )
+{
+  
+  $acode=$citem->setitem($itype,$iname,$irank);
+ $code=$acode[0]['item_code'];
+    $citem->insertapp($itype,$code,$studno,$studcode);
+}
+
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -100,7 +105,7 @@ $finditem=$citem->finditem($itype,$iname);
 					<div id="location_tit">所在的位置：项目申报</div>
 					<div id="showtime"><?php echo getNowTate()?></div>
 				</div>
- <form method="POST" name="form">
+ <form method="POST" name="form" onsubmit="return confirm('确认提交？')" >
 			  <div id="choose">
 			  <?php 
             
@@ -110,17 +115,17 @@ $finditem=$citem->finditem($itype,$iname);
 			  
 					<div id="itemleibie"><span class="leibie">请选择你要申报项目的类别：</span>
 
-                    <select name="itype" id="itype" onchange="location.href='stud_addapp.php?'+'itype='+this.options[this.selectedIndex].value;">
-                    <option value="0">请选择</option>
-                         <option value="1" <?php if($_GET['itype']=="1"){?> selected="selected"<?php }?>>求真 </option>
-                        <option value="2"  <?php if($_GET['itype']=="2"){?> selected="selected"<?php }?>>求善 </option>
-                        <option value="3"  <?php if($_GET['itype']=="3"){?> selected="selected"<?php }?>>求美 </option>
-                        <option value="4"  >求实 </option>
-                        <option value="5"  >求特 </option>
-                        <option value="6"  <?php if($_GET['itype']=="6"){?> selected="selected"<?php }?>>求强 </option>
-                    </select>
+                   <select name="i_type" onchange="$('#i_rank').html('<option value=\'0\'>...</option>');$('#i_name').load('./stud_addapp.php?ac=getIname&i_type='+encodeURIComponent(this.value));">
+			 	  <option value="0">...</option>
+				  <option value="求真" >求真</option>
+		          <option value="求善" >求善</option>
+		          <option value="求美" >求美</option>
+		          <option value="求实" disabled>求实</option>
+		          <option value="求特" disabled>求特</option>
+		          <option value="求强" >求强</option>
+			 </select><br />
                     <br />	
-                    <?php if($_GET['itype']=="4"||$_GET['itype']=="5")
+                    <?php if($_POST['itype']=="求实"||$_POST['itype']=="求特")
                             {
                                 echo "求实和求特类别由学院直接提交，不允许学生申请";
                             }
@@ -128,49 +133,23 @@ $finditem=$citem->finditem($itype,$iname);
 					</div>
 					
 					<div id="itemxianmu"><span class="leibie">请选择你要申报项目的名称：</span>
-					  <select name="iname" id="iname"  onchange="location.href='<?php echo $_SERVER["REQUEST_URI"];?>&'+'icode='+this.options[this.selectedIndex].value;"  >
-                    <option value="0">请选择</option>
-                   <?php  
-              
-                    for($i=0;$i<count($showitem);$i++)
-                    {
-                   //  print_r($showitem);
-                   ?> <option value="<?php echo $showitem[$i]['stud_no'];?>" <?php if($_GET['icode']== $showitem[$i]['stud_no']){?> selected="selected"<?php }?> >
-                   <?php
-                      echo $showitem[$i]['stud_no'];  
-                      ?>    </option>
-                    <?php 
-                    } 
-                    ?>
-                
-                    </select>
+					   <select name='i_name' id='i_name' onchange="$('#i_rank').load('./stud_addapp.php?ac=getIrank&i_name='+encodeURIComponent(this.value));">
+		     	 <option value="0">...</option>
+		     </select><br />
 					</div>
 					
 					<div id="itemdengji"><span class="leibie">请选择你要申报项目的级别：</span>
-					  <select name="rank" onchange="location.href='<?php echo $_SERVER["REQUEST_URI"];?>&'+'irank='+this.options[this.selectedIndex].value;">
-                      <option >请选择</option>
-                      
-                      <?php 
-                     // print_r($finditem);
-                      if($_GET['icode']&&$finditem[0]['item_rank']!=="无"){?>
-                     <option value="1" <?php if($_GET['irank']=="1"){?> selected="selected"<?php }?>>国家奖</option>
-                     <option value="2" <?php if($_GET['irank']=="2"){?> selected="selected"<?php }?>>省级奖</option>
-                     <option value="3" <?php if($_GET['irank']=="3"){?> selected="selected"<?php }?>>市级奖</option>
-                     <?php }
-                     else{ ?>
-                     <option value="4" selected>无级别</option>
-                     <?php } ?>
-                     </select>
+					  <select name="i_rank" id='i_rank'>
+          	 	 <option value="0">...</option>
+          	 </select><br />
+			<br />
 					
 					</div>
 					
 					<div id="sub">
-					   <?php if($_GET['icode']==null||$_GET['itype']==null){ ?>
-					      <input type="submit" onclick="return alert('未选择')" value=" 提 交 ">
-					      <?php } 
-					      else{ ?>
-						<a href="stud_confaddapp.php?keepThis=true&TB_iframe=true&height=300&width=500" title="确认提交申请" class="thickbox" ;><input type="submit" value=" 提 交 "></a>            
-					     <?php }?>   
+				
+					<input name="submit" type="submit" value=" 提 交 " >     
+					
 					</div>
 					
 			  </div>
