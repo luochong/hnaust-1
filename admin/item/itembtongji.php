@@ -90,7 +90,7 @@ if($_POST["submit"] == "导出Excel"){
 	  	  <div class="right"><a href='javascript:history.back();'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
-  	 <form id="form1" name="form1" method="post" action="itemptongji.php">
+  	 <form id="form1" name="form1" method="post" action="itembtongji.php">
       <div class="alltitle">各学院毕业生素拓项目统计</div>
 		  
 	  <div id="allcontent">

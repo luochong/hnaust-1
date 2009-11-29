@@ -11,7 +11,7 @@ if(isset($_GET['dataout'])){
 		Header("Content-type:application/octet-stream");   
 		Header("Accept-Ranges:bytes");     
 		Header("Content-type:application/vnd.ms-excel");	
-		Header("Content-Disposition:filename=项目审批-信息表.xls");
+		Header("Content-Disposition:filename=hnaustcx.xls");
 	 ?>
 	 <html xmlns:o="urn:schemas-microsoft-com:office:office"
         xmlns:x="urn:schemas-microsoft-com:office:excel"
