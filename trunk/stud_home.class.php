@@ -45,15 +45,16 @@
              {
                   $this->setTableName("item_set");
                  $page_no=$pageno-1;
+                // print_r($itemcode);
                for($i=0;$i<count($itemcode);$i++)
                { 
                
                    $data[]=array("item_code"=>$itemcode[$i]);
               
           
-                 $row[]=$this->selectA($data,PageNum,$page_no,null);
+                 $row[]=$this->selectA($data[$i],PageNum,$page_no,null);
                   }
-              //  print_r($row); 
+             //   print_r($row); 
                  return $row;
              }
              

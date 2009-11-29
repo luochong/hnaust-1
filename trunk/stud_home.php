@@ -20,6 +20,7 @@ require("include/function.include.php");
 require("stud_home.class.php");
 //echo $_SESSION["studno"];
 $studno=$_SESSION["studno"];
+//echo $studno;
 $show=new stud();
 $pageno=$_GET['page_no'];
 //$studid=2007;
@@ -27,13 +28,15 @@ $showinfo=$show->showstud($studno);
 $showitem=$show->showitem($studno,$pageno);
 for($i=0;$i<count($showitem);$i++)
 {
-   
-        $itemcode[]=$showitem[$i]['app_stud_no'];
+  // print_r($showitem);
+        $itemcode[]=$showitem[$i]['app_item_code'];
     
 }
 //print_r($itemcode);
+
 $itemdetail=$show->finditem($itemcode,$pageno);
 
+//print_r($itemdetail);
 $_SESSION['stud_no']=$showinfo[0]['stud_no'];
 $_SESSION['stud_name']=$showinfo[0]['stud_name'];
 $_SESSION['stud_sex']=$showinfo[0]['stud_sex'];
@@ -122,17 +125,17 @@ $tongji = new Tongji();
            if(count($showitem)!==0)
                  {
                    for($n=0;$n<count($showitem);$n++)
-                    {
+                    {//print_r($itemdetail);
            ?> 
                <table class="showtb2">
                      <tr>
-                     	<td class="showtd" width="8%"><?php echo   $itemdetail[0][$n]['item_type'];?></td>
-                         <td class="showtd" width="15%"><?php echo   $itemdetail[0][$n]['item_code'];?></td>
-                         <td class="showtd" width="30%"><?php echo   $itemdetail[0][$n]['item_name'];?></td>
-                         <td class="showtd" width="13%"><?php echo   $itemdetail[0][$n]['item_rank'];?></td>
-                         <td class="showtd" width="8%"><?php echo   $itemdetail[0][$n]['item_score'];?></td>
+                     	<td class="showtd" width="8%"><?php echo   $itemdetail[$n][0]['item_type'];?></td>
+                         <td class="showtd" width="15%"><?php echo   $itemdetail[$n][0]['item_code'];?></td>
+                         <td class="showtd" width="30%"><?php echo   $itemdetail[$n][0]['item_name'];?></td>
+                         <td class="showtd" width="13%"><?php echo   $itemdetail[$n][0]['item_rank'];?></td>
+                         <td class="showtd" width="8%"><?php echo   $itemdetail[$n][0]['item_score'];?></td>
                          <td class="showtd" width="17%"><?php echo   getItemState($showitem[$n]['app_state']);?></td>
-                         <td class="showtd_x"><a onclick="return confirm('确认是否删除？')" href="stud_homedel.class.php?code=<?php echo   $itemdetail[0][$n]['item_code'];?>">×</a></td>
+                         <td class="showtd_x"><a onclick="return confirm('确认是否删除？')" href="stud_homedel.class.php?code=<?php echo   $itemdetail[$n][0]['item_code'];?>">×</a></td>
                      </tr>
                    </table>
                    <p class="zhiti1">       

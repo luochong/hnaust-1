@@ -63,13 +63,13 @@ $showinfo=$show->showstud($studno);
              if(count($showstudb)!==0)
              {
               
-                ?>学号：<?php  echo $showinfo[0][1];?>
-                  <br>姓名：<?php  echo $showinfo[0][2];?>
-                  <br>性别：<?php  echo $showinfo[0][3];?>
-                  <br>学院：<?php  echo $showinfo[0][4];?>
-                  <br>入学年份：<?php  echo $showinfo[0][5];?>
-                  <br>班级：<?php  echo $showinfo[0][6];?>
-                  <br>申报截止日期：<?php  echo $showinfo[0][7];?>
+                ?>学号：<?php  echo $showinfo[0]['stud_no'];?>
+                  <br>姓名：<?php  echo $showinfo[0]['stud_name'];?>
+                  <br>性别：<?php  echo $showinfo[0]['stud_sex'];?>
+                  <br>学院：<?php  echo $showinfo[0]['stud_college'];?>
+                  <br>入学年份：<?php  echo $showinfo[0]['stud_grade'];?>
+                  <br>班级：<?php  echo $showinfo[0]['stud_class'];?>
+                  <br>申报截止日期：<?php  echo $showinfo[0]['stud_deadline'];?>
                      
           <?php    
              } 
@@ -103,14 +103,14 @@ $showinfo=$show->showstud($studno);
           
                 if($_POST['oldpwd']!==null)
                 {
-                    if($_POST['oldpwd']!==$showstudb[0][8])
+                    if($_POST['oldpwd']!==$showstudb[0]['stud_password'])
                     echo "原密码错误";
                    elseif($_POST['newpwd']==null)
                     echo "新密码不能为空";
                     
                    elseif($_POST['newpwd']!==null&&$_POST['confpwd']!==null&&$_POST['newpwd']!==$_POST['confpwd'])
                       echo "密码与确认密码不一致";
-                elseif($_POST['oldpwd']!==null&&$_POST['newpwd']==$_POST['confpwd']&&$_POST['oldpwd']==$showstudb[0][8])
+                elseif($_POST['oldpwd']!==null&&$_POST['newpwd']==$_POST['confpwd']&&$_POST['oldpwd']==$showstudb[0]['stud_password'])
                 {
                     $pwdchag->pwdupdate($studno,$_POST['newpwd']);
                     echo "密码修改成功";
