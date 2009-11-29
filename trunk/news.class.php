@@ -17,14 +17,14 @@
 ///	    2009/11/16      1.1    	龙首成      	  学生管理
         include_once("include/mysqldao.class.php");	
         require_once("include/function.include.php");	
-       define(PageNum,3);
+       define(PageNum,20);
         class news extends MysqlDao 
         {
             public function getnewsinfo($pageno)
             {
                  $this->setTableName("news");
                    $page_no=$pageno-1;
-                 $data=array();
+                 $data=array("news_state"=>1);
                  $row=$this->selectA($data,PageNum,$page_no);
                  return $row;
             }
@@ -50,7 +50,7 @@
 		    $page=basename($_SERVER['PHP_SELF']);
 		    $http_str = $_SERVER['QUERY_STRING'];  //url中
 			$this->setTableName("news");
-			   $data=array();
+			   $data=array("news_state"=>1);
                  $row=$this->selectA($data);
                  $nums=count($row);
                
