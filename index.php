@@ -129,14 +129,14 @@ a:hover{color:red;}
 	<tr>
 	  <td  colspan="3" rowspan="3"><table width='100%' height="133" cellpadding='0' cellspacing='0'>
 
-            <?php 
-		  for($i=0;$i<7;$i++ ){?>
+            <?php  
+		  for($i=0;$i<count($newsshow)&&7;$i++ ){?>
             <tr>
-              <div class="cutstring">
+             
                 <td width='10' valign='top' class=''></td>
 			    <td class=''><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><font size="2"><?php echo $newsshow[$i]['news_title'];?></a></font></td>
-			    <td align='right' class="cutstring"><?php echo $newsshow[$i]['news_time'];?></td></td>
-	      	 </div>
+			    <td align='right' class="cutstring"><font size="2"><?php echo date("m-d",strtotime($newsshow[$i]['news_time']))?></font></td></td>
+	      
 			  </tr>
 	      	<?php } ?>
 	  
