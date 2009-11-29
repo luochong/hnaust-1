@@ -52,7 +52,7 @@ class orgdel extends MysqlDao
 		}	
 		else {
 			echo "<script language=javascript>\n";
-			echo "alert('删除部门失败！！')\n";
+			echo "alert('删除部门失败！')\n";
 			echo "window.location.href='grouAdm02.php?gid=$gid&ye=$ye'";
 			echo "</script>\n";
 			exit;	

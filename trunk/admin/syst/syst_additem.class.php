@@ -35,10 +35,13 @@ class additem extends MysqlDao
 		if($resu){  
 			echo "<script language=javascript>\n";	
 			echo "alert('成功添加项目')\n";
-			echo "window.location.href='grouAdd02.php'";		
+			echo "window.location.href='syst_additem.php'";		
 			echo "</script>\n";
 		}else{
-			echo "fail";
+			echo "<script language=javascript>\n";	
+			echo "alert('添加项目失败')\n";
+			echo "window.location.href='syst_additem.php'";		
+			echo "</script>\n";
 		}
 	}
 

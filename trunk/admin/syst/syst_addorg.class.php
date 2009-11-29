@@ -85,7 +85,10 @@ class addSchOrg extends MysqlDao
 			echo "window.location.href='grouAdd02.php'";		
 			echo "</script>\n";
 		}else{
-			echo "fail";
+			echo "<script language=javascript>\n";	
+			echo "alert('添加部门失败')\n";
+			echo "window.location.href='grouAdd02.php'";		
+			echo "</script>\n";
 		}
 	}
 	
