@@ -74,8 +74,8 @@ function delok(){
 
 	     <div id="page">
 	     	<?php 
-	     	/*$nums = $org_list['count'];
-	     	$mangerorg->page($nums);*/ ?>
+	     	$nums = $item_list[0]['count'];
+	     	$mangeritem->page($nums);?>
 	     </div>
 	</div><br />
      </div>
