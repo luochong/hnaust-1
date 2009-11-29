@@ -28,7 +28,6 @@ $show=new stud();
 $showinfo=$show->showstud($studno);
 
 
-$finditem=$citem->finditem($itype,$iname);
  $itype=$_POST['i_type'];
  $irank=$_POST['i_rank'];
  $iname=$_POST['i_name'];
