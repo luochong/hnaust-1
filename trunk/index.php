@@ -72,8 +72,8 @@ $action->run();
 	<tr>
 		<td colspan="17" background="images/首页_09.gif">
 		<form>用户名
-			<input type="text" size="16" name="username" id="username" value="" />&nbsp;&nbsp;密码
-		      <input name="password" size="16" type="password"/>&nbsp;&nbsp;&nbsp;<input type="submit" value="登录" /></form>
+			<input type="text" size="16" name="user_name" id="username" value="" />&nbsp;&nbsp;密码
+		      <input name="user_password" size="16" type="password"/>&nbsp;&nbsp;&nbsp;<input type="submit" value="登录" /></form>
 		<td>
 			<img src="images/spacer.gif" width="1" height="34" alt=""></td>
 	</tr>
