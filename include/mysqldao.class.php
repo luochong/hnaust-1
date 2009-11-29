@@ -1,6 +1,4 @@
 <?php
-
-
 @session_start();
 require_once("daobase.class.php");
 require_once("tabledefine.class.php");
@@ -951,5 +949,3 @@ class MysqlDao extends DaoBase
 	}
 	
 }
-
-?>

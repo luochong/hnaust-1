@@ -1,7 +1,7 @@
 <?php 
-
 class Tongji extends MysqlDao {
 	
+	public $maxcredit;
 	/* 单个学生的统计     */
 	/**
 	 * 总申报项目数
@@ -49,31 +49,56 @@ class Tongji extends MysqlDao {
      * return array('真'=>学分,'实'=>学分);
      */
     public function countLessonCredit($id){
-    	$this->validcode = $this->makeValidItemCode($this->getVerifyValidAllCode($id));
-    	$sql = 'select sum(item_score),item_type from item_set where  0   ';
+    	/****************  求出有效项目编号   *****************/
+    	$validcode = $this->makeValidItemCode($this->getVerifyValidAllCode($id));
+    	$sql = 'select sum(item_score) as sum,item_type from item_set where  0   ';
     	foreach ($validcode as $v){
     		$sql .=' or item_code = ? ';
     	}
     	$sql.='group by item_type ';
-    	$rows = $this->executeQuery($sql,$validcode);
+    	$rows = $this->executeQueryA($sql,$validcode);
+    	/***    获得 array('真'=>学分,'实'=>学分)   ***/
+    	
     	foreach ($rows as $row){
-    		$lessoncredit[$row[1]] = $row[0];
+    		$lessoncredit[$row['item_type']] = $row['sum'];
     	}
-    	return $lessoncredit;
+    	
+    	/****************求出最大课程学分数*********************/
+    	if(empty($this->maxcredit)){
+	    	$sql = 'select max(mark_lesson_score) as sum ,mark_lesson_type as item_type from mark_allscore  group by mark_lesson_type ';
+	    	$rows = $this->executeQueryA($sql);
+	    	foreach ($rows as $row){
+	    		$this->maxcredit[$row['item_type']] = $row['sum'];
+	    	}
+    	}
+    	/******************课程学分与项目学分规格化***********************/
+    	if($lessoncredit["求实"]<2){
+    		unset($lessoncredit["求实"]);
+    	}
+    	$sql = "select * from mark_allscore where 0 ";
+    	foreach ($lessoncredit as $key => &$value){
+    		if($value > $this->maxcredit[$key]){
+    			$value = $this->maxcredit[$key];
+    		}
+    		$sql .="or (mark_lesson_type = '$key' and mark_lesson_score = $value) ";
+    	
+    	}
+    	return $this->executeQueryA($sql);
     }
     /**
      * 生产有效项目序列
      * 
      */
     public   function makeValidItemCode($allcode){
-    	
     	$headecode = array();
     	$validcode = array();
+    	$validcode1 = array();
+    	$validcode2 = array();
     	for ($i=0;$i<count($allcode);$i++){
     		if(strpos($allcode[$i],'Q') !== FALSE){
 	    		list($head,$foot) = explode('Q',$allcode[$i]);
 	    		if(isset($headecode[$head])){
-	    			if($headecode[$head] < $foot)
+	    			if($headecode[$head] > $foot)
 	    				$headecode[$head] = $foot;
 	    		}else{
 	    			$headecode[$head] = $foot;
@@ -98,10 +123,12 @@ class Tongji extends MysqlDao {
      */
     
     public function getVerifyValidAllCode($id){
-    	return current($this->simpleFetchList(' item_apply ',array(' app_item_code '),array('app_stud_no'=>$id,'app_state'=>2)));
-    	
+    	$code = $this->simpleFetchList(' item_apply ',array(' app_item_code '),array('app_stud_no'=>$id,'app_state'=>2));
+    	foreach ($code as $c){
+    		$d[] = $c[0];
+    	}
+    	return $d;
     }
-
     /**
 	 * 学院总项目数
 	 */
@@ -116,14 +143,12 @@ class Tongji extends MysqlDao {
      *
      */
     
-    
-    public function getBYSTable(){
-    	
+    public function getBYSNO(){
     	 date_default_timezone_set('Asia/Shanghai');
-		 $now = date("Y");
-		 $sql = 'select * from item_set,item_apply,stud_baseinfo where item_set.item_code = item_apply.app_item_code AND app_state = 2 AND stud_baseinfo.stud_no = app_stud_no and stud_deadline = '.$now;
-    	 $this->executeQueryA($sql);
-    	
+		 //$now = date("Y");
+		 $now = '2011';
+    	 $sql = "select distinct app_stud_no as  sno,stud_name   from item_apply,stud_baseinfo where app_state = 2 and item_apply.app_stud_no = stud_baseinfo.stud_no and stud_baseinfo.stud_deadline =  ".$now;
+    	 return $this->executeQueryA($sql);
     }
 
     
