@@ -26,19 +26,12 @@ class delitem extends MysqlDao
 		$this->setTableName("item_set");
 		$date = array("item_status" => '0');
 		$cond = array("item_id" => $item_id);
-		$resu = $this->update($date,$cond);
 		
-		if($resu){  
-			echo "<script language=javascript>\n";	
-			echo "alert('删除项目成功！')\n";
-			echo "window.location.href='grouAdd02.php'";		
-			echo "</script>\n";
-		}else{
-			echo "<script language=javascript>\n";	
-			echo "alert('删除项目失败！')\n";
-			echo "window.location.href='grouAdd02.php'";		
-			echo "</script>\n";
-		}
+		print_r($date);
+		$resu = $this->update($date,$cond);
+		print_r($cond);echo "resu=".$resu;
+	//	return $resu;
+		
 	}
 }
 ?>

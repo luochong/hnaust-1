@@ -61,8 +61,10 @@ function checkdata() {
 	      <div class="left">
 		  
 		  <label>选择上级部门/机构:</label><br />
-		  <select name="father_id" id="father_id" class="dept">    	    
-	       <?php
+		  <select name="father_id" id="father_id" class="dept">    
+		  <option value="">...</option>	    
+		  <option value="0"></option>
+	      <?php
 		  	$operuser->showDeptList();			
 		  ?> 
 	        </select><br />

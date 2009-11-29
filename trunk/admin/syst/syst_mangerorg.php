@@ -50,15 +50,15 @@ function delok(){
 	  <div id="allcontent">
       <table border="0">
 	    <?php		
-		$page=basename($_SERVER['PHP_SELF']);
-		$pagenum=10;		
+	/*	$page=basename($_SERVER['PHP_SELF']);
+		$pagenum=10;	*/	
 		$org_list = $mangerorg->org_list();
 		for($i=0;$i<count($org_list);$i++)
 		{	if(empty($org_list[$i]['dept_father_name'])) $tree = "无";else $tree = $org_list[$i]['dept_father_name'];
 			echo "
 			<tr>
 	        <td width='50px'>{$org_list[$i]['id']}</td>
-		    <td width='170px'>{$org_list[$i]['dept_name']}[<a href='syst_editorg.php?deptid={$org_list[$i][id]}&gid=$gid&ye=$ye'>修改</a>]</td>
+		    <td width='170px'>{$org_list[$i]['dept_name']}[<a href='syst_editorg.php?deptid={$org_list[$i][id]}&deptname={$org_list[$i][dept_name]}&ye=$ye'>修改</a>]</td>
 		    <td width='150px'>$tree</td>
 			<td width='320'>{$org_list[$i]['dept_tree_name']}</td>
 			<td width='100'><a class='del' href='syst_delorg.php?id={$org_list[0][id]}' onClick='return delok();'>删除</a></td>
@@ -70,7 +70,7 @@ function delok(){
 
 	     <div id="page">
 	     	<?php 
-	     	$nums = $org_list['count'];
+	     	$nums = $org_list[0]['count'];
 	     	$mangerorg->page($nums); ?>
 	     </div>
 	</div><br />

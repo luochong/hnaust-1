@@ -26,9 +26,9 @@ class mangerorg extends MysqlDao
 		$page_no = $_GET['page_no'];
 		$this->setTableName("group_dept");
 		$cond = array();
-		$row = $this->selectA($cond,PageNum,$page_no);
+		$row = $this->selectA($cond,PageNum,$page_no-1);
 		$row1 = $this->selectA($cond);
-		$row['count'] = count($row1);
+		$row[0]['count'] = count($row1);
 		return $row;
 		
 	}
