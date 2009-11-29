@@ -59,8 +59,9 @@ $action->run();
 				<li><a class="tit" href="stud_home.php" style="text-decoration:none">首&nbsp;页</a></li>
 				<li><a class="tit" href="stud_addapp.php" style="text-decoration:none">项目申报</a></li>
 				<li><a class="tit" href="#" style="text-decoration:none">资料下载</a></li>
-		<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
-			<li><a class="tit" href="index.php?ac=logout" style="text-decoration:none">退出系统</a></li>
+				<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
+				<li><a class="tit" href="index.php?ac=logout" style="text-decoration:none">退出系统</a></li>
+				<li><a class="tit" href="http://220.169.45.179/xnqn/web/" style="text-decoration:none">湘农青年</a></li>
 			</ul>
 			</div>		</td>
 		<td>
