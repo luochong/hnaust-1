@@ -95,7 +95,7 @@ a:hover{color:red;}
 			<img src="images/首页_11.gif" width="275" height="19" alt=""></td>
 		<td rowspan="6">
 			<img src="images/首页_12.gif" width="26" height="269" alt=""></td>
-		<td colspan="3" rowspan="3" align="center" background="images/首页_13.gif">新闻</td>
+		<td colspan="3" rowspan="3" align="center" background="images/首页_13.gif"></td>
 		<td rowspan="6">
 			<img src="images/首页_14.gif" width="36" height="269" alt=""></td>
 		<td colspan="3" rowspan="2" background="images/首页_15.gif" align="center">通知</td>
@@ -127,13 +127,13 @@ a:hover{color:red;}
 	</tr>
 		
 	<tr>
-	  <td  colspan="3" rowspan="3"><table width='100%' height="133" cellpadding='0' cellspacing='0'>
+	  <td  colspan="3" rowspan="3"><table width='100%' height="175" cellpadding='0' cellspacing='0'>
 
             <?php  
-		  for($i=0;$i<count($newsshow)&&7;$i++ ){?>
+		  for($i=0;$i<count($newsshow)&&$i<9;$i++ ){?>
             <tr>
              
-                <td width='10' valign='top' class=''></td>
+                <td  valign='top' class=''></td>
 			    <td class=''><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><font size="2"><?php echo $newsshow[$i]['news_title'];?></a></font></td>
 			    <td align='right' class="cutstring"><font size="2"><?php echo date("m-d",strtotime($newsshow[$i]['news_time']))?></font></td></td>
 	      
