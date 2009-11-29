@@ -34,8 +34,14 @@ a.info:hover{color:#6600FF}
 	height:128px;
 	background-image:url(img/首页_02.gif);
 	background-repeat:no-repeat;
-	display:block;
 	float:left;
+}
+#header_1{
+	margin-left:50px;
+	width:576px;
+	height:128px;
+	display:block;
+	float:right;
 }
 #header1 {
 	width:576px;
