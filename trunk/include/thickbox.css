@@ -162,7 +162,6 @@ margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = d
 	_margin-bottom:1px;
 }
 
-
 a.tit:link {color:#fff; text-decoration:none;}
 a.tail:link {color:#089FFA; font-family:"黑体";text-decoration:none;}
 a.tail1:link {color:#000; text-decoration:none;}
@@ -192,12 +191,13 @@ height:36px;
 display:block;
 }
 #header ul {
-margin:auto;
+margin:0px;
 }
 #header li {
 padding-top:15px;
 text-decoration:none;
-height:36px;
+list-style-type:none;
+height:20px;
 width:110px;
 text-align:center;
 font-family:"黑体";
@@ -207,7 +207,7 @@ float:left;
 #tailer {
 padding-top:5px;
 margin:auto;
-width:280px;
+width:300px;
 height:67px;
 font-size:13px;
 display:block;
