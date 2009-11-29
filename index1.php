@@ -28,12 +28,6 @@ $newsshow=$news->indextitle();
 $action = new LoginAction();
 $action->run();
 ?>
-
-
-
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -75,12 +69,10 @@ $action->run();
 			<img src="images/spacer.gif" width="1" height="36" alt=""></td>
 	</tr>
 	<tr>
-		<td colspan="17" background="images/首页_09.gif">&nbsp;
-			<form action="index.php?ac=login" method="POST" >用户名:<BR>
-				<INPUT style="MARGIN-BOTTOM: 8px" id=login_user maxLength=50 size=16 type="text" name="user_name"><BR>密码:<BR>
-				<INPUT style="MARGIN-BOTTOM: 8px" id=login_pwd onfocus=true maxLength=50 size=16 type=password name="user_password"><BR>
-					<input type="submit" value="登录" /></SPAN> </form>
-			</td>
+		<td colspan="17" background="images/首页_09.gif">
+		<form>用户名
+			<input type="text" size="16" name="username" id="username" value="" />&nbsp;&nbsp;密码
+		      <input name="password" size="16" type="password"/>&nbsp;&nbsp;&nbsp;<input type="submit" value="登录" /></form>
 		<td>
 			<img src="images/spacer.gif" width="1" height="34" alt=""></td>
 	</tr>
@@ -106,9 +98,10 @@ $action->run();
 		<td colspan="2" rowspan="4">
 			<img src="images/首页_16.gif" width="18" height="198" alt=""></td>
 		<td colspan="6" rowspan="3">
-			<img src="images/首页_17.gif" width="240" height="180" alt=""></td>
+			</td>
 		<td rowspan="4">
-			<img src="images/首页_18.gif" width="17" height="198" alt=""></td>
+		<img src="images/首页_18.gif" width="17" height="198" alt="">
+			</td>
 		<td>
 			<img src="images/spacer.gif" width="1" height="19" alt=""></td>
 	</tr>
@@ -126,17 +119,14 @@ $action->run();
             {
 		  echo $newsshow[$i]['news_title'];
 		  echo $newsshow[$i]['news_time'];
-		  echo "<br />";
             }?>
 		  </table><br><a href="newstitle.php" class="zhiti3">more>></a></td>
 		<td>
 			<img src="images/spacer.gif" width="1" height="144" alt=""></td>
 	</tr>
 	<tr>
-		<td colspan="5">
-			<img src="images/首页_21.gif" width="235" height="18" alt=""></td>
-		<td>
-			<img src="images/首页_22.gif" width="5" height="18" alt=""></td>
+		<td colspan="6" background="images/首页_22.gif">
+		<img src="images/首页_22.gif" width="5" height="18" alt=""></td>
 		<td>
 			<img src="images/spacer.gif" width="1" height="18" alt=""></td>
 	</tr>
