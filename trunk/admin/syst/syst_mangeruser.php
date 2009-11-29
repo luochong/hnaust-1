@@ -1,8 +1,8 @@
 <?php
 require_once("../../include/session.class.php");
-
 require_once("syst_mangeruser.class.php");
-
+require_once("syst_mangeritem.class.php");
+$mangeritem= new mangeritem();
 $mangeruser = new mangeruser();
 $row = $mangeruser->showUserList();
 
@@ -64,7 +64,9 @@ function delok(){
 	 </table>
 		  
 	 <div id="page">
-	     	<?php //page($hwnd,$sql_1,$page,$pagenum,$cs); ?>
+	     	<?php 
+	     	$nums = $row[0][count];
+	     	$mangeritem->page($nums);?>
 	 </div>
 	</div><br />
      </div>
