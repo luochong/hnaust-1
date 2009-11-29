@@ -11,8 +11,7 @@ if($_POST["submit"] == "导出"){
 		Header("Content-type:application/octet-stream");   
 		Header("Accept-Ranges:bytes");     
 		Header("Content-type:application/vnd.ms-excel");	
-		$title = iconv("UTF-8", "GB2132//IGNORE","毕业生素拓课程表");
-		Header("Content-Disposition:filename=$title.xls");
+		Header("Content-Disposition:filename=毕业生素拓课程表.xls");
 	 ?>
 	 <html xmlns:o="urn:schemas-microsoft-com:office:office"
         xmlns:x="urn:schemas-microsoft-com:office:excel"
