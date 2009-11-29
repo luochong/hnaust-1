@@ -36,7 +36,14 @@ $action->run();
 
 <link href="include/thickbox.css" rel="stylesheet" type="text/css"/>
 </head>
+<style>
 
+a{text-decoration:none}
+a:link{color:blue;}   
+a:visited{color:black;} 
+a:hover{color:red;}    
+
+</style>
 
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table id="Table_01" width="852" height="584" border="0" cellpadding="0" cellspacing="0" align="center">
@@ -88,7 +95,7 @@ $action->run();
 			<img src="images/首页_11.gif" width="275" height="19" alt=""></td>
 		<td rowspan="6">
 			<img src="images/首页_12.gif" width="26" height="269" alt=""></td>
-		<td colspan="3" rowspan="3" align="center" background="images/首页_13.gif">公告</td>
+		<td colspan="3" rowspan="3" align="center" background="images/首页_13.gif">新闻</td>
 		<td rowspan="6">
 			<img src="images/首页_14.gif" width="36" height="269" alt=""></td>
 		<td colspan="3" rowspan="2" background="images/首页_15.gif" align="center">通知</td>
@@ -107,25 +114,34 @@ $action->run();
 			<img src="images/spacer.gif" width="1" height="19" alt=""></td>
 	</tr>
 	<tr>
-		<td colspan="3" rowspan="4" background="images/首页_19.gif" align="center"><MARQUEE onmouseover=this.stop(); onmouseout=this.start(); direction=up height=140 width=150 		scrollAmount=1 scrollDelay=1><a class='zhiti1' href='#' title='关于...的通知1'>关于dsjfhsdjkhsdjhfkjwdhfjksh.的通知1</a><br>
-	    <br><a class='zhiti1' href='#' title='关于...的通知2'>关于.....的通知2</a><br>
-	      <br><a class='zhiti1' href='#' title='关于...的通知3'>关于..................的通知3</a><br><br><a class="zhiti1" style="text-decoration:none" href='#' title='关于...的通知4'>关于................的通知4</a><br><br><a class='zhiti1' href='#' title='关于...的通知5'>关于..................的通知5</a><br><br><a class='zhiti1' href='#' title='关于...的通知6'>关于........................的通知6</a></MARQUEE><br><br><a href="#" class="zhiti2">more>></a></td>
+		<td class="alinkword" colspan="3" rowspan="4" background="images/首页_19.gif" align="center"><MARQUEE  onmouseover=this.stop(); onmouseout=this.start(); direction=up height=140 width=150 		scrollAmount=1 scrollDelay=1>
+			<a class='zhiti1' href='#' title='关于认真做好2009年湖南省“三下乡”社会实践活动总结表彰工作的通知'>1.关于认真做好2009年湖南省大中专学生志愿者暑期文化科技卫生“三下乡”社会实践活动总结表彰工作的通知
+</a><br>
+	    <br><a class='zhiti1' href='#' title='关于的通知'>2.关于开展第八届“求真”大学生学术科技节的通知
+</a><br>
+	      <br><a class='zhiti1' href='#' title='关于的通知'>3.第十五届湖南省大学生英语演讲比赛</a><br><br>
+	    
 		<td>
 			<img src="images/spacer.gif" width="1" height="17" alt=""></td>
 	</tr>
-	<tr>
-	  <td colspan="3" rowspan="3"><table width='100%' height="133" cellpadding='0' cellspacing='0'>
 		
+	<tr>
+	  <td  colspan="3" rowspan="3"><table width='100%' height="133" cellpadding='0' cellspacing='0'>
+
             <?php 
 		  for($i=0;$i<7;$i++ ){?>
             <tr>
-			    <td width='10' valign='top' class=''></td>
-			    <td class=''><?php echo $newsshow[$i]['news_title'];?></td>
-			    <td align='right' class='zhiti1'><?php echo $newsshow[$i]['news_time'];?></td></td>
-	      	</tr>
+              <div class="cutstring">
+                <td width='10' valign='top' class=''></td>
+			    <td class=''><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><font size="2"><?php echo   $newsshow[$i]['news_title']; ?><?php echo $newsshow[$i]['news_title'];?></a></font></td>
+			    <td align='right' class="cutstring"><?php echo $newsshow[$i]['news_time'];?></td></td>
+	      	 </div>
+			  </tr>
 	      	<?php } ?>
+	  
 		  </table><br><a href="newstitle.php" class="zhiti3">more>></a></td>
 		<td>
+		  
 			<img src="images/spacer.gif" width="1" height="144" alt=""></td>
 	</tr>
 	<tr>

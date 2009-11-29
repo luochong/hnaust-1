@@ -29,8 +29,8 @@ $nshowdown=$news->getnewscont($newsid-1);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>素质拓展学分认证系统>>首页</title>
-
+<title><?php   echo   $newsshow[0]['news_title']; ?></title>
+<style>a{text-decoration:none}</style>
 <link href="include/thickbox.css" rel="stylesheet" type="text/css"/>
 </head>
 
@@ -101,34 +101,30 @@ $nshowdown=$news->getnewscont($newsid-1);
 			<img src="images/spacer.gif" width="1" height="19" alt=""></td>
 	</tr>
 	<tr>
-		<td colspan="3" rowspan="4" background="images/首页_19.gif" align="center"><MARQUEE onmouseover=this.stop(); onmouseout=this.start(); direction=up height=140 width=150 		scrollAmount=1 scrollDelay=1><a class='zhiti1' href='#' title='关于...的通知1'>关于dsjfhsdjkhsdjhfkjwdhfjksh.的通知1</a><br>
-	    <br><a class='zhiti1' href='#' title='关于...的通知2'>关于.....的通知2</a><br>
-	      <br><a class='zhiti1' href='#' title='关于...的通知3'>关于..................的通知3</a><br><br><a class="zhiti1" style="text-decoration:none" href='#' title='关于...的通知4'>关于................的通知4</a><br><br><a class='zhiti1' href='#' title='关于...的通知5'>关于..................的通知5</a><br><br><a class='zhiti1' href='#' title='关于...的通知6'>关于........................的通知6</a></MARQUEE><br><br><a href="#" class="zhiti2">more>></a></td>
+		<td colspan="3" rowspan="4" background="images/首页_19.gif" align="center"><MARQUEE onmouseover=this.stop(); onmouseout=this.start(); direction=up height=140 width=150 		scrollAmount=1 scrollDelay=1>
+			<a class='zhiti1' href='#' title='关于认真做好2009年湖南省“三下乡”社会实践活动总结表彰工作的通知'>1.关于认真做好2009年湖南省大中专学生志愿者暑期文化科技卫生“三下乡”社会实践活动总结表彰工作的通知
+</a><br>
+	    <br><a class='zhiti1' href='#' title='关于的通知'>2.关于开展第八届“求真”大学生学术科技节的通知
+</a><br>
+	      <br><a class='zhiti1' href='#' title='关于的通知'>3.第十五届湖南省大学生英语演讲比赛</a><br><br>
+	    
 		<td>
 			<img src="images/spacer.gif" width="1" height="17" alt=""></td>
 	</tr>
 	<tr>
 	  <td colspan="3" rowspan="3"><table width='100%' height="133" cellpadding='0' cellspacing='0'>
 		
-<?php
-     // print_r($newsshow);
-        echo   $newsshow[0]['news_title']; 
-
-       echo   $newsshow[0]['news_body']; 
-?>
+              <font size="3"><?php  echo   $newsshow[0]['news_title']; ?></font><br />
+              <font size="2"><?php echo   $newsshow[0]['news_time']; ?></font>
+              <font size="2"><?php echo   $newsshow[0]['news_author']; ?></font><br />
+              <font size="2"><?php  echo   $newsshow[0]['news_body']; ?></font>
 
 
-<?php
-       echo   $newsshow[0]['news_author']; 
-?>
 
-<?php
-       echo   $newsshow[0]['news_time']; 
-       echo "<br />";
-  
-?>
-上一篇：<a href="newscontent.php?newsid=<?php echo $nshowup[0]['news_id']  ?>"><?php echo $nshowup[0]['news_title']  ?> </a><br />
-下一篇：<a href="newscontent.php?newsid=<?php echo $nshowdown[0]['news_id']  ?>"><?php echo $nshowdown[0]['news_title']  ?></a>
+
+
+ <br /><font size="2">上一篇：<a href="newscontent.php?newsid=<?php echo $nshowup[0]['news_id']  ?>"><?php echo $nshowup[0]['news_title']  ?> </a><br />
+下一篇：<a href="newscontent.php?newsid=<?php echo $nshowdown[0]['news_id']  ?>"><?php echo $nshowdown[0]['news_title']  ?></a></font>
 
 		  </table></td>
 		<td>

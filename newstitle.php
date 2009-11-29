@@ -26,8 +26,8 @@ $newsshow=$news->getnewsinfo($pageno);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>素质拓展学分认证系统>>首页</title>
-
+<title>素质拓展学分认证系统>>新闻中心</title>
+<style>a{text-decoration:none}</style>
 <link href="include/thickbox.css" rel="stylesheet" type="text/css"/>
 </head>
 
@@ -91,16 +91,20 @@ $newsshow=$news->getnewsinfo($pageno);
 		<td colspan="2" rowspan="4">
 			<img src="images/首页_16.gif" width="18" height="198" alt=""></td>
 		<td colspan="6" rowspan="3">
-			<img src="images/首页_17.gif" width="240" height="180" alt=""></td>
+			</td>
 		<td rowspan="4">
 			<img src="images/首页_18.gif" width="17" height="198" alt=""></td>
 		<td>
 			<img src="images/spacer.gif" width="1" height="19" alt=""></td>
 	</tr>
 	<tr>
-		<td colspan="3" rowspan="4" background="images/首页_19.gif" align="center"><MARQUEE onmouseover=this.stop(); onmouseout=this.start(); direction=up height=140 width=150 		scrollAmount=1 scrollDelay=1><a class='zhiti1' href='#' title='关于...的通知1'>关于dsjfhsdjkhsdjhfkjwdhfjksh.的通知1</a><br>
-	    <br><a class='zhiti1' href='#' title='关于...的通知2'>关于.....的通知2</a><br>
-	      <br><a class='zhiti1' href='#' title='关于...的通知3'>关于..................的通知3</a><br><br><a class="zhiti1" style="text-decoration:none" href='#' title='关于...的通知4'>关于................的通知4</a><br><br><a class='zhiti1' href='#' title='关于...的通知5'>关于..................的通知5</a><br><br><a class='zhiti1' href='#' title='关于...的通知6'>关于........................的通知6</a></MARQUEE><br><br><a href="#" class="zhiti2">more>></a></td>
+		<td colspan="3" rowspan="4" background="images/首页_19.gif" align="center"><MARQUEE onmouseover=this.stop(); onmouseout=this.start(); direction=up height=140 width=150 		scrollAmount=1 scrollDelay=1>
+		<a class='zhiti1' href='#' title='关于认真做好2009年湖南省“三下乡”社会实践活动总结表彰工作的通知'>1.关于认真做好2009年湖南省大中专学生志愿者暑期文化科技卫生“三下乡”社会实践活动总结表彰工作的通知
+</a><br>
+	    <br><a class='zhiti1' href='#' title='关于的通知'>2.关于开展第八届“求真”大学生学术科技节的通知
+</a><br>
+	      <br><a class='zhiti1' href='#' title='关于的通知'>3.第十五届湖南省大学生英语演讲比赛</a><br><br>
+	    
 		<td>
 			<img src="images/spacer.gif" width="1" height="17" alt=""></td>
 	</tr>
@@ -110,18 +114,11 @@ $newsshow=$news->getnewsinfo($pageno);
 for($i=0;$i<count($newsshow);$i++ )
 {
    ?>
-   <a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><?php echo   $newsshow[$i]['news_title']; ?></a>
+   <a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>">><font size="2"><?php echo   $newsshow[$i]['news_title']; ?></a>
 
-
+<?php echo   $newsshow[$i]['news_time']; 
+       echo "<br />";}?></font>
 <?php
-       echo   $newsshow[$i]['news_body']; 
-?>
-
-<?php
-       echo   $newsshow[$i]['news_time']; 
-       echo "<br />";
-}
-
           $news->page_list();
 ?>
 
@@ -139,7 +136,7 @@ for($i=0;$i<count($newsshow);$i++ )
 	</tr>
 	<tr>
 		<td colspan="9">
-			<img src="images/首页_23.gif" width="275" height="52" alt=""></td>
+			</td>
 		<td>
 			<img src="images/spacer.gif" width="1" height="52" alt=""></td>
 	</tr>
