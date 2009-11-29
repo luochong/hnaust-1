@@ -16,13 +16,13 @@ require_once("syst_delitem.class.php");
 <?php 
 		if($resu==0){  
 			echo "<script language=javascript>\n";	
-			echo "alert('成功添加项目')\n";
-			echo "window.location.href='syst_additem.php'";		
+			echo "alert('成功删除项目')\n";
+			echo "window.location.href='syst_mangeritem.php'";		
 			echo "</script>\n";
 		}else{
 			echo "<script language=javascript>\n";	
-			echo "alert('添加项目失败')\n";
-			echo "window.location.href='syst_additem.php'";		
+			echo "alert('删除项目失败')\n";
+			echo "window.location.href='syst_mangeritem.php'";		
 			echo "</script>\n";
 		}
 ?>

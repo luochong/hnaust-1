@@ -26,12 +26,8 @@ class delitem extends MysqlDao
 		$this->setTableName("item_set");
 		$date = array("item_status" => '0');
 		$cond = array("item_id" => $item_id);
-		
-		print_r($date);
 		$resu = $this->update($date,$cond);
-		print_r($cond);echo "resu=".$resu;
-	//	return $resu;
-		
+		return $resu;
 	}
 }
 ?>
