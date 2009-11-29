@@ -24,7 +24,7 @@ class mangerfiles extends MysqlDao
 	public function file_list()
 	{
 		$this->setTableName("upload_file");
-		$cond = array();
+		$cond = array("file_status" => '1');
 		$row = $this->selectA($cond);
 		return $row;
 	}
