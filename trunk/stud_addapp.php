@@ -67,7 +67,7 @@ if( isset($_POST['submit']) )
 				<li><a class="tit" href="stud_addapp.php" style="text-decoration:none">项目申报</a></li>
 				<li><a class="tit" href="#" style="text-decoration:none">资料下载</a></li>
 				<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
-			<li><a class="tit" href="index.php" style="text-decoration:none">退出系统</a></li>
+			<li><a class="tit" href="index.php?ac=logout" style="text-decoration:none">退出系统</a></li>
 			</ul>
 		</div>
 		</div>
