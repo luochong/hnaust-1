@@ -92,7 +92,10 @@ class ItemsearchAction extends MysqlDao {
 			if(!empty($_GET['i_org'])&&$_SESSION['admin_super']==1){
 				$sql.=' and item_apply.stud_orgcode='.$_GET['i_org'];
 			}else{
-				$sql.=' and item_apply.stud_orgcode='.$_SESSION['admin_org_code'];
+				if($_SESSION['admin_super']!=1)
+					$sql.=' and item_apply.stud_orgcode='.$_SESSION['admin_org_code'];
+				
+				
 			}
 			if(!empty($_GET['i_score'])){
 				$sql.=' and item_score ='.$_GET['i_score'];

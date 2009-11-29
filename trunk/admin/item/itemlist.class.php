@@ -75,10 +75,15 @@ class ItemListAction extends MysqlDao {
 	public function getItemData(){
 		$sql = 'select app_id,app_stud_no,stud_class,stud_name,app_item_code,app_time,app_state,app_item_type,item_name,item_rank,item_score  ';
 		$sql .='from item_apply,item_set,stud_baseinfo where stud_baseinfo.stud_no = item_apply.app_stud_no and item_apply.app_item_code = item_set.item_code ';
-		$sql .='and item_apply.stud_orgcode = ? ';
+		$cond =null;
+		if($_SESSION['admin_super'] != 1){
+			$sql .='and item_apply.stud_orgcode = ? ';
+			$cond = array($_SESSION['admin_org_code']);
+		}
 		if($_GET['s'] != 10) $sql.=" and item_apply.app_state = {$_GET['s']} "; 
 		$sql .=' order by app_time DESC';
-		return $this->executeQueryA($sql,array($_SESSION['admin_org_code']),20,$this->pn-1);
+		
+		return $this->executeQueryA($sql,$cond,20,$this->pn-1);
 	}
 	
 	public function makepage(){

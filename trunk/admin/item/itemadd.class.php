@@ -67,4 +67,3 @@ class ItemAddAction extends MysqlDao {
 		$this->insert($data);
 	}
 }
-

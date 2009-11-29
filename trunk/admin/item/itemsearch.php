@@ -235,7 +235,3 @@ foreach ($data as $t){
   </div>
 </body>
 </html>
-	 
-
-
-
