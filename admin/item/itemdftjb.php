@@ -4,10 +4,10 @@ include_once("../../include/mysqldao.class.php");
 require_once("../../control/tongji.include.php");
 require_once("../../include/function.include.php");
 $tongji = new Tongji();
-$s_no =$tongji->getBYSNO();
+$org_data =$tongji->getDFXID();
 ob_clean();
 if($_POST["submit"] == "导出Excel"){
-		$file_name = iconv("UTF-8","GB2312",'毕业生素拓课程表');
+		$file_name = iconv("UTF-8","GB2312",'东方院各系毕业生素拓项目统计表');
 		Header("Content-type:charset=utf-8");        
 		Header("Content-type:application/octet-stream");   
 		Header("Accept-Ranges:bytes");     
@@ -21,31 +21,32 @@ if($_POST["submit"] == "导出Excel"){
 	        <meta http-equiv=Content-Type content="text/html; charset=utf-8">    
 			<!--<link type="text/css" rel="stylesheet" href="../css/table.css" media="screen" />-->
 	  </head>
-	  <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
+		  	   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
-      <th colspan=5 align="center"><?php echo $tongji->getYear()?>年毕业生素拓课程表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
+      <th colspan=6 align="center"><?php echo $tongji->getYear()?>年东方院各系毕业生素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
     </tr>
     <tr align="center" color="blue" border>
-     <td>学号</td>
-     <td>姓名</td>
-     <td>课程号</td>
-     <td>学分</td>
-     <td>成绩</td>
+     <td>系名称</td>
+     <td>申报总人数</td>
+     <td>申报总项目数</td>
+     <td>总申报学分</td>
+     <td>总有效学分</td>
+     <td>总课程学分</td>
 	</tr>
    <?php
-	foreach ($s_no as $v){
-		$lesson = $tongji->countLessonCredit($v['sno']);
-		
-		foreach ($lesson as $l){
+	foreach ($org_data as $v){
+		$item = $tongji->countBDFXItemByOrgId($v['org_no']);
+		$credit=$tongji->countBDFXValidCreditANDLessonCreditByOrg($v['org_no'])
 			?>
 			<tr>
-			<td>&nbsp;<?php echo $v['sno']?></td>
-			<td>&nbsp;<?php echo $v['stud_name']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_no']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_score']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_mark']?></td>
+			<td>&nbsp;<?php echo $v['org_name']?></td>
+			<td>&nbsp;<?php echo $item["stud_count"]?></td>
+			<td>&nbsp;<?php echo $item["item_count"]?></td>
+			<td>&nbsp;<?php echo $item['score_count']?></td>
+			<td>&nbsp;<?php echo $credit['credit']?></td>
+			<td>&nbsp;<?php echo $credit['lcredit']?></td>
 			</tr>
-		<?php }
+		<?php 
 	}
 	?>
 
@@ -78,38 +79,37 @@ if($_POST["submit"] == "导出Excel"){
 	  	  <div class="right"><a href='javascript:history.back();'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
-  	 <form id="form1" name="form1" method="post" action="itemtongji.php">
-      <div class="alltitle">毕业生素拓课程</div>
+  	 <form id="form1" name="form1" method="post" action="itemptongji.php">
+      <div class="alltitle">东方院各系毕业生素拓项目统计</div>
 		  
 	  <div id="allcontent">
 	  	<p style="color:#FF0000"><?php echo $action->error_message?></p>
-	       <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
+			  	   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
-      <th colspan=6 align="center"><?php echo $tongji->getYear()?>年毕业生素拓课程表<small>(毕业时间:<?php echo $tongji->getYear()?>)</small></th>
+      <th colspan=6 align="center"><?php echo $tongji->getYear()?>年东方院各系毕业生素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
     </tr>
     <tr align="center" color="blue" border>
-     <td>学号</td>
-     <td>姓名</td>
-     <td>课程号</td>
-     <td>课程名</td>
-     <td>学分</td>
-     <td>成绩</td>
+     <td>系名称</td>
+     <td>申报总人数</td>
+     <td>申报总项目数</td>
+     <td>总申报学分</td>
+     <td>总有效学分</td>
+     <td>总课程学分</td>
 	</tr>
    <?php
-	foreach ($s_no as $v){
-		$lesson = $tongji->countLessonCredit($v['sno']);
-		
-		foreach ($lesson as $l){
+	foreach ($org_data as $v){
+		$item = $tongji->countBDFXItemByOrgId($v['org_no']);
+		$credit=$tongji->countBDFXValidCreditANDLessonCreditByOrg($v['org_no'])
 			?>
 			<tr>
-			<td>&nbsp;<?php echo $v['sno']?></td>
-			<td>&nbsp;<?php echo $v['stud_name']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_no']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_name']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_score']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_mark']?></td>
+			<td>&nbsp;<?php echo $v['org_name']?></td>
+			<td>&nbsp;<?php echo $item["stud_count"]?></td>
+			<td>&nbsp;<?php echo $item["item_count"]?></td>
+			<td>&nbsp;<?php echo $item['score_count']?></td>
+			<td>&nbsp;<?php echo $credit['credit']?></td>
+			<td>&nbsp;<?php echo $credit['lcredit']?></td>
 			</tr>
-		<?php }
+		<?php 
 	}
 	?>
 
