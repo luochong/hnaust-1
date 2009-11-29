@@ -42,59 +42,7 @@ $action->run();
 
 <link href="include/thickbox.css" rel="stylesheet" type="text/css"/>
 </head>
-<style type="text/css"> 
-<!--
-a.tit:link {color:#fff; text-decoration:none;}
-a.tail:link {color:#089FFA; font-family:"黑体";text-decoration:none;}
-a.tail1:link {color:#000; text-decoration:none;}
-.zhiti1 {
-text-decoration:none;
-font-size:13px;
-color:#000000;
-}
-.zhiti2 {
-text-decoration:none;
-font-size:12px;
-padding-left:110px;
-color:#000000;
-}
-.zhiti3 {
-text-decoration:none;
-font-size:12px;
-padding-left:275px;
-color:#000000;
-}
-.tail{
-text-decoration:none;
-}
-#header {
-width:610px;
-height:36px;
-display:block;
-}
-#header ul {
-margin:auto;
-}
-#header li {
-padding-top:15px;
-text-decoration:none;
-height:36px;
-width:110px;
-text-align:center;
-font-family:"黑体";
-color:#FFFFFF;
-float:left;
-}
-#tailer {
-padding-top:5px;
-margin:auto;
-width:280px;
-height:67px;
-font-size:13px;
-display:block;
-}
--->
-</style>
+
 
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table id="Table_01" width="852" height="584" border="0" cellpadding="0" cellspacing="0" align="center">
