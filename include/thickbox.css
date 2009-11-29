@@ -161,7 +161,6 @@ margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = d
 	margin-top:1px;
 	_margin-bottom:1px;
 }
-
 a.tit:link {color:#fff; text-decoration:none;}
 a.tail:link {color:#089FFA; font-family:"黑体";text-decoration:none;}
 a.tail1:link {color:#000; text-decoration:none;}
@@ -198,7 +197,7 @@ padding-top:15px;
 text-decoration:none;
 list-style-type:none;
 height:20px;
-width:110px;
+width:98px;
 text-align:center;
 font-family:"黑体";
 color:#FFFFFF;
