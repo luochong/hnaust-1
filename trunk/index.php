@@ -106,6 +106,7 @@ a:hover{color:red;}
 		<td colspan="2" rowspan="4">
 			<img src="images/首页_16.gif" width="18" height="198" alt=""></td>
 		<td colspan="6" rowspan="3">
+			<img src="images/首页_17.gif" width="240" height="180" alt="">
 			</td>
 		<td rowspan="4">
 		<img src="images/首页_18.gif" width="17" height="198" alt="">
@@ -133,7 +134,7 @@ a:hover{color:red;}
             <tr>
               <div class="cutstring">
                 <td width='10' valign='top' class=''></td>
-			    <td class=''><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><font size="2"><?php echo   $newsshow[$i]['news_title']; ?><?php echo $newsshow[$i]['news_title'];?></a></font></td>
+			    <td class=''><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><font size="2"><?php echo $newsshow[$i]['news_title'];?></a></font></td>
 			    <td align='right' class="cutstring"><?php echo $newsshow[$i]['news_time'];?></td></td>
 	      	 </div>
 			  </tr>
