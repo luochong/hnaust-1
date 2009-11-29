@@ -47,7 +47,7 @@ class edituser extends MysqlDao
 			}
 			else{
 				echo "<script language=javascript>\n";	
-				echo "alert('未修改账号')\n";
+				echo "alert('修改账号失败')\n";
 				echo "window.location.href='syst_mangeruser.php'";		
 				echo "</script>\n";
 			}

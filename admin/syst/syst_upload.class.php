@@ -35,7 +35,10 @@ class uploadfiles extends MysqlDao
 			echo "window.location.href='syst_upload.php'";		
 			echo "</script>\n";
 		}else{
-			return 'fail';
+			echo "<script language=javascript>\n";	
+			echo "alert('上传文件失败！')\n";
+			echo "window.location.href='grouAdd02.php'";		
+			echo "</script>\n";
 		}
 	}
 }

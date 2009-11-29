@@ -40,7 +40,10 @@ class edititem extends MysqlDao
 			echo "window.location.href='grouAdd02.php'";		
 			echo "</script>\n";
 		}else{
-			echo "fail";
+			echo "<script language=javascript>\n";	
+			echo "alert('修改项目失败！')\n";
+			echo "window.location.href='grouAdd02.php'";		
+			echo "</script>\n";
 		}
 	}
 }
