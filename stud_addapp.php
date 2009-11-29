@@ -58,19 +58,23 @@ if( isset($_POST['submit']) )
 <script type="text/javascript" src="include/thickbox.js"></script>
 <body>
 <div id="background">
-		<div id="headimg">
-		<div id="header"></div>
-		<div id="title">
-			<ul>
-				<li><a class="tit" href="stud_home.php" style="text-decoration:none">首&nbsp;页</a></li>
+<div id="headimg">
+			<div id="header"></div>
+			<div id="header1">
+				<div id="header_bg"></div>
+				<div id="header_bg1"></div>
+				<div id="header_bg2">
+				<li><a class="tit" href="stud_home.php" style="text-decoration:none">首页</a></li>
 				<li><a class="tit" href="stud_addapp.php" style="text-decoration:none">项目申报</a></li>
 				<li><a class="tit" href="#" style="text-decoration:none">资料下载</a></li>
 				<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
-			<li><a class="tit" href="index.php?ac=logout" style="text-decoration:none">退出系统</a></li>
-			</ul>
+				<li><a class="tit" href="index.php?ac=logout" style="text-decoration:none">退出系统</a></li>
+				<li><a class="tit" href="http:\\www.xnqn.com" target="_blank" style="text-decoration:none">湘农青年</a></li>
+				</div>
+				<div id="header_bg3"></div>
+			</div>
+			<div id="header_bg4"></div>
 		</div>
-		</div>
-		<div class="clear"></div>
 		<div id="left">
 			<div id="left1">
 				<div id="denglu">学生信息</div>
