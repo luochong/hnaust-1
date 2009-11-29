@@ -43,7 +43,7 @@ $_SESSION['stud_sex']=$showinfo[0]['stud_sex'];
 $_SESSION['stud_college']=$showinfo[0]['stud_college'];
 
 
-include_once('include/mysqldao.class.php');
+
 require_once('control/tongji.include.php');
 $tongji = new Tongji();
 ?>

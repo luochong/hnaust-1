@@ -99,37 +99,34 @@
                      
                  }
           }
-          public function finditem($atype,$iname)
-          {
-               $ttype=getItemType($atype);
          
-                 $sql="select  item_rank from item_set where item_type='$ttype'  and item_name='$iname' " ;			//查询类型
-              $row=$this->executeQueryA($sql);
-              // print_r($row);
-	       	  return $row;
-          }
                 public function setitem($atype,$iname,$irank)
           {
-              //echo $atype;
+           
              
-             if($atype=="求实"||$atype=="求特"){
-                  echo "<script language=javascript >\n";	
-			echo "alert('求实和求特由校团委申报，不允许提交')\n";
-			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
-			echo "</script>\n";}
-			 elseif($atype==0||$iname==0||$irank==0)
+			 if($atype=="0"||$iname=="0"||$irank=="0")
               {	echo "<script language=javascript >\n";	
 			echo "alert('项目为空，不能提交')\n";
 			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
 			echo "</script>\n";}
           
               else{
-              $sql="select item_code from item_set where item_type='$atype' and item_rank='$irank' and item_name='$iname' " ;			//查询类型
-              $row=$this->executeQueryA($sql);
-            //print_r($row);
-	       	  return $row;
-              }
-          }
-      } 
-      
+                  if($atype=="求实"||$atype=="求特"||$iname="参加学校组织的大学生课外学术科技作品竞赛"||
+                  $inam='职业规划大赛'||$iname='就业力挑战赛'||$iname='积极组织参与大学生文明修身活动'){
+                  echo "<script language=javascript >\n";	
+			echo "alert('该项目由校团委申报，不允许个人提交')\n";
+			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
+			echo "</script>\n";
+                  }
+    			    else {
+                  $sql="select item_code from item_set where item_type='$atype' and item_rank='$irank' and item_name='$iname' " ;			//查询类型
+                  $row=$this->executeQueryA($sql);
+                //print_r($row);
+    	       	  return $row;}
+                  }
+			 }
+			 
+}
+     
+    
 ?>
