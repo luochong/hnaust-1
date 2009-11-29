@@ -1,6 +1,5 @@
 <?php 
 class Tongji extends MysqlDao {
-	
 	public $maxcredit;
 	/* 单个学生的统计     */
 	/**
@@ -129,28 +128,207 @@ class Tongji extends MysqlDao {
     	}
     	return $d;
     }
+    
+        public function getBYSNO(){
+    	 date_default_timezone_set('Asia/Shanghai');
+		 $now = $this->getYear();
+    	 $sql = "select distinct app_stud_no as  sno,stud_name   from item_apply,stud_baseinfo where app_state = 2 and item_apply.app_stud_no = stud_baseinfo.stud_no and stud_baseinfo.stud_deadline =  ".$now;
+    	 return $this->executeQueryA($sql);
+    }
+    public function getCNO(){
+    	$sql = "select distinct item_apply.stud_orgcode  as org_no ,dept_name as org_name from item_apply,group_dept,stud_baseinfo where item_apply.stud_orgcode = id and app_stud_no = stud_no and stud_baseinfo.stud_college != '东方院'";
+    	return $this->executeQueryA($sql);
+    }
+    
+    public function getYear(){
+    	
+	    date_default_timezone_set('Asia/Shanghai');
+		//return date("Y");
+		return '2011';
+    }
+    
+    /***********************所有学生**************************/
+    
     /**
-	 * 学院总项目数
-	 */
-    public function countItemByOrgcode($id){
-		
-	
-    
-    
+     * Enter description here...
+     *
+     */
+    public function countItemByOrgId($org){
+    	$sql = "select count(*) as item_count,sum(item_score) as score_count,count(distinct app_stud_no) as stud_count from item_apply,item_set,stud_baseinfo where item_apply.stud_orgcode = $org  and stud_baseinfo.stud_college!='东方院' and item_code = app_item_code and app_state = 2 and stud_no = app_stud_no and stud_deadline <= ".$this->getYear();
+    	return current($this->executeQueryA($sql));
     }
     /**
      * Enter description here...
      *
      */
-    
-    public function getBYSNO(){
-    	 date_default_timezone_set('Asia/Shanghai');
-		 //$now = date("Y");
-		 $now = '2011';
-    	 $sql = "select distinct app_stud_no as  sno,stud_name   from item_apply,stud_baseinfo where app_state = 2 and item_apply.app_stud_no = stud_baseinfo.stud_no and stud_baseinfo.stud_deadline =  ".$now;
-    	 return $this->executeQueryA($sql);
-    }
+	
 
+    /**
+     * 统计各学院有效学分
+     *
+     * @param unknown_type $org_code
+     * @return unknown
+     */
+    public function countValidCreditANDLessonCreditByOrg($org_code){
+    	$sql = "select distinct app_stud_no as sno from item_apply,stud_baseinfo where item_apply.stud_orgcode = $org_code  and stud_baseinfo.stud_college!='东方院'  and app_state = 2 and stud_no = app_stud_no and stud_deadline <= ?  ";
+    	$sno = $this->executeQueryA($sql,array($this->getYear()));
+    	$c = 0;//有效学分
+    	$lc = 0;//课程有效学分
+    	foreach ($sno as $v){
+    		$c += $this->countVerifyValidCreditByStudId($v['sno']);
+    				$data = $this->countLessonCredit($v['sno']);
+    				foreach ($data as $d){
+    					$lc +=$d['mark_lesson_score'];
+    				}
+    	}
+    	$all['credit'] = $c;
+    	$all['lcredit'] = $lc;
+    	return $all;
+    }
+    /**
+     * 统计各学院毕业生有效学分
+     *
+     * @param unknown_type $org_code
+     * @return unknown
+     */
+ public function countBValidCreditANDLessonCreditByOrg($org_code){
+    	$sql = "select distinct app_stud_no as sno from item_apply,stud_baseinfo where item_apply.stud_orgcode = $org_code  and stud_baseinfo.stud_college!='东方院'  and app_state = 2 and stud_no = app_stud_no and stud_deadline = ?  ";
+    	$sno = $this->executeQueryA($sql,array($this->getYear()));
+    	$c = 0;//有效学分
+    	$lc = 0;//课程有效学分
+    	foreach ($sno as $v){
+    		$c += $this->countVerifyValidCreditByStudId($v['sno']);
+    				$data = $this->countLessonCredit($v['sno']);
+    				foreach ($data as $d){
+    					$lc +=$d['mark_lesson_score'];
+    				}
+    	}
+    	$all['credit'] = $c;
+    	$all['lcredit'] = $lc;
+    	return $all;
+    }
+    
+	public function countBItemByOrgId($org){
+	    	$sql = "select count(*) as item_count,sum(item_score) as score_count,count(distinct app_stud_no) as stud_count from item_apply,item_set,stud_baseinfo where item_apply.stud_orgcode = $org  and stud_baseinfo.stud_college!='东方院' and item_code = app_item_code and app_state = 2 and stud_no = app_stud_no and stud_deadline <= ".$this->getYear();
+	    	return current($this->executeQueryA($sql));
+	    }
+	
+	/**
+	 * 东方统计
+	 *
+	 */
+   public function countDFItem(){
+		$sql = "select count(*) as item_count,sum(item_score) as score_count,count(distinct app_stud_no) as stud_count from item_apply,item_set,stud_baseinfo where  stud_baseinfo.stud_college='东方院' and item_code = app_item_code and app_state = 2 and stud_no = app_stud_no and stud_deadline <= ".$this->getYear();
+		
+		return current($this->executeQueryA($sql));
+	}
+	
+   public function countDFValidCreditANDLessonCreditByOrg(){
+    	$sql = "select distinct app_stud_no as sno from item_apply,stud_baseinfo where stud_baseinfo.stud_college='东方院' and app_state = 2 and stud_no = app_stud_no and stud_deadline <= ?  ";
+    	$sno = $this->executeQueryA($sql,array($this->getYear()));
+    	$c = 0;//有效学分
+    	$lc = 0;//课程有效学分
+    	foreach ($sno as $v){
+    		$c += $this->countVerifyValidCreditByStudId($v['sno']);
+    				$data = $this->countLessonCredit($v['sno']);
+    				foreach ($data as $d){
+    					$lc +=$d['mark_lesson_score'];
+    				}
+    	}
+    	$all['credit'] = $c;
+    	$all['lcredit'] = $lc;
+    	return $all;
+    }
+    
+   public function countBDFItem(){
+	$sql = "select count(*) as item_count,sum(item_score) as score_count,count(distinct app_stud_no) as stud_count from item_apply,item_set,stud_baseinfo where  stud_baseinfo.stud_college='东方院' and item_code = app_item_code and app_state = 2 and stud_no = app_stud_no and stud_deadline = ".$this->getYear();
+   	return current($this->executeQueryA($sql));
+   }
+	
+   public function countBDFValidCreditANDLessonCreditByOrg(){
+    	$sql = "select distinct app_stud_no as sno from item_apply,stud_baseinfo where stud_baseinfo.stud_college='东方院' and app_state = 2 and stud_no = app_stud_no and stud_deadline = ?  ";
+    	$sno = $this->executeQueryA($sql,array($this->getYear()));
+    	$c = 0;//有效学分
+    	$lc = 0;//课程有效学分
+    	foreach ($sno as $v){
+    		$c += $this->countVerifyValidCreditByStudId($v['sno']);
+    				$data = $this->countLessonCredit($v['sno']);
+    				foreach ($data as $d){
+    					$lc +=$d['mark_lesson_score'];
+    				}
+    	}
+    	$all['credit'] = $c;
+    	$all['lcredit'] = $lc;
+    	return $all;
+    }
+    
+    
+    public function getDFXID(){
+    	$sql = "select distinct item_apply.stud_orgcode  as org_no ,dept_name as org_name from item_apply,group_dept,stud_baseinfo where item_apply.stud_orgcode = id and app_stud_no = stud_no and stud_baseinfo.stud_college = '东方院'";
+    	
+    	return $this->executeQueryA($sql);
+    }
+    
+    //东方各系所有统计
+    public function countDFXItemByOrgId($org){
+	    	$sql = "select count(*) as item_count,sum(item_score) as score_count,count(distinct app_stud_no) as stud_count from item_apply,item_set,stud_baseinfo where item_apply.stud_orgcode = $org  and item_code = app_item_code and app_state = 2 and stud_no = app_stud_no and stud_deadline <= ".$this->getYear();
+	    	return current($this->executeQueryA($sql));
+	}
+	public function countDFXValidCreditANDLessonCreditByOrg($org_code){
+    	$sql = "select distinct app_stud_no as sno from item_apply,stud_baseinfo where item_apply.stud_orgcode = $org_code   and app_state = 2 and stud_no = app_stud_no and stud_deadline <= ?  ";
+    	$sno = $this->executeQueryA($sql,array($this->getYear()));
+    	$c = 0;//有效学分
+    	$lc = 0;//课程有效学分
+    	foreach ($sno as $v){
+    		$c += $this->countVerifyValidCreditByStudId($v['sno']);
+    				$data = $this->countLessonCredit($v['sno']);
+    				foreach ($data as $d){
+    					$lc +=$d['mark_lesson_score'];
+    				}
+    	}
+    	$all['credit'] = $c;
+    	$all['lcredit'] = $lc;
+    	return $all;
+    }
+    
+    /**
+     * 东方各系毕业统计
+     *
+     * @param unknown_type $org
+     * @return unknown
+     */
+    
+    public function countBDFXItemByOrgId($org){
+	    	$sql = "select count(*) as item_count,sum(item_score) as score_count,count(distinct app_stud_no) as stud_count from item_apply,item_set,stud_baseinfo where item_apply.stud_orgcode = $org  and item_code = app_item_code and app_state = 2 and stud_no = app_stud_no and stud_deadline = ".$this->getYear();
+	    	return current($this->executeQueryA($sql));
+	}
+	public function countBDFXValidCreditANDLessonCreditByOrg($org_code){
+    	$sql = "select distinct app_stud_no as sno from item_apply,stud_baseinfo where item_apply.stud_orgcode = $org_code and app_state = 2 and stud_no = app_stud_no and stud_deadline = ?  ";
+    	$sno = $this->executeQueryA($sql,array($this->getYear()));
+    	$c = 0;//有效学分
+    	$lc = 0;//课程有效学分
+    	foreach ($sno as $v){
+    		$c += $this->countVerifyValidCreditByStudId($v['sno']);
+    				$data = $this->countLessonCredit($v['sno']);
+    				foreach ($data as $d){
+    					$lc +=$d['mark_lesson_score'];
+    				}
+    	}
+    	$all['credit'] = $c;
+    	$all['lcredit'] = $lc;
+    	return $all;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }

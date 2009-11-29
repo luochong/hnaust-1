@@ -38,6 +38,18 @@ function hide(_sId){
 	       <div><a href="item/itemlist.php" target="main">项目列表[审核]</a></div>
 	  	  <div><a href="item/itemadd.php" target="main">添加项目</a></div>
 		  <div><a href="item/itemsearch.php" target="main">项目查询</a></div>
+		  <?php if($_SESSION['admin_super'] != 1 &&$_SESSION['admin_org_code'] != DFADMIN ){?>
+		  <div><a href="item/itemtj.php" target="main">项目统计</a></div>
+		  <?php }?>
+		  <?php if($_SESSION['admin_org_code'] == DFADMIN) {?>
+		  <div><a href="item/itemdftjb.php" target="main">东方院毕业生项目统计</a></div>
+		  <div><a href="item/itemdftjy.php" target="main">东方院所有项目统计</a></div>
+		  <?php } ?>
+		  <?php if($_SESSION['admin_super'] == 1) {?>
+		  <div><a href="item/itembtongji.php" target="main">各学院毕业生项目统计</a></div>
+		  <div><a href="item/itemctongji.php" target="main">各学院所有项目统计</a></div>
+		   <div><a href="item/itemtongji.php" target="main">毕业生素拓课程</a></div>
+		   <?php } ?>
 	  </div><br />
 	<?php
 	}
