@@ -19,6 +19,7 @@ class ItemListAction extends MysqlDao {
 	}
 	public function onclick(){
 		$this->setTableName('item_apply');
+		if(empty($_POST['app_id'])){return ;}
 		switch ($_POST['action']){
 			case 'yes':{
 				if($_SESSION['admin_super'] == 1) 
