@@ -115,12 +115,15 @@ $action->run();
 	</tr>
 	<tr>
 	  <td colspan="3" rowspan="3"><table width='100%' height="133" cellpadding='0' cellspacing='0'>
-		 <?php 
-		  for($i=0;$i<10;$i++ )
-            {
-		  echo $newsshow[$i]['news_title'];
-		  echo $newsshow[$i]['news_time'];
-            }?>
+		
+            <?php 
+		  for($i=0;$i<7;$i++ ){?>
+            <tr>
+			    <td width='10' valign='top' class=''></td>
+			    <td class=''><?php echo $newsshow[$i]['news_title'];?></td>
+			    <td align='right' class='zhiti1'><?php echo $newsshow[$i]['news_time'];?></td></td>
+	      	</tr>
+	      	<?php } ?>
 		  </table><br><a href="newstitle.php" class="zhiti3">more>></a></td>
 		<td>
 			<img src="images/spacer.gif" width="1" height="144" alt=""></td>
