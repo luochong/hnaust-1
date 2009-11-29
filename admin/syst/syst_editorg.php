@@ -14,15 +14,18 @@ $array_dept = $editorg->orgedit();
 
 if(isset($_POST['submit'])){			
 
-	
+	$ret = $editorg->orgedit();
 	if($ret){  
 		echo "<script language=javascript>\n";	
 		echo "alert('成功修改部门')\n";
-		echo "window.location.href='grouAdm02.php?gid=$gid&ye=$ye'";		
+		echo "window.location.href='syst_mangerorg.php?gid=$gid&ye=$ye'";		
 		echo "</script>\n";
 	}
 	else{
-		echo "fail";
+		echo "<script language=javascript>\n";	
+		echo "alert('修改部门失败')\n";
+		echo "window.location.href='syst_mangerorg.php?gid=$gid&ye=$ye'";		
+		echo "</script>\n";
 	}
 	
 }
@@ -77,7 +80,7 @@ function checkdata() {
 		  <div class="right">
 		         <label>部门/机构名称：</label>
 		         <br />
-				 <input name="dept_name1" type="text" id="dept_name1" size="40" value="<?php echo $array_dept[0]['dept_name'];?>"/><br />
+				 <input name="dept_name1" type="text" id="dept_name1" size="40" value="<?php echo $_GET['deptname'];?>"/><br />
 				 <label></label>
 				 <br />
 		  </div>
@@ -85,7 +88,7 @@ function checkdata() {
 		  
 	    <div> 
 	       <input type="submit" name="submit" value=" 修改部门/机构 " />
-		   <input type="hidden" name="id" value="<?php //echo //$dept_array[0][id];?>"/>
+		   <input type="hidden" name="id" value="<?php echo $_GET['deptid']?>"/>
 		  </div>
 	  </div><br />
 	  </form>

@@ -22,12 +22,10 @@ require_once("../../include/mysqldao.class.php");
 class addSchOrg extends MysqlDao 
 {
 	public function add_org()
-	{print_r($_POST);
+	{
 		$array[dept_father_id]=$_POST['father_id'];
 		$array[dept_unit] = "1";	
 		$flag=1;
-		print_r($array);
-		
 		for($i=1;$i<=5;$i++){
 			$str="dept_name".$i;
 			$dept_name=$_POST[$str];
@@ -44,7 +42,6 @@ class addSchOrg extends MysqlDao
 					$this->setTableName("group_dept");
 					$cond = array("id" => $dept_id);
 					$array_dept = $this->selectA($cond);
-					print_r($aray_dept);
 				
 				
 					$array[dept_father_name]=$array_dept[0][dept_name];   //上级部门名称
@@ -82,12 +79,12 @@ class addSchOrg extends MysqlDao
 		if($flag){  
 			echo "<script language=javascript>\n";	
 			echo "alert('成功添加部门')\n";
-			echo "window.location.href='grouAdd02.php'";		
+			echo "window.location.href='syst_addorg.php'";		
 			echo "</script>\n";
 		}else{
 			echo "<script language=javascript>\n";	
 			echo "alert('添加部门失败')\n";
-			echo "window.location.href='grouAdd02.php'";		
+			echo "window.location.href='syst_addorg.php'";		
 			echo "</script>\n";
 		}
 	}

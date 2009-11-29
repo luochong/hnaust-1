@@ -40,23 +40,8 @@ class orgdel extends MysqlDao
 		
 		$resu = $this->delete($cond);
 		$cond1 = array("dept_father_id" => $value);
-		$resu_1=$this->delete($cond1);
-			  
-			  
-		if($resu || $resu_1){
-			echo "<script language=javascript>\n";
-			echo "alert('成功删除此部门及下属的所有子部门')\n";
-			echo "window.location.href='grouAdm02.php?gid=$gid&ye=$ye'";
-			echo "</script>\n";
-			exit;
-		}	
-		else {
-			echo "<script language=javascript>\n";
-			echo "alert('删除部门失败！')\n";
-			echo "window.location.href='grouAdm02.php?gid=$gid&ye=$ye'";
-			echo "</script>\n";
-			exit;	
-		}
+	//	$resu_1=$this->delete($cond1);
+		return $resu;	  
 	}
 
 }

@@ -65,7 +65,7 @@ function delok(){
 		    <td width='260px'>{$item_list[$i]['item_name']}</td>
 		    <td width='80px'>$tree</td>
 			<td width='50px'>{$item_list[$i]['item_score']}[<a href=\"syst_edititem.php?id={$item_list[$i]['item_id']}&type={$item_list[$i]['item_type']}&code={$item_list[$i]['item_code']}&name={$item_list[$i]['item_name']}&score={$item_list[$i]['item_score']}&rank={$tree}\">编辑</a>]</td>
-			<td width='50px'><a class='del' href='syst_delitem.php?id={$item_list[0]['item_id']}' onClick='return delok();'>删除</a></td>
+			<td width='50px'><a class='del' href='syst_delitem.php?id={$item_list[$i]['item_id']}' onClick='return delok();'>删除</a></td>
 			</tr>
 			";
 		}

@@ -23,9 +23,13 @@ class editorg extends MysqlDao
 {
 	public function orgedit()
 	{
-		$dept_id = $_GET['deptid'];
+		$dept_id = $_POST['id'];
+		$dept_name = $_POST['dept_name1'];
 		$this->setTableName("group_dept");
-		$cond= array("id" => $dept_id);
+		$cond = array("id" => $dept_id);
+		$data = array("dept_name" =>$dept_name,"dept_tree_name" =>$dept_name);
+		
+		$row = $this->update($data,$cond);
 		$row = $this->selectA($cond);
 		return $row;
 	}
