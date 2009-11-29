@@ -134,7 +134,12 @@ a:hover{color:red;}
             <tr>
              
                 <td  valign='top' class=''></td>
-			    <td class=''><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><font size="2"><?php echo $newsshow[$i]['news_title'];?></a></font></td>
+			    <td class=''><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><font size="2">
+			    <?php echo substr($newsshow[$i]['news_title'],0,50) ;
+			         if(strlen($newsshow[$i]['news_title'])>50){
+			             echo "...";
+			         }
+			    ;?></a></font></td>
 			    <td align='right' class="cutstring"><font size="2"><?php echo date("m-d",strtotime($newsshow[$i]['news_time']))?></font></td></td>
 	      
 			  </tr>
