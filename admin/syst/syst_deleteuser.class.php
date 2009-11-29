@@ -26,19 +26,7 @@ class deleteuser extends MysqlDao
 		$this->setTableName("user_admin");
 		$cond = array("user_id" => $id);
 		$resu = $this->delete($cond);
-
-		if($resu)
-		{  
-				echo "<script language=javascript>\n";	
-				echo "alert('删除账号成功')\n";
-				echo "window.location.href='syst_mangeruser.php'";		
-				echo "</script>\n";
-		}else{
-				echo "<script language=javascript>\n";	
-				echo "alert('删除失败')\n";
-				echo "window.location.href='syst_mangeruser.php'";		
-				echo "</script>\n";
-		}
+		return $resu;
 	}
 }
 ?>
