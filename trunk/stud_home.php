@@ -134,12 +134,12 @@ $tongji = new Tongji();
            ?> 
                <table class="showtb2">
                      <tr>
-                     	<td class="showtd" width="8%"><?php echo   $itemdetail[$n][0]['item_type'];?></td>
-                         <td class="showtd" width="15%"><?php echo   $itemdetail[$n][0]['item_code'];?></td>
-                         <td class="showtd" width="30%"><?php echo   $itemdetail[$n][0]['item_name'];?></td>
-                         <td class="showtd" width="13%"><?php echo   $itemdetail[$n][0]['item_rank'];?></td>
-                         <td class="showtd" width="8%"><?php echo   $itemdetail[$n][0]['item_score'];?></td>
-                         <td class="showtd" width="17%"><?php echo   getItemState($showitem[$n]['app_state']);?></td>
+                     	<td class="showtd1" width="8%"><?php echo   $itemdetail[$n][0]['item_type'];?></td>
+                         <td class="showtd1" width="15%"><?php echo   $itemdetail[$n][0]['item_code'];?></td>
+                         <td class="showtd1" width="30%"><?php echo   $itemdetail[$n][0]['item_name'];?></td>
+                         <td class="showtd1" width="13%"><?php echo   $itemdetail[$n][0]['item_rank'];?></td>
+                         <td class="showtd1" width="8%"><?php echo   $itemdetail[$n][0]['item_score'];?></td>
+                         <td class="showtd1" width="17%"><?php echo   getItemState($showitem[$n]['app_state']);?></td>
                          <td class="showtd_x"><a onclick="return confirm('确认是否删除？')" href="stud_homedel.class.php?code=<?php echo   $itemdetail[$n][0]['item_code'];?>">×</a></td>
                      </tr>
                    </table>
@@ -157,8 +157,9 @@ $tongji = new Tongji();
 			 	</div>
 		  <div id="declare_info">
 				<ul>
-					<li><?php echo '总学分：',$tongji->countAllCreditByStudId($studno);?></li>
+					
 					<li><?php echo '总项目数：',$tongji->countItemByStudId($studno);?></li>
+					<li><?php echo '总学分：',$tongji->countAllCreditByStudId($studno);?></li>
 					<li><?php echo '有效学分：',$tongji->countValidCreditByStudId($studno);?></li>
 					<li><?php echo '已获得有效学分：',$tongji->countVerifyValidCreditByStudId($studno);?></li>
 				</ul>
