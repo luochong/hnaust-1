@@ -25,7 +25,7 @@
                  $this->setTableName("news");
                    $page_no=$pageno-1;
                  $data=array("news_state"=>1);
-                 $row=$this->selectA($data,PageNum,$page_no);
+                 $row=$this->selectA($data,PageNum,$page_no,'news_time DESC');
                  return $row;
             }
               public function indextitle()
