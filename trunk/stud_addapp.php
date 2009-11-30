@@ -120,12 +120,12 @@ if( isset($_POST['submit']) )
 
                    <select name="i_type" onchange="$('#i_rank').html('<option value=\'0\'>...</option>');$('#i_name').load('./stud_addapp.php?ac=getIname&i_type='+encodeURIComponent(this.value));">
 			 	  <option value="0">...</option>
-				  <option value="求真" >求真</option>
-		          <option value="求善" >求善</option>
-		          <option value="求美" >求美</option>
-		          <option value="求实" disabled="disabled">求实</option>
-		          <option value="求特" disabled="disabled">求特</option>
-		          <option value="求强" >求强</option>
+				  <option value="求真" >求真学术科技活动</option>
+		          <option value="求善" >求善文明道德活动</option>
+		          <option value="求美" >求美文化艺术活动</option>
+		          <option value="求实" disabled="disabled">求实社会实践活动</option>
+		          <option value="求特" disabled="disabled">求特个性发展活动</option>
+		          <option value="求强" >求强就业创业活动</option>
 			 </select><br />
                     <br />	
                     <?php if($_POST['itype']=="求实"||$_POST['itype']=="求特")
@@ -137,13 +137,13 @@ if( isset($_POST['submit']) )
 					
 					<div id="itemxianmu"><span class="leibie">请选择你要申报项目的名称：</span>
 					   <select name='i_name' id='i_name' onchange="$('#i_rank').load('./stud_addapp.php?ac=getIrank&i_name='+encodeURIComponent(this.value));">
-		     	 <option value="0">...</option>
+		     	 <option value="0">...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
 		     </select><br />
 					</div>
 					
 					<div id="itemdengji"><span class="leibie">请选择你要申报项目的级别：</span>
 					  <select name="i_rank" id='i_rank'>
-          	 	 <option value="0">...</option>
+          	 	 <option value="0">...&nbsp;&nbsp;</option>
           	 </select><br />
 			<br />
 					

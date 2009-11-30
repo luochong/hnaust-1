@@ -14,7 +14,7 @@ a.info:hover{color:#6600FF}
 	font-family:"微软雅黑";
 }
 .leibie{
-	font-size:15px;
+	font-size:14px;
 }
 .display_c{
 	text-align:center;
@@ -148,13 +148,13 @@ float:left;
 	font-family:"微软雅黑";
 	text-align:center;
 	height:20px;
-	font-size:16px;
+	font-size:14px;
 }
 #user_login {
 	margin-top:20px;
 	padding-left:10px;
 	font-family:"微软雅黑";
-	font-size:14px;
+	font-size:12px;
 	display:block;
 }
 #left2 {
@@ -167,7 +167,7 @@ float:left;
 	padding-top:5px;
 	text-align:center;
 	font-family:"微软雅黑";
-	font-size:16px;
+	font-size:14px;
 	width:168px;
 	height:30px;
 	display:block;
@@ -213,7 +213,7 @@ float:left;
 	width:230px;
 	height:20px;
 	font-family:"微软雅黑";
-	font-size:16px;
+	font-size:14px;
 	float:left;
 	display:block;
 }
@@ -222,8 +222,8 @@ float:left;
 	width:170px;
 	height:20px;
 	float:right;
-	font-family:"幼圆";
-	font-size:15px;
+	font-family:"微软雅黑";
+	font-size:12px;
 	display:block;
 
 }
@@ -250,25 +250,24 @@ float:left;
 #itemleibie{
 	margin-top:40px;
 	height:30px;
-	padding-left:30px;
-	text-align:center;
+	padding-left:5px;
 	font-family:"微软雅黑";
 	display:block;
 }
 #itemxianmu{
 	margin-top:30px;
-	padding-left:20px;
+	padding-left:5px;
 	height:30px;
 	font-family:"微软雅黑";
-	text-align:center;
+
 	display:block;
 }
 #itemdengji{
 	margin-top:30px;
-	padding-left:20px;
+	padding-left:5px;
 	font-family:"微软雅黑";
 	height:30px;
-	text-align:center;
+
 	display:block;
 }
 #sub {
