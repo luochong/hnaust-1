@@ -42,10 +42,15 @@ a{text-decoration:none}
 a:link{color:blue;}   
 a:visited{color:black;} 
 a:hover{color:red;}    
-
+#bcimg{
+background:url(images/首页_13.gif) no-repeat top left;
+*background:url(images/首页_13.gif) no-repeat 0px 2px; /* for IE6 */ 
+}
 </style>
 
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<div style="width:850px; margin:0 auto">
 <table id="Table_01" width="852" height="584" border="0" cellpadding="0" cellspacing="0" align="center">
 	<tr>
 		<td rowspan="13">
@@ -95,7 +100,7 @@ a:hover{color:red;}
 			<img src="images/首页_11.gif" width="275" height="19" alt=""></td>
 		<td rowspan="6">
 			<img src="images/首页_12.gif" width="26" height="269" alt=""></td>
-		<td colspan="3" rowspan="3" align="center" background="images/首页_13.gif"></td>
+		<td colspan="3" rowspan="3" id="bcimg" align="center" ></td>
 		<td rowspan="6">
 			<img src="images/首页_14.gif" width="36" height="269" alt=""></td>
 		<td colspan="3" rowspan="2" background="images/首页_15.gif" align="center">通知</td>
@@ -178,13 +183,13 @@ a:hover{color:red;}
 			<img src="images/spacer.gif" width="1" height="12" alt=""></td>
 	</tr>
 	<tr>
-		<td>
-			<img src="images/首页_30.gif" width="9" height="67" alt=""></td>
+		<td style="background:url(images/首页_30.gif) no-repeat 0px -1px; ">
+			</td>
 		<td colspan="14" background="images/首页_32.gif" align="center"><div id="tailer">| <A class="tail1" href="/xnqn/web/aboutus/aboutus.asp" target=_blank>关于我们</A> |<A class="tail1" href="/xnqn/web/FriendSite/Index.asp" target=_blank> 友情链接</A> | <A class="tail1" href="/xnqn/web/Copyright.asp" target=_blank>版权申明</A> | 访客留言|<BR>
 		    Copyright2001-2009共青团湖南农业大学委员会 <BR>
 		    湘ICP备05002035号</div></td>
-		<td colspan="2">
-			<img src="images/首页_34.gif" width="11" height="67" alt=""></td>
+		<td colspan="2" style="background:url(images/首页_34.gif) no-repeat 0px -1px; ">
+			</td>
 		<td>
 			<img src="images/spacer.gif" width="1" height="67" alt=""></td>
 	</tr>
@@ -229,5 +234,6 @@ a:hover{color:red;}
 	</tr>
 </table>
 <!-- End ImageReady Slices -->
+</div>
 </body>
 </html>
