@@ -19,10 +19,28 @@ a.info:hover{color:#6600FF}
 .display_c{
 	text-align:center;
 }
+.showtb1{
+width:580px;
+text-align:center;
+font-family:"微软雅黑";
+background-color:#0ff;
+}
+.showtb2{
+text-align:center;
+width:580px;
+}
+.showtd1{
+font-family:"楷体";
+font-size:12px;
+}
+#add_pic{
+width:317px;
+height:4px;
+}
 #background {
 	margin:auto;
 	width:800px;
-	height:650px;
+b1	height:650px;
 	background-color:#fff;
 }
 #headimg {
@@ -85,7 +103,7 @@ float:left;
 	height:22px;
 	display:block;
 	font-family:"黑体";
-	font-size:15px;
+	font-size:16px;
 	text-align:left;
 	color:#CCFF00;
 	float:left;
@@ -279,8 +297,10 @@ float:left;
 	border:1px solid #0ff;	
 }
 #declare_info li{
-	height:50%;
-	width:50%;
+	margin-left:45px;
+	margin-top:8px;
+	height:40%;
+	width:40%;
 	font-family:"微软雅黑";
 	float:left;
 }

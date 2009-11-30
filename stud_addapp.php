@@ -64,7 +64,7 @@ if( isset($_POST['submit']) )
 				<div id="header_bg"></div>
 				<div id="header_bg1"></div>
 				<div id="header_bg2">
-				<li><a class="tit" href="stud_home.php" style="text-decoration:none">首页</a></li>
+				<li><a class="tit" href="stud_home.php" style="text-decoration:none">首&nbsp;页</a></li>
 				<li><a class="tit" href="stud_addapp.php" style="text-decoration:none">项目申报</a></li>
 				<li><a class="tit" href="#" style="text-decoration:none">资料下载</a></li>
 				<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
