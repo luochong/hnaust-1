@@ -123,8 +123,8 @@ if( isset($_POST['submit']) )
 				  <option value="求真" >求真</option>
 		          <option value="求善" >求善</option>
 		          <option value="求美" >求美</option>
-		          <option value="求实" disabled>求实</option>
-		          <option value="求特" disabled>求特</option>
+		          <option value="求实" disabled="disabled">求实</option>
+		          <option value="求特" disabled="disabled">求特</option>
 		          <option value="求强" >求强</option>
 			 </select><br />
                     <br />	
