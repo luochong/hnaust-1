@@ -24,6 +24,8 @@ $newsshow=$news->indextitle();
 $noticdata = $news->getNotice();
 $action = new LoginAction();
 $action->run();
+$title = '首页';
+
 require_once("header.php");
 ?>
  <div id="sidebar1" >
@@ -57,6 +59,7 @@ require_once("header.php");
                     <li><a href=""><span><?php echo $v['notic_title']?></span></a></li>
                     <?php endforeach;?>
             		</marquee>
+            	</ul>
             </div>  
             <div style="background:url(images/st_25.jpg) no-repeat top left;height:45px"></div> 
   <!-- end #sidebar2 --></div>

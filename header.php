@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php $title ?></title>
+<title><?php echo TITLE,'——',$title ?></title>
 <style type="text/css"> 
 <!-- 
 body  {
@@ -112,8 +112,8 @@ a{
 }
 .thrColFixHdr #header #nav ul li{
 	float:left;
-	margin-left:10px;
-	padding-left:10px;
+	margin-left:20px;
+	padding-left:20px;
 	border-left:#fff solid 2px;
 }
 .thrColFixHdr #header #nav ul li a{
@@ -145,10 +145,11 @@ a{
 	background:url(images/st_34.jpg) repeat-x top left;
 	float:left;
 	height:26px;
-	width:820px;
+	width:740px;
 	right:8px;
 	padding-top:10px;
-	padding-left:10px;
+	padding-left:90px;
+	text-align: center;
 	font:13px 宋体;
 	color:#6d6d6d;
 
@@ -234,14 +235,15 @@ a{
 .huise{
 	background:#E4E3E3;
 	height:25px;
-	padding-top:5px;
+	padding-top:2px;
+	padding-bottom:2px;
 	padding-left:20px;
 }
 .huibg{
 	background:url(images/st_17.jpg) no-repeat top left;	
 	
 }
-ul{
+ul,form{
 margin:0;
 padding:0;
 list-style:none;
@@ -259,7 +261,7 @@ list-style:none;
 }
 .thrColFixHdr #mainContent .newscontent span{
 	display:inline-block;
-	width:268px;
+	width:238px;
 	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
 	cursor:pointer;
 	
@@ -278,7 +280,7 @@ list-style:none;
 
 .thrColFixHdr #mainContent .newscontent span.time{
 	width:44px;
-	padding-left:10px;	
+	padding-left:40px;	
 }
 .notice{		
 	padding-left:12px;
@@ -298,6 +300,29 @@ list-style:none;
 	cursor:pointer;
 	
 }
+.itable{
+border:1px solid #ccc;
+}
+.itable tr td{
+border-bottom:1px solid #ccc;
+
+
+}
+.toppp{
+position:relative;
+}
+.toppp span{
+position:absolute;
+display:block;
+left:0;
+
+}
+.toppp span.sname{
+position:absolute;
+display:block;
+left:650px;
+}
+
 
 --> 
 </style><!--[if IE 5]>
@@ -314,7 +339,11 @@ list-style:none;
 
 /* 上面的专用 zoom 属性为 IE 提供避免错误所需的 hasLayout */
 </style>
-<![endif]--></head>
+<![endif]-->
+
+<script type="text/javascript" src="<?php echo APP_ROOT?>/include/jquery.js"></script>
+
+</head>
 
 <body class="thrColFixHdr">
 
@@ -324,14 +353,32 @@ list-style:none;
   	<div id="navleft"></div>
     <div id="nav">
         <ul>
-                <li style="border-left:none"><a href="">首&nbsp;页</a></li>
-                <li><a href="">项目申报</a></li>
-                <li><a href="">项目申报</a></li>
-                <li><a href="">项目申报</a></li>
+                <li style="border-left:none"><a href="index.php">首&nbsp;页</a></li>
+                <li><a href="newstitle.php">新闻中心</a></li>
+                <li><a href="download.php">资料下载</a></li>
+                <li><a href="stud_home.php">项目申报</a></li>
+                <li><a href="http://www.xnqn.com">湘农青年</a></li>
         </ul>    
     </div>
     <div id="navright"></div>   
   
   <!-- end #header --></div>
+
+  <div class="huise">
+  <?php if(isset($_SESSION['studno'])){ 
+      echo '<p class="toppp"  style="padding-top:5px"><span>所在的位置：',$title,'</span><span class="sname">',$_SESSION["studname"],'，你好！&nbsp;&nbsp;<a href="index.php?ac=logout">退出</a>','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>'; 
+  ?>
   
-  <div class="huise">学号：<input type="text" />&nbsp;密码：<input type="text" /><input type="submit" value="登录" /></div>
+  
+ 
+  <?php
+  
+  
+  }else{
+   ?>
+  <form method="POST" action="index.php?ac=login" method="POST">用户名:
+			<input type="text" size="16" name="user_name" id="user_name"  />&nbsp;&nbsp;密码:
+		      <input name="user_password" size="16" type="password"/>&nbsp;&nbsp;&nbsp;<input type="submit" value="登录" /></form>
+	<?php } ?>
+		      
+   </div>

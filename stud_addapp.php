@@ -41,73 +41,32 @@ if( isset($_POST['submit']) )
  $code=$acode[0]['item_code'];
     $citem->insertapp($itype,$code,$studno,$studcode);
 }
-
+require_once("header.php");
 
 ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>素质拓展学分认证系统>>项目申报</title>
-<link href="include/thickbox.css" rel="stylesheet" type="text/css"/>
-<link href="login.css" rel="stylesheet" type="text/css"/>
-
-</head>
-<script type="text/javascript" src="include/jquery.js"></script>
-<script type="text/javascript" src="include/thickbox.js"></script>
-<body>
-<div id="background">
-<div id="headimg">
-			<div id="header"></div>
-			<div id="header1">
-				<div id="header_bg"></div>
-				<div id="header_bg1"></div>
-				<div id="header_bg2">
-				<li><a class="tit" href="stud_home.php" style="text-decoration:none">首&nbsp;页</a></li>
-				<li><a class="tit" href="stud_addapp.php" style="text-decoration:none">项目申报</a></li>
-				<li><a class="tit" href="#" style="text-decoration:none">资料下载</a></li>
-				<li><a class="tit" href="stud_pwdchg.php" style="text-decoration:none">修改密码</a></li>
-				<li><a class="tit" href="index.php?ac=logout" style="text-decoration:none">退出系统</a></li>
-				<li><a class="tit" href="http:\\www.xnqn.com" target="_blank" style="text-decoration:none">湘农青年</a></li>
-				</div>
-				<div id="header_bg3"></div>
-			</div>
-			<div id="header_bg4"></div>
-		</div>
-		<div id="left">
-			<div id="left1">
-				<div id="denglu">学生信息</div>
-				<div id="user_login"><?php
+<div id="leftinfo" class="fltlft" style="padding:20px 20px 20px 20px;width:150px;border-right:1px #ccc solid;height:100%">
+ <h3>我的信息</h3>
+<?php
              if(count($showinfo)!==0)
              {
               
-                ?>学号：<?php  echo $showinfo[0]['stud_no'];?>
-                  <br>姓名：<?php  echo $showinfo[0]['stud_name'];?>
-                  <br>性别：<?php  echo $showinfo[0]['stud_sex'];?>
-                  <br>学院：<?php  echo $showinfo[0]['stud_college'];?>
-                  <br>入学年份：<?php  echo $showinfo[0]['stud_grade'];?>
-                  <br>班级：<?php  echo $showinfo[0]['stud_class'];?>
-                  <br>申报截止日期：<?php  echo $showinfo[0]['stud_deadline'];?>
+                ?><p>学号：<?php  echo $showinfo[0]['stud_no'];?></p>
+                  <p>姓名：<?php  echo $showinfo[0]['stud_name'];?></p>
+                 <p>性别：<?php  echo $showinfo[0]['stud_sex'];?></p>
+                  <p>学院：<?php  echo $showinfo[0]['stud_college'];?></p>
+                  <p>入学年份：<?php  echo $showinfo[0]['stud_grade'];?></p>
+                 <p>班级：<?php  echo $showinfo[0]['stud_class'];?></p>
+                <p>申报截止日期：<?php  echo $showinfo[0]['stud_deadline'];?></p>
                      
           <?php    
              } 
-           
-?>
-				</div>
-			</div>
-			<div id="left2">
-				<div id="left_info_title">通知</div>
-				<div id="left_inform"><MARQUEE onmouseover=this.stop(); onmouseout=this.start(); direction=up height=140 width=150 		scrollAmount=1 scrollDelay=1><a class='info' href='#' title='关于...的通知1'>关于...................的通知1</a><br><br><a class='info' href='#' title='关于...的通知2'>关于..................的通知2</a><br><br><a class='info' href='#' title='关于...的通知3'>关于..................的通知3</a><br><br><a class="info" style="text-decoration:none" href='#' title='关于...的通知4'>关于................的通知4</a><br><br><a class='info' href='#' title='关于...的通知5'>关于..................的通知5</a><br><br><a class='info' href='#' title='关于...的通知6'>关于........................的通知6</a></MARQUEE></div>
-				<div id="more"><a class="info" style="text-decoration:none" href="#">more>></a></div>
-			</div>
-		</div>
-		<div id="right">
-		  <div id="item">
-		  		<div id="location">
-					<div id="location_tit">所在的位置：项目申报</div>
-					<div id="showtime"><?php echo getNowTate()?></div>
-				</div>
+ ?>
+ <p style="color:#FF0000">如果您的信息不正确请联系湖南农业大学校团委修改</p>
+ 
+ <!-- end #leftinfo --></div>
+ 
+<div id="rightinfo" class="fltlft" style="padding:20px 20px 20px 20px;" >
+
  <form method="POST" name="form" onsubmit="return confirm('确认提交？')" >
 			  <div id="choose">
 			  <?php 
@@ -139,6 +98,7 @@ if( isset($_POST['submit']) )
 					   <select name='i_name' id='i_name' onchange="$('#i_rank').load('./stud_addapp.php?ac=getIrank&i_name='+encodeURIComponent(this.value));">
 		     	 <option value="0">...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
 		     </select><br />
+		     <br />	
 					</div>
 					
 					<div id="itemdengji"><span class="leibie">请选择你要申报项目的级别：</span>
@@ -162,10 +122,24 @@ if( isset($_POST['submit']) )
 		       echo "还未达到申报时间";echo "<br />";
 		       echo "申报时间从大二至大四上学年";
 		   } ?>
-		     
-		  </div>
-		</div>
-	</div>
-</body>
 
-</html>
+
+
+
+
+
+
+
+<!-- end #sidebar2 --></div>
+  
+
+
+
+
+
+
+
+
+<?php 
+require_once('footer.php');
+?>
