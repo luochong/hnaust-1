@@ -16,9 +16,6 @@
 ///		---------- 	 -------  	--------  	 ------------------------------------
 ///	    2009/11/16      1.1    	龙首成      	  学生管理
 
-?>
-
-<?php 
 require_once("index.class.php");
 require("news.class.php");
 $news=new news();
@@ -27,6 +24,7 @@ $newsshow=$news->indextitle();
 
 $action = new LoginAction();
 $action->run();
+require_once("hearder.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
