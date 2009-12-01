@@ -33,7 +33,7 @@
                  $this->setTableName("news");
                
                  $data=array("news_state"=>1);
-                 $row=$this->selectA($data,0,0,'news_time DESC');
+                 $row=$this->selectA($data,9,0,'news_time DESC');
                  return $row;
             }
                 public function getnewscont($newsid)
