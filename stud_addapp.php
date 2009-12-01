@@ -29,8 +29,11 @@ $showinfo=$show->showstud($studno);
 
 
  $itype=$_POST['i_type'];
- $irank=$_POST['i_rank'];
  $iname=$_POST['i_name'];
+ $irank=$_POST['i_rank'];
+ 
+
+
  $studno=$showinfo[0]['stud_no'];
 $studcode=$showinfo[0]['stud_orgcode'];
 
@@ -82,7 +85,7 @@ require_once("header.php");
 			  
 					<div id="itemleibie"><span class="leibie">请选择你要申报项目的类别：</span>
 
-                   <select name="i_type" onchange="$('#i_rank').html('<option value=\'0\'>...</option>');$('#i_name').load('./stud_addapp.php?ac=getIname&i_type='+encodeURIComponent(this.value));">
+                   <select name='i_type' id='i_type' onchange="$('#i_rank').html('<option value=\'0\'>...</option>');$('#i_name').load('./stud_addapp.php?ac=getIname&i_type='+encodeURIComponent(this.value));">
 			 	  <option value="0">...</option>
 				  <option value="求真" >求真学术科技活动</option>
 		          <option value="求善" >求善文明道德活动</option>
@@ -107,7 +110,7 @@ require_once("header.php");
 					</div>
 					
 					<div id="itemdengji"><span class="leibie">请选择你要申报项目的级别：</span>
-					  <select name="i_rank" id='i_rank'>
+					  <select name='i_rank' id='i_rank'>
           	 	 <option value="0">...&nbsp;&nbsp;</option>
           	 </select><br />
 			<br />
