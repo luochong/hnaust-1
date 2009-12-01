@@ -41,6 +41,7 @@ if( isset($_POST['submit']) )
  $code=$acode[0]['item_code'];
     $citem->insertapp($itype,$code,$studno,$studcode);
 }
+$title = "";
 require_once("header.php");
 
 ?>
