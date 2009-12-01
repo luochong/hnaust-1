@@ -259,7 +259,7 @@ list-style:none;
 }
 .thrColFixHdr #mainContent .newscontent span{
 	display:inline-block;
-	width:228px;
+	width:268px;
 	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
 	cursor:pointer;
 	
@@ -277,7 +277,7 @@ list-style:none;
 .cropstring{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
 
 .thrColFixHdr #mainContent .newscontent span.time{
-	width:84px;
+	width:44px;
 	padding-left:10px;	
 }
 .notice{		
