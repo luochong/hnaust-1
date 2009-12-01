@@ -61,12 +61,19 @@ require_once('header.php');
           <?php    
              } 
  ?>
- <p style="color:#FF0000">如果您的信息不正确请联系湖南农业大学校团委修改</p>
+ <p style="color:#FF0000">
+ 如果你的信息不正确<br />
+ 请及时联系管理员<br />
+ 联系电话：<?php echo TEL;?>
+ </p>
  
  <!-- end #leftinfo --></div>
  
 <div id="rightinfo" class="fltlft" style="padding:20px 20px 20px 20px;" >
-<input type="button" value="点击申报" onclick=" location.href='stud_addapp.php'"/><br />
+<input type="button" value="点击申报" onclick=" location.href='stud_addapp.php'"/>
+<br />
+
+<br />
 <?php
           if(count($showitem)!==0)
                  {
