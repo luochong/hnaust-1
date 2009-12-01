@@ -3,10 +3,14 @@
 	<div id="nav2left"></div>
     <div id="nav2">
         <ul>
-                <li style="border-left:none"><a href="">首&nbsp;页</a></li>
-                <li><a href="">项目申报</a></li>
-                <li><a href="">项目申报</a></li>
-                <li><a href="">项目申报</a></li>
+                <li style="border-left:none"><a href="http://www.ccyl.org.cn/" target=_blank>中国共青团</a></li>
+                <li> <a href="http://www.cyol.net/" target=_blank>中青在线</a></li>
+                <li><a href="http://www.hngqt.com/" target=_blank>湖南青年</a></li>
+                <li><a href="http://www.hunau.net/" target=_blank>湖南农大</a></li>
+                <li><a href="http://www.hunau.net/xgzx">学工部</a></li>
+                <li><a href="http://61.187.55.45/dejwc" target=_blank>教务处</a></li>
+                <li><a href="http://www.hunau.net/zhaoshengweb" target=_blank>招生就业</a></li>
+                <li><a  href="http://www.youthedu.com.cn/" target=_blank>中青网络教育中心</a></li>
         </ul>    
     </div>
     <div id="nav2right"></div> 
