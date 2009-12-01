@@ -41,7 +41,7 @@ if( isset($_POST['submit']) )
  $code=$acode[0]['item_code'];
     $citem->insertapp($itype,$code,$studno,$studcode);
 }
-$title = "";
+$title = "申报项目";
 require_once("header.php");
 
 ?>
@@ -62,7 +62,11 @@ require_once("header.php");
           <?php    
              } 
  ?>
- <p style="color:#FF0000">如果您的信息不正确请联系湖南农业大学校团委修改</p>
+ <p style="color:#FF0000">
+ 如果你的信息不正确<br />
+ 请及时联系管理员<br />
+ 联系电话：<?php echo TEL;?>
+ </p>
  
  <!-- end #leftinfo --></div>
  
@@ -110,11 +114,12 @@ require_once("header.php");
 					
 					</div>
 					
-					<div id="sub">
+					<br />
+					<br />
 				
 					<input name="submit" type="submit" value=" 提 交 " >     
 					
-					</div>
+					
 					
 			  </div>
 			 </form>
