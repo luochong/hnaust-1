@@ -25,7 +25,7 @@ require_once("header.php");
 ?>
 
 
-		<div id="right" style="width:648px;height:400px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
+		<div id="right" style="width:648px;height:300px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
 		  	<div id="item" style="border:#c1c1c1 solid 1px;height:40px;margin-bottom:20px;text-align:center">
 					<span style="float:left;width:630px"><h2>新闻列表</h2></span>
 		  	</div>
@@ -53,7 +53,7 @@ require_once("header.php");
        
        
            <div id="sidebar2" style="float:right" >
-           <div class="huibg" style="height:31px"> </div>
+
 			<div style="background:url(images/st_20.jpg) no-repeat top left;height:45px">
                 <div style="text-align:center;width:85%;padding-top:20px;margin-left:12px;color:#000;border-bottom:1px solid #000;height:22px"> 
                 通知
