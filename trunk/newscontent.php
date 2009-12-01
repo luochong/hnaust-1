@@ -27,12 +27,14 @@ $title = "新闻中心";
 require_once("header.php");
 ?>
 		<div id="right" style="width:648px;height:300px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
-		  	<div id="item" style="border:#c1c1c1 solid 1px;height:40px;margin-bottom:20px;text-align:center">
-					<span style="float:left;width:630px"><h2><?php echo $newsshow[0]['news_title'];?></h2></span>
+		  	<div id="item" style="border:#c1c1c1 solid 1px;margin-bottom:20px;text-align:center">
+					<h2 style="color:red"><?php echo $newsshow[0]['news_title'];?></h2>
+					
+					<p><?php echo   "作者：".$newsshow[0]['news_author']; ?>&nbsp;&nbsp; &nbsp; 时间：<?php echo   $newsshow[0]['news_time']; ?></p>
 		  	</div>
-		  <div id="content" style="width:500px;margin:auto;">
-		  	<span><?php  echo   $newsshow[0]['news_body']; ?></span>
-		  		<div style="text-align:right"><?php echo   $newsshow[0]['news_time']; ?><?php echo   "作者：".$newsshow[0]['news_author']; ?></div>
+		  <div id="content" style="width:500px;margin:auto;line-height:1.5em">
+		  	<?php  echo   $newsshow[0]['news_body']; ?>
+		  		
 		  </div><!--content fin-->
        </div>
        

@@ -30,7 +30,7 @@ require_once("header.php");
 					<span style="float:left;width:630px"><h2>新闻列表</h2></span>
 		  	</div>
 		  <div id="content" style="width:560px;margin:auto;">
-				<ul>
+				<ul style="line-height:18px;">
 					<?php for($i=0;$i<count($newsshow);$i++ ){  ?>
 					<li><span style="width:400px;display:inline-block;"><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><?php echo   $newsshow[$i]['news_title']; ?></a></span><span><?php echo $newsshow[$i]['news_time'];?></span></li>
 					<?php }?>

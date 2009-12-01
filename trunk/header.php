@@ -323,8 +323,15 @@ display:block;
 left:650px;
 }
 
-
+#content a:hover{
+	color:#F63;
+	
+}
+#content a{
+color:#333;
+}
 --> 
+
 </style><!--[if IE 5]>
 <style type="text/css"> 
 /* 将 IE 5* 的 css 方块模型修正放在这个条件注释中 */
@@ -336,6 +343,7 @@ left:650px;
 .thrColFixHdr #mainContent .newscontent ul,.notice ul{
 	line-height:22px;
 }
+
 
 /* 上面的专用 zoom 属性为 IE 提供避免错误所需的 hasLayout */
 </style>
@@ -366,7 +374,7 @@ left:650px;
 
   <div class="huise">
   <?php if(isset($_SESSION['studno'])){ 
-      echo '<p class="toppp"  style="padding-top:5px"><span>所在的位置：',$title,'</span><span class="sname">',$_SESSION["studname"],'，你好！&nbsp;&nbsp;<a href="index.php?ac=logout">退出</a>','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>'; 
+      echo '<p class="toppp"><span>所在的位置：',$title,'</span><span class="sname">',$_SESSION["studname"],'，你好！&nbsp;&nbsp;<a href="index.php?ac=logout">退出</a>','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>'; 
   ?>
   
   
