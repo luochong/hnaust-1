@@ -21,21 +21,14 @@ require("news.class.php");
 $news=new news();
 
 $newsshow=$news->indextitle();
-
+$noticdata = $news->getNotice();
 $action = new LoginAction();
 $action->run();
 require_once("header.php");
 ?>
  <div id="sidebar1" >
-
   <img src="images/img1.jpg" width="244" height="182" /> 
-  
-  
-  
-  
-  
   <!-- end #sidebar1 --></div>
-  
   <div id="mainContent">
 		<div class="huibg" style="height:31px"> </div>
 		<div class="newscontent">
@@ -47,19 +40,8 @@ require_once("header.php");
                    <li><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><span><?php echo $newsshow[$i]['news_title']?></span><span class="time"><?php echo date("m-d",strtotime($newsshow[$i]['news_time']))?></span></a></li>
 	      	<?php } ?>
           </ul>      
-        
-        
     </div>
-
-
-
-
-
-
   <!-- end #mainContent --></div>
-    
-    
-    
     <div id="sidebar2" >
            <div class="huibg" style="height:31px"> </div>
 			<div style="background:url(images/st_20.jpg) no-repeat top left;height:45px">
@@ -71,21 +53,12 @@ require_once("header.php");
             <div style="background:url(images/st_23.jpg) repeat-y top left;height:180px" class="notice">
             	<ul>
                 	<marquee  scrolldelay="1" scrollamount="1" direction="up" onmouseout="this.start();" onmouseover="this.stop();">
-                    <li><a href=""><span>最新新闻最新新闻最新新闻最新新闻最新新闻最新新闻</span></a></li>
-                    <li><a href=""><span>最新新闻最新新闻最新新闻最新新闻最新新闻最新新闻</span></a></li>
+                    <?php foreach ($noticdata as $v): ?>
+                    <li><a href=""><span><?php echo $v['notic_title']?></span></a></li>
+                    <?php endforeach;?>
             		</marquee>
-            
-            
-            
-            
-            
             </div>  
-            
-            
-            
             <div style="background:url(images/st_25.jpg) no-repeat top left;height:45px"></div> 
-
-
   <!-- end #sidebar2 --></div>
   <?php
   require_once("footer.php");
