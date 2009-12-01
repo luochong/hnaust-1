@@ -224,7 +224,7 @@ a{
 	
 }
 .thrColFixHdr #footer2 #nav3right{
-	background:url(images/st_45.jpg) no-repeat 0px -1px;
+	background:url(images/st_45.jpg) no-repeat 0px 0px;
 	float:left;	
 	height:66px;
 	width:11px;	
