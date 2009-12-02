@@ -13,6 +13,18 @@ $action->run();
 </head>
 <script type="text/javascript" src="<?php echo APP_ROOT?>/include/jquery.js" ></script>
 <script type="text/javascript">
+function checkForm(){
+	if($("#s_no").val()==''){
+		alert("学号不能为空！");
+		return false;
+	}
+	if($("#i_type").val()=='0'||$("#i_rank").val()=='0'||$("#i_name").val()=='0' ){
+		alert("项目请填写完整！");
+		return false;
+	}else{
+		return true;
+	}
+}
 </script>
 
 <link href="../css/stat.css" type=text/css rel=stylesheet />
@@ -30,14 +42,14 @@ $action->run();
 	  	  <div class="right"><a href='javascript:history.back();'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
-  	 <form id="form1" name="form1" method="post" action="itemadd.php?ac=add">
+  	 <form id="form1" name="form1" method="post" action="itemadd.php?ac=add" onsubmit="return checkForm();">
       <div class="alltitle">项目申报</div>
 		  
 	  <div id="allcontent">
 	  	<p style="color:#FF0000"><?php echo $action->error_message?></p>
 	      <div>
 		  <label>学号：</label> <small>*必须</small><br />
-          <input name="s_no" type="text" id="s_no" size="40" /><br />
+          <input name="s_no" id="s_no" type="text" id="s_no" size="40" /><br />
 		  <label>项目类别：</label> <small>*必须</small><br />
 			 <select name="i_type" onchange="$('#i_rank').html('<option value=\'0\'>...</option>');$('#i_name').load('./itemadd.php?ac=getIname&i_type='+encodeURIComponent(this.value));">
 			 	  <option value="0">...</option>
