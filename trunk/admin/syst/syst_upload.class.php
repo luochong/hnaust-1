@@ -25,7 +25,7 @@ class uploadfiles extends MysqlDao
 	{
 		$filename = $_POST['filename'];
 		$this->setTableName("upload_file");
-		$url = "admin/syst/uploads/".$name;
+		$url = $name;
 		$cond = array("file_name" => $filename,
 						"file_url" => $url);
 		$resu = $this->insert($cond);

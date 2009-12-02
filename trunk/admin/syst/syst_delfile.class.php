@@ -23,13 +23,13 @@ class deletefile extends MysqlDao
 {
 	public function filedel($id)
 	{
+		
 		$this->setTableName("upload_file");
 		$cond = array("file_id" => $id);
 		$data = array("file_status" => '0');
 		$resu = $this->update($data,$cond);
-	//	$this->DeleteFile("uploads/1.rar");
-		
-		//unlink("upload/1.rar");
+		$filename = "uploads/".$_GET['name'];
+		$result = unlink($filename);
 		return $resu;
 	}
 	
