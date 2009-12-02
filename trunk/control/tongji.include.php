@@ -13,7 +13,7 @@ class Tongji extends MysqlDao {
 		return $this->count(array('app_stud_no'=>$id,'app_state'=>2));
 	}
 	/*
-	总申报学分  所以的申报的学分求和
+	总申报学分  所以的申报的学分求和    通过审核
 	*/
 	public function countAllCreditByStudId($id){
 		$sql = 'select sum(item_score) from item_set,item_apply where item_set.item_code = item_apply.app_item_code AND app_state = 2 AND item_apply.app_stud_no = "'.$id.'"';
@@ -22,7 +22,7 @@ class Tongji extends MysqlDao {
 	
     /* 有效申报学分   同一奖取最高学分 求和  */
     public function countValidCreditByStudId($id){
-    	$allcode = current($this->simpleFetchList(' item_apply ',array(' app_item_code '),array('app_stud_no'=>$id)));
+    	$allcode = current($this->simpleFetchList(' item_apply ',array(' app_item_code '),array('app_stud_no'=>$id,'app_state'=>2)));
     	$validcode = $this->makeValidItemCode($allcode);
     	$sql = 'select sum(item_score) from item_set where 0   ';
     	foreach ($validcode as $v){

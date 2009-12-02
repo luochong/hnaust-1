@@ -105,6 +105,18 @@ require_once('header.php');
                          <td align="center"><a onclick="return confirm('确认是否删除？')" href="stud_homedel.class.php?code=<?php echo   $itemdetail[$n][0]['item_code'];?>">×</a></td>
                      </tr>
                    </table>
+          <br />
+         <table width="500">
+			<tr>
+				<td width="100">总有效项目:</td>
+					<td width="60"><?php $tongji->countItemByStudId($_SESSION['studno'])?></td>
+				<td width="100">总申报学分:</td>
+					<td width="60"><?php $tongji->countAllCreditByStudId($_SESSION['studno'])?></td>
+				<td width="100">总有效学分:</td>
+					<td width="60"><?php $tongji->countValidCreditByStudId($_SESSION['studno'])?></td>
+			</tr>
+		</table>
+                   
                    <p>       
                     <?php           
          
@@ -115,6 +127,10 @@ require_once('header.php');
                  {echo "<h5>你还未申请!</h5>";} 
 					?>
 					</p>
+
+					
+					
+					
   <!-- end #sidebar2 --></div>
   
   
