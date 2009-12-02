@@ -18,7 +18,7 @@
 
 
        require_once("include/mysqldao.class.php");	
-      define(PageNum,9);
+      define(PageNum,5);
          class stud extends MysqlDao
          {
              public $itemcode;
@@ -35,26 +35,25 @@
              public function showitem($studno,$pageno)
              {
                  $this->setTableName("item_apply");
+          
                  $page_no=$pageno-1;
                  $data=array("app_stud_no"=>$studno);
-                 $row=$this->selectA($data,PageNum,$page_no);
-    
+                 $row=$this->selectA($data,PageNum,$page_no,'app_time DESC');
+               //  print_r($row);
                  return $row;
              }
              public function finditem($itemcode,$pageno)
              {
                   $this->setTableName("item_set");
                  $page_no=$pageno-1;
-                // print_r($itemcode);
                for($i=0;$i<count($itemcode);$i++)
                { 
                
                    $data[]=array("item_code"=>$itemcode[$i]);
               
           
-                 $row[]=$this->selectA($data[$i],PageNum,$page_no,null);
+                 $row[]=$this->selectA($data[$i]);
                   }
-             //   print_r($row); 
                  return $row;
              }
              
