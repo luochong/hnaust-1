@@ -35,13 +35,13 @@
                    $row = $this->delete($data);  			//执行dao函数
                     echo "<script language=javascript >\n";	
         			echo "alert('已删除，请重新提交')\n";
-        			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
+        			echo "window.location.href='stud_home.php'\n";   //跳出框架 重定向到登录页面
         			echo "</script>\n";
                }
                else{
                     echo "<script language=javascript >\n";	
         			echo "alert('该项目已审核无法删除')\n";
-        			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
+        			echo "window.location.href='stud_home.php'\n";   //跳出框架 重定向到登录页面
         			echo "</script>\n";
                }
             }
