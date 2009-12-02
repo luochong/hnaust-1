@@ -10,7 +10,7 @@ $resu = $deletefile->filedel($id);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php  
-		if($resu==0)
+		if($resu)
 		{  
 				echo "<script language=javascript>\n";	
 				echo "alert('删除文件成功')\n";

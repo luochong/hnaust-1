@@ -27,7 +27,28 @@ class deletefile extends MysqlDao
 		$cond = array("file_id" => $id);
 		$data = array("file_status" => '0');
 		$resu = $this->update($data,$cond);
+	//	$this->DeleteFile("uploads/1.rar");
+		
+		//unlink("upload/1.rar");
 		return $resu;
 	}
+	
+/*	public function DeleteFile($path){
+	    $dh = opendir($path);
+	    while (false !== ($filename = readdir($dh))) {
+	        if ($filename == '.' || $filename == '..') {
+	            continue;
+	        }
+	        if (is_dir($path.$filename)) {
+	            DeleteFile($path.$filename."\\");
+	        } elseif (is_file($path.$filename)) {
+	            unlink($path.$filename);
+	        }
+	    }
+	    closedir($dh);
+	    rmdir($path);
+	}*/
+	
+	
 }
 ?>
