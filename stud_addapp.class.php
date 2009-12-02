@@ -83,6 +83,7 @@
     			//print_r($row1);
                if($row1==null){
     			  $istat="0";
+    		
                  $data=array("app_item_type"=>$itype,"app_item_code"=>$code,"app_stud_no"=>$studno,"stud_orgcode"=>$studcode,"app_state"=>$istat); 			//查询学号
     	  
                  $row=$this->insert($data);
@@ -105,11 +106,12 @@
              
 			 if($atype=="0"||$iname=="0"||$irank=="0")
               {	
-                  
+                 
                   echo "<script language=javascript >\n";	
 			echo "alert('项目为空，不能提交')\n";
 			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
 			echo "</script>\n";
+			 return null;
               }
           
               else{

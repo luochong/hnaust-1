@@ -42,7 +42,10 @@ if( isset($_POST['submit']) )
   
   $acode=$citem->setitem($itype,$iname,$irank);
  $code=$acode[0]['item_code'];
+
+ if($acode!==null){
     $citem->insertapp($itype,$code,$studno,$studcode);
+ }
 }
 $title = "申报项目";
 require_once("header.php");
