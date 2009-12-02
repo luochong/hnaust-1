@@ -80,13 +80,13 @@ require_once('header.php');
             ?>
 <table class="itable" width="600">
                      <tr>
-                     <td class="showtd" width="8%">类别</td>
-                     <td class="showtd" width="15%">编号</td>
-                     <td class="showtd" width="30%">名称</td>
-                     <td class="showtd" width="13%">级别</td>
-                     <td class="showtd" width="8%">学分</td>
-                     <td class="showtd" width="17%">审核状态</td>
-                     <td class="showtd">操作</td>
+                     <td align="center" width="8%">类别</td>
+                     <td align="center" width="15%">编号</td>
+                     <td align="center" width="30%">名称</td>
+                     <td align="center" width="13%">级别</td>
+                     <td align="center" width="8%">学分</td>
+                     <td align="center" width="17%">审核状态</td>
+                     <td align="center">操作</td>
                      </tr>
                 </table>
 		  <?php
@@ -94,15 +94,15 @@ require_once('header.php');
                    for($n=0;$n<count($showitem);$n++)
                     {//print_r($itemdetail);
            ?> 
-               <table class="showtb2">
+               <table width="600">
                      <tr>
-                     	<td class="showtd1" width="8%"><?php echo   $itemdetail[$n][0]['item_type'];?></td>
-                         <td class="showtd1" width="15%"><?php echo   $itemdetail[$n][0]['item_code'];?></td>
-                         <td class="showtd1" width="30%"><?php echo   $itemdetail[$n][0]['item_name'];?></td>
-                         <td class="showtd1" width="13%"><?php echo   $itemdetail[$n][0]['item_rank'];?></td>
-                         <td class="showtd1" width="8%"><?php echo   $itemdetail[$n][0]['item_score'];?></td>
-                         <td class="showtd1" width="17%"><?php echo   getItemState($showitem[$n]['app_state']);?></td>
-                         <td class="showtd_x"><a onclick="return confirm('确认是否删除？')" href="stud_homedel.class.php?code=<?php echo   $itemdetail[$n][0]['item_code'];?>">×</a></td>
+                     	<td align="center" width="8%"><?php echo   $itemdetail[$n][0]['item_type'];?></td>
+                         <td align="center" width="15%"><?php echo   $itemdetail[$n][0]['item_code'];?></td>
+                         <td align="center" width="30%"><?php echo   $itemdetail[$n][0]['item_name'];?></td>
+                         <td align="center" width="13%"><?php echo   $itemdetail[$n][0]['item_rank'];?></td>
+                         <td align="center" width="8%"><?php echo   $itemdetail[$n][0]['item_score'];?></td>
+                         <td align="center" width="17%"><?php echo   getItemState($showitem[$n]['app_state']);?></td>
+                         <td align="center"><a onclick="return confirm('确认是否删除？')" href="stud_homedel.class.php?code=<?php echo   $itemdetail[$n][0]['item_code'];?>">×</a></td>
                      </tr>
                    </table>
                    <p>       
