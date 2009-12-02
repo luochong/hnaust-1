@@ -49,6 +49,7 @@ class Tongji extends MysqlDao {
      */
     public function countLessonCredit($id){
     	/****************  求出有效项目编号   *****************/
+    	$lessoncredit = array();
     	$validcode = $this->makeValidItemCode($this->getVerifyValidAllCode($id));
     	$sql = 'select sum(item_score) as sum,item_type from item_set where  0   ';
     	foreach ($validcode as $v){
@@ -75,6 +76,7 @@ class Tongji extends MysqlDao {
     		unset($lessoncredit["求实"]);
     	}
     	$sql = "select * from mark_allscore where 0 ";
+    	
     	foreach ($lessoncredit as $key => &$value){
     		if($value > $this->maxcredit[$key]){
     			$value = $this->maxcredit[$key];
