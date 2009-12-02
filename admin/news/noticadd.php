@@ -22,14 +22,11 @@ $edit->from_name='notic_content';
 <script type="text/javascript" src="<?php echo APP_ROOT?>/include/jquery.js" ></script>
 <script type="text/javascript">
 function checkdata(){
-	if($('#n_title').val==''){
+	if($('#n_title').val()==''){
 		alert('标题不能为空！');
 		return false;
 	}
-	if($('#n_autor').val==''){
-		alert('作者不能为空！');
-		return false;
-	}
+	
 	if(<?php echo $edit->getContent();?>){
 		return true;
 	}else{
