@@ -32,7 +32,7 @@ require_once("header.php");
 		  <div id="content" style="width:560px;margin:auto;">
 				<ul style="line-height:18px;">
 					<?php for($i=0;$i<count($row);$i++ ){  ?>
-					<li><span style="width:400px;display:inline-block;"><a href="<?php echo $row[$i]['file_url']; ?>"><?php echo $row[$i]['file_name']; ?></a></span><span><?php echo date("Y-m-y",strtotime($row[$i]['file_time']))?></span></li>
+					<li><span style="width:400px;display:inline-block;"><a href="admin/syst/uploads/<?php echo $row[$i]['file_url']; ?>"><?php echo $row[$i]['file_name']; ?></a></span><span><?php echo date("Y-m-y",strtotime($row[$i]['file_time']))?></span></li>
 					<?php }?>
 				
 				</ul>

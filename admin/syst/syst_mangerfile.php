@@ -60,7 +60,7 @@ function delok(){
 	        <td width='60px'><?php echo $file_list[$i]['file_id']?></td>
 		    <td width='320px'><?php echo $file_list[$i]['file_name']?></td>
 		    <td width='220px'><?php echo $file_list[$i]['file_time']?></td>
-			<td width='100px'><a class='del' href='syst_delfile.php?id=<?php echo $file_list[$i]['file_id']?>' onClick='return delok();'>删除</a></td>
+			<td width='100px'><a class='del' href='syst_delfile.php?id=<?php echo $file_list[$i]['file_id']?>&name=<?php echo $file_list[$i]['file_url']?>' onClick='return delok();'>删除</a></td>
 			</tr>
 		<?php
 		}
