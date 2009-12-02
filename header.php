@@ -374,7 +374,7 @@ color:#333;
 
   <div class="huise">
   <?php if(isset($_SESSION['studno'])){ 
-      echo '<p class="toppp"><span>所在的位置：',$title,'</span><span class="sname">',$_SESSION["studname"],'，你好！&nbsp;&nbsp;<a href="stud_pwdchg.php">修改密码</a><a href="index.php?ac=logout">退出</a>','</span></p>'; 
+      echo '<p class="toppp"><span>所在的位置：',$title,'</span><span class="sname">',$_SESSION["studname"],'，你好！&nbsp;&nbsp;<a href="stud_pwdchg.php">修改密码</a>&nbsp;<a href="index.php?ac=logout">退出</a>','</span></p>'; 
   ?>
   
   
