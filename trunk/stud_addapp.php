@@ -96,7 +96,7 @@ require_once("header.php");
 		          <option value="求实" disabled="disabled">求实社会实践活动</option>
 		          <option value="求特" disabled="disabled">求特个性发展活动</option>
 		          <option value="求强" >求强就业创业活动</option>
-			 </select><br />
+			 </select><font color="Red">&nbsp;*必选</font><br />
                     <br />	
                     <?php if($_POST['itype']=="求实"||$_POST['itype']=="求特")
                             {
@@ -108,14 +108,14 @@ require_once("header.php");
 					<div id="itemxianmu"><span class="leibie">请选择你要申报项目的名称：</span>
 					   <select name='i_name' id='i_name' onchange="$('#i_rank').load('./stud_addapp.php?ac=getIrank&i_name='+encodeURIComponent(this.value));">
 		     	 <option value="0">...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-		     </select><br />
+		     </select><font color="Red">&nbsp;*必选</font><br />
 		     <br />	
 					</div>
 					
 					<div id="itemdengji"><span class="leibie">请选择你要申报项目的级别：</span>
 					  <select name='i_rank' id='i_rank'>
           	 	 <option value="0">...&nbsp;&nbsp;</option>
-          	 </select><br />
+          	 </select><font color="Red">&nbsp;*必选</font><br />
 			<br />
 					
 					</div>

@@ -89,7 +89,7 @@
                  $row=$this->insert($data);
     		echo "<script language=javascript >\n";	
 			echo "alert('提交成功')\n";
-			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
+			echo "window.location.href='stud_home.php'\n";   
 			echo "</script>\n";
              
                }
@@ -103,15 +103,36 @@
          
                 public function setitem($atype,$iname,$irank)
           {
-             
+             $three=$atype=="0"||$iname=="0"||$irank=="0";
 			 if($atype=="0"||$iname=="0"||$irank=="0")
               {	
-                 
-                  echo "<script language=javascript >\n";	
-			echo "alert('项目为空，不能提交')\n";
-			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
-			echo "</script>\n";
-			 return null;
+                 switch ($three)
+                 {
+                     case $atype=="0":
+                         {
+                             echo "<script language=javascript >\n";	
+                    			echo "alert('项目类别为空，不能提交')\n";
+                    			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
+                    			echo "</script>\n";
+                    			return null;
+                         }
+                     case $iname=="0":
+                         {
+                             echo "<script language=javascript >\n";	
+                    			echo "alert('项目名称为空，不能提交')\n";
+                    			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
+                    			echo "</script>\n";
+                    			return null;
+                         }
+                          case $irank=="0":
+                         {
+                             echo "<script language=javascript >\n";	
+                    			echo "alert('项目级别为空，不能提交')\n";
+                    			echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
+                    			echo "</script>\n";
+                    			return null;
+                         }			 			 
+                 }
               }
           
               else{
