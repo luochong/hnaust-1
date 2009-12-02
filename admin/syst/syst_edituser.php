@@ -69,7 +69,7 @@ function checkdata() {
     </b>
      <div id="allbox">
       <h3><div class="left">湖南农业大学</div>
-	  	  <div class="right"><a href='#'>返 回<暂无链接></a></div>
+	  	  <div class="right"><a href='javascript:history.back();'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
 	  <form id="form1" name="form1" method="post" onsubmit="return checkdata();">

@@ -6,43 +6,42 @@
 ///		Copyright 2007-2008 prolove. All rights reserved.
 ///
 ///	[Filename]
-///		学生项目申请首页类
+///		下载列表
 ///
 ///	[Description]
-///		学生项目申请首页类页面
+///		
 ///
 ///	[History]
-///		Date        	Version  	Author    	Content
+///		Date         Version  	Author      	Content
 ///		---------- 	 -------  	--------  	 ------------------------------------
-///	    2009/11/16      1.1    	龙首成      	  学生管理
-require_once("news.class.php");	
-$news=new news();
+///	    2009/11/16      1.1    	邓卓      	  学生管理
+require_once("download.class.php");	
+$notic = new notic();
 $pageno=$_GET['page_no'];
-$newsshow=$news->getnewsinfo($pageno);
+$row = $notic->getNoticList();
 
-$title = "新闻列表";
+$title = "下载列表";
 require_once("header.php");
 ?>
 
 
 		<div id="right" style="width:648px;height:300px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
 		  	<div id="item" style="border:#c1c1c1 solid 1px;height:40px;margin-bottom:20px;text-align:center">
-					<span style="float:left;width:630px"><h2>新闻列表</h2></span>
+					<span style="float:left;width:630px"><h2>下载列表</h2></span>
 		  	</div>
 		  <div id="content" style="width:560px;margin:auto;">
 				<ul style="line-height:18px;">
-					<?php for($i=0;$i<count($newsshow);$i++ ){  ?>
-					<li><span style="width:400px;display:inline-block;"><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><?php echo   $newsshow[$i]['news_title']; ?></a></span><span><?php echo $newsshow[$i]['news_time'];?></span></li>
+					<?php for($i=0;$i<count($row);$i++ ){  ?>
+					<li><span style="width:400px;display:inline-block;"><a href="<?php echo $row[$i]['file_url']; ?>"><?php echo $row[$i]['file_name']; ?></a></span><span><?php echo date("Y-m-y",strtotime($row[$i]['file_time']))?></span></li>
 					<?php }?>
 				
 				</ul>
-			
-		  		<div><?php
-          		$news->page_list();
-				?></div>
+			  <!--	<div align="right"><?php
+          //		$news->page_list();
+				?></div>-->
+		  		
 		  		
 		  </div><!--content fin-->
-		  
        </div>
        
   
@@ -86,29 +85,3 @@ require_once("header.php");
 
 
 
-
-
-<!--		<div id="right">
-		  <div id="item">
-		  		<div id="location">
-					<div id="location_tit">新闻列表</div>
-					<div id="showtime"><?php echo getNowTate()?></div>
-				</div>
-
-		<?php
-for($i=0;$i<count($newsshow);$i++ )
-{
-   ?>
-   <a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>">><font size="2"><?php echo   $newsshow[$i]['news_title']; ?></a>
-
-<?php echo   $newsshow[$i]['news_time']; 
-       echo "<br />";}?></font>
-<?php
-          $news->page_list();
-?>
-       </div>
-		</div>
-	</div>
-</body>
-
-</html>-->

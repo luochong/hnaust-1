@@ -25,7 +25,10 @@ if(isset($_POST['submit']))
 			echo $moved -> getMessage (); 
 		} 
 	} elseif ( $file -> isMissing ()) { 
-		echo "No file was provided" ;
+		echo "<script language=javascript>\n";	
+		echo "alert('文件格式错误或者文件过大造成上传文件失败！')\n";
+		echo "window.location.href='syst_upload.php'";		
+		echo "</script>\n";
 	} elseif ( $file -> isError ()) { 
 		echo $file -> errorMsg (); 
 	} 
@@ -46,7 +49,7 @@ if(isset($_POST['submit']))
     </b>
      <div id="allbox">
       <h3><div class="left">湖南农业大学课程管理</div>
-	  	  <div class="right"><a href='body.php'> </a></div>
+	  	  <div class="right"><a href='javascript:history.back();'>返回 </a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
   	 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return checkdata();">
@@ -55,6 +58,10 @@ if(isset($_POST['submit']))
 	  <div id="allcontent"><br />
 	    <div class="clear">&nbsp;
 	      <table width="100%" border="0" cellspacing="3" cellpadding="2">
+			<tr>
+				<td>请输入文件名称：</td>
+	      		<td><input name="filename" type="text" size="40"></td>
+			</tr>
             <tr>
               <td>请选择上传文件</td>
               <td><label><input name="f" type="file" id="userfile" size="40" /></label></td>

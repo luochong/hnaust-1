@@ -23,9 +23,10 @@ class uploadfiles extends MysqlDao
 {
 	public function file_upload($name)
 	{
+		$filename = $_POST['filename'];
 		$this->setTableName("upload_file");
 		$url = "admin/syst/uploads/".$name;
-		$cond = array("file_name" => $name,
+		$cond = array("file_name" => $filename,
 						"file_url" => $url);
 		$resu = $this->insert($cond);
 		if($resu)
@@ -37,7 +38,7 @@ class uploadfiles extends MysqlDao
 		}else{
 			echo "<script language=javascript>\n";	
 			echo "alert('上传文件失败！')\n";
-			echo "window.location.href='grouAdd02.php'";		
+			echo "window.location.href='syst_upload.php'";		
 			echo "</script>\n";
 		}
 	}

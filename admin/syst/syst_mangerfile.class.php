@@ -28,5 +28,10 @@ class mangerfiles extends MysqlDao
 		$row = $this->selectA($cond);
 		return $row;
 	}
+	
+	
+
+	
+	
 }
 ?>
