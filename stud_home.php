@@ -72,7 +72,38 @@ require_once('header.php');
 <div id="rightinfo" class="fltlft" style="padding:20px 20px 20px 20px;" >
 <input type="button" value="点击申报" onclick=" location.href='stud_addapp.php'"/>
 <br />
-
+<table width="500">
+			<tr>
+				<td width="100">有效申报项目:</td>
+					<td width="60"><?php echo $tongji->countItemByStudId($_SESSION['studno'])?></td>
+				<td width="100">总计申报学分:</td>
+					<td width="60"><?php echo $tongji->countAllCreditByStudId($_SESSION['studno'])?></td>
+				<td width="100">总计有效学分:</td>
+					<td width="60"><?php echo $tongji->countValidCreditByStudId($_SESSION['studno'])?></td>
+			</tr>
+			<?php $data = $tongji->countLessonCredit($_SESSION['studno']);
+					foreach ($data as $v){
+						$score[$v['mark_lesson_type']] = $v['mark_lesson_score'];
+						
+					}
+			?>
+			<tr>
+				<td width="100">求真课程学分:</td>
+					<td width="60"><?php echo $score['求真']==''?0:$score['求真']?></td>
+				<td width="100">求善课程学分:</td>
+					<td width="60"><?php  echo $score['求善']==''?0:$score['求善']?></td>
+				<td width="100">求美课程学分:</td>
+					<td width="60"><?php  echo $score['求美']==''?0:$score['求美']?></td>
+			</tr>
+			<tr>
+				<td width="100">求实课程学分:</td>
+					<td width="60"><?php  echo $score['求实']==''?0:$score['求实']?></td>
+				<td width="100">求特课程学分:</td>
+					<td width="60"><?php  echo $score['求特']==''?0:$score['求特']?></td>
+				<td width="100">求强课程学分:</td>
+					<td width="60"><?php  echo $score['求强']==''?0:$score['求强']?></td>
+			</tr>
+</table>
 <br />
 <?php
           if(count($showitem)!==0)
@@ -106,16 +137,6 @@ require_once('header.php');
                      </tr>
                    </table>
           <br />
-         <table width="500">
-			<tr>
-				<td width="100">总有效项目:</td>
-					<td width="60"><?php $tongji->countItemByStudId($_SESSION['studno'])?></td>
-				<td width="100">总申报学分:</td>
-					<td width="60"><?php $tongji->countAllCreditByStudId($_SESSION['studno'])?></td>
-				<td width="100">总有效学分:</td>
-					<td width="60"><?php $tongji->countValidCreditByStudId($_SESSION['studno'])?></td>
-			</tr>
-		</table>
                    
                    <p>       
                     <?php           
