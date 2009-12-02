@@ -1,5 +1,6 @@
 <?php 
 ob_start();
+include_once ("../../include/session.class.php");
 include_once("../../include/mysqldao.class.php");
 require_once("../../control/tongji.include.php");
 require_once("../../include/function.include.php");
