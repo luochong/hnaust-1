@@ -25,9 +25,8 @@ text-align:center;
 font-family:"微软雅黑";
 background-color:#0ff;
 }
-.showtb2{
-text-align:center;
-width:580px;
+.show_x{
+background-color:#f00;
 }
 .showtd1{
 font-family:"楷体";
