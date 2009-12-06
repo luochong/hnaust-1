@@ -19,8 +19,9 @@ require_once("news.class.php");
 $news=new news();
 $newsid=$_GET['newsid'];
 
-
+$pageno=$_GET['page_no'];
 $newsshow=$news->getnewscont($newsid);
+$newstitle=$news->getnewsinfo($pageno);
 $nshowup=$news->getnewscont($newsid+1);
 $nshowdown=$news->getnewscont($newsid-1);
 $title = "新闻中心";
@@ -43,15 +44,17 @@ require_once("header.php");
 
 			<div style="background:url(images/st_20.jpg) no-repeat top left;height:45px">
                 <div style="text-align:center;width:85%;padding-top:20px;margin-left:12px;color:#000;border-bottom:1px solid #000;height:22px"> 
-                通知
+                最新新闻
                 </div>
             </div>            
             <div style="background:url(images/st_23.jpg) repeat-y top left;height:180px" class="notice">
             	<ul>
-                	<marquee  scrolldelay="1" scrollamount="1" direction="up" onmouseout="this.start();" onmouseover="this.stop();">
-                    <li><a href=""><span>最新新闻最新新闻最新新闻最新新闻最新新闻最新新闻</span></a></li>
-                    <li><a href=""><span>最新新闻最新新闻最新新闻最新新闻最新新闻最新新闻</span></a></li>
-            		</marquee>
+                	  <?php  
+                	  //print_r($newstitle);
+		         for($i=0;$i<count($newstitle)&&$i<9;$i++ ){?>
+                    <li><a href="newscontent.php?newsid=<?php echo   $newstitle[$i]['news_id']; ?>"><span><?php echo $newstitle[$i]['news_title']?></span></a></li>
+                 <?php }?>
+            		
             	<ul>
             </div>  
             
