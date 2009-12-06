@@ -24,7 +24,7 @@ $data = $news->selectA(array('notic_id'=>$id));
 $title = "通知 > ".$data[0]['notic_title'];
 require_once("header.php");
 ?>
-		<div id="right" style="width:648px;height:300px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
+		<div id="right" style="width:648px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
 		  	<div id="item" style="border:#c1c1c1 solid 1px;margin-bottom:20px;text-align:center">
 					<h2 style="color:red">通知：<?php echo $data[0]['notic_title'];?></h2>
 					
