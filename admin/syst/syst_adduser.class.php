@@ -23,7 +23,7 @@ class operadd extends MysqlDao
 {
 	public function showDeptList()
 	{
-		$space="";
+	/*	$space="";
 		$this->setTableName('group_dept');
 		$cond = array("dept_father_id" => '0');
 		$row = $this->selectA($cond);			
@@ -31,16 +31,43 @@ class operadd extends MysqlDao
 			$value=$row[$i]["id"];			
 			echo "<option value='$value'>$space{$row[$i]["dept_name"]}</option>";
 			$this->subdept($row[$i]["id"],$space);
-		}	
+		}	*/
+		$this->setTableName('group_dept');
+		$cond = array("dept_father_id" => '0');
+		$row = $this->selectA($cond);	
+		for($i=0;$i<count($row);$i++){
+			$value=$row[$i]["id"];	
+			if($_GET['dept_name']==$value){
+				echo "<option value='$value' selected=\"selected\">{$row[$i]["dept_name"]}</option>";
+			}else{		
+				echo "<option value='$value'>{$row[$i]["dept_name"]}</option>";
+			}
+		}
+	
 	}
+	
+	public function showCdeptList()
+	{
+		$this->setTableName('group_dept');
+		$cond = array("dept_father_id" => $_GET['dept_name']);
+		$row = $this->selectA($cond);	
+		for($i=0;$i<count($row);$i++){
+			$value=$row[$i]["id"];	
+			if($_GET['dept_name']==$value){
+				echo "<option value='$value' selected=\"selected\">{$row[$i]["dept_name"]}</option>";
+			}else{		
+				echo "<option value='$value'>{$row[$i]["dept_name"]}</option>";
+			}
+		}
+	
+	}
+	
 	
 	public function subdept($id,$space)
 	{	
 		$this->setTableName("group_dept");
 		$cond = array("dept_father_id" => $id);
 		$row = $this->selectA($cond);
-
-		$space=$space."&nbsp;&nbsp;&nbsp;&nbsp;";
 		if(count($row)>=1){
 			for($i=0;$i<count($row);$i++){
 				$value=$row[$i]["id"];			
@@ -48,7 +75,7 @@ class operadd extends MysqlDao
 				$this->subdept($row[$i]["id"],$space);
 			}
 		}else{
-			return;
+			echo "<option value=''>无下属机构</option>";
 		}
 	}
 	
