@@ -44,7 +44,7 @@ require_once('control/tongji.include.php');
 $tongji = new Tongji();
 require_once('header.php');
 ?>
- <div id="leftinfo" class="fltlft" style="padding:20px 20px 20px 20px;width:150px;border-right:1px #ccc solid;height:100%">
+ <div id="leftinfo" class="fltlft" style="padding:20px 20px 20px 20px;width:150px;border-right:1px #ccc solid;height:400px">
  <h3>我的信息</h3>
 <?php
              if(count($showinfo)!==0)
@@ -72,7 +72,7 @@ require_once('header.php');
 <div id="rightinfo" class="fltlft" style="padding:20px 20px 20px 20px;" >
 <input type="button" value="点击申报" onclick=" location.href='stud_addapp.php'"/>
 <br />
-<table width="500">
+<table width=400">
 			<tr>
 				<td width="100">有效申报项目:</td>
 					<td width="60">
@@ -121,22 +121,22 @@ require_once('header.php');
                  {
             ?>
 <table class="itable" width="600">
-                     <tr>
-                     <td align="center" width="8%">类别</td>
-                     <td align="center" width="15%">编号</td>
-                     <td align="center" width="30%">名称</td>
-                     <td align="center" width="13%">级别</td>
-                     <td align="center" width="8%">学分</td>
-                     <td align="center" width="17%">审核状态</td>
-                     <td align="center">操作</td>
+                     <tr >
+                     <th align="center" width="8%">类别</th>
+                     <th align="center" width="15%">编号</th>
+                     <th align="center" width="30%">名称</th>
+                     <th align="center" width="13%">级别</th>
+                     <th align="center" width="8%">学分</th>
+                     <th align="center" width="17%">审核状态</th>
+                     <th align="center">操作</th>
                      </tr>
-                </table>
+              
 		  <?php
  
                    for($n=0;$n<count($showitem);$n++)
                     {//print_r($itemdetail);
            ?> 
-               <table width="600">
+             
                      <tr>
                      	<td align="center" width="8%"><?php echo   $itemdetail[$n][0]['item_type'];?></td>
                          <td align="center" width="15%"><?php echo   $itemdetail[$n][0]['item_code'];?></td>
@@ -146,19 +146,23 @@ require_once('header.php');
                          <td align="center" width="17%"><?php echo   getItemState($showitem[$n]['app_state']);?></td>
                          <td align="center"><a onclick="return confirm('确认是否删除？')" href="stud_homedel.class.php?code=<?php echo   $itemdetail[$n][0]['item_code'];?>">×</a></td>
                      </tr>
-                   </table>
-          <br />
+                 
+       
                    
-                   <p>       
+                        
                     <?php           
          
-                   }
+                   }?>
+                   
+                     </table> <p> 
+                   <?php
                     $show->page_list($studno);
+                    echo '</p>';
                  }
                  else 
                  {echo "<h5>你还未申请!</h5>";} 
 					?>
-					</p>
+				
 
 					
 					
