@@ -26,7 +26,7 @@ include_once("include/mysqldao.class.php");
  * longshoucheng 2009 11
  *
  */
-
+	header("Content-type: text/html; charset=utf-8");
 class LoginAction extends MysqlDao {
 	
 	public $error_message= '';
@@ -40,14 +40,20 @@ class LoginAction extends MysqlDao {
 	
 	public function login(){
 		if(empty($_POST['user_name'])||empty($_POST['user_password'])){
-			$this->error_message='请填写完整！';
+				echo "<script language=javascript >\n";	
+			echo "alert('请填写完整')\n";
+			echo "window.location.href='index.php'\n";   
+			echo "</script>\n";
 			return ;
 		}
 		$this->setTableName('stud_baseinfo');
 		$rows = $this->selectA(array('stud_no'=>$_POST['user_name']));
 		
 		if(count($rows)== 0||$rows[0]['stud_password'] != $_POST['user_password']){
-			$this->error_message ='帐号或密码错误！';
+		echo "<script language=javascript >\n";	
+			echo "alert('账号或密码错误')\n";
+			echo "window.location.href='index.php'\n";   
+			echo "</script>\n";
 			return;
 		}
 		/*elseif(count($rows)== 0)

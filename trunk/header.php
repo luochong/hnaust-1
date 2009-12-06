@@ -305,7 +305,7 @@ border:1px solid #ccc;
 }
 .itable tr td{
 border-bottom:1px solid #ccc;
-line-height:3em;
+line-height:2em;
 }
 .itable tr th{
 border-bottom:1px solid #666;

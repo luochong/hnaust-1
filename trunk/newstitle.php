@@ -19,7 +19,7 @@ require_once("news.class.php");
 $news=new news();
 $pageno=$_GET['page_no'];
 $newsshow=$news->getnewsinfo($pageno);
-
+$noticdata = $news->getNotice();
 $title = "新闻列表";
 require_once("header.php");
 ?>
@@ -65,8 +65,10 @@ require_once("header.php");
             <div style="background:url(images/st_23.jpg) repeat-y top left;height:180px" class="notice">
             	<ul>
                 	<marquee  scrolldelay="1" scrollamount="1" direction="up" onmouseout="this.start();" onmouseover="this.stop();">
-                    <li><a href=""><span>最新新闻最新新闻最新新闻最新新闻最新新闻最新新闻</span></a></li>
-                    <li><a href=""><span>最新新闻最新新闻最新新闻最新新闻最新新闻最新新闻</span></a></li>
+                    <?php foreach ($noticdata as $v): ?>
+                    <li><a href="<?php echo APP_ROOT?>/notice.php?id=<?php echo $v['notic_id']?>"><span><?php echo $v['notic_title']?></span></a></li>
+                    <?php endforeach;?>
+               
             		</marquee>
             	<ul>
             </div>  
