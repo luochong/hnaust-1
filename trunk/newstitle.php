@@ -32,7 +32,7 @@ require_once("header.php");
 		  <div id="content" style="width:560px;margin:auto;">
 				<ul style="line-height:18px;">
 					<?php for($i=0;$i<count($newsshow);$i++ ){  ?>
-					<li><span style="width:400px;display:inline-block;"><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><?php echo   $newsshow[$i]['news_title']; ?></a></span><span><?php echo $newsshow[$i]['news_time'];?></span></li>
+					<li><span style="width:400px;display:inline-block;"><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><?php echo   $newsshow[$i]['news_title']; ?></a></span><span>[<?php echo date("Y-m-y",strtotime($newsshow[$i]['news_time']))?>]</span></li>
 					<?php }?>
 				
 				</ul>

@@ -22,9 +22,12 @@ function delok(){
 	}
 }
 </script>
+
+
+
+
 </head>
 <body>
-
   <div class="allRoundedCorner">
      <b class="rtop">
      <b class="r1"></b>
@@ -50,26 +53,25 @@ function delok(){
 			<div style="float:left; width:50px">删除</div>
 	  </div>
 		  
-	  
 	    <?php		
 		$page=basename($_SERVER['PHP_SELF']);
 		$pagenum=10;		
 		$item_list = $mangeritem->item_manger();
 		for($i=0;$i<count($item_list);$i++)
 		{	if(empty($item_list[$i]['item_rank'])) $tree = "无";else $tree = $item_list[$i]['item_rank'];
-			echo "
+		?>
 			<tr>
-	        <td width='60px'>{$item_list[$i]['item_id']}</td>
-		    <td width='60px'>{$item_list[$i]['item_type']}</td>
-		    <td width='120px'>{$item_list[$i]['item_code']}</td>
-		    <td width='260px'>{$item_list[$i]['item_name']}</td>
-		    <td width='80px'>$tree</td>
-			<td width='50px'>{$item_list[$i]['item_score']}[<a href=\"syst_edititem.php?id={$item_list[$i]['item_id']}&type={$item_list[$i]['item_type']}&code={$item_list[$i]['item_code']}&name={$item_list[$i]['item_name']}&score={$item_list[$i]['item_score']}&rank={$tree}\">编辑</a>]</td>
-			<td width='50px'><a class='del' href='syst_delitem.php?id={$item_list[$i]['item_id']}' onClick='return delok();'>[<span style=\"color:red\"><b>╳</b></span>]</a></td>
+	        <td width='60px'><?php echo $item_list[$i]['item_id']?></td>
+		    <td width='60px'><?php echo $item_list[$i]['item_type']?></td>
+		    <td width='120px'><?php echo $item_list[$i]['item_code']?></td>
+		    <td width='260px'><?php echo $item_list[$i]['item_name']?></td>
+		    <td width='80px'><?php echo $tree?></td>
+			<td width='50px'><?php echo $item_list[$i]['item_score']?>[<a href="syst_edititem.php?id=<?php echo $item_list[$i]['item_id']?>&type=<?php echo $item_list[$i]['item_type']?>&code=<?php echo $item_list[$i]['item_code']?>&name=<?php echo $item_list[$i]['item_name']?>&score=<?php echo $item_list[$i]['item_score']?>&rank=<?php echo $tree?>">编辑</a>]</td>
+			<td width='50px'><a class='del' href='syst_delitem.php?id=<?php echo $item_list[$i]['item_id']?>' onClick='return delok();'>[<span style="color:red"><b>╳</b></span>]</a></td>
 			</tr>
-			";
+		<?php 
 		}
-	?>
+		?>
      </table>
 
 	     <div id="page">
