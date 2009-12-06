@@ -58,7 +58,7 @@ function delok(){
 		    <td width='80px'><a href='syst_edituser.php?id=<?php echo $row[$i][5]; ?>&username=<?php echo $row[$i][0]?>&psw=<?php echo $row[$i][1]?>&dept=<?php echo $row[$i][3]?>'><?php echo $row[$i][1]?></a></td>  <!--密码-->
 			<td width='240px'><?php echo $row[$i][3]?></td>
 			<td width='155px'><a class='edit' href='syst_edituser.php?id=<?php echo $row[$i][5]; ?>&username=<?php echo $row[$i][0]?>&psw=<?php echo $row[$i][1]?>&dept=<?php echo $row[$i][3]?>'>修改</a></td>
-			<td width='40px'><a class='del' href='syst_deleteuser.php?id=<?php echo $row[$i][5]; ?>' onClick='return delok();'>删除</a></td>
+			<td width='40px'><a class='del' href='syst_deleteuser.php?id=<?php echo $row[$i][5]; ?>' onClick='return delok();'>[<span style="color:red"><b>╳</b></span>]</a></td>
 			</tr>
 	 <?php }?>
 	 </table>
