@@ -218,11 +218,15 @@ foreach ($data as $t){
 		 <input type='button'  value="取消审核" onclick="$('action').value = 'quxiao'; itemform.submit();" />
 		<?php }
 		}?>
-<?php }?>		 
-		
+		</div>
+			
 		</form>
 		</div>
-		</div>
+<?php }?>		 
+		
+		
+		
+	
 	 </div>
    	  <b class="rbottom">
          <b class="r4"></b>

@@ -362,7 +362,7 @@ color:#333;
 <div id="container">
   <div id="header">
    <div style="margin-bottom:0px;float:left;" >	<img src="images/st_02.jpg"  /></div>
-  <div style="margin-top:0px;float:left;" ><EMBED height=92 pluginspage= http://www.macromedia.com/go/getflashplayer src="headflash.swf" type=application/x-shockwave-flash width=625 wmode="transparent" quality="high"></EMBED>
+  <div style="margin-top:0px;float:left;" ><EMBED height=92 pluginspage= http://www.macromedia.com/go/getflashplayer src="images/headflash.swf" type=application/x-shockwave-flash width=625 wmode="transparent" quality="high"></EMBED>
   </div>
   	<div id="navleft"></div>
     <div id="nav">
