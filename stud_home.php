@@ -72,6 +72,7 @@ require_once('header.php');
 <div id="rightinfo" class="fltlft" style="padding:20px 20px 20px 20px;" >
 <input type="button" value="点击申报" onclick=" location.href='stud_addapp.php'"/>
 <br />
+<br />
 <table width=400">
 			<tr>
 				<td width="100">有效申报项目:</td>
