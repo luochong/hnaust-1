@@ -84,7 +84,6 @@ require_once('header.php');
 					?>
 					
 					</td>
-			
 					<td width="100">有效申报学分:</td>
 					<td width="60"><?php $citem =  $tongji->countVerifyValidCreditByStudId($_SESSION['studno']);
 					 echo $citem==''?0:$citem;
