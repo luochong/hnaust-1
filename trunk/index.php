@@ -29,7 +29,7 @@ $title = '首页';
 require_once("header.php");
 ?>
  <div id="sidebar1" >
-  <img src="images/img1.jpg" width="244" height="182" /> 
+  <img src="images/shouyedoghua.gif" width="244" height="182" /> 
   <!-- end #sidebar1 --></div>
   <div id="mainContent">
 		<div class="huibg" style="height:31px"> </div>
@@ -56,7 +56,7 @@ require_once("header.php");
             	<ul>
                 	<marquee  scrolldelay="1" scrollamount="1" direction="up" onmouseout="this.start();" onmouseover="this.stop();">
                     <?php foreach ($noticdata as $v): ?>
-                    <li><a href="<?php echo APP_ROOT?>/notice.php?id=<?php echo $v['notic_id']?>"><span><?php echo $v['notic_title']?></span></a></li>
+                    <li><a href=""><span><?php echo $v['notic_title']?></span></a></li>
                     <?php endforeach;?>
             		</marquee>
             	</ul>
