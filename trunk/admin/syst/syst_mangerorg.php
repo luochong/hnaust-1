@@ -61,7 +61,7 @@ function delok(){
 		    <td width='170px'>{$org_list[$i]['dept_name']}[<a href='syst_editorg.php?deptid={$org_list[$i][id]}&deptname={$org_list[$i][dept_name]}&ye=$ye'>修改</a>]</td>
 		    <td width='150px'>$tree</td>
 			<td width='320'>{$org_list[$i]['dept_tree_name']}</td>
-			<td width='100'><a class='del' href='syst_delorg.php?id={$org_list[$i][id]}' onClick='return delok();'>删除</a></td>
+			<td width='100'><a class='del' href='syst_delorg.php?id={$org_list[$i][id]}' onClick='return delok();'>[<span style=\"color:red\"><b>╳</b></span>]</a></td>
 			</tr>
 			";
 		}

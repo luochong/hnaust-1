@@ -29,9 +29,12 @@ class deletefile extends MysqlDao
 		$data = array("file_status" => '0');
 		$resu = $this->update($data,$cond);
 		$filename = "uploads/".$_GET['name'];
-		$result = unlink($filename);
+		if(file_exists($filename)){
+			$result = unlink($filename);
+		}else{}
 		return $resu;
 	}
+	 
 	
 	
 }

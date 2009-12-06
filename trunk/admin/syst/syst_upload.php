@@ -2,6 +2,7 @@
 require_once "../../include/Upload.php" ; 
 require_once("syst_upload.class.php");
 $uploadfiles = new uploadfiles();
+
 ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,6 +10,27 @@ $uploadfiles = new uploadfiles();
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $title;?></title>
 <link href="../css/stat.css" type=text/css rel=stylesheet />
+<script type="text/javascript">
+function checkdata() {
+	var f1 = document.form1;	
+
+	if(f1.filename.value==""){
+		alert("请填写上传文件名");
+  		f1.filename.select();  
+  		return false;
+	}
+	if(f1.f.value==""){
+		alert("请选择需要上传的文件");
+  		f1.f.select();  
+  		return false;
+	}
+}	
+</script>
+
+
+
+
+
 </head>
 <?php 
 if(isset($_POST['submit']))
@@ -63,17 +85,9 @@ if(isset($_POST['submit']))
 	      		<td><input name="filename" type="text" size="40"></td>
 			</tr>
             <tr>
-              <td>请选择上传文件</td>
-              <td><label><input name="f" type="file" id="userfile" size="40" /></label></td>
+              <td>请选择上传文件:</td>
+              <td><input name="f" type="file" id="userfile" size="40" /></td>
             </tr>
-            <!--<tr>
-              <td></td>
-              <td><label><input name="userfile2" type="file" id="userfile" size="40" /></label></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><label><input name="userfile3" type="file" id="userfile" size="40" /></label></td>
-            </tr>-->
           </table>
 	    </div>
 		  <div> 
