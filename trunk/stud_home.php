@@ -88,8 +88,9 @@ require_once('header.php');
 					?>
 					
 					</td>
-				<td width="100">总计有效学分:</td>
-					<td width="60"><?php $citem =  $tongji->countValidCreditByStudId($_SESSION['studno']);
+			
+					<td width="100">总计有效学分:</td>
+					<td width="60"><?php $citem =  $tongji->countVerifyValidCreditByStudId($_SESSION['studno']);
 					 echo $citem==''?0:$citem;
 					?></td>
 			</tr>
