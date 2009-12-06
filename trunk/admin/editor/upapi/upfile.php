@@ -1,9 +1,7 @@
 <?php
-require_once('../../../lib/LCBase.class.php');
-$config=new Config();
+	require_once("../../../include/config.php");
 
-
-$Prve=strtolower($_SERVER['HTTP_REFERER']);
+  $Prve=strtolower($_SERVER['HTTP_REFERER']);
   $Onpage=strtolower($_SERVER["HTTP_HOST"]);
   $Onnym=strpos($Prve,$Onpage);
   if(!$Onnym) exit("<script language='javascript'>alert('非法操作！');history.go(-1);</script>");
@@ -23,21 +21,12 @@ $Prve=strtolower($_SERVER['HTTP_REFERER']);
 <body>
 <?php
 $uptypes=array('image/jpg','image/jpeg','image/png','image/pjpeg','image/gif','image/bmp','image/x-png');
-/*
-$UpPath_Url = "http://".$_SERVER["SERVER_NAME"]. $_SERVER["PHP_SELF"];
-$UpPath_Url = explode("/upapi/upfile.php",$UpPath_Url);
-$UpPath_Url = explode("/",$UpPath_Url[0]);
-$UpPath     = "";
-for($u=0;$u<count($UpPath_Url)-1;$u++){
-	$UpPath .= $UpPath_Url[$u]."/";
-}
-$UpPath .= "Api_Uppic";
-*/
+$pathpre = dirname(__FILE__).'/../../..';
 $max_file_size=2000000; //上传文件大小限制, 单位BYTE
-//$pathpre="./../../Api_Uppic";
-$UpPath = $config->http_host_name;
-$path = $config->app_root.'/app'.$config->upfile_path.'/'.date('Y-m',time());
-if(!is_dir($path))mkdir($path);
+$UpPath = 'http://'.$_SERVER["SERVER_NAME"].APP_ROOT;
+$path ='/upload_file/'.date('Y-m',time());
+
+if(!is_dir($path)) mkdir($pathpre.$path);
 $destination_folder=$path.'/'.date('Y-m-d',time()).'/'; //上传文件路径
 
 $authnum=rand()%10000;
