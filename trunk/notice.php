@@ -21,7 +21,7 @@ $noticdata = $news->getNotice();
 $id=intval($_GET['id']);
 $news->setTableName('notic');
 $data = $news->selectA(array('notic_id'=>$id));
-$title = $data['notic_title'];
+$title = "通知 > ".$data[0]['notic_title'];
 require_once("header.php");
 ?>
 		<div id="right" style="width:648px;height:300px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
