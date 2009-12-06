@@ -33,22 +33,6 @@ class deletefile extends MysqlDao
 		return $resu;
 	}
 	
-/*	public function DeleteFile($path){
-	    $dh = opendir($path);
-	    while (false !== ($filename = readdir($dh))) {
-	        if ($filename == '.' || $filename == '..') {
-	            continue;
-	        }
-	        if (is_dir($path.$filename)) {
-	            DeleteFile($path.$filename."\\");
-	        } elseif (is_file($path.$filename)) {
-	            unlink($path.$filename);
-	        }
-	    }
-	    closedir($dh);
-	    rmdir($path);
-	}*/
-	
 	
 }
 ?>
