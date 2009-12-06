@@ -271,7 +271,7 @@ list-style:none;
 	
 }
 .notice ul{
-	list-style-type:circle;
+	list-style-type:none;
 }
 .thrColFixHdr #mainContent .newscontent a:hover{		
 	color:#F63;
@@ -305,7 +305,11 @@ border:1px solid #ccc;
 }
 .itable tr td{
 border-bottom:1px solid #ccc;
-
+line-height:3em;
+}
+.itable tr th{
+border-bottom:1px solid #666;
+height:30px;
 
 }
 .toppp{
@@ -365,7 +369,7 @@ color:#333;
                 <li><a href="newstitle.php">新闻中心</a></li>
                 <li><a href="download.php">资料下载</a></li>
                 <li><a href="stud_home.php">项目申报</a></li>
-                <li><a href="http://www.xnqn.com">湘农青年</a></li>
+                <li><a href="http://www.xnqn.com" target="_blank">湘农青年</a></li>
         </ul>    
     </div>
     <div id="navright"></div>   
