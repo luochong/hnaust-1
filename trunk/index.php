@@ -39,7 +39,7 @@ require_once("header.php");
             <ul>
             <?php  
 		         for($i=0;$i<count($newsshow)&&$i<9;$i++ ){?>
-                   <li><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><span><?php echo $newsshow[$i]['news_title']?></span><span class="time"><?php echo date("m-d",strtotime($newsshow[$i]['news_time']))?></span></a></li>
+                   <li><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><span><?php echo $newsshow[$i]['news_title']?></span><span class="time">[<?php echo date("m-d",strtotime($newsshow[$i]['news_time']))?>]</span></a></li>
 	      	<?php } ?>
           </ul>      
     </div>
