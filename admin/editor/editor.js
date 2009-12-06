@@ -5,7 +5,7 @@ var gHtmlId = "HtmlEditor";
 var gSourceId = "SourceEditor";
 var gTextId = "TextEditor";
 var gEditorCurId = null;
-//var gEditorPath = "/sns_new/editor/";
+
 var gEditorToolBarId = "editor_toolbar";
 var gEditorToolBarBtnContainerId = "editor_toolbar_btn_container";
 var gEditorToolBarSet = {};

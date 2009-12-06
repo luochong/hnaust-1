@@ -39,6 +39,12 @@ class NewsListAction extends MysqlDao {
 		$this->update(array('news_state'=>$s),array('news_id'=>$id));
 		
 	}
+	public function del(){
+		
+		$this->setTableName('news');
+		$id = intval($_GET['id']);
+		$this->delete(array('news_id'=>$id));
+	}
 	
 	
 	public function makepage(){
