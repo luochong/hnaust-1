@@ -82,19 +82,27 @@ function checkdata() {
 		  <br /><label>模块权限</label>	<br />
 		  <input type='checkbox' name='modu_item' value='check' checked='checked' />项目管理;
 		  <input type='checkbox' name='modu_news' value='check' checked='checked' />新闻管理;
-		  <input type='checkbox' name='modu_syst' value='check' checked='checked' />系统管理;
+		  <input type='checkbox' name='modu_syst' value='check'  />系统管理;
   		  
 		  <br />
 		  </div>
 
 		  <div class="right">
 		         <label>管理部门</label> <small>*必须</small><br />
-				 <select name="dept_mname" id="dept_mname" class="dept">    		
-		  <?php
-		  	$operuser->showDeptList();			
-		  ?>   				  
+				 <select name="dept_fname" id="dept_mname" class="dept" onchange="location.href='syst_adduser.php?'+'dept_name='+this.options[this.selectedIndex].value;">    		
+				  <?php
+				  	$operuser->showDeptList();			
+				  ?>   				  
 	  	         </select>
 		         <br />
+		         <label>下级管理部门</label> <small>*必须</small><br />
+				 <select name="dept_cname" id="dept_Cmname" class="dept">    
+				 	<option value="">...&nbsp;&nbsp;&nbsp;&nbsp;</option>		
+				  <?php
+				  	$operuser->showCdeptList();	
+				  ?>   				  
+	  	         </select>
+		         
 			 </div>
 			 
 			 
