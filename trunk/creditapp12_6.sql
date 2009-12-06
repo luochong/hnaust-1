@@ -127,7 +127,7 @@ CREATE TABLE `item_apply` (
   `stud_orgcode` int(8) NOT NULL,
   PRIMARY KEY  (`app_id`),
   KEY `app_item_code_2` (`app_item_code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=175 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=175 ;
 
 --
 -- 导出表中的数据 `item_apply`
@@ -164,7 +164,7 @@ CREATE TABLE `item_set` (
   `item_score` int(2) default NULL COMMENT '项目学分',
   `item_status` varchar(10) default '1',
   PRIMARY KEY  (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=88 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=88 ;
 
 --
 -- 导出表中的数据 `item_set`
@@ -273,7 +273,7 @@ CREATE TABLE `mark_allscore` (
   `mark_lesson_type` varchar(4) character set utf8 default NULL COMMENT '课程类型',
   `mark_lesson_mark` varchar(4) character set utf8 default NULL COMMENT '课程评分',
   PRIMARY KEY  (`mark_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 导出表中的数据 `mark_allscore`
@@ -334,7 +334,7 @@ CREATE TABLE `news` (
   `news_state` int(2) default NULL,
   `news_user` varchar(15) character set utf8 default NULL,
   PRIMARY KEY  (`news_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 导出表中的数据 `news`
@@ -364,7 +364,7 @@ CREATE TABLE `notic` (
   `notic_time` datetime default NULL,
   `notic_user` varchar(15) default NULL,
   PRIMARY KEY  (`notic_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 导出表中的数据 `notic`
@@ -391,7 +391,7 @@ CREATE TABLE `stud_baseinfo` (
   `stud_password` varchar(25) character set utf8 default NULL COMMENT '密码',
   `stud_orgcode` int(8) default NULL COMMENT '组织机构码',
   PRIMARY KEY  (`stud_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18648 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18648 ;
 
 --
 -- 导出表中的数据 `stud_baseinfo`
@@ -19121,7 +19121,7 @@ CREATE TABLE `user_admin` (
   `user_org_code` int(8) default NULL COMMENT '组织机构代码',
   `user_mode` int(10) default NULL COMMENT '模块权限',
   PRIMARY KEY  (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 导出表中的数据 `user_admin`

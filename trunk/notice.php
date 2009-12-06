@@ -26,12 +26,12 @@ require_once("header.php");
 ?>
 		<div id="right" style="width:648px;height:300px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
 		  	<div id="item" style="border:#c1c1c1 solid 1px;margin-bottom:20px;text-align:center">
-					<h2 style="color:red">通知：<?php echo $newsshow[0]['notic_title'];?></h2>
+					<h2 style="color:red">通知：<?php echo $data[0]['notic_title'];?></h2>
 					
-					<p>&nbsp;&nbsp; &nbsp; 发布时间：<?php echo   $newsshow[0]['notic_time']; ?></p>
+					<p>&nbsp;&nbsp; &nbsp; 发布时间：<?php echo   $data[0]['notic_time']; ?></p>
 		  	</div>
 		  <div id="content" style="width:500px;margin:auto;line-height:1.5em">
-		  	<?php  echo   $newsshow[0]['notic_body']; ?>
+		  	<?php  echo  $data[0]['notic_body']; ?>
 		  		
 		  </div><!--content fin-->
        </div>
