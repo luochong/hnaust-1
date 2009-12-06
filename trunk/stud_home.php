@@ -75,11 +75,22 @@ require_once('header.php');
 <table width="500">
 			<tr>
 				<td width="100">有效申报项目:</td>
-					<td width="60"><?php echo $tongji->countItemByStudId($_SESSION['studno'])?></td>
+					<td width="60">
+					<?php $citem = $tongji->countItemByStudId($_SESSION['studno']);
+					  echo $citem==''?0:$citem;
+					?></td>
 				<td width="100">总计申报学分:</td>
-					<td width="60"><?php echo $tongji->countAllCreditByStudId($_SESSION['studno'])?></td>
+					<td width="60">
+					<?php $citem = $tongji->countAllCreditByStudId($_SESSION['studno']);
+					
+					 echo $citem==''?0:$citem;
+					?>
+					
+					</td>
 				<td width="100">总计有效学分:</td>
-					<td width="60"><?php echo $tongji->countValidCreditByStudId($_SESSION['studno'])?></td>
+					<td width="60"><?php $citem =  $tongji->countValidCreditByStudId($_SESSION['studno']);
+					 echo $citem==''?0:$citem;
+					?></td>
 			</tr>
 			<?php $data = $tongji->countLessonCredit($_SESSION['studno']);
 					foreach ($data as $v){
