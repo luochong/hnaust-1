@@ -34,7 +34,7 @@ require_once("header.php");
   <div id="mainContent">
 		<div class="huibg" style="height:31px"> </div>
 		<div class="newscontent">
-        	<img  style="margin-bottom:10px"src="http://220.169.45.179/xnqn/web/welcome.gif" width="319" height="47" />             
+        	<img  style="margin-bottom:10px"src="images/1.gif" width="319" height="47" />             
      
             <ul>
             <?php  
