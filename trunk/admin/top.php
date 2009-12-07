@@ -42,7 +42,7 @@ require_once('../include/session.class.php');
 					?>
    </div>
    <div id="toptab">
-         <a href="body.php" target="main">返回首页</a>
+         <a href="item/itemlist.php" target="main">返回首页</a>
          <a href="modipwd.php" target="main">修改密码</a>
          <a href="login.php?ac=logout" target="_parent">退出系统</a>
      </ul>

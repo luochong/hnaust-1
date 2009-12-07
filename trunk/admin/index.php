@@ -11,7 +11,7 @@ include_once ("../include/session.class.php");
   <frame name="topFrame" noresize frameborder="NO" scrolling="NO" marginwidth="0" marginheight="0" src="top.php">
   <frameset framespacing="0" border="false" cols="225,*" frameborder="0" scrolling="yes">
     <frame name="leftFrame" scrolling="auto" marginwidth="0" marginheight="0" src="menu.php">
-    <frame name="main" scrolling="AUTO" NORESIZE frameborder="0" marginwidth="10" marginheight="10" border="no" src="body.php">
+    <frame name="main" scrolling="AUTO" NORESIZE frameborder="0" marginwidth="10" marginheight="10" border="no" src="item/itemlist.php">
   </frameset>
 </frameset>
 <noframes>
