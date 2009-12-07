@@ -26,9 +26,9 @@ require_once("header.php");
 ?>
 		<div id="right" style="width:648px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
 		  	<div id="item" style="border:#c1c1c1 solid 1px;margin-bottom:20px;text-align:center">
-					<h2 style="color:red">通知：<?php echo $data[0]['notic_title'];?></h2>
+					<h3 style="color:red">通知：<?php echo $data[0]['notic_title'];?></h3>
 					
-					<p>&nbsp;&nbsp; &nbsp; 发布时间：<?php echo   $data[0]['notic_time']; ?></p>
+					<p>发布时间：<?php echo date("Y-m-y",strtotime($data[0]['notic_time']));?></p>
 		  	</div>
 		  <div id="content" style="width:500px;margin:auto;line-height:1.5em">
 		  	<?php  echo  $data[0]['notic_body']; ?>
@@ -41,7 +41,7 @@ require_once("header.php");
 
 			<div style="background:url(images/st_20.jpg) no-repeat top left;height:45px">
                 <div style="text-align:center;width:85%;padding-top:20px;margin-left:12px;color:#000;border-bottom:1px solid #000;height:22px"> 
-                通知
+                通&nbsp;&nbsp;&nbsp;知
                 </div>
             </div>            
             <div style="background:url(images/st_23.jpg) repeat-y top left;height:180px" class="notice">

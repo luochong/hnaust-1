@@ -27,7 +27,7 @@ $pwdchag=new pwdchg();
 $show=new stud();
 $showstudb=$pwdchag->showitem($studno);
 $showinfo=$show->showstud($studno);
-
+$title = '修改密码';
 require_once("header.php");
 ?>
 <div id="leftinfo" class="fltlft" style="padding:20px 20px 20px 20px;width:150px;border-right:1px #ccc solid;height:100%">
@@ -68,10 +68,11 @@ require_once("header.php");
                 <br>确&nbsp;认&nbsp;新&nbsp;密&nbsp;码&nbsp;&nbsp;<input type="password" name="confpwd"><br /><br>
                 <p class="zhiti2">
               <?php 
-          
+          		
                 if($_POST['oldpwd']!==null)
                 {
-                    if($_POST['oldpwd']!==$showstudb[0]['stud_password'])
+					echo "<h3 style=\"color:red\">";
+                	if($_POST['oldpwd']!==$showstudb[0]['stud_password'])
                     echo "原密码错误";
                    elseif($_POST['newpwd']==null)
                     echo "新密码不能为空";
@@ -83,6 +84,8 @@ require_once("header.php");
                     $pwdchag->pwdupdate($studno,$_POST['newpwd']);
                     echo "密码修改成功";
                 }  
+                
+                echo "</h3>";
                  }
                 ?>
                 </p>
