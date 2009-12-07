@@ -29,7 +29,7 @@ require_once("header.php");
 ?>
 		<div id="right" style="width:648px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
 		  	<div id="item" style="border:#c1c1c1 solid 1px;margin-bottom:20px;text-align:center">
-					<h2 style="color:red"><?php echo $newsshow[0]['news_title'];?></h2>
+					<h3 style="color:red"><?php echo $newsshow[0]['news_title'];?></h3>
 					
 					<p><?php echo   "作者：".$newsshow[0]['news_author']; ?>&nbsp;&nbsp; &nbsp; 时间：<?php echo   $newsshow[0]['news_time']; ?></p>
 		  	</div>
