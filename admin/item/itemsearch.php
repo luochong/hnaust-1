@@ -103,9 +103,26 @@ function $(id){
 			 <td width="80px">姓名：</td><td><input name="s_name" type="text" /></td>
 			
 	 </tr>
-	 <tr>
-			 <td width="80px">项目编号：</td><td width="200px"><input name="i_code" type="text" /></td>
-			 <td width="80px">项目类别：</td>
+	  <tr>
+			 <td width="80px">年级：</td>
+			 <td>
+			 <select name="s_grade">
+			  <option value="" >...</option>
+			 	<?php 
+			 	$year = getYear();
+			 	for($i=0 ;$i<4;$i++){
+			 		$optionyear = $year - $i;
+			 		if( $_GET['s_grade'] == $optionyear)
+			 		echo "<option value=\"$optionyear\" selected >$optionyear</option>";
+			 		else		
+			 		echo  "<option value=\"$optionyear\" >$optionyear</option>";
+			 	}?>
+			 
+			 
+			 </select>
+			 
+			 </td>
+			  <td width="80px">项目类别：</td>
 			 <td>
 			 <select name="i_type">
 			 	   <option value="" >...</option>
@@ -118,21 +135,11 @@ function $(id){
 			 </select>
 			 
 			 </td>
+			
 	 </tr>
 	 <tr>
-			 <td width="80px">项目状态：</td>
-			 <td width="200px"> 
-				 <select name="i_state"  >
-				   <option value=""  >...</option>
-			  	  <option value="10" <?php echo $_GET['i_state']==10?'selected':''?> >所有记录</option>
-			  	  <option value="0"  <?php echo $_GET['i_state']==='0'?'selected':''?> >未审核</option>
-			  	  <option value="1" <?php echo $_GET['i_state']==1?'selected':''?> >院通过</option>
-			  	  <option value="2" <?php echo $_GET['i_state']==2?'selected':''?> >校通过</option>
-			  	  <option value="3" <?php echo $_GET['i_state']==3?'selected':''?> >院未通过</option>
-			  	  <option value="4" <?php echo $_GET['i_state']==4?'selected':''?> >校未通过</option>
-	  	         </select>
-  	 		</td>
-			 <td width="80px">项目学分：</td>
+			 <td width="80px">项目编号：</td><td width="200px"><input name="i_code" type="text" /></td>
+		 <td width="80px">项目学分：</td>
 			   <?php 
 			  	  $sql = 'select distinct item_score from item_set';
 			  	  $score = $itemsearch->executeQuery($sql);
@@ -149,7 +156,29 @@ function $(id){
   	 		 </td>
 	 </tr>
 	 <tr>
-			 <?php if($_SESSION['admin_super']==1){?><td width="80px"> 学院：</td>
+			 <td width="80px">项目状态：</td>
+			 <td width="200px"> 
+				 <select name="i_state"  >
+				   <option value=""  >...</option>
+			  	  <option value="10" <?php echo $_GET['i_state']==10?'selected':''?> >所有记录</option>
+			  	  <option value="0"  <?php echo $_GET['i_state']==='0'?'selected':''?> >未审核</option>
+			  	  <option value="1" <?php echo $_GET['i_state']==1?'selected':''?> >院通过</option>
+			  	  <option value="2" <?php echo $_GET['i_state']==2?'selected':''?> >校通过</option>
+			  	  <option value="3" <?php echo $_GET['i_state']==3?'selected':''?> >院未通过</option>
+			  	  <option value="4" <?php echo $_GET['i_state']==4?'selected':''?> >校未通过</option>
+	  	         </select>
+  	 		</td>
+		
+  	 		<td> </td>
+  	 		<td><input name="dataout"  type="submit" value="数据导出" style="width:100px"  /></td>
+  	 		
+  	 		
+  	 		
+  	 		
+	 </tr>
+	 <tr>
+		<?php if($_SESSION['admin_super']==1){?>
+			 <td width="80px"> 学院：</td>
 			 <td width="200px">
 			 <select name="i_org">
 			        <option value="" >...</option>
@@ -158,8 +187,10 @@ function $(id){
 			  	<?php endforeach;?>
 			 </select>
 			 </td>
-			 <?php }else{?>     <td width="80px">&nbsp;</td><td width="200px">&nbsp;</td>   <?php }?>
-			 <td width="80px"><input name="submit"  type="submit" value="查询" style="width:100px"  /></td><td><input name="dataout"  type="submit" value="数据导出" style="width:100px"  /></td>
+		<?php }else{?>    
+			 <td width="80px">&nbsp;</td><td width="200px">&nbsp;</td> 
+		<?php }?>
+			 <td width="80px"></td><td><input name="submit"  type="submit" value="查询" style="width:100px"  /> </td>
 	 </tr>
 	 </table>
 	
@@ -168,7 +199,7 @@ function $(id){
   	 <?php if(isset($_GET['submit'])){?>
   	 			
   	 <div class="alltitle">
-	        <div  style="float:left; width:30px" ><input type="checkbox" /></div>
+	        <div  style="float:left; width:30px" ></div>
 	        <div style="float:left; width:100px">学号</div>
 		    <div style="float:left; width:50px">姓名</div>
 		    <div style="float:left; width:150px">班级</div>
