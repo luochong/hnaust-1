@@ -51,6 +51,42 @@ $title = "申报项目";
 require_once("header.php");
 
 ?>
+<script type="text/javascript">
+/*window.onload = function() {
+ if (document.getElementsByTagName) {
+  var s = document.getElementsByTagName("select");
+
+  if (s.length > 0) {
+   window.select_current = new Array();
+
+   for(var i=0, select; select = s[i]; i++){
+    select.onfocus = function(){ window.select_current[this.id] = this.selectedIndex; }
+    select.onchange = function(){ restore(this); }
+    emulate(select);
+   }
+  }
+ }
+}
+
+function restore(e){
+ 	if (e.options[e.selectedIndex].disabled == "disabled"){
+  		e.selectedIndex = window.select_current[e.id];
+ 	}
+}
+
+function emulate(e){
+	for(var i=0, option; option = e.options[i]; i++){
+		if(option.disabled){
+			option.style.color = "graytext";
+		}else{
+	   		option.style.color = "menutext";
+		}
+	}
+}
+*/
+
+</script>
+
 <div id="leftinfo" class="fltlft" style="padding:20px 20px 20px 20px;width:150px;border-right:1px #ccc solid;height:100%">
  <h3>我的信息</h3>
 <?php
@@ -90,11 +126,15 @@ require_once("header.php");
 
                    <select name='i_type' id='i_type' onchange="$('#i_rank').html('<option value=\'0\'>...</option>');$('#i_name').load('./stud_addapp.php?ac=getIname&i_type='+encodeURIComponent(this.value));">
 			 	  <option value="0">...</option>
+			 	  <!--<optgroup label="求实" style="font-family:宋体">-->
 				  <option value="求真" >求真学术科技活动</option>
 		          <option value="求善" >求善文明道德活动</option>
 		          <option value="求美" >求美文化艺术活动</option>
-		          <option value="求实" disabled="disabled">求实社会实践活动</option>
-		          <option value="求特" disabled="disabled">求特个性发展活动</option>
+			<?php 	if(strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 7.0") || strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 6.0")) {?>
+		    <?php }else{?>
+		    	  <option value="" disabled="disabled">求实社会实践活动</option>
+		          <option value="" disabled="disabled">求特个性发展活动</option>
+		          <?php }?>
 		          <option value="求强" >求强就业创业活动</option>
 			 </select><font color="Red">&nbsp;*必选</font><br />
                     <br />	

@@ -97,7 +97,7 @@ if($_POST["submit"] == "导出Excel"){
 	</tr>
    <?php
 	foreach ($s_no as $v){
-		$lesson = $tongji->countLessonCredit($v['sno']);
+		$lesson = $tongji->countLessonCredit($v['sno'],true);
 		
 		foreach ($lesson as $l){
 			?>
