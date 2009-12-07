@@ -118,7 +118,7 @@ function emulate(e){
 			  <div id="choose">
 			  <?php 
             
-			  if(getPermittime()>$showinfo[0]['stud_grade']*100+100&&getPermittime()<$showinfo[0]['stud_deadline']*100+3)
+			  if(getPermittime()>$showinfo[0]['stud_grade']*100&&getPermittime()<$showinfo[0]['stud_deadline']*100+3)
 			  {?>
 			  
 			  
@@ -171,8 +171,9 @@ function emulate(e){
 			 </form>
 		   <?php }
 		   else{
-		       echo "还未达到申报时间";echo "<br />";
-		       echo "申报时间从大二至大四上学年";
+		   		echo "</div>"	;
+		       echo "<h2 style=\"color:red;text-align:center\">申报截止日期已到！</h2>";;
+		       echo "<h2 style=\"color:red\">申报时间从大一至大四上学年</h2>";
 		   } ?>
 
 
