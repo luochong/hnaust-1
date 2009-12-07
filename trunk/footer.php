@@ -24,7 +24,7 @@
     <div id="footer2">
     	   	<div id="nav3left"></div>
             <div id="nav3">
-               | 关于我们 | 友情链接 | 版权申明 | 访客留言 |<br />
+               | 关于我们 | 友情链接 | 版权申明 | 访客留言 |<br /><br />
 Copyright 2001-2009 共青团湖南农业大学委员会 
 湘ICP备05002035号
             </div>

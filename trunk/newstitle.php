@@ -27,7 +27,7 @@ require_once("header.php");
 
 		<div id="right" style="width:648px;height:300px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
 		  	<div id="item" style="border:#c1c1c1 solid 1px;height:40px;margin-bottom:20px;text-align:center">
-					<span style="float:left;width:630px"><h2>新闻列表</h2></span>
+					<span style="float:left;width:630px"><h3>新闻列表</h3></span>
 		  	</div>
 		  <div id="content" style="width:560px;margin:auto;">
 				<ul style="line-height:18px;">
@@ -59,7 +59,7 @@ require_once("header.php");
 
 			<div style="background:url(images/st_20.jpg) no-repeat top left;height:45px">
                 <div style="text-align:center;width:85%;padding-top:20px;margin-left:12px;color:#000;border-bottom:1px solid #000;height:22px"> 
-                通知
+                通&nbsp;&nbsp;&nbsp;知
                 </div>
             </div>            
             <div style="background:url(images/st_23.jpg) repeat-y top left;height:180px" class="notice">
