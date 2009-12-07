@@ -80,6 +80,7 @@ class Tongji extends MysqlDao {
 	    	if($lessoncredit["求实"]<2){
 	    		unset($lessoncredit["求实"]);
 	    	}
+	    	
     	}
     	$sql = "select * from mark_allscore where 0 ";
     	

@@ -98,10 +98,13 @@ class operadd extends MysqlDao
 		else
 		{
 			$array['userpwd'] = $_POST['userpwd'];
-			$array['dept_mname'] = $_POST['dept_cname'];
-
-
-			
+			print_r($_POST);
+			if(!empty($_POST['dept_cname'])){
+				$array['dept_mname'] = $_POST['dept_cname'];
+			}else 
+			{
+				$array['dept_mname'] = $_POST['dept_fname'];
+			}
 			if( $_POST['modu_item'] == "check")$modu_item = "1";else $modu_item = "0";
 			if( $_POST['modu_news'] == "check")$modu_news = "1";else $modu_news = "0";
 			if( $_POST['modu_syst'] == "check")$modu_syst = "1";else $modu_syst = "0";

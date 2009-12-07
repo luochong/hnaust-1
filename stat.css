@@ -1,0 +1,329 @@
+body  {
+	font: 12px 宋体, 新宋体;
+	background: #666666;
+	margin: 0; /* 最好将 body 元素的边距和填充设置为 0 以覆盖不同的浏览器默认值 */
+	padding: 0;
+	text-align: center; /* 在 IE 5* 浏览器中，这会将容器居中。文本随后将在 #container 选择器中设置为默认左对齐 */
+	color: #282828;
+	
+}
+img{
+	margin:0;
+	padding:0;
+	border:0;
+	
+}
+a{
+	text-decoration:none;
+
+}
+.thrColFixHdr #container { 
+	width: 850px;  /* 使用比最大宽度 (800px) 小 20px 的宽度可显示浏览器界面元素，并避免出现水平滚动条 */
+	background: #FFFFFF;
+	margin: 0 auto; /* 自动边距（与宽度一起）会将页面居中 */
+	border: 1px solid #000000;
+	text-align: left; /* 这将覆盖 body 元素上的“text-align: center”。 */
+} 
+.thrColFixHdr #header { 
+	background: #10A42C; 
+	height:130px;
+	position:relative;
+	border-bottom:solid 2px #999;
+} 
+.thrColFixHdr #header h1 {
+	margin: 0; /* 将 #header div 中最后一个元素的边距设置为零将避免边距重叠（即 div 之间出现的无法解释的空白）。如果 div 周围有边框，则不必将边距设置为零，因为边框也会避免边距重叠 */
+	padding: 10px 0; /* 使用填充而不使用边距将可以使元素远离 div 的边缘 */
+}
+.thrColFixHdr #sidebar1 {
+	float: left; /* 由于此元素是浮动的，因此必须指定宽度 */
+	width: 258px; /* 在符合标准的浏览器中或者在 Internet Explorer 中的标准模式下，此 div 的实际宽度除了包括宽度外，还包括填充和边框 */
+	height:255px;
+	background:url(images/st_14.jpg) no-repeat left top; /* 将显示背景色，其宽度等于栏中内容的长度，*/
+	padding-top:50px;
+	
+	padding-left:17px;
+}
+.thrColFixHdr #sidebar2 {
+	float: left; /* 由于此元素是浮动的，因此必须指定宽度 */
+	width: 200px; /* 在符合标准的浏览器中或者在 Internet Explorer 中的标准模式下，此 div 的实际宽度除了包括宽度外，还包括填充和边框 */
+	height:270px;
+	background: #fff; /* 将显示背景色，其宽度等于栏中内容的长度，*/
+	 /* 填充使 div 的内容与边缘保持一定的距离 */
+}
+.thrColFixHdr #mainContent { 
+	 /* 此 div 元素的左边距和右边距会在页面两侧上创建两个外部栏。无论侧栏 div 中包含多少内容，栏内的空间都将保留。如果您希望在每个侧栏中的内容结束时，用 #mainContent div 的文本填充侧栏内的空白，可以删除此边距。 */
+	 /* 请记住，填充是 div 方块内部的空间，边距则是 div 方块外部的空间 */
+	 float:left;
+	 width:375px;
+} 
+.thrColFixHdr #footer { 
+	padding: 0px 5px ; /* 此填充会将它上面 div 中的所有元素左对齐。 */
+	background:#FFF;
+} 
+.thrColFixHdr #footer2 { 
+ /* 此填充会将它上面 div 中的所有元素左对齐。 */
+	background:#FFF;
+	padding-left:1px;
+	
+} 
+.thrColFixHdr #footer p {
+	margin: 0; /* 将脚注中第一个元素的边距设置为零将避免出现可能的边距重叠（即 div 之间出现的空白）*/
+	padding: 10px 0; /* 就像边距会产生空白一样，此元素上的填充也将产生空白，但不会出现边距重叠问题 */
+}
+.fltrt { /* 此类可用来使页面中的元素向右浮动。浮动元素必须位于页面上要与之相邻的元素之前。 */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* 此类可用来使页面上的元素向左浮动 */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* 此类应当放在 div 或 break 元素上，而且该元素应当是完全包含浮动的容器关闭之前的最后一个元素 */
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+.thrColFixHdr #header #nav{
+	background:url(images/st_07.jpg) repeat-x top left;
+	position:absolute;
+	bottom:0px;
+	height:21px;
+	width:604px;
+	right:8px;
+	padding-top:15px;
+	padding-left:10px;
+	font:15px 黑体;
+	color:#EAF3F8;
+
+	
+}
+.thrColFixHdr #header #nav ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.thrColFixHdr #header #nav ul li{
+	float:left;
+	margin-left:20px;
+	padding-left:20px;
+	border-left:#fff solid 2px;
+}
+.thrColFixHdr #header #nav ul li a{
+	color:#EAF3F8;
+	display:block;
+	text-decoration:none;
+	
+}
+.thrColFixHdr #header #navleft{
+	background:url(images/st_05.jpg) no-repeat 0px -1px;
+	position:absolute;
+	bottom:0px;
+	height:36px;
+	width:5px;
+	right:622px;
+
+}
+.thrColFixHdr #header #navright{
+	background:url(images/st_09.jpg) no-repeat 0px -1px;
+	position:absolute;
+	bottom:0px;
+	height:36px;
+	width:5px;
+	right:3px;
+
+}
+
+.thrColFixHdr #footer #nav2{
+	background:url(images/st_34.jpg) repeat-x top left;
+	float:left;
+	height:26px;
+	width:740px;
+	right:8px;
+	padding-top:10px;
+	padding-left:90px;
+	text-align: center;
+	font:13px 宋体;
+	color:#6d6d6d;
+
+	
+}
+.thrColFixHdr #footer #nav2 ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.thrColFixHdr #footer #nav2 ul li{
+	float:left;
+	margin-left:10px;
+	padding-left:10px;
+	border-left:#6d6d6d solid 1px;
+}
+.thrColFixHdr #footer #nav2 ul li a{
+	color:#6d6d6d;
+	display:block;
+	text-decoration:none;
+	
+}
+.thrColFixHdr #footer #nav2left{
+	background:url(images/st_32.jpg) no-repeat 0px 0px;
+	float:left;
+	bottom:0px;
+	height:36px;
+	width:5px;
+	
+}
+.thrColFixHdr #footer #nav2right{
+	background:url(images/st_29.jpg) no-repeat 0px -1px;
+	float:left;	
+	height:36px;
+	width:5px;	
+}
+/*            */
+.thrColFixHdr #footer2 #nav3{
+	background:url(images/st_42.jpg) repeat-x top left;
+	float:left;
+	height:66px;
+	width:818px;
+	right:8px;
+	padding-top:15px;
+	padding-left:10px;
+	font:12px 宋体;
+	color:#666;
+	text-align:center;
+}
+.thrColFixHdr #footer2 #nav3 ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.thrColFixHdr #footer2 #nav3 ul li{
+	float:left;
+	margin-left:10px;
+	padding-left:10px;
+	border-left:#fff solid 2px;
+}
+.thrColFixHdr #footer2 #nav3 ul li a{
+	
+	display:block;
+	text-decoration:none;
+	
+}
+.thrColFixHdr #footer2 #nav3left{
+	background:url(images/st_39.jpg) no-repeat 0px 0px;
+	float:left;
+	bottom:0px;
+	height:66px;
+	width:9px;
+	
+}
+.thrColFixHdr #footer2 #nav3right{
+	background:url(images/st_45.jpg) no-repeat 0px 0px;
+	float:left;	
+	height:66px;
+	width:11px;	
+}
+
+/**/
+.huise{
+	background:#E4E3E3;
+	height:25px;
+	padding-top:2px;
+	padding-bottom:2px;
+	padding-left:20px;
+}
+.huibg{
+	background:url(images/st_17.jpg) no-repeat top left;	
+	
+}
+ul,form{
+margin:0;
+padding:0;
+list-style:none;
+	
+}
+.thrColFixHdr #mainContent .newscontent{
+	border-top:#C1C1C1 solid 1px;	
+	padding-left:30px;
+	padding-top:10px;
+	border-right:dotted #C1C1C1  1px;	
+	padding-right:20px;
+}
+.thrColFixHdr #mainContent .newscontent ul,.notice ul{
+	line-height:18px;
+}
+.thrColFixHdr #mainContent .newscontent span{
+	display:inline-block;
+	width:238px;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+	cursor:pointer;
+	
+}
+.thrColFixHdr #mainContent .newscontent a{
+	color:#333;	
+	
+}
+.notice ul{
+	list-style-type:none;
+}
+.thrColFixHdr #mainContent .newscontent a:hover{		
+	color:#F63;
+}
+.cropstring{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+
+.thrColFixHdr #mainContent .newscontent span.time{
+	width:44px;
+	padding-left:40px;	
+}
+.notice{		
+	padding-left:12px;
+	padding-top:0px;	
+	padding-right:10px;	
+}
+.notice a{
+	color:#333;		
+}
+.notice a:hover{		
+	color:#F63;
+} 
+.notice span{
+	display:inline-block;
+	width:160px;
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+	cursor:pointer;
+	
+}
+.itable{
+border:1px solid #ccc;
+}
+.itable tr td{
+border-bottom:1px solid #ccc;
+line-height:2em;
+}
+.itable tr th{
+border-bottom:1px solid #666;
+height:30px;
+
+}
+.toppp{
+position:relative;
+}
+.toppp span{
+position:absolute;
+display:block;
+left:0;
+
+}
+.toppp span.sname{
+position:absolute;
+display:block;
+left:650px;
+}
+
+#content a:hover{
+	color:#F63;
+	
+}
+#content a{
+color:#333;
+}
