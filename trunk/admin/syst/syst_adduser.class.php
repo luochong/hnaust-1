@@ -46,10 +46,12 @@ class operadd extends MysqlDao
 	
 	}
 	
-	public function showCdeptList()
+	public function showChilddeptList()
 	{
 		$this->setTableName('group_dept');
+
 		$cond = array("dept_father_id" => $_GET['dept_name']);
+		print_r($cond);
 		$row = $this->selectA($cond);	
 		for($i=0;$i<count($row);$i++){
 			$value=$row[$i]["id"];	
@@ -59,7 +61,6 @@ class operadd extends MysqlDao
 				echo "<option value='$value'>{$row[$i]["dept_name"]}</option>";
 			}
 		}
-	
 	}
 	
 	
@@ -97,8 +98,10 @@ class operadd extends MysqlDao
 		else
 		{
 			$array['userpwd'] = $_POST['userpwd'];
-			$array['dept_mname'] = $_POST['dept_mname'];
+			$array['dept_mname'] = $_POST['dept_cname'];
 
+
+			
 			if( $_POST['modu_item'] == "check")$modu_item = "1";else $modu_item = "0";
 			if( $_POST['modu_news'] == "check")$modu_news = "1";else $modu_news = "0";
 			if( $_POST['modu_syst'] == "check")$modu_syst = "1";else $modu_syst = "0";

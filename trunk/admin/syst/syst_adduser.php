@@ -74,21 +74,7 @@ function checkdata() {
 		  
 	  <div id="allcontent">
         <div class="left">
-		  <label>用户名</label> <small>*必须</small><br />
-		  <input name="username" type="text" id="username" size="30" /><br />
-		  <label>登录密码</label> <small>*必须</small><br />
-		  <input name="userpwd" type="password" id="userpwd" size="30" /><br />
-		  
-		  <br /><label>模块权限</label>	<br />
-		  <input type='checkbox' name='modu_item' value='check' checked='checked' />项目管理;
-		  <input type='checkbox' name='modu_news' value='check' checked='checked' />新闻管理;
-		  <input type='checkbox' name='modu_syst' value='check'  />系统管理;
-  		  
-		  <br />
-		  </div>
-
-		  <div class="right">
-		         <label>管理部门</label> <small>*必须</small><br />
+        	 <label>管理部门</label> <small>*必须</small><br />
 				 <select name="dept_fname" id="dept_mname" class="dept" onchange="location.href='syst_adduser.php?'+'dept_name='+this.options[this.selectedIndex].value;">    		
 				  <?php
 				  	$operuser->showDeptList();			
@@ -99,10 +85,24 @@ function checkdata() {
 				 <select name="dept_cname" id="dept_Cmname" class="dept">    
 				 	<option value="">...&nbsp;&nbsp;&nbsp;&nbsp;</option>		
 				  <?php
-				  	$operuser->showCdeptList();	
+				  	$operuser->showChilddeptList();	
 				  ?>   				  
 	  	         </select>
-		         
+		 
+		  </div>
+
+		  <div class="right">
+		          <label>用户名</label> <small>*必须</small><br />
+				  <input name="username" type="text" id="username" size="30" /><br />
+				  <label>登录密码</label> <small>*必须</small><br />
+				  <input name="userpwd" type="password" id="userpwd" size="30" /><br />
+				  
+				  <br /><label>模块权限</label><br />
+				  <input type='checkbox' name='modu_item' value='check' checked='checked' />项目管理;
+				  <input type='checkbox' name='modu_news' value='check' checked='checked' />新闻管理;
+				  <input type='checkbox' name='modu_syst' value='check'  />系统管理;
+		  		  
+				  <br />
 			 </div>
 			 
 			 
