@@ -85,7 +85,7 @@ function checkdata() {
 		  <br /><label>模块权限</label>	<br />
 		  <input type='checkbox' name='modu_item' value='check' checked='checked' />数据统计;
 		  <input type='checkbox' name='modu_news' value='check' checked='checked' />部门管理;
-		  <input type='checkbox' name='modu_syst' value='check' checked='checked' />操作员管理;
+		  <input type='checkbox' name='modu_syst' value='check' />系统管理;
 		  
   		  		  		  
 		  <br />
