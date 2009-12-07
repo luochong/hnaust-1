@@ -46,24 +46,50 @@ class ItemAddAction extends MysqlDao {
 			$this->error_message = '项目填写错误！';
 			return ;
 		}
+		$cond['item_code'] = $c[0]['item_code'];
+		
+		$sno_array = explode("\n",$_POST['s_no']);
+		foreach ($sno_array as $v){
+			$cond['s_no'] = trim($v);
+			if($cond['s_no'] == '')
+			 			continue;
+			else 
+				$this->addone($cond);
+			
+		}
+	
+	}
+	
+	
+	public function addone($cond){
+		
 		$this->setTableName('stud_baseinfo');
-		$o = $this->selectA(array('stud_no'=>$_POST['s_no']));
+		$o = $this->selectA(array('stud_no'=>$cond['s_no']));
 		if(empty($o)){
-			$this->error_message = '学号不存在！';
+			$this->error_message .= $cond['s_no'].'学号不存在！<br />';
 			return ;
 		}
-		$data['app_item_code'] = $c[0]['item_code'];
-		$data['app_stud_no'] = $_POST['s_no'];
-		$data['app_item_type'] = $_POST['i_type'];
-		$data['app_state'] = 0;
+		$data['app_item_code'] = $cond['item_code'];
+		$data['app_stud_no'] = $cond['s_no'];
+		$data['app_item_type'] = $cond['item_type'];
+		if($_SESSION['admin_super'] == 1){
+			$data['app_state'] = 2;
+			$data['app_unitime'] = getNowDate();
+		}else{
+			$data['app_state'] = 1;
+		}
 		$data['stud_orgcode'] = $o[0]['stud_orgcode'];
 		$data['app_time'] = getNowDate();
 		$this->setTableName('item_apply');
 		if($this->count(array('app_item_code' => $data['app_item_code'],'app_stud_no'=>$data['app_stud_no']))>0){
-			$this->error_message = '同一项目只能申报一次！';
+			$this->error_message .= $cond['s_no'].'同一项目只能申报一次！<br />';
 			return ;
 		}
-		$this->error_message='添加成功！';
+		$this->error_message .=$cond['s_no'].'添加成功！<br />';
 		$this->insert($data);
 	}
+	
+	
+	
+	
 }

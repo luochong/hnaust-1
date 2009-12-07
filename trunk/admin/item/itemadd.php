@@ -48,8 +48,8 @@ function checkForm(){
 	  <div id="allcontent">
 	  	<p style="color:#FF0000"><?php echo $action->error_message?></p>
 	      <div>
-		  <label>学号：</label> <small>*必须</small><br />
-          <input name="s_no" id="s_no" type="text" id="s_no" size="40" /><br />
+		  <label>学号：</label> <small>*必须</small> 多个学号请换行<br />
+          <textarea name="s_no" id="s_no" rows="10" cols="20" ></textarea><br />
 		  <label>项目类别：</label> <small>*必须</small><br />
 			 <select name="i_type" onchange="$('#i_rank').html('<option value=\'0\'>...</option>');$('#i_name').load('./itemadd.php?ac=getIname&i_type='+encodeURIComponent(this.value));">
 			 	  <option value="0">...</option>

@@ -101,8 +101,12 @@ class ItemsearchAction extends MysqlDao {
 				$sql.=' and item_score ='.$_GET['i_score'];
 			}
 			if(!empty($_GET['s_name'])){
-				$sql.=' and stud_name ="'.$_GET['s_name'].'"';
-			}			
+				$sql.=' and stud_name like "%'.$_GET['s_name'].'%"';
+			}
+			if(!empty($_GET['s_grade'])){
+				$sql.=' and stud_grade = '.$_GET['s_grade'];
+			}	
+					
 			$sql .=' order by app_time DESC';
 			$this->sql = $sql;
 			$data =  $this->executeQueryA($sql,null,20,$this->pn-1);
@@ -118,7 +122,7 @@ class ItemsearchAction extends MysqlDao {
 			$num = current(current($this->executeQuery($sql)));
 			$page = ceil($num/20);
 			$nextpage = $this->pn+1<=$page?$this->pn+1:$this->pn;
-			$str = "共$num记录&nbsp;第$this->pn页/共$page页&nbsp;<a href='itemsearch.php?pn=$nextpage&$get'>下一页</a>&nbsp;<a href='itemsearch.php?pn=$page&$get'>末页</a>";
+			$str = "共{$num}记录&nbsp;第{$this->pn}页/共{$page}页&nbsp;<a href='itemsearch.php?pn=$nextpage&$get'>下一页</a>&nbsp;<a href='itemsearch.php?pn=$page&$get'>末页</a>";
 			$str .="&nbsp;&nbsp;&nbsp;&nbsp;<select name='select' onchange=\"location.href='itemsearch.php?pn='+this.options[this.selectedIndex].value+'&$get' \">";
 			for($i=1;$i<$page+1;$i++){
 				if($i == $this->pn) {
