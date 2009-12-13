@@ -98,7 +98,6 @@ class operadd extends MysqlDao
 		else
 		{
 			$array['userpwd'] = $_POST['userpwd'];
-			print_r($_POST);
 			if(!empty($_POST['dept_cname'])){
 				$array['dept_mname'] = $_POST['dept_cname'];
 			}else 

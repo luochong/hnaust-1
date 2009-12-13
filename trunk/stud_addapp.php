@@ -124,19 +124,16 @@ function emulate(e){
 			  
 					<div id="itemleibie"><span class="leibie">请选择你要申报项目的类别：</span>
 
-                   <select name='i_type' id='i_type' onchange="$('#i_rank').html('<option value=\'0\'>...</option>');$('#i_name').load('./stud_addapp.php?ac=getIname&i_type='+encodeURIComponent(this.value));">
+                <select name='i_type' id='i_type' onchange="$('#i_rank').html('<option value=\'0\'>...</option>');$('#i_name').load('./stud_addapp.php?ac=getIname&i_type='+encodeURIComponent(this.value));">
 			 	  <option value="0">...</option>
 			 	  <!--<optgroup label="求实" style="font-family:宋体">-->
 				  <option value="求真" >求真学术科技活动</option>
 		          <option value="求善" >求善文明道德活动</option>
 		          <option value="求美" >求美文化艺术活动</option>
-			<?php 	if(strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 7.0") || strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 6.0")) {?>
-		    <?php }else{?>
-		    	  <option value="" disabled="disabled">求实社会实践活动</option>
-		          <option value="" disabled="disabled">求特个性发展活动</option>
-		          <?php }?>
+		    	  <option value="求实" disabled="disabled">求实社会实践活动</option>
+		          <option value="求特" disabled="disabled">求特个性发展活动</option>
 		          <option value="求强" >求强就业创业活动</option>
-			 </select><font color="Red">&nbsp;*必选</font><br />
+			 	</select><font color="Red">&nbsp;*必选</font><br />
                     <br />	
                     <?php if($_POST['itype']=="求实"||$_POST['itype']=="求特")
                             {

@@ -36,6 +36,15 @@
 		header("Content-type: text/html; charset=utf-8");
 					  
 		    $sql ='select distinct item_name from item_set where item_type = ?';
+		    if($_GET['i_type']=="求实"||$_GET['i_type']=="求特")
+            {
+                    echo "<script language=javascript >\n";	
+        			echo "alert('该项目由校团委申报，不允许个人提交')\n";
+        			//echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
+        			echo "</script>\n";
+            }    
+		    
+		    
 		$data = $this->executeQueryA($sql,array($_GET['i_type']));
 
 		echo '<option value="0" >...</option>';
@@ -137,7 +146,7 @@
           
               else{
                 
-                  if($atype=="求实"||$atype=="求特"||$iname=="参加学校组织的大学生课外学术科技作品竞赛"||$iname=="参加学校组织的大学生课外学术科技作品竞赛"||$iname=="职业规划大赛"||$iname=="就业力挑战赛"||$iname=="积极组织参与大学生文明修身活动")
+                  if($iname=="参加学校组织的大学生课外学术科技作品竞赛"||$iname=="参加学校组织的大学生课外学术科技作品竞赛"||$iname=="职业规划大赛"||$iname=="就业力挑战赛"||$iname=="积极组织参与大学生文明修身活动")
                   {
              
                     echo "<script language=javascript >\n";	
