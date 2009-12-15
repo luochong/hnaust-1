@@ -101,7 +101,7 @@ function checkdata() {
 	</div>
 		  <div class="clear">&nbsp;</div>
 		  <div> 
-               <input type="submit" name="submit" value="添加部门管理员" />
+               <input type="submit" name="submit" value="添加项目" />
 		  </div>
 	  </div><br />
 	  </form>

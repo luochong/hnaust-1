@@ -19,6 +19,16 @@
 if(isset($_POST['submit'])){		
 	$edituser->editAccount();
 }
+
+			$modu_item = substr($_GET['code'],0,1);
+			$modu_news = substr($_GET['code'],1,1);
+			$modu_syst = substr($_GET['code'],2,1);
+			if($modu_item==1)
+				$item = "checked";
+			if($modu_news)
+				$news = "checked";
+			if($modu_syst)
+				$syst = "checked";
 ?>
 
 <script type="text/javascript">
@@ -83,9 +93,9 @@ function checkdata() {
 		  <input name="userpwd" value="<?php echo $psw;?>" id="userpwd" size="30" /><br />
 		  
 		  <br /><label>模块权限</label>	<br />
-		  <input type='checkbox' name='modu_item' value='check' checked='checked' />数据统计;
-		  <input type='checkbox' name='modu_news' value='check' checked='checked' />部门管理;
-		  <input type='checkbox' name='modu_syst' value='check' />系统管理;
+		  <input type='checkbox' name='modu_item' value='check' <?php echo $item?> />数据统计;
+		  <input type='checkbox' name='modu_news' value='check' <?php echo $news?> />部门管理;
+		  <input type='checkbox' name='modu_syst' value='check' <?php echo $syst?>/>系统管理;
 		  
   		  		  		  
 		  <br />

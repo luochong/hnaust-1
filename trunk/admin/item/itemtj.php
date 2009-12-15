@@ -5,6 +5,20 @@ require_once("../../control/tongji.include.php");
 require_once("../../include/function.include.php");
 $tongji = new Tongji();
 $name = $tongji->executeQueryA('select dept_name from group_dept where id = ?',array($_SESSION['admin_org_code']));
+if(isset($_GET['i_time'])){
+		$next = intval($_GET['i_time'])+1;
+		$time[0] = strtotime($_GET['i_time'].'-09-01 00:00:00');
+		$time[1] = strtotime($next.'-09-01 00:00:00');
+	}else{
+		
+		$time[0] = strtotime(getYear().'-09-01 00:00:00');
+		$time[1] = strtotime((getYear()+1).'-09-01 00:00:00');
+}
+if(isset($_GET['i_time_year'])){
+	$year = intval($_GET['i_time_year']);
+	$time[0] = strtotime($year.'-01-31 00:00:00');
+	$time[1] = strtotime(($year+1).'-01-31 00:00:00');
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -35,10 +49,46 @@ $name = $tongji->executeQueryA('select dept_name from group_dept where id = ?',a
       <div class="alltitle"><?php echo $name[0]['dept_name']?>素拓项目统计</div>
 		  
 	  <div id="allcontent">
+	 年度选择:<select name="i_time" onchange="window.location.href ='itemtj.php?i_time='+this.value">
+                <option value="0">...</option>
+	 <?php 
+	 $year = getYear();
+	 for ($i = 0 ;$i<4;$i++):
+	 $optionyear = $year-$i;
+	 	if($_GET['i_time'] ==$optionyear){
+	 ?>
+	 	<option selected value="<?php echo $optionyear?>"><?php echo $optionyear ?>年9月-<?php echo $optionyear+1?>年9月</option>
+	<?php 
+	 	}else{
+	 ?>
+	 	<option value="<?php echo $optionyear?>"><?php echo $optionyear ?>年9月-<?php echo $optionyear+1?>年9月</option>
+	<?php
+	 	}
+	 	 endfor;?>
+	 </select>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 年份选择：<select name="i_time" onchange="window.location.href ='itemtj.php?i_time_year='+this.value">
+	 <option value="0">...</option>
+	 <?php 
+	 $year = getYear();
+
+	 for($i = 0 ;$i<4;$i++){
+	 $optionyear = $year-$i;
+	 if($_GET['i_time_year'] ==$optionyear){
+	 ?>
+	 	<option selected value="<?php echo $optionyear;?>"><?php echo $optionyear;?></option>
+	 
+	 <?php }else {?>
+	 	<option value="<?php echo $optionyear;?>"><?php echo $optionyear;?></option>
+	 <?php }}?>
+	 </select>
 	  	<p style="color:#FF0000"><?php echo $action->error_message?></p>
-			  	   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
+   
+	<?php if (isset($_GET['i_time'])||isset($_GET['i_time_year'])): ?>	
+	  	
+   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
-      <th colspan=6 align="center"><?php echo $tongji->getYear()?>年<?php echo $name[0]['dept_name']?>素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
+      <th colspan=6 align="center"><?php if(isset($_GET['i_time'])){echo date('Y年m月',$time[0]),'到',date('Y年m月',$time[1]);}else if($_GET['i_time_year']) {echo date('Y年',$time[0]);} ?><?php echo $name[0]['dept_name']?>素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
     </tr>
     <tr align="center" color="blue" border>
      <td>机构名称</td>
@@ -49,8 +99,9 @@ $name = $tongji->executeQueryA('select dept_name from group_dept where id = ?',a
      <td>总课程学分</td>
 	</tr>
    <?php
-		$item = $tongji->countDFXItemByOrgId($_SESSION['admin_org_code']);
-		$credit=$tongji->countDFXValidCreditANDLessonCreditByOrg($_SESSION['admin_org_code']);
+		
+   		$item = $tongji->countDFXItemByOrgId($_SESSION['admin_org_code'],$time);
+		$credit=$tongji->countDFXValidCreditANDLessonCreditByOrg($_SESSION['admin_org_code'],$time);
 		
 	?>
 			<tr>
@@ -62,9 +113,10 @@ $name = $tongji->executeQueryA('select dept_name from group_dept where id = ?',a
 			<td>&nbsp;<?php echo $credit['lcredit']?></td>
 			</tr>
   </table>
+  <?php endif; ?>	
   <br />
   <br />
-  <br />
+  <hr />
   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
       <th colspan=6 align="center"><?php echo $tongji->getYear()?>年<?php echo $name[0]['dept_name']?>毕业生素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>

@@ -78,13 +78,25 @@ class ItemListAction extends MysqlDao {
 		$sql .='from item_apply,item_set,stud_baseinfo where stud_baseinfo.stud_no = item_apply.app_stud_no and item_apply.app_item_code = item_set.item_code ';
 		$cond =null;
 		if($_SESSION['admin_super'] != 1){
-			$sql .='and item_apply.stud_orgcode = ? ';
-			$cond = array($_SESSION['admin_org_code']);
+			
+			
+			if($_SESSION['admin_org_code'] == DFADMIN){
+				$sql .= ' and ( 0 ';
+				$this->setTableName('group_dept');
+				$dfdata = $this->selectA(array('dept_father_id'=>DFADMIN));
+				foreach($dfdata as $v){
+					$sql .=' or item_apply.stud_orgcode =  '.$v['id'];
+				}
+				$sql .=' ) ';
+			}else{
+				$sql .=' and item_apply.stud_orgcode =  '.$_SESSION['admin_org_code'];
+			}
+			
 		}
 		if($_GET['s'] != 10) $sql.=" and item_apply.app_state = {$_GET['s']} "; 
 		$sql .=' order by app_time DESC';
 		
-		return $this->executeQueryA($sql,$cond,20,$this->pn-1);
+		return $this->executeQueryA($sql,null,20,$this->pn-1);
 	}
 	
 	public function makepage(){

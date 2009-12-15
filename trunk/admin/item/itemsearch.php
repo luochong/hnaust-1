@@ -5,6 +5,7 @@ require_once('itemsearch.class.php');
 $itemsearch = new ItemsearchAction();
 $itemsearch->run();
 $get = "s_no={$_GET['s_no']}&s_no={$_GET['s_name']}&i_code={$_GET['i_code']}&i_type={$_GET['i_type']}&i_state={$_GET['i_state']}&i_score={$_GET['i_score']}&i_org={$_GET['i_org']}&submit={$_GET['submit']}";
+
 if(isset($_GET['dataout'])){
 	 	$data = $itemsearch->getItemData();
 		Header("Content-type:charset=utf-8");        
@@ -92,6 +93,7 @@ function $(id){
     </b>
      <div id="allbox">
       <h3><div class="left">项目查询</div>
+  
 	  	  <div class="right"><a href='javascript:history.back();'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
