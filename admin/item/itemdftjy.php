@@ -15,6 +15,11 @@ if(isset($_GET['i_time'])){
 		$time[0] = strtotime(getYear().'-09-01 00:00:00');
 		$time[1] = strtotime((getYear()+1).'-09-01 00:00:00');
 }
+if(isset($_GET['i_time_year'])){
+	$year = intval($_GET['i_time_year']);
+	$time[0] = strtotime($year.'-01-31 00:00:00');
+	$time[1] = strtotime(($year+1).'-01-31 00:00:00');
+}
 ob_clean();
 if($_POST["submit"] == "导出Excel"){
 		$file_name = iconv("UTF-8","GB2312",'东方院各系素拓申报统计表');
@@ -33,7 +38,10 @@ if($_POST["submit"] == "导出Excel"){
 	  </head>
 		  	   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
-      <th colspan=6 align="center"><?php echo $tongji->getYear()?>年东方院各系素拓申报统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
+      <th colspan=6 align="center"> 
+	      <?php if(isset($_GET['i_time'])){echo date('Y年m月',$time[0]),'到',date('Y年m月',$time[1]);}else if($_GET['i_time_year']) {echo date('Y年',$time[0]);} ?>
+	     东方院各系素拓申报统计表<small>(导出时间:<?php echo getNowDate()?>)</small>
+     </th>
     </tr>
     <tr align="center" color="blue" border>
      <td>系名称</td>
@@ -89,7 +97,12 @@ if($_POST["submit"] == "导出Excel"){
 	  	  <div class="right"><a href='javascript:history.back();'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
-	  年度选择:<select name="i_time" onchange="window.location.href ='itemctongji.php?i_time='+this.value">
+	
+
+  	 <form id="form1" name="form1" method="post" action="itemptongji.php">
+      <div class="alltitle">东方院各系素拓申报统计</div>
+		年度选择:<select name="i_time" onchange="window.location.href ='itemdftjy.php?i_time='+this.value">
+                <option value="0">...</option>
 	 <?php 
 	 $year = getYear();
 	 for ($i = 0 ;$i<4;$i++):
@@ -105,14 +118,31 @@ if($_POST["submit"] == "导出Excel"){
 	 	}
 	 	 endfor;?>
 	 </select>
-  	 <form id="form1" name="form1" method="post" action="itemptongji.php">
-      <div class="alltitle">东方院各系素拓申报统计</div>
-		  
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 年份选择：<select name="i_time" onchange="window.location.href ='itemdftjy.php?i_time_year='+this.value">
+	 <option value="0">...</option>
+	 <?php 
+	 $year = getYear();
+
+	 for($i = 0 ;$i<4;$i++){
+	 $optionyear = $year-$i;
+	 if($_GET['i_time_year'] ==$optionyear){
+	 ?>
+	 	<option selected value="<?php echo $optionyear;?>"><?php echo $optionyear;?></option>
+	 
+	 <?php }else {?>
+	 	<option value="<?php echo $optionyear;?>"><?php echo $optionyear;?></option>
+	 <?php }}?>
+	 
+	 </select>  
 	  <div id="allcontent">
 	  	<p style="color:#FF0000"><?php echo $action->error_message?></p>
+	  	  <?php if(isset($_GET['i_time'])||isset($_GET['i_time_year'])): ?>
 			  	   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
-      <th colspan=6 align="center"><?php echo $tongji->getYear()?>年东方院各系素拓申报统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
+      <th colspan=6 align="center">
+      <?php if(isset($_GET['i_time'])){echo date('Y年m月',$time[0]),'到',date('Y年m月',$time[1]);}else if($_GET['i_time_year']) {echo date('Y年',$time[0]);} ?>
+     东方院各系素拓申报统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
     </tr>
     <tr align="center" color="blue" border>
      <td>系名称</td>
@@ -146,6 +176,7 @@ if($_POST["submit"] == "导出Excel"){
 		  </div>
 	  </div><br />
 	  </form>
+	  <?php endif;?>
      </div>
    	  <b class="rbottom">
          <b class="r4"></b>

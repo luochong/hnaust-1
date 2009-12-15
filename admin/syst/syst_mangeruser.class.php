@@ -24,7 +24,7 @@ class mangeruser extends MysqlDao
 	public function showUserList()
 	{
 		$page_no = $_GET['page_no'];
-		$sql = "select user_name,user_password,user_org_code,dept_tree_name,dept_name,user_id from user_admin,group_dept
+		$sql = "select user_name,user_password,user_org_code,dept_tree_name,dept_name,user_id,user_mode from user_admin,group_dept
 				where group_dept.id = user_admin.user_org_code";
 		$row1 = $this->executeQuery($sql);
 		$row = $this->executeQuery($sql,NULL,PageNum,$page_no-1);

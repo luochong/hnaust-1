@@ -72,7 +72,7 @@ class ItemsearchAction extends MysqlDao {
 	
 	
 	public function getItemData(){
-		$data = array();
+		$data = array();		
 		if(isset($_GET['submit'])||isset($_GET['dataout'])){
 			$sql = 'select app_id,app_stud_no,stud_name,stud_class,app_item_code,app_time,app_state,app_item_type,item_name,item_rank,item_score  ';
 			$sql .='from item_apply,item_set,stud_baseinfo where stud_baseinfo.stud_no = item_apply.app_stud_no and item_apply.app_item_code = item_set.item_code ';
@@ -90,12 +90,32 @@ class ItemsearchAction extends MysqlDao {
 				$sql.=' and item_apply.app_state='.$_GET['i_state'];
 			}
 			if(!empty($_GET['i_org'])&&$_SESSION['admin_super']==1){
-				$sql.=' and item_apply.stud_orgcode='.$_GET['i_org'];
+				if($_GET['i_org']==DFADMIN){
+					$this->setTableName('group_dept');
+					$deptdata = $this->selectA(array('dept_father_id'=>DFADMIN));
+					$sql.=' and ( 0 ';
+					foreach ($deptdata as $v){
+						 $sql.=' or item_apply.stud_orgcode='.$v['id'];
+					}
+					$sql.=' ) ';
+				}else{
+					$sql.=' and item_apply.stud_orgcode='.$_GET['i_org'];
+				}
+			
 			}else{
-				if($_SESSION['admin_super']!=1)
-					$sql.=' and item_apply.stud_orgcode='.$_SESSION['admin_org_code'];
-				
-				
+				if($_SESSION['admin_super']!=1){
+					if($_SESSION['admin_org_code']==DFADMIN){
+						$this->setTableName('group_dept');
+						$deptdata = $this->selectA(array('dept_father_id'=>DFADMIN));
+						$sql.=' and ( 0 ';
+						foreach ($deptdata as $v){
+							 $sql.=' or item_apply.stud_orgcode='.$v['id'];
+						}
+						$sql.=' ) ';
+					}else{
+						$sql.=' and item_apply.stud_orgcode='.$_SESSION['admin_org_code'];
+					}
+				}
 			}
 			if(!empty($_GET['i_score'])){
 				$sql.=' and item_score ='.$_GET['i_score'];
@@ -109,6 +129,8 @@ class ItemsearchAction extends MysqlDao {
 					
 			$sql .=' order by app_time DESC';
 			$this->sql = $sql;
+			//echo $sql;
+			
 			$data =  $this->executeQueryA($sql,null,20,$this->pn-1);
 		}
 		return $data;

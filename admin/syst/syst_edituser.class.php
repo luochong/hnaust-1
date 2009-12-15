@@ -37,7 +37,6 @@ class edituser extends MysqlDao
 			$cond = array("user_name" => $array["username"]);
 
 			$resu = $this->update($data,$cond);
-			echo $resu;
 			if($resu)
 			{  
 				echo "<script language=javascript>\n";	
@@ -47,7 +46,7 @@ class edituser extends MysqlDao
 			}
 			else{
 				echo "<script language=javascript>\n";	
-				echo "alert('修改账号失败')\n";
+				echo "alert('账号没有修改')\n";
 				echo "window.location.href='syst_mangeruser.php'";		
 				echo "</script>\n";
 			}
