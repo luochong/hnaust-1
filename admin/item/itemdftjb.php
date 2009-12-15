@@ -24,7 +24,7 @@ if($_POST["submit"] == "导出Excel"){
 	  </head>
 		  	   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
-      <th colspan=6 align="center"><?php echo $tongji->getYear()?>年东方院各系毕业生素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
+      <td colspan=6 align="center"><?php echo $tongji->getYear()?>年东方院各系毕业生素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></td>
     </tr>
     <tr align="center" color="blue" border>
      <td>系名称</td>
@@ -39,11 +39,11 @@ if($_POST["submit"] == "导出Excel"){
 		$item = $tongji->countBDFXItemByOrgId($v['org_no']);
 		$credit=$tongji->countBDFXValidCreditANDLessonCreditByOrg($v['org_no'])
 			?>
-			<tr>
+			<tr align="center">
 			<td>&nbsp;<?php echo $v['org_name']?></td>
 			<td>&nbsp;<?php echo $item["stud_count"]?></td>
 			<td>&nbsp;<?php echo $item["item_count"]?></td>
-			<td>&nbsp;<?php echo $item['score_count']?></td>
+			<td>&nbsp;<?php echo $item['score_count']==''?'0':$item['score_count']?></td>
 			<td>&nbsp;<?php echo $credit['credit']?></td>
 			<td>&nbsp;<?php echo $credit['lcredit']?></td>
 			</tr>
@@ -80,14 +80,14 @@ if($_POST["submit"] == "导出Excel"){
 	  	  <div class="right"><a href='javascript:history.back();'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
-  	 <form id="form1" name="form1" method="post" action="itemptongji.php">
+  	 <form id="form1" name="form1" method="post" action="itemdftjb.php">
       <div class="alltitle">东方院各系毕业生素拓项目统计</div>
 		  
 	  <div id="allcontent">
 	  	<p style="color:#FF0000"><?php echo $action->error_message?></p>
 			  	   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
-      <th colspan=6 align="center"><?php echo $tongji->getYear()?>年东方院各系毕业生素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
+      <td colspan=6 align="center"><?php echo $tongji->getYear()?>年东方院各系毕业生素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></td>
     </tr>
     <tr align="center" color="blue" border>
      <td>系名称</td>
@@ -102,11 +102,11 @@ if($_POST["submit"] == "导出Excel"){
 		$item = $tongji->countBDFXItemByOrgId($v['org_no']);
 		$credit=$tongji->countBDFXValidCreditANDLessonCreditByOrg($v['org_no'])
 			?>
-			<tr>
+			<tr align="center">
 			<td>&nbsp;<?php echo $v['org_name']?></td>
 			<td>&nbsp;<?php echo $item["stud_count"]?></td>
 			<td>&nbsp;<?php echo $item["item_count"]?></td>
-			<td>&nbsp;<?php echo $item['score_count']?></td>
+			<td>&nbsp;<?php echo $item['score_count']==''?'0':$item['score_count']?></td>
 			<td>&nbsp;<?php echo $credit['credit']?></td>
 			<td>&nbsp;<?php echo $credit['lcredit']?></td>
 			</tr>

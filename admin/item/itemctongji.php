@@ -43,7 +43,7 @@ if($_POST["submit"] == "导出Excel"){
     <tr align="center" color="blue" border>
      <td>学院名称</td>
      <td>申报总人数</td>
-     <td>申报总申报数</td>
+     <td>申报总项目数</td>
      <td>总申报学分</td>
      <td>总有效学分</td>
      <td>总课程学分</td>
@@ -70,7 +70,7 @@ if($_POST["submit"] == "导出Excel"){
 			<td>&nbsp;<?php echo $v['org_name']?></td>
 			<td>&nbsp;<?php echo $item["stud_count"]?></td>
 			<td>&nbsp;<?php echo $item["item_count"]?></td>
-			<td>&nbsp;<?php echo $item['score_count']?></td>
+			<td>&nbsp;<?php echo $item['score_count']==''?'0':$item['score_count']?></td>
 			<td>&nbsp;<?php echo $credit['credit']?></td>
 			<td>&nbsp;<?php echo $credit['lcredit']?></td>
 			</tr>
@@ -152,26 +152,26 @@ if($_POST["submit"] == "导出Excel"){
 	  	<p style="color:#FF0000"><?php echo $action->error_message?></p>
 	   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
-      <th colspan=6 align="center"><?php if(isset($_GET['i_time'])){echo date('Y年m月',$time[0]),'到',date('Y年m月',$time[1]);}else if($_GET['i_time_year']) {echo date('Y年',$time[0]);} ?>各学院素拓申报统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
+      <td height="50" colspan=6 align="center" ><?php if(isset($_GET['i_time'])){echo date('Y年m月',$time[0]),'到',date('Y年m月',$time[1]);}else if($_GET['i_time_year']) {echo date('Y年',$time[0]);} ?>各学院素拓申报统计表<small>(导出时间:<?php echo getNowDate()?>)</small></td>
     </tr>
-    <tr align="center" color="blue" border>
+    <tr align="center" color="blue" border >
      <td>学院名称</td>
      <td>申报总人数</td>
-     <td>申报总申报数</td>
+     <td>申报总项目数</td>
      <td>总申报学分</td>
      <td>总有效学分</td>
      <td>总课程学分</td>
 	</tr>
    <tr>
-   	<td>&nbsp;东方院</td>
+   	<td align="center">&nbsp;东方院</td>
 			<?php $DFitem = $tongji->countDFItem($time);
 				$DFcredit = $tongji->countDFValidCreditANDLessonCreditByOrg($time);
 			?>
-   			<td>&nbsp;<?php echo $DFitem["stud_count"]?></td>
-			<td>&nbsp;<?php echo $DFitem["item_count"]?></td>
-			<td>&nbsp;<?php echo $DFitem['score_count']?></td>
-			<td>&nbsp;<?php echo $DFcredit['credit']?></td>
-			<td>&nbsp;<?php echo $DFcredit['lcredit']?></td>
+   			<td align="center">&nbsp;<?php echo $DFitem["stud_count"]?></td>
+			<td align="center">&nbsp;<?php echo $DFitem["item_count"]?></td>
+			<td align="center">&nbsp;<?php echo $DFitem['score_count']==''?'0':$DFitem['score_count']?></td>
+			<td align="center">&nbsp;<?php echo $DFcredit['credit']?></td>
+			<td align="center">&nbsp;<?php echo $DFcredit['lcredit']?></td>
    
    </tr>
 	
@@ -183,12 +183,12 @@ if($_POST["submit"] == "导出Excel"){
 		$credit=$tongji->countValidCreditANDLessonCreditByOrg($v['org_no'],$time)
 			?>
 			<tr>
-			<td>&nbsp;<?php echo $v['org_name']?></td>
-			<td>&nbsp;<?php echo $item["stud_count"]?></td>
-			<td>&nbsp;<?php echo $item["item_count"]?></td>
-			<td>&nbsp;<?php echo $item['score_count']?></td>
-			<td>&nbsp;<?php echo $credit['credit']?></td>
-			<td>&nbsp;<?php echo $credit['lcredit']?></td>
+			<td align="center">&nbsp;<?php echo $v['org_name']?></td>
+			<td align="center">&nbsp;<?php echo $item["stud_count"]?></td>
+			<td align="center">&nbsp;<?php echo $item["item_count"]?></td>
+			<td align="center">&nbsp;<?php echo $item['score_count']==''?'0':$item['score_count']?></td>
+			<td align="center">&nbsp;<?php echo $credit['credit']?></td>
+			<td align="center">&nbsp;<?php echo $credit['lcredit']?></td>
 			</tr>
 		<?php 
 	}

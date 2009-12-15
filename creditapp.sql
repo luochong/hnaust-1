@@ -1,13 +1,19 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.2.1
+-- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 12 月 06 日 13:07
--- 服务器版本: 5.0.45
--- PHP 版本: 5.2.5
+-- 生成日期: 2011 年 12 月 04 日 13:50
+-- 服务器版本: 5.1.36
+-- PHP 版本: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- 数据库: `creditapp`
@@ -19,21 +25,21 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- 表的结构 `group_dept`
 --
 
-CREATE TABLE `group_dept` (
-  `id` int(12) NOT NULL auto_increment,
-  `dept_father_id` varchar(12) collate utf8_unicode_ci default NULL,
-  `dept_father_name` varchar(100) collate utf8_unicode_ci default NULL,
-  `dept_name` varchar(100) character set utf8 default NULL,
-  `dept_tree_id` varchar(50) collate utf8_unicode_ci default NULL,
-  `dept_tree_name` varchar(200) collate utf8_unicode_ci default NULL,
-  `dept_sub` varchar(50) collate utf8_unicode_ci default NULL,
-  `dept_sub_tree` text collate utf8_unicode_ci,
-  `dept_unit` int(12) default NULL,
-  PRIMARY KEY  (`id`)
+CREATE TABLE IF NOT EXISTS `group_dept` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `dept_father_id` varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dept_father_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dept_name` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `dept_tree_id` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dept_tree_name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dept_sub` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dept_sub_tree` text COLLATE utf8_unicode_ci,
+  `dept_unit` int(12) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=396 ;
 
 --
--- 导出表中的数据 `group_dept`
+-- 转存表中的数据 `group_dept`
 --
 
 INSERT INTO `group_dept` (`id`, `dept_father_id`, `dept_father_name`, `dept_name`, `dept_tree_id`, `dept_tree_name`, `dept_sub`, `dept_sub_tree`, `dept_unit`) VALUES
@@ -115,22 +121,22 @@ INSERT INTO `group_dept` (`id`, `dept_father_id`, `dept_father_name`, `dept_name
 -- 表的结构 `item_apply`
 --
 
-CREATE TABLE `item_apply` (
-  `app_id` int(10) NOT NULL auto_increment,
-  `app_stud_no` varchar(14) character set utf8 default NULL COMMENT '申请学生学号',
-  `app_item_code` varchar(8) character set utf8 default NULL COMMENT '申请项目编号',
-  `app_time` timestamp NULL default CURRENT_TIMESTAMP COMMENT '申请时间',
-  `app_state` varchar(8) character set utf8 default NULL COMMENT '请申状态',
-  `app_coltime` timestamp NULL default NULL COMMENT '院级修改时间',
-  `app_unitime` timestamp NULL default NULL COMMENT '校级修改时间',
-  `app_item_type` varchar(2) character set utf8 default NULL COMMENT '申请项目类别',
+CREATE TABLE IF NOT EXISTS `item_apply` (
+  `app_id` int(10) NOT NULL AUTO_INCREMENT,
+  `app_stud_no` varchar(14) CHARACTER SET utf8 DEFAULT NULL COMMENT '申请学生学号',
+  `app_item_code` varchar(8) CHARACTER SET utf8 DEFAULT NULL COMMENT '申请项目编号',
+  `app_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '申请时间',
+  `app_state` varchar(8) CHARACTER SET utf8 DEFAULT NULL COMMENT '请申状态',
+  `app_coltime` timestamp NULL DEFAULT NULL COMMENT '院级修改时间',
+  `app_unitime` timestamp NULL DEFAULT NULL COMMENT '校级修改时间',
+  `app_item_type` varchar(2) CHARACTER SET utf8 DEFAULT NULL COMMENT '申请项目类别',
   `stud_orgcode` int(8) NOT NULL,
-  PRIMARY KEY  (`app_id`),
+  PRIMARY KEY (`app_id`),
   KEY `app_item_code_2` (`app_item_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- 导出表中的数据 `item_apply`
+-- 转存表中的数据 `item_apply`
 --
 
 
@@ -140,109 +146,106 @@ CREATE TABLE `item_apply` (
 -- 表的结构 `item_set`
 --
 
-CREATE TABLE `item_set` (
-  `item_id` int(10) NOT NULL auto_increment,
-  `item_type` varchar(2) character set utf8 default NULL COMMENT '项目类别',
-  `item_code` varchar(8) character set utf8 default NULL COMMENT '项目编号',
-  `item_name` varchar(50) character set utf8 default NULL COMMENT '项目名称',
-  `item_rank` varchar(4) character set utf8 default NULL COMMENT '项目级别',
-  `item_score` int(2) default NULL COMMENT '项目学分',
-  `item_status` varchar(10) default '1',
-  PRIMARY KEY  (`item_id`)
+CREATE TABLE IF NOT EXISTS `item_set` (
+  `item_id` int(10) NOT NULL AUTO_INCREMENT,
+  `item_type` varchar(2) CHARACTER SET utf8 DEFAULT NULL COMMENT '项目类别',
+  `item_code` varchar(8) CHARACTER SET utf8 DEFAULT NULL COMMENT '项目编号',
+  `item_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '项目名称',
+  `item_rank` varchar(4) CHARACTER SET utf8 DEFAULT NULL COMMENT '项目级别',
+  `item_score` float(3,1) DEFAULT NULL COMMENT '项目学分',
+  `item_status` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT '1',
+  PRIMARY KEY (`item_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=88 ;
 
 --
--- 导出表中的数据 `item_set`
+-- 转存表中的数据 `item_set`
 --
 
 INSERT INTO `item_set` (`item_id`, `item_type`, `item_code`, `item_name`, `item_rank`, `item_score`, `item_status`) VALUES
-(1, '求真', '60015Q1', '程序设计大赛', '国家奖', 5, '1'),
-(2, '求真', '60015Q2', '程序设计大赛', '省级奖', 3, '1'),
-(3, '求真', '60015Q3', '程序设计大赛', '市级奖', 2, '1'),
-(4, '求真', '60001Q0', '发表学术研究论文', '无', 5, '1'),
-(5, '求真', '60002Q0', '参加学校组织的大学生课外学术科技作品竞赛', '无', 1, '1'),
-(6, '求真', '60003Q1', '“挑战杯”大学生课外学术科技作品竞赛', '国家级奖', 5, '1'),
-(7, '求真', '60003Q2', '“挑战杯”大学生课外学术科技作品竞赛', '省级奖励', 4, '1'),
-(8, '求真', '60003Q3', '“挑战杯”大学生课外学术科技作品竞赛', '校级奖励', 2, '1'),
-(9, '求真', '60004Q1', '大学生数学建模竞赛', '国家级奖', 3, '1'),
-(10, '求真', '60004Q2', '大学生数学建模竞赛', '省级奖励', 2, '1'),
-(11, '求真', '60005Q1', '大学生电子设计竞赛', '国家级奖', 3, '1'),
-(12, '求真', '60005Q2', '大学生电子设计竞赛', '省级奖励', 2, '1'),
-(13, '求真', '60006Q1', '大学生力学竞赛', '国家级奖', 3, '1'),
-(14, '求真', '60006Q2', '大学生力学竞赛', '省级奖励', 2, '1'),
-(15, '求真', '60007Q1', '大学生机器人大赛', '国家级奖', 3, '1'),
-(16, '求真', '60007Q2', '大学生机器人大赛', '省级奖励', 2, '1'),
-(17, '求真', '60008Q1', '计算机仿真大赛', '国家级奖', 3, '1'),
-(18, '求真', '60008Q2', '计算机仿真大赛', '省级奖励', 2, '1'),
-(19, '求真', '60009Q1', '大学生机械创新设计大赛', '国家级奖', 3, '1'),
-(20, '求真', '60009Q2', '大学生机械创新设计大赛', '省级奖励', 2, '1'),
-(21, '求真', '60010Q1', '土木建筑类大学生结构模型创作竞赛', '国家级奖', 3, '1'),
-(22, '求真', '60010Q2', '土木建筑类大学生结构模型创作竞赛', '省级奖励', 2, '1'),
-(23, '求真', '60011Q1', '大学生程序设计大赛', '国家级奖', 3, '1'),
-(24, '求真', '60011Q2', '大学生程序设计大赛', '省级奖励', 2, '1'),
-(25, '求真', '60012Q1', '大学生数学竞赛', '国家级奖', 3, '1'),
-(26, '求真', '60012Q2', '大学生数学竞赛', '省级奖励', 2, '1'),
-(27, '求真', '60013Q1', '大学生各类英语竞赛', '国家级奖', 3, '1'),
-(28, '求真', '60013Q2', '大学生各类英语竞赛', '省级奖励', 2, '1'),
-(29, '求善', '60014Q0', '青年志愿者积极组织参与青年志愿者服务活动', '无', 1, '1'),
-(30, '求善', '60015Q0', '积极组织参与大学生文明修身活动', '无', 1, '1'),
-(31, '求善', '60032Q0', '参加党校培训', '无', 1, '1'),
-(32, '求善', '60033Q0', '参加团学干部培训', '无', 1, '1'),
-(33, '求美', '60016Q1', '在正式出版刊物上发表各类文学作品和新闻报道类作品', '无', 2, '1'),
-(34, '求美', '60016Q2', '在正式出版刊物上发表各类文学作品和新闻报道类作品', '无', 1, '1'),
-(35, '求美', '60017Q1', '听人文讲坛、科学论坛或其他各类文化科技讲座', '无', 1, '1'),
-(36, '求美', '60017Q2', '听人文讲坛、科学论坛或其他各类文化科技讲座', '无', 1, '1'),
-(37, '求美', '60018Q1', '文化艺术类竞赛', '国家级奖', 5, '1'),
-(38, '求美', '60018Q2', '文化艺术类竞赛', '省级奖励', 4, '1'),
-(39, '求美', '60018Q3', '文化艺术类竞赛', '校级奖励', 2, '1'),
-(40, '求美', '60019Q1', '体育运动比赛', '国家级奖', 5, '1'),
-(41, '求美', '60019Q2', '体育运动比赛', '省级奖励', 4, '1'),
-(42, '求美', '60019Q3', '体育运动比赛', '校级奖励', 2, '1'),
-(43, '求实', '60020Q1', '个人参加寒暑假社会实践活动', '无', 1, '1'),
-(44, '求实', '60020Q2', '个人参加寒暑假社会实践活动', '无', 1, '1'),
-(45, '求实', '60020Q3', '个人参加寒暑假社会实践活动', '无', 1, '1'),
-(46, '求实', '60021Q1', '参加校、院“双百”工程、双向素质教育示范工程、“三下乡”社会实践活动团队 ', '无', 1, '1'),
-(47, '求实', '60021Q2', '参加校、院“双百”工程、双向素质教育示范工程、“三下乡”社会实践活动团队', '无', 1, '1'),
-(48, '求实', '60021Q3', '参加校、院“双百”工程、双向素质教育示范工程、“三下乡”社会实践活动团队', '无', 1, '1'),
-(49, '求实', '60022Q0', '三下乡调查报告获奖', '无', 1, '1'),
-(50, '求实', '60023Q0', '参加学校、学院大学生“三下乡”社会实践获奖', '无', 1, '1'),
-(51, '求特', '60025Q1', '校级学生干部', '无', 2, '1'),
-(52, '求特', '60025Q2', '校级学生干部', '无', 1, '1'),
-(53, '求特', '60026Q1', '院级学生干部', '无', 2, '1'),
-(54, '求特', '60026Q2', '院级学生干部', '无', 1, '1'),
-(55, '求特', '60027Q0', '社团正式注册成员', '无', 1, '1'),
-(56, '求特', '60028Q0', '湘农素质拓展学堂学员', '无', 1, '1'),
-(57, '求强', '60029Q1', '职业规划大赛', '无', 1, '1'),
-(58, '求强', '60029Q2', '就业力挑战赛', '无', 1, '1'),
-(59, '求强', '60030Q1', '挑战杯大学生创业计划大赛', '国家级奖', 5, '1'),
-(60, '求强', '60030Q2', '挑战杯大学生创业计划大赛', '省级奖励', 4, '1'),
-(61, '求强', '60030Q3', '挑战杯大学生创业计划大赛', '校级奖励', 2, '1'),
-(62, '求强', 'C11001', '内审员', '无', 1, '1'),
-(63, '求强', 'C18001', '锐捷网络工程师', '无', 1, '1'),
-(64, '求强', 'C18002', '计算机与软件考试资格认证', '无', 1, '1'),
-(65, '求强', 'C18003', '商业电子商务师', '无', 1, '1'),
-(66, '求强', 'C18004', '物流师', '无', 1, '1'),
-(67, '求强', 'C18005', '网络营销师', '无', 1, '1'),
-(68, '求强', 'C18006', 'ARM/ATC嵌入式工程师认证', '无', 1, '1'),
-(69, '求强', 'C14001', '秘书证', '无', 1, '1'),
-(70, '求强', 'C14002', '营销师', '无', 1, '1'),
-(71, '求强', 'C14003', '理财规划师', '无', 1, '1'),
-(72, '求强', 'C14004', '心理咨询师', '无', 1, '1'),
-(73, '求强', 'C14005', '企业信息管理师', '无', 1, '1'),
-(74, '求强', 'C14006', '电子商务师', '无', 1, '1'),
-(75, '求强', 'C14007', '项目管理师', '无', 1, '1'),
-(76, '求强', 'C14008', '物业管理师', '无', 1, '1'),
-(77, '求强', 'C14010', '人力资源管理师', '无', 1, '1'),
-(78, '求强', 'C14011', '企业培训师', '无', 1, '1'),
-(79, '求强', 'C14012', '职业指导人员', '无', 1, '1'),
-(80, '求强', 'C14013', '园林工程设计员', '无', 1, '1'),
-(81, '求强', 'C14014', '花卉园艺工', '无', 1, '1'),
-(82, '求强', 'C14015', '景观设计师', '无', 1, '1'),
-(83, '求强', 'C14016', '风景园林施工管理师', '无', 1, '1'),
-(84, '求强', 'C14017', '营养师', '无', 1, '1'),
-(85, '求强', 'C14018', '土地估价师', '无', 1, '1'),
-(86, '求强', '60024Q0', '汽车驾驶证', '无', 2, '1'),
-(87, '求强', '60031Q0', '全国计算机专业软件水平考试', '无', 3, '1');
+(4, '求真', '60001Q0', '发表学术研究论文', '无', 5.0, '1'),
+(5, '求真', '60002Q0', '参加学校组织的大学生课外学术科技作品竞赛', '无', 1.0, '1'),
+(6, '求真', '60003Q1', '“挑战杯”大学生课外学术科技作品竞赛', '国家级奖', 5.0, '1'),
+(7, '求真', '60003Q2', '“挑战杯”大学生课外学术科技作品竞赛', '省级奖励', 4.0, '1'),
+(8, '求真', '60003Q3', '“挑战杯”大学生课外学术科技作品竞赛', '校级奖励', 2.0, '1'),
+(9, '求真', '60004Q1', '大学生数学建模竞赛', '国家级奖', 3.0, '1'),
+(10, '求真', '60004Q2', '大学生数学建模竞赛', '省级奖励', 2.0, '1'),
+(11, '求真', '60005Q1', '大学生电子设计竞赛', '国家级奖', 3.0, '1'),
+(12, '求真', '60005Q2', '大学生电子设计竞赛', '省级奖励', 2.0, '1'),
+(13, '求真', '60006Q1', '大学生力学竞赛', '国家级奖', 3.0, '1'),
+(14, '求真', '60006Q2', '大学生力学竞赛', '省级奖励', 2.0, '1'),
+(15, '求真', '60007Q1', '大学生机器人大赛', '国家级奖', 3.0, '1'),
+(16, '求真', '60007Q2', '大学生机器人大赛', '省级奖励', 2.0, '1'),
+(17, '求真', '60008Q1', '计算机仿真大赛', '国家级奖', 3.0, '1'),
+(18, '求真', '60008Q2', '计算机仿真大赛', '省级奖励', 2.0, '1'),
+(19, '求真', '60009Q1', '大学生机械创新设计大赛', '国家级奖', 3.0, '1'),
+(20, '求真', '60009Q2', '大学生机械创新设计大赛', '省级奖励', 2.0, '1'),
+(21, '求真', '60010Q1', '土木建筑类大学生结构模型创作竞赛', '国家级奖', 3.0, '1'),
+(22, '求真', '60010Q2', '土木建筑类大学生结构模型创作竞赛', '省级奖励', 2.0, '1'),
+(23, '求真', '60011Q1', '大学生程序设计大赛', '国家级奖', 3.0, '1'),
+(24, '求真', '60011Q2', '大学生程序设计大赛', '省级奖励', 2.0, '1'),
+(25, '求真', '60012Q1', '大学生数学竞赛', '国家级奖', 3.0, '1'),
+(26, '求真', '60012Q2', '大学生数学竞赛', '省级奖励', 2.0, '1'),
+(27, '求真', '60013Q1', '大学生各类英语竞赛', '国家级奖', 3.0, '1'),
+(28, '求真', '60013Q2', '大学生各类英语竞赛', '省级奖励', 2.0, '1'),
+(29, '求善', '60014Q0', '青年志愿者积极组织参与青年志愿者服务活动', '无', 1.0, '1'),
+(30, '求善', '60015Q0', '积极组织参与大学生文明修身活动', '无', 1.0, '1'),
+(31, '求善', '60032Q0', '参加党校培训', '无', 0.5, '1'),
+(32, '求善', '60033Q0', '参加团学干部培训', '无', 0.5, '1'),
+(33, '求美', '60016A2', '在正式出版刊物上发表各类文学作品和新闻报道类作品2', '无', 2.0, '1'),
+(34, '求美', '60016A1', '在正式出版刊物上发表各类文学作品和新闻报道类作品1', '无', 1.0, '1'),
+(35, '求美', '60017A1', '听人文讲坛、科学论坛或其他各类文化科技讲座1', '无', 1.0, '1'),
+(36, '求美', '60017A2', '听人文讲坛、科学论坛或其他各类文化科技讲座2', '无', 1.0, '1'),
+(37, '求美', '60018Q1', '文化艺术类竞赛', '国家级奖', 5.0, '1'),
+(38, '求美', '60018Q2', '文化艺术类竞赛', '省级奖励', 4.0, '1'),
+(39, '求美', '60018Q3', '文化艺术类竞赛', '校级奖励', 2.0, '1'),
+(40, '求美', '60019Q1', '体育运动比赛', '国家级奖', 5.0, '1'),
+(41, '求美', '60019Q2', '体育运动比赛', '省级奖励', 4.0, '1'),
+(42, '求美', '60019Q3', '体育运动比赛', '校级奖励', 2.0, '1'),
+(43, '求实', '60020A1', '个人参加寒暑假社会实践活动1', '无', 1.0, '1'),
+(44, '求实', '60020A2', '个人参加寒暑假社会实践活动2', '无', 1.0, '1'),
+(45, '求实', '60020A3', '个人参加寒暑假社会实践活动3', '无', 1.0, '1'),
+(46, '求实', '60021A1', '参加校、院“双百”工程、双向素质教育示范工程、“三下乡”社会实践活动团队1', '无', 1.0, '1'),
+(47, '求实', '60021A2', '参加校、院“双百”工程、双向素质教育示范工程、“三下乡”社会实践活动团队2', '无', 1.0, '1'),
+(48, '求实', '60021A3', '参加校、院“双百”工程、双向素质教育示范工程、“三下乡”社会实践活动团队3', '无', 1.0, '1'),
+(49, '求实', '60022Q0', '三下乡调查报告获奖', '无', 0.5, '1'),
+(50, '求实', '60023Q0', '参加学校、学院大学生“三下乡”社会实践获奖', '无', 0.5, '1'),
+(51, '求特', '60025Q1', '校级学生干部', '优秀', 2.0, '1'),
+(52, '求特', '60025Q2', '校级学生干部', '合格', 1.0, '1'),
+(53, '求特', '60026Q1', '院级学生干部', '优秀', 2.0, '1'),
+(54, '求特', '60026Q2', '院级学生干部', '合格', 0.5, '1'),
+(55, '求特', '60027Q0', '社团正式注册成员', '无', 0.5, '1'),
+(56, '求特', '60028Q0', '湘农素质拓展学堂学员', '无', 1.0, '1'),
+(57, '求强', '60029A1', '职业规划大赛', '无', 0.5, '1'),
+(58, '求强', '60029A2', '就业力挑战赛', '无', 0.5, '1'),
+(59, '求强', '60030Q1', '挑战杯大学生创业计划大赛', '国家级奖', 5.0, '1'),
+(60, '求强', '60030Q2', '挑战杯大学生创业计划大赛', '省级奖励', 4.0, '1'),
+(61, '求强', '60030Q3', '挑战杯大学生创业计划大赛', '校级奖励', 2.0, '1'),
+(62, '求强', 'C11001', '内审员', '无', 1.0, '1'),
+(63, '求强', 'C18001', '锐捷网络工程师', '无', 1.0, '1'),
+(64, '求强', 'C18002', '计算机与软件考试资格认证', '无', 1.0, '1'),
+(65, '求强', 'C18003', '商业电子商务师', '无', 1.0, '1'),
+(66, '求强', 'C18004', '物流师', '无', 1.0, '1'),
+(67, '求强', 'C18005', '网络营销师', '无', 1.0, '1'),
+(68, '求强', 'C18006', 'ARM/ATC嵌入式工程师认证', '无', 1.0, '1'),
+(69, '求强', 'C14001', '秘书证', '无', 1.0, '1'),
+(70, '求强', 'C14002', '营销师', '无', 1.0, '1'),
+(71, '求强', 'C14003', '理财规划师', '无', 1.0, '1'),
+(72, '求强', 'C14004', '心理咨询师', '无', 1.0, '1'),
+(73, '求强', 'C14005', '企业信息管理师', '无', 1.0, '1'),
+(74, '求强', 'C14006', '电子商务师', '无', 1.0, '1'),
+(75, '求强', 'C14007', '项目管理师', '无', 1.0, '1'),
+(76, '求强', 'C14008', '物业管理师', '无', 1.0, '1'),
+(77, '求强', 'C14010', '人力资源管理师', '无', 1.0, '1'),
+(78, '求强', 'C14011', '企业培训师', '无', 1.0, '1'),
+(79, '求强', 'C14012', '职业指导人员', '无', 1.0, '1'),
+(80, '求强', 'C14013', '园林工程设计员', '无', 1.0, '1'),
+(81, '求强', 'C14014', '花卉园艺工', '无', 1.0, '1'),
+(82, '求强', 'C14015', '景观设计师', '无', 1.0, '1'),
+(83, '求强', 'C14016', '风景园林施工管理师', '无', 1.0, '1'),
+(84, '求强', 'C14017', '营养师', '无', 1.0, '1'),
+(85, '求强', 'C14018', '土地估价师', '无', 1.0, '1'),
+(86, '求强', '60024Q0', '汽车驾驶证', '无', 2.0, '1'),
+(87, '求强', '60031Q0', '全国计算机专业软件水平考试', '无', 3.0, '1');
 
 -- --------------------------------------------------------
 
@@ -250,18 +253,18 @@ INSERT INTO `item_set` (`item_id`, `item_type`, `item_code`, `item_name`, `item_
 -- 表的结构 `mark_allscore`
 --
 
-CREATE TABLE `mark_allscore` (
-  `mark_id` int(10) NOT NULL auto_increment,
-  `mark_lesson_no` varchar(10) default NULL COMMENT '课程号',
-  `mark_lesson_name` varchar(20) character set utf8 default NULL COMMENT '程课名称',
-  `mark_lesson_score` float default NULL COMMENT '课程学分',
-  `mark_lesson_type` varchar(4) character set utf8 default NULL COMMENT '课程类型',
-  `mark_lesson_mark` varchar(4) character set utf8 default NULL COMMENT '课程评分',
-  PRIMARY KEY  (`mark_id`)
+CREATE TABLE IF NOT EXISTS `mark_allscore` (
+  `mark_id` int(10) NOT NULL AUTO_INCREMENT,
+  `mark_lesson_no` varchar(10) DEFAULT NULL COMMENT '课程号',
+  `mark_lesson_name` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '程课名称',
+  `mark_lesson_score` float DEFAULT NULL COMMENT '课程学分',
+  `mark_lesson_type` varchar(4) CHARACTER SET utf8 DEFAULT NULL COMMENT '课程类型',
+  `mark_lesson_mark` varchar(4) CHARACTER SET utf8 DEFAULT NULL COMMENT '课程评分',
+  PRIMARY KEY (`mark_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
--- 导出表中的数据 `mark_allscore`
+-- 转存表中的数据 `mark_allscore`
 --
 
 INSERT INTO `mark_allscore` (`mark_id`, `mark_lesson_no`, `mark_lesson_name`, `mark_lesson_score`, `mark_lesson_type`, `mark_lesson_mark`) VALUES
@@ -310,31 +313,23 @@ INSERT INTO `mark_allscore` (`mark_id`, `mark_lesson_no`, `mark_lesson_name`, `m
 -- 表的结构 `news`
 --
 
-CREATE TABLE `news` (
-  `news_id` int(10) NOT NULL,
-  `news_title` varchar(50) character set utf8 default NULL,
-  `news_body` varchar(1000) character set utf8 default NULL,
-  `news_author` varchar(10) character set utf8 default NULL,
-  `news_time` datetime default NULL,
-  `news_state` int(2) default NULL,
-  `news_user` varchar(15) character set utf8 default NULL,
-  PRIMARY KEY  (`news_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `news` (
+  `news_id` int(10) NOT NULL AUTO_INCREMENT,
+  `news_title` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `news_body` varchar(1000) CHARACTER SET utf8 DEFAULT NULL,
+  `news_author` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `news_time` datetime DEFAULT NULL,
+  `news_state` int(2) DEFAULT NULL,
+  `news_user` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`news_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- 导出表中的数据 `news`
+-- 转存表中的数据 `news`
 --
 
 INSERT INTO `news` (`news_id`, `news_title`, `news_body`, `news_author`, `news_time`, `news_state`, `news_user`) VALUES
-(1, '“科技之星”知识竞赛复赛圆满落幕', '<p>为提高我校大学生的综合能力，丰富校园文化生活。12月1日，第八届“求真”学术科技节“科技之星”知识竞赛复赛在我校学术报告厅隆重举行。校宣传部周先进部长、校团委谭焱良书记、罗薇副书记、石利娟老师应邀出席。</p>\r\n<p>　　本次复赛有十个院参加，分别是生安院、信科院、资环院、动科院、农学院、理学院、园艺园林学院、食科院、人文院、生科院。每院派出两名优秀的代表参赛。</p>\r\n<p>　　首先是各院参赛选手依次做自我介绍，主持人宣布比赛规则，紧张的比赛由此拉开序幕。每院都有起始分100分，在环节二后，有两个分数最低的院被淘汰。此时的各院代表们都显得谨慎起来，努力调整心态，迎接下一环节的考验。报告厅中笼罩着紧张的氛围。在环节三“眼疾手快”中，各院都为观众带来了精彩的表演。人文院敏婕而又准确的抢答，赢得满堂喝彩。在此次环节中，出现了选手不看题就抢答的局面，团委老师及时给予指出，并提出更为合理的比赛规则，让比赛选手的心理能够不受影响，发挥出最好的成绩。环节四的“对抗升级”中涉及了语文艺术体育数学物理化学六大科目，选手们要从中选择最有把握的三科，按分值由低到高回答，答对进入下一题，答错则扣除相应分数并停止作答。这一环节充分考察了选手们对六大科目知识的了解程度，及团队之间的配合程度。第四环节结束之后，只有理学院、动科院、人文院凭着过硬的知识功底和默契的配合，顽强的留了下来。而此时的人文院分数最高，为300分，另两个院均为250分。</p>\r\n<p>　　最引人注目的当数环节五的“背水一战”。此次环节要求选手压分答题，答对则加相应的分数，答错则扣相应的分数。理学院与动科院都全部压上了自己的分数，以准确的回答获得相应的分数，结束了此次比赛。人文院则发生了戏剧性的一幕，错误的回答让他们原本的最高分最后变成了90分。最后，农学院、生科院、信科院、资环院、生安院获得三等奖，园艺园林学院、食科院、人文院获得二等奖，理学院、动科院获得一等奖。领导老师为获奖院系颁奖，并表示祝贺。</p>\r\n<p>　　此届“求真”学术科技节提高了大学生自身的综合素质，丰富了他们的学识，为他们以后的大学生活点燃一盏明灯。</p> ', '刘玉娇', '2009-12-06 19:43:58', 1, '2'),
-(2, '六院牵手红丝带，真情连接心与心', '<p>2009年12月1日又迎来了一年一度的预防艾滋病日。湖南农大生科院、动科院、经济院、商学院、农学院、园艺院六院联手，在全校范围内掀起了一场宣传防艾知识的狂澜。</p>\r\n<p>　　上午10：00，各院志愿者聚集学工部前坪举行了隆重的启动仪式。在防艾日带来的前几天，各学院青志协已在二食堂前摆出宣传展板，进行图片展览、防艾知识的宣传。而今天启动仪式成功举办后，各院志愿者在金岸、丰泽、芷兰各个学生公寓摆开了内容更为丰富的展板，并且摆开了宣传点。许多头戴红色志愿者帽的志愿者们详细、耐心地为驻足的同学们解释宣传手册的内容以及此次活动的流程，更有志愿者手把手地交同学们如何制作红丝带。同学们亲手制作的红丝带不一会儿便贴满了展板上的爱心红丝带。</p>\r\n<p>　　此次活动使同学们更加深入地了解了预防艾滋病的相关知识，从而学会如何保护自己，使自己远离这种灾难。 \r\n通过艾滋病的相关图片展，许多驻足观看的同学纷纷不由自主地发出了沉重的感叹。相信通过对有关预防艾滋病的知识的了解，他们能够放下对艾滋病的恐惧，关爱艾滋病患者，给这个世界增添阳光，增添温暖。红丝带，连接你我，连接整个世界。</p>', '罗崇', '2009-12-06 19:44:52', 1, '2'),
-(3, '《寻找理想主义的花朵》在我校大礼堂隆重上演', '<p>11月30日晚，湖南省首届校园戏剧节决赛展演第七场----虹剧社原创戏剧《寻找理想主义的花朵》在我校大礼堂隆重上演。此次大赛是经湖南省委宣传部批准，由省文学艺术界联合会、省教育厅、省文化厅联合主办，省戏剧家协会、湖南艺术职业学院承办的一次高规格戏剧赛事。此次演出的评委为湖南省文联党组织副书记、副主席兼秘书长、一级作家江学恭老师等八位湖南省戏剧界精英。</p>\r\n<p>　　我校副校长陈冬林、团委书记谭焱良纷纷应邀来到演出现场与同学们一起享受这道盛宴。本次演出分为话剧和剧组与观众的互动两大部分。《寻找理想主义的花朵》展示了当代年轻人的理想追求与爱恨交织的浮世会，演员精彩的表演与灯光效果、背景音乐的完美结合给现场观众留下了深刻的印象。</p>\r\n<p>　　表演结束后，评委老师就话剧的语言、台词以及演员的表现进行了详细的点评，并对此次虹剧社的演出给予高度评价。最后，陈冬林副校长发表讲话，他对各位评委的到来和指导表示了忠心的感谢，同时也对演员们辛勤的付出和精彩的表演做出了充分的肯定。</p> ', '邓卓', '2009-12-06 19:45:23', 1, '2'),
-(4, '吴培显教授做客商学院沃野文坛', '<p>11月27日晚，由商学院团总支学生会主办的商学院第二期沃野文坛在学海厅开讲，湖南师大文学院关培显教授倾囊相授，以独特的观点对五四以来的文学发展概况做了分析，使同学们受益匪浅。 \r\n</p>\r\n<p>　　教授认为新文学的奠定是以对旧文学摧枯拉朽的批评为前提，文学发展史就是新文学与旧文学继承与借鉴的矛盾史，五四就是凤凰涅槃之后的成就。教授表明当代文学是朝着多元化的方向发展的，如当代作品：《家》《春》《秋》，《围城》，《年月日》等等。而推动文学发展的因素很多，有传统文化的内因和外国文化的外因，以及新闻学的推动作用。 \r\n</p>\r\n<p>　　在论坛上同学们积极思考踊跃发言，提出诸多问题，如：平民文化有如此大的市场是表明了文化的进步吗？当代有哪些优秀作品？会议气氛良好，同学们都感到受益良多。</p> ', '龙首成', '2009-12-06 19:45:59', 1, '2'),
-(5, '激情讲师黄启忠作客科学论坛', '<p>11月26日晚，由校团委主办的第23期“科学论坛”在八教学海厅举行。本期论坛的主讲嘉宾是中南大学粉末冶金研究副院长黄启忠教授，主题是“炭/炭复合材料的研究与新进展”。来自我校各院学子参加本期论坛。 \r\n　　黄启忠是湖南省学者特聘教授，中国科学院炭材料重点实验室学术委员，中国电工技术学会炭 — \r\n石墨材料专业委员会委员，中国金属学会炭素分会委员。他长期从事炭素材料和炭/炭复合材料的研究与开发。在国内外发表论文近200余篇，其中100多篇被SCI、EI收录，获得国家技术发明一等奖等7项科技成果奖励和教育部通用汽车中国高校汽车领域创新人才奖，是湖南省国防科技创新先进个人。 \r\n　　</p>\r\n<p>　　黄启忠教授首先从“炭”与“碳”的区别追溯炭的起源与发展，接着从炭的利用历史展现炭的科研发展前景。黄启忠教授详细介绍了炭/炭复合材料的结构，并列举“碳”在航空科技方面应用的实例，加深了同学们对碳材料的认识，“我们要用一个辨证的思维看待事物，而不能形而上学。”黄启忠教授还在科学中悟出人生哲理，启发同学。最后，黄启忠教授表示炭/炭复合材料的发展还需进一步研究与探讨，为国家科技发展奠定理论基础。在互动环节中，黄启忠教授一一解答了同学们提出的疑问。 \r\n　　</p>\r\n<p>　　最后，黄启忠教授为本期论坛题词：愿农大学子插上科学翅膀，登上科学高峰。在一阵热烈的掌声中，本期科学论坛圆满结束。</p> ', '焦娜', '2009-12-06 19:46:33', 1, '2'),
-(6, '工学院选手参加湖南省“天翼杯”大学生职业生涯规划决赛载誉归来', '<p>11月19日，“湖南省‘天翼杯’大学生职业生涯规划大赛”决赛在湖南省中医药大学隆重举行，来自全省普通高校的41名选手进行了紧张而激烈的角逐。</p>\r\n<p>　　经学校初赛、复赛后，我校选送的三名选手于10月底顺利通过全省初赛，最后全部参加了本次决赛。 \r\n本次比赛共设置职业规划之星一等奖1名、二等奖2名、三等奖4名；创业之星一等奖1名、二等奖1名、三等奖2名；优胜奖30名；组织奖5名。41名选手分别经作品盲评环节，即由评委根据《作品评分细则》赛前对选手职业规划设计书或创业计划书进行盲评打分；选手个人展示环节，即各位选手现场介绍自己的作品，并现场回答评委所提问题；企业面试环节，即由选手现场抽取问题来回答；然后按3：3：4的比例合计为最后得分。 \r\n</p>\r\n<p>　　经过激烈角逐，我校选送的工学院2006级工程管理专业窦征同学获得全省创业之星一等奖，并将作为湖南省创业组选手的唯一代表于明年5月在江苏昆山参加全国总决赛；学校同时荣获大赛“优秀组织奖”。 \r\n湖南省教育厅副厅长申纪云、学生处处长邓建国、省就业指导中心书记欧阳增铜及中国电信、湖南中医药大学党等有关单位领导纷纷出席大赛现场，并为获奖单位与选手颁奖。</p>\r\n<p>　　最后，申纪云副厅长对大赛作了总结发言，殷切希望大学生能早日对自己进行职业生涯规划、树立人生的奋斗目标和努力方向，为实现梦想不懈奋斗。</p> ', '焦娜', '2009-12-06 19:47:44', 1, '2'),
-(7, '增进交流合作  共创和谐未来', '<p>11月21日下午，一场以“增进交流合作，共创和谐未来”为主题的长沙日本节的活动在长沙步行街黄兴广场隆重举行，此次活动由长沙市人民政府与日本驻中华人民共和国大使馆联合主办。同时由湖南平和堂企业有限公司、长沙真珠照明有限公司等11所大型企业赞助举办，东方科技学院动漫协会和艺术团代表我校参加了此次活动。 \r\n</p>\r\n<p>　　本次活动的主要内容有：日本华道、池坊、插花艺术表演、日本漫画家森田拳次漫画表演、日本知识竞赛、中日合资乐队、咖啡因乐队演奏会、动漫真人秀和最受欢迎的动漫人物评比、日本鼓乐队演奏会、日本传统乐器乐队AMG演奏会、日本歌星下川美娜演唱会、中国名族舞蹈及日本新传统舞蹈表演。我校代表队东科院动漫协会与艺术团分别携动漫真人秀和名族舞蹈——《走在山水间》取得优异成绩，另外还有中南大学带来的精彩傣族服装展。 \r\n中国节目与日本节目穿插进行，这有利于加强两国之间文化的交流，共同创建和谐社会。日本刚劲的舞蹈，中国柔美的舞蹈，两国节目形成了显明的对比，刚柔相济，让这个节日更具别样的魅力。 \r\n</p>\r\n<p>　　最后，由日本队组合蕐龙舞带动所有参加节目的成员一起跳动，在欢快的音乐、和谐的气氛中结束了此次活动。</p> ', '胡婷', '2009-12-06 19:48:23', 1, '2'),
-(8, '湖南农业大学人文学院第八届“人文•创新”学术科技节隆重开幕', '<p>由湖南农业大学人文社会科学学院主办的第八届“人文·创新”学术节开幕式暨“我和我的祖国”演讲赛于11月19日晚在我校学术报告厅隆重举行。</p>\r\n<p>　　在祖国母亲六十诞辰之际，无数青年学子要借此机会表达他们对祖国的拳拳深情与深深祝福，比赛现场被妆扮成了鲜花与彩球的海洋。人文学院院长黄正泉教授、院党总支刘明良书记等院领导莅临比赛现场。 \r\n人文学院团总支书记李华老师首先总结了历年来我院在学术科技及学风建设方面取得的骄人成绩，并对本届学术科技节活动内容进行了全面的介绍，李老师还勉励各位学子要以学长学姐们为榜样，积极参与科技节的各项活动，为追求我院更高的发展贡献自己的力量。随后，院党总支刘明良书记宣布人文学院第八届“人文·创新”学术科技节开幕。 \r\n在选手们经过精彩的自我介绍后，演讲比赛正式开始。选手们或高亢或激昂或沉郁或顿挫的演讲将现场观众带回了那个充满激情的年代，无数仁人志士在疆场上抛头颅洒热血只为中华的崛起。“祖国是大海，我是浪花，在海的怀抱里我自由自在。”八号选手刘莎用诗般的语言表达赤子之情，成为广大学子的共同心声；三号选手严艺文灵活运用声音的表现力，将自己的情感融入演讲中，受到广到师生好评。</p>\r\n<p>　　最终，胡湘乐同学以其细腻的情感表达，极富感染力的舞台表现获得9.30分，成为此次演讲赛的冠军。 \r\n据了解，本届学术科技节包括以下内容：1、人文学院第八届“人文创新”学术科技节暨本次“我和我的祖国”演讲赛；2、“求真杯”学术科技作品竞赛及展出；3、科技图片展；4、百家争鸣学术讲座；5、“科技之星”知识竞赛；6、学术科技节图标征集大赛；7、三院英语联谊活动；8、三湘读书月——诵读红色经典原著。我们相信，在全体人文学子的共同努力下，人文学院第八届“人文·创新”学术科技节将取得圆满成功。 \r\n</p>', '李华', '2009-12-06 19:49:12', 1, '2'),
-(9, '“青春”摄影比赛期待您的参与', '<p>大学是人生中最值得回味的段落之一，为记录丰富多彩的校园生活，近日，我校展开了一场以“青春”为主题的摄影比赛。 　　</p>\r\n<p>　　本次摄影比赛为青春校园里的大学生群体提供了一个梳理生命留痕的绝佳平台。多年以后，也许记忆已经模糊，但在光与影交错的瞬间被凝固下来的青春仍将散发着挥之不去的青春魅力。也许我们的作品对光影和构图的把握远没有职业摄影师到那麽精到，但我们真实的青春和对摄影的热爱却是我们一声中最珍贵的记忆与财富。 \r\n　　</p>\r\n<p>　　我们用视觉记录大学生活，用镜头见证个人成长，本次摄影比赛期待您的参与！ \r\n注：本次大赛中获奖作品将被刊登在《湘农青年》报，参赛同学请于11月20日~11月30日将作品交至团刊办公室（金岸7栋004）信箱，并将电子稿发至<a href=\\"%5C%22mailto:hnnd09syxh@163.com%5C%22\\">hnnd09syxh@163.com</a>。 </p>\r\n<p>　　附：参赛摄影作品要求： </p>\r\n<p>　　　　a. 参赛参赛作品必须符合本次比赛主题。 </p>\r\n<p>　　　　b. \r\n参赛作品的体裁、格式、风格和内容均不限，数码与传统摄影、彩色扩印与输出均可。作品背面注明：标题、作者姓名、使用相机、通讯地址、电话等。所有参赛作品，主办单位不另行返还。每组作品提交的数量最多不超过八张。</p>\r\n<p>　　　　c. 为保证评比的公正性和一致性，作品一律不得做任何后期处理，参赛者应保留图片原始信息。 </p>\r\n<p>　　　　d. 所有参赛摄影作品必须内容为本人原创，作品风格、题材、地点不限，拍摄时间应为近一年，作品内容必须真实，符合比赛主题。 e. \r\n参赛作品黑白、彩色均可，单幅、组照不限。 </p>\r\n<p>　　　　f. 参赛作品必须有一个适当的标题，字数不能超过15个汉字，参赛者同时可以提供30字以内的图片描述。 </p>', '小黄', '2009-12-06 19:50:27', 1, '2');
+(1, '热烈祝贺学分认证网顺利开通！', '<P>&nbsp;&nbsp;&nbsp;&nbsp; 热烈祝贺学分认证网顺利开通！</P>\r\n<P>&nbsp;</P>', '校团委', '2009-12-02 22:20:03', 1, '2');
 
 -- --------------------------------------------------------
 
@@ -342,17 +337,17 @@ INSERT INTO `news` (`news_id`, `news_title`, `news_body`, `news_author`, `news_t
 -- 表的结构 `notic`
 --
 
-CREATE TABLE `notic` (
-  `notic_id` int(10) NOT NULL,
-  `notic_title` varchar(50) character set utf8 collate utf8_unicode_ci default NULL,
-  `notic_body` varchar(500) character set utf8 collate utf8_unicode_ci default NULL,
-  `notic_time` datetime default NULL,
-  `notic_user` varchar(15) character set utf8 collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`notic_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `notic` (
+  `notic_id` int(10) NOT NULL AUTO_INCREMENT,
+  `notic_title` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `notic_body` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `notic_time` datetime DEFAULT NULL,
+  `notic_user` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`notic_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- 导出表中的数据 `notic`
+-- 转存表中的数据 `notic`
 --
 
 INSERT INTO `notic` (`notic_id`, `notic_title`, `notic_body`, `notic_time`, `notic_user`) VALUES
@@ -364,22 +359,22 @@ INSERT INTO `notic` (`notic_id`, `notic_title`, `notic_body`, `notic_time`, `not
 -- 表的结构 `stud_baseinfo`
 --
 
-CREATE TABLE `stud_baseinfo` (
-  `stud_id` int(10) NOT NULL auto_increment COMMENT '流水号',
-  `stud_no` varchar(14) character set utf8 NOT NULL COMMENT '学号',
-  `stud_name` varchar(8) character set utf8 default NULL COMMENT '姓名',
-  `stud_sex` varchar(2) character set utf8 default NULL,
-  `stud_college` varchar(20) character set utf8 default NULL COMMENT '学院',
-  `stud_grade` int(5) default NULL COMMENT '年级',
-  `stud_class` varchar(15) character set utf8 default NULL,
-  `stud_deadline` varchar(15) character set utf8 default NULL COMMENT '申报截止日期',
-  `stud_password` varchar(25) character set utf8 default NULL COMMENT '密码',
-  `stud_orgcode` int(8) default NULL COMMENT '组织机构码',
-  PRIMARY KEY  (`stud_id`)
+CREATE TABLE IF NOT EXISTS `stud_baseinfo` (
+  `stud_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '流水号',
+  `stud_no` varchar(14) CHARACTER SET utf8 NOT NULL COMMENT '学号',
+  `stud_name` varchar(8) CHARACTER SET utf8 DEFAULT NULL COMMENT '姓名',
+  `stud_sex` varchar(2) CHARACTER SET utf8 DEFAULT NULL,
+  `stud_college` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '学院',
+  `stud_grade` int(5) DEFAULT NULL COMMENT '年级',
+  `stud_class` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `stud_deadline` varchar(15) CHARACTER SET utf8 DEFAULT NULL COMMENT '申报截止日期',
+  `stud_password` varchar(25) CHARACTER SET utf8 DEFAULT NULL COMMENT '密码',
+  `stud_orgcode` int(8) DEFAULT NULL COMMENT '组织机构码',
+  PRIMARY KEY (`stud_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18648 ;
 
 --
--- 导出表中的数据 `stud_baseinfo`
+-- 转存表中的数据 `stud_baseinfo`
 --
 
 INSERT INTO `stud_baseinfo` (`stud_id`, `stud_no`, `stud_name`, `stud_sex`, `stud_college`, `stud_grade`, `stud_class`, `stud_deadline`, `stud_password`, `stud_orgcode`) VALUES
@@ -19075,21 +19070,19 @@ INSERT INTO `stud_baseinfo` (`stud_id`, `stud_no`, `stud_name`, `stud_sex`, `stu
 -- 表的结构 `upload_file`
 --
 
-CREATE TABLE `upload_file` (
-  `file_id` smallint(12) NOT NULL auto_increment,
-  `file_name` varchar(50) character set utf8 default NULL COMMENT '文件名',
-  `file_url` varchar(100) character set utf8 default NULL COMMENT '文件所在URL',
-  `file_time` timestamp NULL default CURRENT_TIMESTAMP COMMENT '上传时间',
-  `file_status` varchar(10) collate utf8_bin default '1' COMMENT '1:可见  0:不可见',
-  PRIMARY KEY  (`file_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=8 ;
+CREATE TABLE IF NOT EXISTS `upload_file` (
+  `file_id` smallint(12) NOT NULL AUTO_INCREMENT,
+  `file_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '文件名',
+  `file_url` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '文件所在URL',
+  `file_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上传时间',
+  `file_status` varchar(10) COLLATE utf8_bin DEFAULT '1' COMMENT '1:可见  0:不可见',
+  PRIMARY KEY (`file_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 --
--- 导出表中的数据 `upload_file`
+-- 转存表中的数据 `upload_file`
 --
 
-INSERT INTO `upload_file` (`file_id`, `file_name`, `file_url`, `file_time`, `file_status`) VALUES
-(7, '大学生素质拓展活动教育学分材料认证细则', '_________________________________________________________.doc', '2009-12-06 20:09:18', '1');
 
 -- --------------------------------------------------------
 
@@ -19097,18 +19090,47 @@ INSERT INTO `upload_file` (`file_id`, `file_name`, `file_url`, `file_time`, `fil
 -- 表的结构 `user_admin`
 --
 
-CREATE TABLE `user_admin` (
-  `user_id` int(10) NOT NULL auto_increment,
-  `user_name` varchar(8) character set utf8 default NULL COMMENT '用户名',
-  `user_password` varchar(30) character set utf8 default NULL COMMENT '用户密码',
-  `user_org_code` int(8) default NULL COMMENT '组织机构代码',
-  `user_mode` int(10) default NULL COMMENT '模块权限',
-  PRIMARY KEY  (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+CREATE TABLE IF NOT EXISTS `user_admin` (
+  `user_id` int(10) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '用户名',
+  `user_password` varchar(30) CHARACTER SET utf8 DEFAULT NULL COMMENT '用户密码',
+  `user_org_code` int(8) DEFAULT NULL COMMENT '组织机构代码',
+  `user_mode` int(10) DEFAULT NULL COMMENT '模块权限',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
--- 导出表中的数据 `user_admin`
+-- 转存表中的数据 `user_admin`
 --
 
 INSERT INTO `user_admin` (`user_id`, `user_name`, `user_password`, `user_org_code`, `user_mode`) VALUES
-(2, 'admin', 'admin', 345, 111);
+(1, 'adminhzjcool', '722810722727hzj*', 345, 111),
+(10, 'xky', '123456', 207, 110),
+(11, 'nxy', '123456', 205, 110),
+(12, 'sxy', '123456', 206, 110),
+(13, 'wyy', '123456', 233, 110),
+(14, 'sfy', '123456', 236, 110),
+(15, 'rwy', '123456', 237, 110),
+(16, 'lxy', '123456', 238, 110),
+(17, 'zhy', '123456', 240, 110),
+(18, 'dky', '123456', 241, 110),
+(19, 'shky', '123456', 242, 110),
+(20, 'yyy', '123456', 245, 110),
+(21, 'say', '123456', 246, 110),
+(22, 'dfy', '123456', 247, 110),
+(23, 'gjy', '123456', 248, 110),
+(24, 'sky', '123456', 249, 110),
+(25, 'tyy', '123456', 250, 110),
+(26, 'dyy', '123456', 251, 110),
+(27, 'gxy', '123456', 239, 110),
+(28, 'jjy', '123456', 243, 110),
+(29, 'dfsx1', '123456', 346, 110),
+(30, 'dfsx2', '123456', 347, 110),
+(31, 'dfrwsh', '123456', 348, 110),
+(32, 'dfgcjs', '123456', 349, 110),
+(33, 'dfzhsk', '123456', 350, 110),
+(34, 'dfjj', '123456', 351, 110),
+(35, 'dfwy', '123456', 352, 110),
+(36, 'dfxxlx', '123456', 353, 110),
+(37, 'dfnk', '123456', 354, 110),
+(38, 'dfsk', '123456', 355, 110);

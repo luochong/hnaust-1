@@ -73,11 +73,11 @@ require_once('header.php');
 <input type="button" value="点击申报" onclick=" location.href='stud_addapp.php'"/>
 <br />
 <br />
-<table width=400">
+<table>
 			<tr>
 				
 				<td width="100">总计申报学分:</td>
-					<td width="60">
+					<td width="80">
 					<?php $citem = $tongji->countAllCreditByStudId($_SESSION['studno']);
 					
 					 echo $citem==''?0:$citem;
@@ -85,7 +85,7 @@ require_once('header.php');
 					
 					</td>
 					<td width="100">有效申报学分:</td>
-					<td width="60"><?php $citem =  $tongji->countVerifyValidCreditByStudId($_SESSION['studno']);
+					<td width="80"><?php $citem =  $tongji->countVerifyValidCreditByStudId($_SESSION['studno']);
 					 echo $citem==''?0:$citem;
 					?></td>
 					<td width="100"> </td>
@@ -100,19 +100,19 @@ require_once('header.php');
 			?>
 			<tr>
 				<td width="100">求真课程学分:</td>
-					<td width="60"><?php echo $score['求真']==''?0:$score['求真']?></td>
+					<td width="80"><?php echo $score['求真']==''?0:$score['求真']?></td>
 				<td width="100">求善课程学分:</td>
-					<td width="60"><?php  echo $score['求善']==''?0:$score['求善']?></td>
+					<td width="80"><?php  echo $score['求善']==''?0:$score['求善']?></td>
 				<td width="100">求美课程学分:</td>
-					<td width="60"><?php  echo $score['求美']==''?0:$score['求美']?></td>
+					<td width="80"><?php  echo $score['求美']==''?0:$score['求美']?></td>
 			</tr>
 			<tr>
 				<td width="100">求实课程学分:</td>
-					<td width="60"><?php  echo $score['求实']==''?0:$score['求实']?></td>
+					<td width="80"><?php  echo $score['求实']==''?0:$score['求实']?></td>
 				<td width="100">求特课程学分:</td>
-					<td width="60"><?php  echo $score['求特']==''?0:$score['求特']?></td>
+					<td width="80"><?php  echo $score['求特']==''?0:$score['求特']?></td>
 				<td width="100">求强课程学分:</td>
-					<td width="60"><?php  echo $score['求强']==''?0:$score['求强']?></td>
+					<td width="80"><?php  echo $score['求强']==''?0:$score['求强']?></td>
 			</tr>
 </table>
 <br />
