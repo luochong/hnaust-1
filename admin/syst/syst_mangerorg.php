@@ -87,7 +87,7 @@ function delok(){
 <div class="clear"></div>
  
 <div class="main_align">
-&copy;2007&nbsp;<a href="#"></a>&nbsp; 版权所有</div>
+</div>
 <div class="clear"></div>
 </body>
 </html>
