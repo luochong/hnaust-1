@@ -10,6 +10,7 @@ class ItemListAction extends MysqlDao {
 	
 	public $error_message= '';
 	public $pn;
+	public $sql;
 	public function run(){
 		if(!empty($_GET['ac'])&&method_exists($this,$_GET['ac'])){
 			$this->$_GET['ac']();
@@ -95,13 +96,15 @@ class ItemListAction extends MysqlDao {
 		}
 		if($_GET['s'] != 10) $sql.=" and item_apply.app_state = {$_GET['s']} "; 
 		$sql .=' order by app_time DESC';
-		
+		$this->sql = $sql;
 		return $this->executeQueryA($sql,null,20,$this->pn-1);
 	}
 	
 	public function makepage(){
 		$this->setTableName('item_apply');
-		$num = $this->count();
+		
+		$sql = 'select count(*) from '.end(explode('from',$this->sql)); 
+		$num = current(current($this->executeQuery($sql)));		
 		$page = ceil($num/20);
 		$nextpage = $this->pn+1<=$page?$this->pn+1:$this->pn;
 		$str = "共{$num}记录&nbsp;第{$this->pn}页/共{$page}页&nbsp;<a href='itemlist.php?pn=$nextpage&s={$_GET['s']}'>下一页</a>&nbsp;<a href='itemlist.php?pn=$page&s={$_GET['s']}'>末页</a>";

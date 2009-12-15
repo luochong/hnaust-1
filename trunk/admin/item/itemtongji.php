@@ -39,11 +39,11 @@ if($_POST["submit"] == "导出Excel"){
 		foreach ($lesson as $l){
 			?>
 			<tr>
-			<td>&nbsp;<?php echo $v['sno']?></td>
-			<td>&nbsp;<?php echo $v['stud_name']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_no']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_score']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_mark']?></td>
+			<td align="center">&nbsp;<?php echo $v['sno']?></td>
+			<td align="center">&nbsp;<?php echo $v['stud_name']?></td>
+			<td align="center">&nbsp;<?php echo $l['mark_lesson_no']?></td>
+			<td align="center">&nbsp;<?php echo $l['mark_lesson_score']?></td>
+			<td align="center">&nbsp;<?php echo $l['mark_lesson_mark']?></td>
 			</tr>
 		<?php }
 	}
@@ -85,7 +85,7 @@ if($_POST["submit"] == "导出Excel"){
 	  	<p style="color:#FF0000"><?php echo $action->error_message?></p>
 	       <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
-      <th colspan=6 align="center"><?php echo $tongji->getYear()?>年毕业生素拓课程表<small>(毕业时间:<?php echo $tongji->getYear()?>)</small></th>
+      <td colspan=6 align="center"><?php echo $tongji->getYear()?>年毕业生素拓课程表<small>(毕业时间:<?php echo $tongji->getYear()?>)</small></td>
     </tr>
     <tr align="center" color="blue" border>
      <td>学号</td>
@@ -102,12 +102,12 @@ if($_POST["submit"] == "导出Excel"){
 		foreach ($lesson as $l){
 			?>
 			<tr>
-			<td>&nbsp;<?php echo $v['sno']?></td>
-			<td>&nbsp;<?php echo $v['stud_name']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_no']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_name']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_score']?></td>
-			<td>&nbsp;<?php echo $l['mark_lesson_mark']?></td>
+			<td align="center">&nbsp;<?php echo $v['sno']?></td>
+			<td align="center">&nbsp;<?php echo $v['stud_name']?></td>
+			<td align="center">&nbsp;<?php echo $l['mark_lesson_no']?></td>
+			<td align="center">&nbsp;<?php echo $l['mark_lesson_name']?></td>
+			<td align="center">&nbsp;<?php echo $l['mark_lesson_score']?></td>
+			<td align="center">&nbsp;<?php echo $l['mark_lesson_mark']?></td>
 			</tr>
 		<?php }
 	}

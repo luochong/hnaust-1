@@ -102,10 +102,8 @@ function checkdata() {
 		  </div>
 
 		  <div class="right">
-		         <label>管理部门</label> <small>*必须</small><br />
-					<input name="dept" value="<?php echo $dept;?>" readonly>
-		         <br />
-			 </div>
+		       管理部门:&nbsp;&nbsp;<span style="color:#ff0000"><?php echo $dept;?></span>&nbsp;
+		  </div>
 			 
 			 
 			 

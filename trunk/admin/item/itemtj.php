@@ -45,8 +45,41 @@ if(isset($_GET['i_time_year'])){
 	  	  <div class="right"><a href='javascript:history.back();'>返 回</a></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
+	  
+	  
+	   <div class="alltitle"><?php echo $name[0]['dept_name']?>毕业生素拓项目统计</div>
+	  
+	  
+	  <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
+    <tr>
+      <td colspan=6 align="center"><?php echo $tongji->getYear()?>年<?php echo $name[0]['dept_name']?>毕业生素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></td>
+    </tr>
+    <tr align="center" color="blue" border>
+     <td>机构名称</td>
+     <td>申报总人数</td>
+     <td>申报总项目数</td>
+     <td>总申报学分</td>
+     <td>总有效学分</td>
+     <td>总课程学分</td>
+	</tr>
+   <?php
+		$item = $tongji->countBDFXItemByOrgId($_SESSION['admin_org_code']);
+		$credit=$tongji->countBDFXValidCreditANDLessonCreditByOrg($_SESSION['admin_org_code']);
+	?>
+			<tr  align="center">
+			<td>&nbsp;<?php echo $name[0]['dept_name']?></td>
+			<td>&nbsp;<?php echo $item["stud_count"]?></td>
+			<td>&nbsp;<?php echo $item["item_count"]?></td>
+			<td>&nbsp;<?php echo $item['score_count']==''?'0':$item['score_count']?></td>
+			<td>&nbsp;<?php echo $credit['credit']?></td>
+			<td>&nbsp;<?php echo $credit['lcredit']?></td>
+			</tr>
+  </table>
+	  
+	  
+	  
   	 <form id="form1" name="form1" method="post" action="itemptongji.php">
-      <div class="alltitle"><?php echo $name[0]['dept_name']?>素拓项目统计</div>
+      <div class="alltitle"><?php echo $name[0]['dept_name']?>年度素拓项目统计与年份素拓项目统计</div>
 		  
 	  <div id="allcontent">
 	 年度选择:<select name="i_time" onchange="window.location.href ='itemtj.php?i_time='+this.value">
@@ -88,7 +121,7 @@ if(isset($_GET['i_time_year'])){
 	  	
    <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
-      <th colspan=6 align="center"><?php if(isset($_GET['i_time'])){echo date('Y年m月',$time[0]),'到',date('Y年m月',$time[1]);}else if($_GET['i_time_year']) {echo date('Y年',$time[0]);} ?><?php echo $name[0]['dept_name']?>素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
+      <td colspan=6 align="center"><?php if(isset($_GET['i_time'])){echo date('Y年m月',$time[0]),'到',date('Y年m月',$time[1]);}else if($_GET['i_time_year']) {echo date('Y年',$time[0]);} ?><?php echo $name[0]['dept_name']?>素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></td>
     </tr>
     <tr align="center" color="blue" border>
      <td>机构名称</td>
@@ -104,44 +137,18 @@ if(isset($_GET['i_time_year'])){
 		$credit=$tongji->countDFXValidCreditANDLessonCreditByOrg($_SESSION['admin_org_code'],$time);
 		
 	?>
-			<tr>
+			<tr align="center">
 			<td>&nbsp;<?php echo $name[0]['dept_name']?></td>
 			<td>&nbsp;<?php echo $item["stud_count"]?></td>
 			<td>&nbsp;<?php echo $item["item_count"]?></td>
-			<td>&nbsp;<?php echo $item['score_count']?></td>
+			<td>&nbsp;<?php echo $item['score_count']==''?'0':$item['score_count']?></td>
 			<td>&nbsp;<?php echo $credit['credit']?></td>
 			<td>&nbsp;<?php echo $credit['lcredit']?></td>
 			</tr>
   </table>
   <?php endif; ?>	
   <br />
-  <br />
-  <hr />
-  <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
-    <tr>
-      <th colspan=6 align="center"><?php echo $tongji->getYear()?>年<?php echo $name[0]['dept_name']?>毕业生素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
-    </tr>
-    <tr align="center" color="blue" border>
-     <td>机构名称</td>
-     <td>申报总人数</td>
-     <td>申报总项目数</td>
-     <td>总申报学分</td>
-     <td>总有效学分</td>
-     <td>总课程学分</td>
-	</tr>
-   <?php
-		$item = $tongji->countBDFXItemByOrgId($_SESSION['admin_org_code']);
-		$credit=$tongji->countBDFXValidCreditANDLessonCreditByOrg($_SESSION['admin_org_code']);
-	?>
-			<tr>
-			<td>&nbsp;<?php echo $name[0]['dept_name']?></td>
-			<td>&nbsp;<?php echo $item["stud_count"]?></td>
-			<td>&nbsp;<?php echo $item["item_count"]?></td>
-			<td>&nbsp;<?php echo $item['score_count']?></td>
-			<td>&nbsp;<?php echo $credit['credit']?></td>
-			<td>&nbsp;<?php echo $credit['lcredit']?></td>
-			</tr>
-  </table>
+  <br /> 
 		  
 
 	  </div><br />

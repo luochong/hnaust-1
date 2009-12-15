@@ -35,15 +35,15 @@ if($_POST["submit"] == "导出Excel"){
      <td>总课程学分</td>
 	</tr>
 	<tr>
-		<td>&nbsp;东方院</td>
+		<td align="center">&nbsp;东方院</td>
 	<?php $DFitem = $tongji->countBDFItem();
 				$DFcredit = $tongji->countBDFValidCreditANDLessonCreditByOrg();
 			?>
-   			<td>&nbsp;<?php echo $DFitem["stud_count"]?></td>
-			<td>&nbsp;<?php echo $DFitem["item_count"]?></td>
-			<td>&nbsp;<?php echo $DFitem['score_count']?></td>
-			<td>&nbsp;<?php echo $DFcredit['credit']?></td>
-			<td>&nbsp;<?php echo $DFcredit['lcredit']?></td>
+   			<td align="center">&nbsp;<?php echo $DFitem["stud_count"]?></td>
+			<td align="center">&nbsp;<?php echo $DFitem["item_count"]?></td>
+			<td align="center">&nbsp;<?php echo $DFitem['score_count']==''?'0':$DFitem['score_count']?></td>
+			<td align="center">&nbsp;<?php echo $DFcredit['credit']?></td>
+			<td align="center">&nbsp;<?php echo $DFcredit['lcredit']?></td>
 		</tr>
    <?php
 	foreach ($org_data as $v){
@@ -51,12 +51,12 @@ if($_POST["submit"] == "导出Excel"){
 		$credit=$tongji->countBValidCreditANDLessonCreditByOrg($v['org_no'])
 			?>
 			<tr>
-			<td>&nbsp;<?php echo $v['org_name']?></td>
-			<td>&nbsp;<?php echo $item["stud_count"]?></td>
-			<td>&nbsp;<?php echo $item["item_count"]?></td>
-			<td>&nbsp;<?php echo $item['score_count']?></td>
-			<td>&nbsp;<?php echo $credit['credit']?></td>
-			<td>&nbsp;<?php echo $credit['lcredit']?></td>
+			<td align="center">&nbsp;<?php echo $v['org_name']?></td>
+			<td align="center">&nbsp;<?php echo $item["stud_count"]?></td>
+			<td align="center">&nbsp;<?php echo $item["item_count"]?></td>
+			<td align="center">&nbsp;<?php echo $item['score_count']==''?'0':$item['score_count']?></td>
+			<td align="center">&nbsp;<?php echo $credit['credit']?></td>
+			<td align="center">&nbsp;<?php echo $credit['lcredit']?></td>
 			</tr>
 		<?php 
 	}
@@ -98,7 +98,7 @@ if($_POST["submit"] == "导出Excel"){
 	  	<p style="color:#FF0000"><?php echo $action->error_message?></p>
 	   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="t1">
     <tr>
-      <th colspan=6 align="center"><?php echo $tongji->getYear()?>年各学院毕业生素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></th>
+      <td colspan=6 align="center"><?php echo $tongji->getYear()?>年各学院毕业生素拓项目统计表<small>(导出时间:<?php echo getNowDate()?>)</small></td>
     </tr>
     <tr align="center" color="blue" border>
      <td>学院名称</td>
@@ -109,15 +109,15 @@ if($_POST["submit"] == "导出Excel"){
      <td>总课程学分</td>
 	</tr>
 	<tr>
-		<td>&nbsp;东方院</td>
+		<td align="center">&nbsp;东方院</td>
 	<?php $DFitem = $tongji->countBDFItem();
 				$DFcredit = $tongji->countBDFValidCreditANDLessonCreditByOrg();
 			?>
-   			<td>&nbsp;<?php echo $DFitem["stud_count"]?></td>
-			<td>&nbsp;<?php echo $DFitem["item_count"]?></td>
-			<td>&nbsp;<?php echo $DFitem['score_count']?></td>
-			<td>&nbsp;<?php echo $DFcredit['credit']?></td>
-			<td>&nbsp;<?php echo $DFcredit['lcredit']?></td>
+   			<td align="center">&nbsp;<?php echo $DFitem["stud_count"]?></td>
+			<td align="center">&nbsp;<?php echo $DFitem["item_count"]?></td>
+			<td align="center">&nbsp;<?php echo $DFitem['score_count']==''?'0':$DFitem['score_count']?></td>
+			<td align="center">&nbsp;<?php echo $DFcredit['credit']?></td>
+			<td align="center">&nbsp;<?php echo $DFcredit['lcredit']?></td>
 		</tr>
    <?php
 	foreach ($org_data as $v){
@@ -125,12 +125,12 @@ if($_POST["submit"] == "导出Excel"){
 		$credit=$tongji->countBValidCreditANDLessonCreditByOrg($v['org_no'])
 			?>
 			<tr>
-			<td>&nbsp;<?php echo $v['org_name']?></td>
-			<td>&nbsp;<?php echo $item["stud_count"]?></td>
-			<td>&nbsp;<?php echo $item["item_count"]?></td>
-			<td>&nbsp;<?php echo $item['score_count']?></td>
-			<td>&nbsp;<?php echo $credit['credit']?></td>
-			<td>&nbsp;<?php echo $credit['lcredit']?></td>
+			<td align="center">&nbsp;<?php echo $v['org_name']?></td>
+			<td align="center">&nbsp;<?php echo $item["stud_count"]?></td>
+			<td align="center">&nbsp;<?php echo $item["item_count"]?></td>
+			<td align="center">&nbsp;<?php echo $item['score_count']==''?'0':$item['score_count']?></td>
+			<td align="center">&nbsp;<?php echo $credit['credit']?></td>
+			<td align="center">&nbsp;<?php echo $credit['lcredit']?></td>
 			</tr>
 		<?php 
 	}

@@ -30,7 +30,7 @@ function $(id){
     </b>
      <div id="allbox">
       <h3><div class="left">申报项目列表</div>
-	  	  <div class="right"><a href='javascript:history.back();'>返 回</a></div>
+	  	  <div class="right"></div>
 	  </h3>
 	  <div class="clear">&nbsp;</div>
 	  <form action="itemlist.php" name='sform' method="GET" style="margin:0;padding:0">
