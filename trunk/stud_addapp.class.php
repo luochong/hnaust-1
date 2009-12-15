@@ -58,7 +58,14 @@
 		header("Content-type: text/html; charset=utf-8");
 		$sql ='select distinct item_rank from item_set where item_name = ?';
 		$data = $this->executeQueryA($sql,array($_GET['i_name']));
-
+         if($_GET['i_name']=="参加党校培训"||$_GET['i_name']=="参加团学干部培训"||$_GET['i_name']=="参加学校组织的大学生课外学术科技作品竞赛"||$_GET['i_name']=="职业规划大赛"||$_GET['i_name']=="就业力挑战赛"||$_GET['i_name']=="积极组织参与大学生文明修身活动")
+                  {
+             
+                    echo "<script language=javascript >\n";	
+        			echo "alert('该项目由校团委申报，不允许个人提交')\n";
+        			//echo "history.go(-1)\n;";   //跳出框架 重定向到登录页面
+        			echo "</script>\n";
+                  }
 		echo '<option value="0" >...</option>';
 		foreach ($data as $v){
 			echo "<option value='{$v['item_rank']}'>{$v['item_rank']}</option>";
@@ -146,7 +153,7 @@
           
               else{
                 
-                  if($iname=="参加学校组织的大学生课外学术科技作品竞赛"||$iname=="参加学校组织的大学生课外学术科技作品竞赛"||$iname=="职业规划大赛"||$iname=="就业力挑战赛"||$iname=="积极组织参与大学生文明修身活动")
+                  if($iname=="参加党校培训"||$iname=="参加团学干部培训"||$iname=="参加学校组织的大学生课外学术科技作品竞赛"||$iname=="职业规划大赛"||$iname=="就业力挑战赛"||$iname=="积极组织参与大学生文明修身活动")
                   {
              
                     echo "<script language=javascript >\n";	
@@ -160,7 +167,7 @@
                   $row=$this->executeQueryA($sql);
                 //print_r($row);
     	       	  return $row;
-    			    }
+    			   }
                   }
 			 }
 			 
