@@ -60,7 +60,7 @@ class LoginAction extends MysqlDao {
 			$this->setTableName('user_admin');
 			$this->update(array('user_password'=>$_POST['newpwd']),array('user_id'=>$_SESSION['admin_id']));
 			$_SESSION['admin_pwd'] = $_POST['newpwd'];
-			$this->error_message.="<script> \n alert('修改成功！');\n location.assign('./body.php')\n </script>";			
+			$this->error_message.="<script> \n alert('修改成功！');\n location.assign('./modipwd.php')\n </script>";			
 		}else{
 			$this->error_message='旧密码不正确！';
 			
