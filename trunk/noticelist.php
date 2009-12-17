@@ -18,27 +18,28 @@
 require_once("news.class.php");	
 $news=new news();
 $pageno=$_GET['page_no'];
-$newsshow=$news->getnewsinfo($pageno);
+
 $noticdata = $news->getNotice();
-$title = "新闻列表";
+$noticnums = $news->getNoticeList();
+$title = "通知列表";
 require_once("header.php");
 ?>
 
 
 		<div id="right" style="width:648px;height:300px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
 		  	<div id="item" style="border:#c1c1c1 solid 1px;height:40px;margin-bottom:20px;text-align:center">
-					<span style="float:left;width:630px"><h3>新闻列表</h3></span>
+					<span style="float:left;width:630px"><h3>通知列表</h3></span>
 		  	</div>
 		  <div id="content" style="width:560px;margin:auto;">
 				<ul style="line-height:18px;">
-					<?php for($i=0;$i<count($newsshow);$i++ ){  ?>
-					<li><span style="width:400px;display:inline-block;"><a href="newscontent.php?newsid=<?php echo   $newsshow[$i]['news_id']; ?>"><?php echo   $newsshow[$i]['news_title']; ?></a></span><span>[<?php echo date("Y-m-y",strtotime($newsshow[$i]['news_time']))?>]</span></li>
-					<?php }?>
+					<?php foreach ($noticnums as $v): ?>
+					<li><span style="width:400px;display:inline-block;"><a href="<?php echo APP_ROOT?>/notice.php?id=<?php echo $v['notic_id']?>"><?php echo $v['notic_title']?></a></span><span>[<?php echo date("Y-m-y",strtotime($v['notic_time']))?>]</span></li>
+					 <?php endforeach;?>
 				
 				</ul>
 			
 		  		<div><?php
-          		$news->page_list();
+          		$news->page_list_notic();
 				?></div>
 		  		
 		  </div><!--content fin-->
@@ -82,4 +83,3 @@ require_once("header.php");
 
 </html>
             
-
