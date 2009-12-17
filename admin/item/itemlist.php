@@ -44,7 +44,7 @@ function $(id){
   	 </select></div>
   	 </form>
 	  <div class="alltitle">
-	        <div  style="float:left; width:30px" ><input type="checkbox" /></div>
+	        <div  style="float:left; width:30px" >&nbsp;&nbsp;&nbsp;</div>
 	        <div style="float:left; width:100px">学号</div>
 		    <div style="float:left; width:50px">姓名</div>
 		    <div style="float:left; width:150px">班级</div>

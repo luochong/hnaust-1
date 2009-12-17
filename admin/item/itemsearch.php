@@ -201,7 +201,7 @@ function $(id){
   	 <?php if(isset($_GET['submit'])){?>
   	 			
   	 <div class="alltitle">
-	        <div  style="float:left; width:30px" ></div>
+	        <div  style="float:left; width:30px" >&nbsp;&nbsp;</div>
 	        <div style="float:left; width:100px">学号</div>
 		    <div style="float:left; width:50px">姓名</div>
 		    <div style="float:left; width:150px">班级</div>

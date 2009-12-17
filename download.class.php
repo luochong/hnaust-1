@@ -22,7 +22,7 @@ class notic extends MysqlDao
 {
 	public function getNoticList()
 	{
-		$sql = "select * from upload_file where file_status = '1' order by file_time";
+		$sql = "select * from upload_file where file_status = '1' order by file_time DESC";
 		$row = $this->executeQueryA($sql);
 		return $row;
 	}

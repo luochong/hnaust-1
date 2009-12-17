@@ -32,7 +32,7 @@ class ItemListAction extends MysqlDao {
 					$time= 'app_coltime ';
 				}
 				 foreach ($_POST['app_id'] as $id){
-					 	$this->update(array('app_state'=>$state,$time=>getNowDate()),array('app_id'=>$id));
+				 		$this->update(array('app_state'=>$state,$time=>getNowDate()),array('app_id'=>$id));
 					 }
 				break;
 			}
