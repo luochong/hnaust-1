@@ -33,7 +33,7 @@ require_once("header.php");
 					
 					<p><?php echo   "作者：".$newsshow[0]['news_author']; ?>&nbsp;&nbsp; &nbsp; 时间：<?php echo   $newsshow[0]['news_time']; ?></p>
 		  	</div>
-		  <div id="content" style="width:500px;margin:auto;line-height:1.5em">
+		  <div id="content" class="lcpost">
 		  	<?php  echo   $newsshow[0]['news_body']; ?>
 		  		
 		  </div><!--content fin-->

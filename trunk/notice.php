@@ -26,11 +26,11 @@ require_once("header.php");
 ?>
 		<div id="right" style="width:648px;border:#C1C1C1 solid 1px;background-color:#FFF0F0;float:left">
 		  	<div id="item" style="border:#c1c1c1 solid 1px;margin-bottom:20px;text-align:center">
-					<h3 style="color:red">通知：<?php echo $data[0]['notic_title'];?></h3>
+					<h3 style="color:red"><?php echo $data[0]['notic_title'];?></h3>
 					
 					<p>发布时间：<?php echo date("Y-m-y",strtotime($data[0]['notic_time']));?></p>
 		  	</div>
-		  <div id="content" style="width:500px;margin:auto;line-height:1.5em">
+		  <div id="content" class="lcpost">
 		  	<?php  echo  $data[0]['notic_body']; ?>
 		  		
 		  </div><!--content fin-->
