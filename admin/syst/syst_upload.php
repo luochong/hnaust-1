@@ -39,9 +39,9 @@ if(isset($_POST['submit']))
 	$file = $upload -> getFiles ( "f" ); 
 	
 	if ( $file -> isValid ()) { 
+		$name = $file->setName('uniq');
 		$moved = $file -> moveTo ( 'uploads/' ); 
 		if (! PEAR :: isError ( $moved )) { 
-			$name = $file -> getProp ( 'name' );
 			$uploadfiles->file_upload($name);
 		} else { 
 			echo $moved -> getMessage (); 
