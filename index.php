@@ -48,7 +48,7 @@ require_once("header.php");
            <div class="huibg" style="height:31px"> </div>
 			<div style="background:url(images/st_20.jpg) no-repeat top left;height:45px">
                 <div style="text-align:center;width:85%;padding-top:20px;margin-left:12px;color:#000;border-bottom:1px solid #000;height:22px"> 
-                通&nbsp;&nbsp;&nbsp;知
+                通&nbsp;&nbsp;&nbsp;知&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="noticelist.php">More...</a>
                
                 </div>
             </div>            
