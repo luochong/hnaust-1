@@ -46,7 +46,7 @@ if($_POST["submit"] == "导出Excel"){
     <tr align="center" color="blue" border>
      <td>系名称</td>
      <td>申报总人数</td>
-     <td>申报总申报数</td>
+     <td>申报总项目数</td>
      <td>总申报学分</td>
      <td>总有效学分</td>
      <td>总课程学分</td>
@@ -147,7 +147,7 @@ if($_POST["submit"] == "导出Excel"){
     <tr align="center" color="blue" border>
      <td>系名称</td>
      <td>申报总人数</td>
-     <td>申报总申报数</td>
+     <td>申报总项目数</td>
      <td>总申报学分</td>
      <td>总有效学分</td>
      <td>总课程学分</td>
